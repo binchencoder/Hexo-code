@@ -7,13 +7,19 @@ title: Binchen coder
 subtitle:
 description:
 keywords:
-author: Chen bin
-language:
-timezone:
+  - blog
+  - stkevintan
+  - IT
+  - Web Front End
+  - Kevin Tan
+  - kevinsfork
+author: Bin Chen
+language: zh-CN
+timezone: Asia/Shanghai
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://yoursite.com
+url: https://binchencoder.github.io
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
@@ -35,7 +41,7 @@ titlecase: false # Transform title into titlecase
 external_link: true # Open external links in new tab
 filename_case: 0
 render_drafts: false
-post_asset_folder: false
+post_asset_folder: true
 relative_link: false
 future: true
 highlight:
@@ -73,7 +79,60 @@ pagination_dir: page
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: landscape
+theme: material-flow
+search:
+  path: search.xml
+  field: post
+
+autoprefixer:
+  exclude:
+    - '*.min.css'
+  # remove: false # prevent autoprefixer remove page-break-inside
+  # browsers:
+  #   - 'last 2 versions'
+  #   - '> 5%'
+
+# Generator json content
+jsonContent:
+  meta: false
+  keywords: false
+  pages:
+    title: true
+    slug: false
+    date: false
+    updated: false
+    comments: false
+    path: false
+    link: false
+    permalink: true
+    excerpt: false
+    keywords: false
+    text: true
+    raw: false
+    content: false
+  posts:
+    title: true
+    slug: false
+    date: false
+    updated: false
+    comments: false
+    path: false
+    link: false
+    permalink: true
+    excerpt: false
+    keywords: false
+    text: true
+    raw: false
+    content: false
+    categories: false
+    tags: false
+
+feed:
+  type: atom
+  path: atom.xml
+  limit: 20
+  hub:
+  content:
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html

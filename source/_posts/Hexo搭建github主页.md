@@ -1,10 +1,8 @@
 ---
-title: Hexo搭建github主页
+title: Hexo配合搭建github个人主页
 date: 2018-07-21 18:03:18
 tags:
 ---
-
-# Hexo 配合搭建github个人主页
 
 ## 前言
 
@@ -15,6 +13,7 @@ tags:
 - Node js环境
 - Git环境
 
+<!--more-->
 
 检查环境安装是否正确
 ```
@@ -47,7 +46,9 @@ $ cd <folder>
 $ npm install
 ```
 
-> NOTE: Init <folder> 必须是完全空的目录. 不能存在任何文件, 包括隐藏文件
+> NOTE:
+>
+> Init <folder> 必须是完全空的目录. 不能存在任何文件, 包括隐藏文件
 
 新建完成后，指定文件夹的目录如下：
 ```
@@ -78,7 +79,7 @@ INFO  Hexo is running at http://localhost:4000/. Press Ctrl+C to stop.
 ```
 
 效果图:
-![hello-world](images/bloghexo5.png)
+![hello-world](Hexo搭建github主页/bloghexo5.png)
 
 
 ## Deploy
@@ -105,7 +106,8 @@ deploy:
 ```
 
 > **缩进**
->YAML依靠缩进来确定元素间的从属关系。因此，请确保每个deployer的缩进长度相同，并且使用空格缩进。
+>
+> YAML依靠缩进来确定元素间的从属关系。因此，请确保每个deployer的缩进长度相同，并且使用空格缩进。
 
 详细说明请查看:
 [https://hexo.io/zh-cn/docs/configuration.html](https://hexo.io/zh-cn/docs/configuration.html)
@@ -144,4 +146,6 @@ To https://github.com/binchencoder/binchencoder.github.io.git
 INFO  Deploy done: git
 ```
 
-> 出现如上结果，就大功告成了。Hexo Hello-World网站已经部署到Git服务上。就可以通过https://binchencode.github.io 地址访问部署的网站了
+> 出现如上结果，就大功告成了。
+>
+> Hexo Hello-World网站已经部署到Git服务上。就可以通过https://binchencode.github.io 地址访问部署的网站了
