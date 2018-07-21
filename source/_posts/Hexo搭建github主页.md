@@ -77,6 +77,10 @@ INFO  Start processing
 INFO  Hexo is running at http://localhost:4000/. Press Ctrl+C to stop.
 ```
 
+效果图:
+![hello-world](images/bloghexo5.png)
+
+
 ## Deploy
 
 Hexo提供了快速方便的一键部署功能，让您只需一条命令就能将网站部署到服务器上。
@@ -100,8 +104,8 @@ deploy:
   repo:
 ```
 
-> **缩进**  
-YAML依靠缩进来确定元素间的从属关系。因此，请确保每个deployer的缩进长度相同，并且使用空格缩进。
+> **缩进**
+>YAML依靠缩进来确定元素间的从属关系。因此，请确保每个deployer的缩进长度相同，并且使用空格缩进。
 
 详细说明请查看:
 [https://hexo.io/zh-cn/docs/configuration.html](https://hexo.io/zh-cn/docs/configuration.html)
@@ -140,4 +144,4 @@ To https://github.com/binchencoder/binchencoder.github.io.git
 INFO  Deploy done: git
 ```
 
-出现如上结果，就大功告成了。Hexo Hello-World网站已经部署到Git服务上。就可以通过https://binchencode.github.io地址访问部署的网站了
+> 出现如上结果，就大功告成了。Hexo Hello-World网站已经部署到Git服务上。就可以通过https://binchencode.github.io 地址访问部署的网站了
