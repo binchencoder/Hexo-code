@@ -29,6 +29,8 @@ categories:
     - [示例](#%E7%A4%BA%E4%BE%8B-2)
     - [参考资料](#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99)
 
+<!--more-->
+
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 ## [show-busy-java-threads.sh](./show-busy-java-threads.sh)
