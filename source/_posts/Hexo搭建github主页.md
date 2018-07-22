@@ -83,7 +83,7 @@ INFO  Hexo is running at http://localhost:4000/. Press Ctrl+C to stop.
 ```
 
 效果图:
-![hello-world](Hexo搭建github主页/bloghexo5.png)
+![hello-world](./bloghexo5.png)
 
 
 ## Deploy
