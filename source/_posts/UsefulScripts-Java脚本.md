@@ -9,9 +9,6 @@ categories:
     - 工具
 ---
 
-`Java`相关脚本
-====================================
-
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
@@ -34,7 +31,7 @@ categories:
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
-[show-busy-java-threads.sh](./show-busy-java-threads.sh)
+## [show-busy-java-threads.sh](./show-busy-java-threads.sh)
 ----------------------
 
 用于快速排查`Java`的`CPU`性能问题(`top us`值过高)，自动查出运行的`Java`进程中消耗`CPU`多的线程，并打印出其线程栈，从而确定导致性能问题的方法调用。
@@ -121,8 +118,7 @@ $ show-busy-java-threads.sh
     - 优化性能，通过`read -a`简化反复的`awk`操作 #51
     - 发现并解决`jstack`非当前用户`Java`进程的问题 #50
 
-[show-duplicate-java-classes](./show-duplicate-java-classes)
-----------------------
+## [show-duplicate-java-classes](./show-duplicate-java-classes)
 
 找出`Java Lib`（`Java`库，即`Jar`文件）或`Class`目录（类目录）中的重复类。
 
@@ -271,8 +267,7 @@ class paths to find:
 
 [tgic](https://github.com/tg123)提供此脚本。友情贡献者的链接[commandlinefu.cn](http://commandlinefu.cn/)|[微博linux命令行精选](http://weibo.com/u/2674868673)
 
-[find-in-jars.sh](./find-in-jars.sh)
-----------------------
+## [find-in-jars.sh](./find-in-jars.sh)
 
 在当前目录下所有`jar`文件里，查找类或资源文件。
 
