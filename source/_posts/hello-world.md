@@ -3,6 +3,7 @@ title: Hello World
 date: 2018-07-21 15:00:18
 tags:
     - Hello World
+    - Hexo
 categories:
     - Hexo
     - Hello World
