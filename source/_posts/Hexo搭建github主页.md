@@ -3,7 +3,7 @@ title: Hexo配合搭建github个人主页
 date: 2018-07-21 18:03:18
 tags:
   - Hexo
-  - GitHub Pages
+  - GitHub-Pages
 categories:
   - Hexo
 ---

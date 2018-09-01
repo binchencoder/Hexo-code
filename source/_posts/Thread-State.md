@@ -2,7 +2,7 @@ title: Thread State
 date: 2018-08-31 20:53:08
 tags:
     - Thread
-    - GitHub Pages
+    - GitHub-Pages
 categories:
     - 后端
 ---
@@ -11,7 +11,7 @@ categories:
 
 Java线程的生命周期中, 存在着六种状态. 在Thread类里有一个枚举类型State, 定义了线程的几种状态. 下图比较清晰的展示了这六种状态之间的转换关系
 
-![image](./Thread State/Thread state.png)
+![image](./Thread-state.png)
 
 - NEW: 线程创建之后，但是还没有启动(not yet started)。这时候它的状态就是NEW
 
