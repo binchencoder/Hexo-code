@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Binchen coder</title>
+  
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="https://binchencoder.github.io/"/>
+  <updated>2019-07-21T10:24:20.000Z</updated>
+  <id>https://binchencoder.github.io/</id>
+  
+  <author>
+    <name>Bin Chen</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>PRC框架</title>
+    <link href="https://binchencoder.github.io/2019/07/21/RPC%E6%A1%86%E6%9E%B6/"/>
+    <id>https://binchencoder.github.io/2019/07/21/RPC框架/</id>
+    <published>2019-07-21T10:00:18.000Z</published>
+    <updated>2019-07-21T10:24:20.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;大概是三年前我开始接触RPC，那时作为一个刚入职场三年的新兵，在公司技术架构决策层上还没有什么发言权。一直沿用前辈搭建的技术架构来开发应用系
+      
+    
+    </summary>
+    
+      <category term="后端" scheme="https://binchencoder.github.io/categories/%E5%90%8E%E7%AB%AF/"/>
+    
+    
+      <category term="RPC" scheme="https://binchencoder.github.io/tags/RPC/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>MySQL中 乐观锁、悲观锁、共享锁、排它锁、行锁、表锁的理解</title>
+    <link href="https://binchencoder.github.io/2019/01/20/MySQL%E9%94%81%E7%9A%84%E7%90%86%E8%A7%A3/"/>
+    <id>https://binchencoder.github.io/2019/01/20/MySQL锁的理解/</id>
+    <published>2019-01-20T02:00:18.000Z</published>
+    <updated>2019-07-21T10:40:39.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;img src=&quot;/2019/01/20/MySQL锁的理解/MySQL.jpeg&quot; alt=&quot;MySQL&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;MySQL/
+      
+    
+    </summary>
+    
+      <category term="后端" scheme="https://binchencoder.github.io/categories/%E5%90%8E%E7%AB%AF/"/>
+    
+    
+      <category term="MySQL" scheme="https://binchencoder.github.io/tags/MySQL/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>如何查看MariaDB bin log</title>
+    <link href="https://binchencoder.github.io/2018/09/04/%E6%9F%A5%E7%9C%8BMariaDB-binlog/"/>
+    <id>https://binchencoder.github.io/2018/09/04/查看MariaDB-binlog/</id>
+    <published>2018-09-04T13:53:08.000Z</published>
+    <updated>2018-09-04T13:52:54.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;MariaDB-bin-log&quot;&gt;&lt;a href=&quot;#MariaDB-bin-log&quot; class=&quot;headerlink&quot; title=&quot;MariaDB bin log&quot;&gt;&lt;/a&gt;MariaDB bin log&lt;/h2&gt;&lt;p&gt;今天在学习MariaDB在产线的部署
+      
+    
+    </summary>
+    
+      <category term="后端" scheme="https://binchencoder.github.io/categories/%E5%90%8E%E7%AB%AF/"/>
+    
+    
+      <category term="MariaDB" scheme="https://binchencoder.github.io/tags/MariaDB/"/>
+    
+      <category term="binlog" scheme="https://binchencoder.github.io/tags/binlog/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>使用正则引发的血案</title>
+    <link href="https://binchencoder.github.io/2018/09/01/%E4%BD%BF%E7%94%A8%E6%AD%A3%E5%88%99%E5%BC%95%E5%8F%91%E7%9A%84%E8%A1%80%E6%A1%88/"/>
+    <id>https://binchencoder.github.io/2018/09/01/使用正则引发的血案/</id>
+    <published>2018-09-01T13:43:21.000Z</published>
+    <updated>2018-09-01T13:46:06.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;正则表达式&quot;&gt;&lt;a href=&quot;#正则表达式&quot; class=&quot;headerlink&quot; title=&quot;正则表达式&quot;&gt;&lt;/a&gt;正则表达式&lt;/h2&gt;&lt;p&gt;正则表达式, 一个十分古老而又强大的文本处理工具, 仅仅用一段非常简短的表达式语句, 便能够快速实现一个非常复杂的业
+      
+    
+    </summary>
+    
+      <category term="后端" scheme="https://binchencoder.github.io/categories/%E5%90%8E%E7%AB%AF/"/>
+    
+    
+      <category term="正则表达式" scheme="https://binchencoder.github.io/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/"/>
+    
+      <category term="Jstack" scheme="https://binchencoder.github.io/tags/Jstack/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Thread State</title>
+    <link href="https://binchencoder.github.io/2018/08/31/Thread-State/"/>
+    <id>https://binchencoder.github.io/2018/08/31/Thread-State/</id>
+    <published>2018-08-31T12:53:08.000Z</published>
+    <updated>2018-09-01T13:57:55.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;Java-线程状态分析&quot;&gt;&lt;a href=&quot;#Java-线程状态分析&quot; class=&quot;headerlink&quot; title=&quot;Java 线程状态分析&quot;&gt;&lt;/a&gt;Java 线程状态分析&lt;/h2&gt;&lt;p&gt;Java线程的生命周期中, 存在着六种状态. 在Thread类里有一
+      
+    
+    </summary>
+    
+      <category term="后端" scheme="https://binchencoder.github.io/categories/%E5%90%8E%E7%AB%AF/"/>
+    
+    
+      <category term="GitHub-Pages" scheme="https://binchencoder.github.io/tags/GitHub-Pages/"/>
+    
+      <category term="Thread" scheme="https://binchencoder.github.io/tags/Thread/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>UsefulScripts-Java脚本</title>
+    <link href="https://binchencoder.github.io/2018/07/22/UsefulScripts-Java%E8%84%9A%E6%9C%AC/"/>
+    <id>https://binchencoder.github.io/2018/07/22/UsefulScripts-Java脚本/</id>
+    <published>2018-07-22T05:46:57.000Z</published>
+    <updated>2018-07-24T13:51:14.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;!-- START doctoc generated TOC please keep comment here to allow auto update --&gt;
+&lt;!-- DON&#39;T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE --&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;#show-busy-java-threads-sh&quot;&gt;show-busy-java-threads.sh&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;#%E7%94%A8%E6%B3%95&quot;&gt;用法&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#%E7%A4%BA%E4%BE%8B&quot;&gt;示例&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#%E8%B4%A1%E7%8C%AE%E8%80%85&quot;&gt;贡献者&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#show-duplicate-java-classes-sh&quot;&gt;show-duplicate-java-classes&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;#%E7%94%A8%E6%B3%95-1&quot;&gt;用法&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;#jdk%E5%BC%80%E5%8F%91%E5%9C%BA%E6%99%AF%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E&quot;&gt;&lt;code&gt;JDK&lt;/code&gt;开发场景使用说明&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;#%E5%AF%B9%E4%BA%8E%E4%B8%80%E8%88%AC%E7%9A%84%E5%B7%A5%E7%A8%8B&quot;&gt;对于一般的工程&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#%E5%AF%B9%E4%BA%8Eweb%E5%B7%A5%E7%A8%8B&quot;&gt;对于&lt;code&gt;Web&lt;/code&gt;工程&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#android%E5%BC%80%E5%8F%91%E5%9C%BA%E6%99%AF%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E&quot;&gt;&lt;code&gt;Android&lt;/code&gt;开发场景使用说明&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#%E7%A4%BA%E4%BE%8B-1&quot;&gt;示例&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#%E8%B4%A1%E7%8C%AE%E8%80%85-1&quot;&gt;贡献者&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#find-in-jars-sh&quot;&gt;find-in-jars.sh&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;#%E7%94%A8%E6%B3%95-2&quot;&gt;用法&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#%E7%A4%BA%E4%BE%8B-2&quot;&gt;示例&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99&quot;&gt;参考资料&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+      <category term="工具" scheme="https://binchencoder.github.io/categories/%E5%B7%A5%E5%85%B7/"/>
+    
+    
+      <category term="工具" scheme="https://binchencoder.github.io/tags/%E5%B7%A5%E5%85%B7/"/>
+    
+      <category term="后端" scheme="https://binchencoder.github.io/tags/%E5%90%8E%E7%AB%AF/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>gRPC Status and HTTP Code Relation</title>
+    <link href="https://binchencoder.github.io/2018/07/22/GRPC-Status-HTTP-Status/"/>
+    <id>https://binchencoder.github.io/2018/07/22/GRPC-Status-HTTP-Status/</id>
+    <published>2018-07-22T03:53:08.000Z</published>
+    <updated>2018-07-22T04:37:42.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;ul&gt;
+&lt;li&gt;Status.INVALID_ARGUMENT &lt;strong&gt;[400]&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;Status.OK &lt;strong&gt;[200]&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;Status.CANCELLED &lt;strong&gt;[408]&lt;/s
+      
+    
+    </summary>
+    
+      <category term="后端" scheme="https://binchencoder.github.io/categories/%E5%90%8E%E7%AB%AF/"/>
+    
+    
+      <category term="gRPC" scheme="https://binchencoder.github.io/tags/gRPC/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hexo配合搭建github个人主页</title>
+    <link href="https://binchencoder.github.io/2018/07/21/Hexo%E6%90%AD%E5%BB%BAgithub%E4%B8%BB%E9%A1%B5/"/>
+    <id>https://binchencoder.github.io/2018/07/21/Hexo搭建github主页/</id>
+    <published>2018-07-21T10:03:18.000Z</published>
+    <updated>2018-09-01T13:52:18.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;“工欲善其事，必先利其器”，在搭建个人博客的过程中，我深刻体会到这句话的含义。虽然早就决定了要搭建个人博客，但是我并没有草草动手，而是提前做了大量的调研工作，包括采用哪种博客系统、选择哪种主题、怎么购买并绑定个性域名等等。事实证明，正因为前期的充分准备，搭建过程才能按部就班地进行。下面先介绍为何选择GitHub Pages和Hexo来搭建博客&lt;/p&gt;
+&lt;h2 id=&quot;准备&quot;&gt;&lt;a href=&quot;#准备&quot; class=&quot;headerlink&quot; title=&quot;准备&quot;&gt;&lt;/a&gt;准备&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;Node js环境&lt;/li&gt;
+&lt;li&gt;Git环境&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+      <category term="Hexo" scheme="https://binchencoder.github.io/categories/Hexo/"/>
+    
+    
+      <category term="Hexo" scheme="https://binchencoder.github.io/tags/Hexo/"/>
+    
+      <category term="GitHub-Pages" scheme="https://binchencoder.github.io/tags/GitHub-Pages/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="https://binchencoder.github.io/2018/07/21/hello-world/"/>
+    <id>https://binchencoder.github.io/2018/07/21/hello-world/</id>
+    <published>2018-07-21T07:00:18.000Z</published>
+    <updated>2018-07-24T13:53:47.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;documentation&lt;/a&gt; for more info. If you get any problems when using Hexo, you can find the answer in &lt;a href=&quot;https://hexo.io/docs/troubleshooting.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;troubleshooting&lt;/a&gt; or you can ask me on &lt;a href=&quot;https://github.com/hexojs/hexo/issues&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&quot;Quick-Start&quot;&gt;&lt;a href=&quot;#Quick-Start&quot; class=&quot;headerlink&quot; title=&quot;Quick Start&quot;&gt;&lt;/a&gt;Quick Start&lt;/h2&gt;&lt;h3 id=&quot;Create-a-new-post&quot;&gt;&lt;a href=&quot;#Create-a-new-post&quot; class=&quot;headerlink&quot; title=&quot;Create a new post&quot;&gt;&lt;/a&gt;Create a new post&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ hexo new &lt;span class=&quot;string&quot;&gt;&quot;My New Post&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+      <category term="Hexo" scheme="https://binchencoder.github.io/categories/Hexo/"/>
+    
+      <category term="Hello World" scheme="https://binchencoder.github.io/categories/Hexo/Hello-World/"/>
+    
+    
+      <category term="Hexo" scheme="https://binchencoder.github.io/tags/Hexo/"/>
+    
+      <category term="Hello World" scheme="https://binchencoder.github.io/tags/Hello-World/"/>
+    
+  </entry>
+  
+</feed>
