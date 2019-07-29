@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://binchencoder.github.io/"/>
-  <updated>2019-07-29T05:44:07.433Z</updated>
+  <updated>2019-07-29T05:48:34.177Z</updated>
   <id>https://binchencoder.github.io/</id>
   
   <author>
@@ -18,10 +18,10 @@
   
   <entry>
     <title>Linux查看系统硬件信息</title>
-    <link href="https://binchencoder.github.io/2019/07/29/%E6%9F%A5%E7%9C%8B%E7%B3%BB%E7%BB%9F%E7%A1%AC%E4%BB%B6%E4%BF%A1%E6%81%AF/"/>
-    <id>https://binchencoder.github.io/2019/07/29/查看系统硬件信息/</id>
+    <link href="https://binchencoder.github.io/2019/07/29/Linux%E6%9F%A5%E7%9C%8B%E7%B3%BB%E7%BB%9F%E7%A1%AC%E4%BB%B6%E4%BF%A1%E6%81%AF/"/>
+    <id>https://binchencoder.github.io/2019/07/29/Linux查看系统硬件信息/</id>
     <published>2019-07-29T05:36:21.000Z</published>
-    <updated>2019-07-29T05:44:07.433Z</updated>
+    <updated>2019-07-29T05:48:34.177Z</updated>
     
     <summary type="html">
     
@@ -38,29 +38,6 @@
       <category term="Linux" scheme="https://binchencoder.github.io/tags/Linux/"/>
     
       <category term="Systerm" scheme="https://binchencoder.github.io/tags/Systerm/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Linux查看系统硬件信息</title>
-    <link href="https://binchencoder.github.io/2019/07/29/Linux%E6%9F%A5%E7%9C%8B%E7%B3%BB%E7%BB%9F%E7%A1%AC%E4%BB%B6%E4%BF%A1%E6%81%AF/"/>
-    <id>https://binchencoder.github.io/2019/07/29/Linux查看系统硬件信息/</id>
-    <published>2019-07-29T05:36:21.000Z</published>
-    <updated>2019-07-29T05:37:36.104Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;Linux查看系统硬件信息&quot;&gt;&lt;a href=&quot;#Linux查看系统硬件信息&quot; class=&quot;headerlink&quot; title=&quot;Linux查看系统硬件信息&quot;&gt;&lt;/a&gt;Linux查看系统硬件信息&lt;/h1&gt;&lt;h2 id=&quot;查看当前操作系统内核信息&quot;&gt;&lt;a href
-      
-    
-    </summary>
-    
-      <category term="Linux" scheme="https://binchencoder.github.io/categories/Linux/"/>
-    
-    
-      <category term="Linux" scheme="https://binchencoder.github.io/tags/Linux/"/>
     
   </entry>
   
