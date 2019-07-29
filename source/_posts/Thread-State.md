@@ -1,8 +1,9 @@
 title: Thread State
 date: 2018-08-31 20:53:08
 tags:
+    - Java
     - Thread
-    - GitHub-Pages
+    - Jstack
 categories:
     - 后端
 ---
