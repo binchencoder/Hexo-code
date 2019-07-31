@@ -14,6 +14,12 @@ menu:
 - page: Linux
   url: /categories/Linux/
   icon:
+- page: 存储
+  url: /categories/存储/
+  icon:
+- page: 框架
+  url: /categories/框架/
+  icon:
 - page: 工具
   url: /categories/工具/
   icon:

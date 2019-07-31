@@ -5,7 +5,6 @@ tags:
     - MySQL
     - 存储
 categories:
-    - 后端
     - 存储
 ---
 ## 前言

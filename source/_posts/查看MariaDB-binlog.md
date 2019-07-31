@@ -4,7 +4,7 @@ tags:
     - MariaDB
     - binlog
 categories:
-    - 后端
+    - 存储
 ---
 
 ## MariaDB bin log

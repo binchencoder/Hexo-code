@@ -4,7 +4,7 @@ date: 2019-01-20 10:00:18
 tags:
     - MySQL
 categories:
-    - 后端
+    - 存储
 ---
 
 ![MySQL](./MySQL.jpeg)
