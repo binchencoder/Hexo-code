@@ -29,7 +29,7 @@
     <!--Title-->
 
 
-<title>Hello World | Binchen coder</title>
+<title>Linux文件常用命令 | Binchen coder</title>
 
 
     <link rel="alternate" href="/atom.xml" title="Binchen coder" type="application/atom+xml">
@@ -145,9 +145,9 @@
                     <p id="process"></p>
 <article class="post">
     <div class="post-head">
-        <h1 id="Hello World">
+        <h1 id="Linux文件常用命令">
             
-	            Hello World
+	            Linux文件常用命令
             
         </h1>
         <div class="post-meta">
@@ -155,8 +155,8 @@
     
     <span class="categories-meta fa-wrap">
         <i class="fa fa-folder-open-o"></i>
-        <a href="/categories/Hello World">
-            Hello World
+        <a href="/categories/Linux">
+            Linux
         </a>
     </span>
     
@@ -166,12 +166,8 @@
         <span class="tags-meta">
             
                 
-                    <a href="/tags/Hexo" title='Hexo'>
-                        Hexo
-                    </a>
-                
-                    <a href="/tags/Hello World" title='Hello World'>
-                        Hello World
+                    <a href="/tags/Linux" title='Linux'>
+                        Linux
                     </a>
                 
             
@@ -183,30 +179,39 @@
         
         <span class="fa-wrap">
             <i class="fa fa-clock-o"></i>
-            <span class="date-meta">2018/07/21</span>
+            <span class="date-meta">2019/08/02</span>
         </span>
     
 </div>
 
             
             
-            <p class="fa fa-exclamation-triangle warning">
-                本文于<strong>377</strong>天之前发表，文中内容可能已经过时。
-            </p>
-        
     </div>
     
     <div class="post-body post-content">
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<a id="more"></a>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+        <h1 id="Linux文件常用命令"><a href="#Linux文件常用命令" class="headerlink" title="Linux文件常用命令"></a>Linux文件常用命令</h1><h2 id="文件解压缩"><a href="#文件解压缩" class="headerlink" title="文件解压缩"></a>文件解压缩</h2><blockquote>
+<p>解压 .tar.gz 和 .tgz<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar zxvf filename.tar.gz</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p>压缩 .tar.gz 和 .tgz<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar zcvf filename.tar.gz</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<p><strong>linux下tar命令解压到指定的目录：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#tar xvf /bbs.tar.zip -C /zzz/bbs</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>把根目录下的bbs.tar.zip解压到/zzz/bbs下，前提要保证存在/zzz/bbs这个目录<br>这个和cp命令有点不同，cp命令如果不存在这个目录就会自动创建这个目录！<br>附：用tar命令打包<br>例：将当前目录下的zzz文件打包到根目录下并命名为zzz.tar.gz</p>
+<p>#tar zcvf /zzz.tar.gz ./zzz</p>
+</blockquote>
+<blockquote>
+<p>解压 .zip<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">unzip filename.zip</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p>压缩 .zip<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">zip filename.zip</span><br><span class="line"></span><br><span class="line">压缩一个目录使用 -r 参数， -r 递归。 例： $ zip -r filename.zip dirname</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p>解压 .rar<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rar x filename.rar</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p>压缩 .rar<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rar a filename.rar dirname</span><br></pre></td></tr></table></figure></p>
+</blockquote>
 
     </div>
 
@@ -224,11 +229,11 @@
 
 <div class="article-nav prev-next-wrap clearfix">
     
-        <a href="/2018/07/21/Hexo搭建github主页/" class="pre-post btn btn-default" title='Hexo配合搭建github个人主页'>
-            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
-            <span class="hidden-xs">Hexo配合搭建github个人主页</span>
-        </a>
     
+        <a href="/2019/08/01/Spring Boot中application.properties与bootstrap.properties的区别/" class="next-post btn btn-default" title='Spring Boot中application.properties与bootstrap.properties的区别'>
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">Spring Boot中application.properties与bootstrap.properties的区别</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
     
 </div>
 
@@ -262,7 +267,7 @@
     <div class="widget">
         <h3 class="title">文章目录</h3>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Quick-Start"><span class="toc-text">Quick Start</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Create-a-new-post"><span class="toc-text">Create a new post</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Run-server"><span class="toc-text">Run server</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Generate-static-files"><span class="toc-text">Generate static files</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Deploy-to-remote-sites"><span class="toc-text">Deploy to remote sites</span></a></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Linux文件常用命令"><span class="toc-text">Linux文件常用命令</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#文件解压缩"><span class="toc-text">文件解压缩</span></a></li></ol></li></ol>
         
     </div>
 </aside>
