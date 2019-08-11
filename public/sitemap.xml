@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://binchencoder.github.io/2019/09/11/JVM%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/</loc>
+    
+    <lastmod>2019-08-11T13:35:34.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://binchencoder.github.io/2019/08/08/Mac%E5%B9%B3%E5%8F%B0%E6%90%AD%E5%BB%BAGolang%E7%8E%AF%E5%A2%83/</loc>
     
     <lastmod>2019-08-08T15:50:23.000Z</lastmod>
@@ -65,14 +72,14 @@
   </url>
   
   <url>
-    <loc>https://binchencoder.github.io/2018/07/21/hello-world/</loc>
+    <loc>https://binchencoder.github.io/2018/09/04/%E6%9F%A5%E7%9C%8BMariaDB-binlog/</loc>
     
     <lastmod>2019-08-03T17:27:14.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://binchencoder.github.io/2018/09/04/%E6%9F%A5%E7%9C%8BMariaDB-binlog/</loc>
+    <loc>https://binchencoder.github.io/2018/07/21/hello-world/</loc>
     
     <lastmod>2019-08-03T17:27:14.000Z</lastmod>
     

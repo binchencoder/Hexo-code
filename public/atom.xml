@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://binchencoder.github.io/"/>
-  <updated>2019-08-08T15:50:23.000Z</updated>
+  <updated>2019-08-11T13:35:34.000Z</updated>
   <id>https://binchencoder.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>JVM内存管理</title>
+    <link href="https://binchencoder.github.io/2019/09/11/JVM%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/"/>
+    <id>https://binchencoder.github.io/2019/09/11/JVM内存管理/</id>
+    <published>2019-09-11T12:53:08.000Z</published>
+    <updated>2019-08-11T13:35:34.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;JVM内存管理&quot;&gt;&lt;a href=&quot;#JVM内存管理&quot; class=&quot;headerlink&quot; title=&quot;JVM内存管理&quot;&gt;&lt;/a&gt;JVM内存管理&lt;/h1&gt;&lt;p&gt;作为三大工业级别语言之一的JAVA如此受企业青睐有加，离不开她背后JVM的默默复出。只是由于JAVA
+      
+    
+    </summary>
+    
+      <category term="后端" scheme="https://binchencoder.github.io/categories/%E5%90%8E%E7%AB%AF/"/>
+    
+    
+      <category term="Java" scheme="https://binchencoder.github.io/tags/Java/"/>
+    
+      <category term="JVM" scheme="https://binchencoder.github.io/tags/JVM/"/>
+    
+  </entry>
   
   <entry>
     <title>Mac平台搭建Golang环境</title>

@@ -3,6 +3,29 @@
   
     
     <entry>
+      <title>JVM内存管理</title>
+      <link href="/2019/09/11/JVM%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/"/>
+      <url>/2019/09/11/JVM%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/</url>
+      <content type="html"><![CDATA[<h1 id="JVM内存管理"><a href="#JVM内存管理" class="headerlink" title="JVM内存管理"></a>JVM内存管理</h1><p>作为三大工业级别语言之一的JAVA如此受企业青睐有加，离不开她背后JVM的默默复出。只是由于JAVA过于成功以至于我们常常忘了JVM平台上还运行着像Clojure/Groovy/Kotlin/Scala/JRuby/Jython这样的语言。我们享受着JVM带来跨平台“一次编译到处执行”的便利和自动内存回收的安逸。</p><p>JVM是JAVA的核心基础，也是掌握JAVA语言的重难点，如果没有理解JVM的知识体系，就不要说自己是JAVA高手。最近我打算换工作，所以来重新回顾JVM的相关知识，为面试准备。JVM体系内知识点很多，通过以下关键词来简单概括下：</p><p><code>类结构</code>，<code>类加载器</code>，<code>加载</code>，<code>链接</code>，<code>初始化</code>，<code>双亲委派</code>，<code>热部署</code>，<code>隔离</code>，<code>堆</code>，<code>栈</code>，<code>方法区</code>，<code>计数器</code>，<code>内存回收</code>，<code>执行引擎</code>，<code>调优工具</code>，<code>JVMTI</code>，<code>JDWP</code>，<code>JDI</code>，<code>热替换</code>，<code>字节码</code>，<code>ASM</code>，<code>CGLIB</code>，<code>DCEVM</code></p><p>本文从JVM的内存结构入手，介绍JVM逻辑内存的分布和管理方式，同时列举常用的JVM调优工具和使用方法。</p><h2 id="内存结构"><a href="#内存结构" class="headerlink" title="内存结构"></a>内存结构</h2><h3 id="逻辑分区"><a href="#逻辑分区" class="headerlink" title="逻辑分区"></a>逻辑分区</h3><p>JVM内存从应用逻辑上可分为如下区域：</p><h4 id="程序计数器"><a href="#程序计数器" class="headerlink" title="程序计数器"></a>程序计数器</h4><p>程序计数器是一块较小的内存空间，它可以看做是当前线程所执行的字节码的行号指示器，每个线程都需要一个程序计数器。在虚拟机的概念模型里（仅仅是概念模型，各种虚拟机可能会通过一些更高效的方式去实现），字节码解释器工作时，就是通过改变这个计数器的值来选取下一条需要执行的字节码指令，<code>分支</code>、<code>循环</code>、<code>跳准</code>、<code>异常处理</code>、<code>线程恢复</code>等基础功能都需要依赖这个计数器来完成。</p><p>简单理解就是程序计数器保证了程序的正常执行。</p><h4 id="虚拟机栈"><a href="#虚拟机栈" class="headerlink" title="虚拟机栈"></a>虚拟机栈</h4><p>方法执行时创建栈帧(存储局部变量，操作栈，动态链接，方法出口)编译时期就能确定占用空间大小，线程请求的栈深度超过jvm运行深度时抛StackOverflowError，当jvm栈无法申请到空闲内存时抛OutOfMemoryError，<strong>通过-Xss,-Xsx来配置初始内存</strong></p><h4 id="本地方法栈"><a href="#本地方法栈" class="headerlink" title="本地方法栈"></a>本地方法栈</h4><p>执行本地方法，如操作系统native接口</p><h4 id="堆"><a href="#堆" class="headerlink" title="堆"></a>堆</h4><p>存放对象的空间，<strong>通过-Xmx,-Xms配置堆大小</strong>，当堆无法申请到内存时抛OutOfMemoryError</p><h4 id="方法区"><a href="#方法区" class="headerlink" title="方法区"></a>方法区</h4><p>存储类数据，常量，常量池，静态变量，通过MaxPermSize参数配置</p><h4 id="对象访问"><a href="#对象访问" class="headerlink" title="对象访问"></a>对象访问</h4><p>初始化一个对象，其引用存放于栈帧，对象存放于堆内存，对象包含属性信息和该对象父类、接口等类型数据（该类型数据存储在方法区空间，对象拥有类型数据的地址）</p><h3 id="内存模型"><a href="#内存模型" class="headerlink" title="内存模型"></a>内存模型</h3><h4 id="堆内存"><a href="#堆内存" class="headerlink" title="堆内存"></a>堆内存</h4><p>堆内存是运行时的数据区，从中分配所有的Java类实例和数组的内存，可以理解为目标应用依赖的对象。堆在JVM启动时创建，并在应用程序运行时可能会增大或减小。可以使用<code>-Xms`</code>选项指定堆的大小。堆可以是固定大小或可变大小，具体取决于垃圾收集策略。可以使用<code>-Xmx</code>选项设置最大堆大小。默认情况下，最大堆大小设置为64M。</p><p>JVM堆内存在物理上分为两部分：<code>新生代</code>和<code>老年代</code>。新生代是为分配新对象而保留堆空间。当新生代占用完时，Minor GC垃圾收集器会对新生代区域执行垃圾回收动作。其中在新生代中生活了足够长的所有对象被迁移到老生代，从而释放新生代空间以进行更多的对象分配。此垃圾收集称为<code>Minor GC</code>。新生代分分为三个子区域：<code>伊甸园Eden区</code>和两个<code>幸存区S0`</code>和<code>`S1</code>。</p><p>References:</p><ul><li><a href="https://mp.weixin.qq.com/s/3_DEPdZTnGmdGBd5iTrVjQ" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/3_DEPdZTnGmdGBd5iTrVjQ</a></li><li><a href="https://www.cnblogs.com/manayi/p/9290490.html" target="_blank" rel="noopener">https://www.cnblogs.com/manayi/p/9290490.html</a></li></ul>]]></content>
+      
+      <categories>
+          
+          <category> 后端 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Java </tag>
+            
+            <tag> JVM </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>Mac平台搭建Golang环境</title>
       <link href="/2019/08/08/Mac%E5%B9%B3%E5%8F%B0%E6%90%AD%E5%BB%BAGolang%E7%8E%AF%E5%A2%83/"/>
       <url>/2019/08/08/Mac%E5%B9%B3%E5%8F%B0%E6%90%AD%E5%BB%BAGolang%E7%8E%AF%E5%A2%83/</url>
