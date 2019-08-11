@@ -207,7 +207,88 @@
 <h4 id="对象访问"><a href="#对象访问" class="headerlink" title="对象访问"></a>对象访问</h4><p>初始化一个对象，其引用存放于栈帧，对象存放于堆内存，对象包含属性信息和该对象父类、接口等类型数据（该类型数据存储在方法区空间，对象拥有类型数据的地址）</p>
 <h3 id="内存模型"><a href="#内存模型" class="headerlink" title="内存模型"></a>内存模型</h3><h4 id="堆内存"><a href="#堆内存" class="headerlink" title="堆内存"></a>堆内存</h4><p>堆内存是运行时的数据区，从中分配所有的Java类实例和数组的内存，可以理解为目标应用依赖的对象。堆在JVM启动时创建，并在应用程序运行时可能会增大或减小。可以使用<code>-Xms`</code>选项指定堆的大小。堆可以是固定大小或可变大小，具体取决于垃圾收集策略。可以使用<code>-Xmx</code>选项设置最大堆大小。默认情况下，最大堆大小设置为64M。</p>
 <p>JVM堆内存在物理上分为两部分：<code>新生代</code>和<code>老年代</code>。新生代是为分配新对象而保留堆空间。当新生代占用完时，Minor GC垃圾收集器会对新生代区域执行垃圾回收动作。其中在新生代中生活了足够长的所有对象被迁移到老生代，从而释放新生代空间以进行更多的对象分配。此垃圾收集称为<code>Minor GC</code>。新生代分分为三个子区域：<code>伊甸园Eden区</code>和两个<code>幸存区S0`</code>和<code>`S1</code>。</p>
-<p>References:</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/dsrSk9kr59RMZTicNmLyPxCYI7tXFSzjujNyFcGRFwvN6dic3nWEslFd8ibF3lZK95jtSQriayy9M72UIfYF89xiaicQ/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt=""></p>
+<blockquote>
+<p><strong>关于新生代空间：</strong></p>
+</blockquote>
+<ul>
+<li>大多数新创建的对象都位于Eden区内存空间</li>
+<li>当Eden区填满对象时，执行Minor GC并将所有幸存对象移动到其中一个幸存区空间</li>
+<li>Minor GC还会检查幸存区对象并将其移动到其他幸存者空间，也即是幸存区总有一个是空的</li>
+<li>在多次GC后还存活的对象被移动到老年代内存空间。至于经过多少次GC晋升老年代则由参数配置，通常为15</li>
+</ul>
+<p>当老年区填满时，老年区同样会执行垃圾回收。老年区还包含那些经过多Minor GC后还存活的长寿对象。垃圾收集器在老年代内存中执行的垃圾回收称为Major GC，通常需要更长的时间。</p>
+<blockquote>
+<p>Full GC ？？？</p>
+</blockquote>
+<h4 id="非堆内存"><a href="#非堆内存" class="headerlink" title="非堆内存"></a>非堆内存</h4><p>JVM堆以外的内存称为非堆内存。也即是JVM自身预留的内存区域，包含JVM缓存空间，类结构如常量池、字段和方法数据，方法，构造方法。类非堆内存的默认最大大小为64MB。可以用 -XX: MaxPermSize VM选项更改此选项，非堆内存通常包含如下性质的区域空间：</p>
+<ul>
+<li>元空间（Metaspace）</li>
+</ul>
+<p>在Java 8以上版本已经没有Perm Gen这块区域了，这也意味着不会再由关于“java.lang.OutOfMemoryError：PermGen”内存问题存在了。与驻留在Java堆中的Perm Gen不同，Metaspace不是堆的一部分。类元数据多数情况下都是从本地内存中分配的。默认情况下，元空间会自动增加其大小(直接又底层操作系统提供)，而Perm Gen始终具有固定的上限。可以使用两个新标志来设置Metaspace的大小，它们是：<code>“ - XX：MetaspaceSize ”和“ -XX：MaxMetaspaceSize ”</code>。Metaspace背后的含义是类的生命周期及其元数据与类加载器的生命周期相匹配。也就是说，只要类加载器处于活动状态，元数据就会在元数据空间中保持活动状态，并且无法释放。</p>
+<ul>
+<li>代码缓存</li>
+</ul>
+<p>运行Java程序时，它以分层方式执行代码。在第一层，它使用客户端编译器（C1编译器）来编译代码。分析数据用于服务器编译的第二层（C2编译器），以优化的方式编译该代码。默认情况下，Java 7中未启用分层编译，但在Java 8中启用了分层编译。实时（JIT）编译器将编译的代码存储在称为代码缓存的区域中。它是一个保存已编译代码的特殊堆。如果该区域的大小超过阈值，则该区域将被刷新，并且GC不会重新定位这些对象。Java 8中已经解决了一些性能问题和编译器未重新启用的问题，并且在Java 7中避免这些问题的解决方案之一是将代码缓存的大小增加到一个永远不会达到的程度。</p>
+<ul>
+<li>方法区</li>
+</ul>
+<p>方法区域是Perm Gen中空间的一部分，用于存储类结构（运行时常量和静态变量）以及方法和构造函数的代码。</p>
+<ul>
+<li>内存池</li>
+</ul>
+<p>内存池由JVM内存管理器创建，用于创建不可变对象池。内存池可以属于Heap或Perm Gen，具体取决于JVM内存管理器实现。</p>
+<ul>
+<li>常量池</li>
+</ul>
+<p>常量包含类运行时常量和静态方法，常量池是方法区域的一部分。</p>
+<ul>
+<li>Java堆栈内存</li>
+</ul>
+<p>Java堆栈内存用于执行线程。它们包含特定于方法的特定值，以及对从该方法引用的堆中其他对象的引用。</p>
+<ul>
+<li>Java堆内存配置项</li>
+</ul>
+<p>Java提供了许多内存配置项，我们可以使用它们来设置内存大小及其比例，常用的如下：</p>
+<table>
+<thead>
+<tr>
+<th>VM Switch</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-Xms</td>
+<td>用于在JVM启动时设置初始堆大小</td>
+</tr>
+<tr>
+<td>-Xmx</td>
+<td>用于设置最大堆大小</td>
+</tr>
+<tr>
+<td>-Xmn</td>
+<td>设置新生区的大小，剩下的空间用于老年区</td>
+</tr>
+<tr>
+<td>-XX：PermGen</td>
+<td>用于设置永久区存初始大小</td>
+</tr>
+<tr>
+<td>-XX：MaxPermGen</td>
+<td>用于设置Perm Gen的最大尺寸</td>
+</tr>
+<tr>
+<td>-XX：SurvivorRatio</td>
+<td>提供Eden区域的比例</td>
+</tr>
+<tr>
+<td>-XX：NewRatio</td>
+<td>用于提供老年代/新生代大小的比例，默认值为2</td>
+</tr>
+</tbody>
+</table>
+<h2 id="内存回收"><a href="#内存回收" class="headerlink" title="内存回收"></a>内存回收</h2><h3 id="垃圾回收策略"><a href="#垃圾回收策略" class="headerlink" title="垃圾回收策略"></a>垃圾回收策略</h3><h4 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h4><h4 id="策略"><a href="#策略" class="headerlink" title="策略"></a>策略</h4><h4 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h4><p>References:</p>
 <ul>
 <li><a href="https://mp.weixin.qq.com/s/3_DEPdZTnGmdGBd5iTrVjQ" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/3_DEPdZTnGmdGBd5iTrVjQ</a></li>
 <li><a href="https://www.cnblogs.com/manayi/p/9290490.html" target="_blank" rel="noopener">https://www.cnblogs.com/manayi/p/9290490.html</a></li>
@@ -267,7 +348,7 @@
     <div class="widget">
         <h3 class="title">文章目录</h3>
         
-            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#JVM内存管理"><span class="toc-text">JVM内存管理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#内存结构"><span class="toc-text">内存结构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#逻辑分区"><span class="toc-text">逻辑分区</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#程序计数器"><span class="toc-text">程序计数器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#虚拟机栈"><span class="toc-text">虚拟机栈</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#本地方法栈"><span class="toc-text">本地方法栈</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#堆"><span class="toc-text">堆</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#方法区"><span class="toc-text">方法区</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#对象访问"><span class="toc-text">对象访问</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#内存模型"><span class="toc-text">内存模型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#堆内存"><span class="toc-text">堆内存</span></a></li></ol></li></ol></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#JVM内存管理"><span class="toc-text">JVM内存管理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#内存结构"><span class="toc-text">内存结构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#逻辑分区"><span class="toc-text">逻辑分区</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#程序计数器"><span class="toc-text">程序计数器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#虚拟机栈"><span class="toc-text">虚拟机栈</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#本地方法栈"><span class="toc-text">本地方法栈</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#堆"><span class="toc-text">堆</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#方法区"><span class="toc-text">方法区</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#对象访问"><span class="toc-text">对象访问</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#内存模型"><span class="toc-text">内存模型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#堆内存"><span class="toc-text">堆内存</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#非堆内存"><span class="toc-text">非堆内存</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#内存回收"><span class="toc-text">内存回收</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#垃圾回收策略"><span class="toc-text">垃圾回收策略</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#流程"><span class="toc-text">流程</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#策略"><span class="toc-text">策略</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#算法"><span class="toc-text">算法</span></a></li></ol></li></ol></li></ol></li></ol>
         
     </div>
 </aside>
