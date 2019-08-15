@@ -42,6 +42,29 @@
   </entry>
   
   <entry>
+    <title>认识Bazel</title>
+    <link href="https://binchencoder.github.io/2019/08/16/%E8%AE%A4%E8%AF%86Bazel/"/>
+    <id>https://binchencoder.github.io/2019/08/16/认识Bazel/</id>
+    <published>2019-08-16T12:53:08.000Z</published>
+    <updated>2019-08-15T14:00:20.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;Bazel入门&quot;&gt;&lt;a href=&quot;#Bazel入门&quot; class=&quot;headerlink&quot; title=&quot;Bazel入门&quot;&gt;&lt;/a&gt;Bazel入门&lt;/h1&gt;&lt;p&gt;最近一直在研究网关这玩意，想借鉴我们公司的网关架构自己实现一下。思路是引入grpc-gateway，
+      
+    
+    </summary>
+    
+      <category term="工具" scheme="https://binchencoder.github.io/categories/%E5%B7%A5%E5%85%B7/"/>
+    
+    
+      <category term="Bazel" scheme="https://binchencoder.github.io/tags/Bazel/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Mac平台搭建Golang环境</title>
     <link href="https://binchencoder.github.io/2019/08/08/Mac%E5%B9%B3%E5%8F%B0%E6%90%AD%E5%BB%BAGolang%E7%8E%AF%E5%A2%83/"/>
     <id>https://binchencoder.github.io/2019/08/08/Mac平台搭建Golang环境/</id>

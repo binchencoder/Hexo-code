@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>https://binchencoder.github.io/2019/08/16/%E8%AE%A4%E8%AF%86Bazel/</loc>
+    <lastmod>2019-08-15T14:00:20.000Z</lastmod>
+    <data>
+        <display>
+        <title>认识Bazel</title>
+        <pubTime>2019-08-16T12:53:08.000Z</pubTime>
+        
+        <tag>Bazel</tag>
+         
+         
+           
+             
+              <breadCrumb title="工具" url="https://binchencoder.github.io/categories/%E5%B7%A5%E5%85%B7/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://binchencoder.github.io/2019/09/11/JVM%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/</loc>
     <lastmod>2019-08-11T14:20:43.000Z</lastmod>
     <data>
@@ -192,6 +212,28 @@
 
     
   <url>
+    <loc>https://binchencoder.github.io/2018/09/04/%E6%9F%A5%E7%9C%8BMariaDB-binlog/</loc>
+    <lastmod>2019-08-03T17:27:14.000Z</lastmod>
+    <data>
+        <display>
+        <title>如何查看MariaDB bin log</title>
+        <pubTime>2018-09-04T13:53:08.000Z</pubTime>
+        
+        <tag>MariaDB</tag>
+         
+        <tag>binlog</tag>
+         
+         
+           
+             
+              <breadCrumb title="存储" url="https://binchencoder.github.io/categories/%E5%AD%98%E5%82%A8/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://binchencoder.github.io/2019/08/01/Spring%20Boot%E4%B8%ADapplication.properties%E4%B8%8Ebootstrap.properties%E7%9A%84%E5%8C%BA%E5%88%AB/</loc>
     <lastmod>2019-08-03T17:27:14.000Z</lastmod>
     <data>
@@ -209,28 +251,6 @@
            
              
               <breadCrumb title="框架" url="https://binchencoder.github.io/categories/%E6%A1%86%E6%9E%B6/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://binchencoder.github.io/2018/09/04/%E6%9F%A5%E7%9C%8BMariaDB-binlog/</loc>
-    <lastmod>2019-08-03T17:27:14.000Z</lastmod>
-    <data>
-        <display>
-        <title>如何查看MariaDB bin log</title>
-        <pubTime>2018-09-04T13:53:08.000Z</pubTime>
-        
-        <tag>MariaDB</tag>
-         
-        <tag>binlog</tag>
-         
-         
-           
-             
-              <breadCrumb title="存储" url="https://binchencoder.github.io/categories/%E5%AD%98%E5%82%A8/"/>
           
         </display>
     </data>
