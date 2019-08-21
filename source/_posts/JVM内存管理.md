@@ -1,5 +1,5 @@
 title: JVM内存管理
-date: 2019-09-11 20:53:08
+date: 2019-08-11 20:53:08
 tags:
     - Java
     - JVM
@@ -57,7 +57,7 @@ JVM内存从应用逻辑上可分为如下区域：
 
 JVM堆内存在物理上分为两部分：```新生代```和```老年代```。新生代是为分配新对象而保留堆空间。当新生代占用完时，Minor GC垃圾收集器会对新生代区域执行垃圾回收动作。其中在新生代中生活了足够长的所有对象被迁移到老生代，从而释放新生代空间以进行更多的对象分配。此垃圾收集称为```Minor GC```。新生代分分为三个子区域：```伊甸园Eden区```和两个``幸存区S0```和```S1``。
 
-![](https://mmbiz.qpic.cn/mmbiz_jpg/dsrSk9kr59RMZTicNmLyPxCYI7tXFSzjujNyFcGRFwvN6dic3nWEslFd8ibF3lZK95jtSQriayy9M72UIfYF89xiaicQ/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1)
+![](./JVM内存管理.png)
 
 > **关于新生代空间：**
 
