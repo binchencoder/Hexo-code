@@ -1,0 +1,366 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="Binchen coder">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <link rel="dns-prefetch" href="https://binchencoder.github.io">
+    <!--SEO-->
+
+
+
+<meta name="keywords" content="blog,binchencoder,IT,Web Back End,binchen,chenbin">
+
+
+
+<meta name="robots" content="all">
+<meta name="google" content="all">
+<meta name="googlebot" content="all">
+<meta name="verify" content="all">
+    <!--Title-->
+
+
+<title>深入理解JVM - 垃圾回收 | Binchen coder</title>
+
+
+    <link rel="alternate" href="/atom.xml" title="Binchen coder" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.ico">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+    
+	<div class="hide">
+		<script type="text/javascript">
+			var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+	</div>
+
+
+
+
+
+
+    
+</head>
+
+</html>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header"  style="background-image:url(/img/banner.jpg)"  >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='Bin Chen'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+                <h2> 夜晚的灯塔一直都在，只是灯亮的时候，你才看见它 </h2>
+            
+    	</div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="https://binchencoder.github.io">Binchen coder</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa "></i>首页</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/后端/"><i class="fa "></i>后端</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/Linux/"><i class="fa "></i>Linux</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/存储/"><i class="fa "></i>存储</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/框架/"><i class="fa "></i>框架</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/工具/"><i class="fa "></i>工具</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/Hexo/"><i class="fa "></i>Hexo</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives/"><i class="fa "></i>时间轴</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="深入理解JVM - 垃圾回收">
+            
+	            深入理解JVM - 垃圾回收
+            
+        </h1>
+        <div class="post-meta">
+    
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a href="/categories/后端">
+            后端
+        </a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+                
+                    <a href="/tags/Java" title='Java'>
+                        Java
+                    </a>
+                
+                    <a href="/tags/JVM" title='JVM'>
+                        JVM
+                    </a>
+                
+                    <a href="/tags/垃圾回收" title='垃圾回收'>
+                        垃圾回收
+                    </a>
+                
+            
+        </span>
+    </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2019/08/23</span>
+        </span>
+    
+</div>
+
+            
+            
+    </div>
+    
+    <div class="post-body post-content">
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>在 <a href="https://binchencoder.github.io/2019/08/21/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3JVM%20-%20%E5%86%85%E5%AD%98%E7%BB%93%E6%9E%84/">JVM内存结构</a> 中我们详细讲解了JVM中的内存是如何分布和组成的。</p>
+<p>我们已经知道JVM内存结构主要有三大块：<code>堆内存</code>、<code>方法区</code>和<code>栈内存</code>，而堆又是JVM中占用内存最大的一块，但是堆占用的空间也不是无限的(在JVM中会有参数来进行控制)，在程序运行的过程中，会不断的产生对象，导致堆的内存空间减少，这时我们会想到一定有一种机制来进行回收。接下来我们就一起来看看JVM是如何回收不再使用的对象空间的。</p>
+<h2 id="垃圾回收机制"><a href="#垃圾回收机制" class="headerlink" title="垃圾回收机制"></a>垃圾回收机制</h2><h4 id="Java垃圾回收主要关注堆"><a href="#Java垃圾回收主要关注堆" class="headerlink" title="Java垃圾回收主要关注堆"></a>Java垃圾回收主要关注堆</h4><p><img src="https://upload-images.jianshu.io/upload_images/14923529-c0cbbccaa6858ca1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
+<blockquote>
+<p>Java内存运行时区域中的程序计数器、虚拟机栈、本地方法栈 都是线程私有的，因此它们的生命周期与线程的生命周期是一样的；栈中的栈帧随着方法的进入和退出有条无紊地执行着出栈和入栈操作。每一个栈帧中分配多少内存基本上是在类结构确定下来时就已知的（尽管在运行期会由JIT编译器进行一些优化）。因此这几个区域的内存分配和回收都具备确定性，不需要过多考虑回收的问题，因此方法结束或者线程结束时，内存自然就随着回收了。</p>
+</blockquote>
+<p>而Java堆不一样，一个接口中的多个实现类需要的内存不一样，一个方法中的多个分支需要的内存也可能不一样，我们只有在程序处于运行期间时才能知道创建哪些对象，这部分内存的分配和回收都是动态的，垃圾收集器所关注的是这部分内存。</p>
+<h4 id="判断需要被回收对象的方法"><a href="#判断需要被回收对象的方法" class="headerlink" title="判断需要被回收对象的方法"></a>判断需要被回收对象的方法</h4><blockquote>
+<p><strong>引用计数法</strong></p>
+</blockquote>
+<p>该方法简单高效，缺点是无法解决对象之间相互循环引用的问题</p>
+<blockquote>
+<p><strong>可达性分析法</strong></p>
+</blockquote>
+<p><img src="https://upload-images.jianshu.io/upload_images/2184951-06859aad2e07258d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
+<p>解决了<code>引用计数法</code> 循环引用的问题</p>
+<p>不可达的对象将暂时处于“缓刑”阶段，要真正宣告一个对象死亡，至少要经历两次标记过程</p>
+<h2 id="垃圾收集算法"><a href="#垃圾收集算法" class="headerlink" title="垃圾收集算法"></a>垃圾收集算法</h2><p>一共有四种：标记-清除算法、复制算法、标记-整理算法、分代收集算法</p>
+<h3 id="标记-清除算法-Mark-Sweep"><a href="#标记-清除算法-Mark-Sweep" class="headerlink" title="标记-清除算法(Mark-Sweep)"></a>标记-清除算法(Mark-Sweep)</h3><p>这是最基础的算法，分为“标记” 和 “清除” 两个阶段。首先<strong>标记</strong>出所有需要回收的对象，在标记完成后统一回收所有被标记的对象</p>
+<p><strong>缺点：</strong></p>
+<ul>
+<li>效率问题</li>
+<li>空间问题，标记清除之后会产生大量不连续的内存碎片，空间碎片太多会导致以后需要分配较大的对象空间时，无法找到足够的连续内存而不得不提前触发另一次垃圾收集动作</li>
+</ul>
+<p><img src="https://upload-images.jianshu.io/upload_images/14923529-32d5034ee61de6cc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
+<h3 id="复制算法-Copying"><a href="#复制算法-Copying" class="headerlink" title="复制算法(Copying)"></a>复制算法(Copying)</h3><blockquote>
+<p><strong>现在的商业虚拟机都采用这种算法来回收新生代</strong></p>
+</blockquote>
+<p>复制算法是为了为了解决效率的问题，它将可用内存分为大小相等的两块。每次只使用其中的一块。当这一块的内存用完了，就将还活着的对象复制到另外一块上，然后把已使用的内存空间一次性清理掉。</p>
+<p>这个算法的缺点是可用内存缩小为原来的一半</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14923529-2f1313c6b35c1f5b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
+<h3 id="标记-整理算法-Mark-Compact"><a href="#标记-整理算法-Mark-Compact" class="headerlink" title="标记-整理算法(Mark-Compact)"></a>标记-整理算法(Mark-Compact)</h3><p>复制算法在对象存活率较高的情况下要进行较多的复制操作，效率会降低。</p>
+<p>复制算法并不适用于老年代，所以才有了<code>“标记-整理”</code> 算法，标记的过程与<code>“标记-清除”</code> 是一样的，第二步不是直接对可回收对象进行清理，而是让所有存活的对象都向一端移动，然后直接清理掉端便捷以外的内存</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14923529-76fb92c61eff10b2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
+<h3 id="分代收集算法-Generational-Collection"><a href="#分代收集算法-Generational-Collection" class="headerlink" title="分代收集算法 (Generational Collection)"></a>分代收集算法 (Generational Collection)</h3><p>现代商业虚拟机的垃圾收集都采用这一算法，它是根据对象存活周期的不同将内存划分为几块并采用不同的垃圾收集算法。</p>
+<p>一般将Java堆分为<strong>新生代</strong>和<strong>老年代</strong>，这样就可以根据各个年代的特点采用最适当的收集算法。</p>
+<ul>
+<li>新生代：每次垃圾收集时都发现有大批对象死去，只有少量存活，那就选用复制法，只需要付出少量存活对象的复制成本就可以完成收集</li>
+<li>老年代：因为对象存活率高，没有额外空间对它进行分配担保，那就必须使用<strong>标记-清理</strong> 或者 <strong>标记-整理</strong> 算法来进行回收</li>
+</ul>
+<h2 id="垃圾回收器分类"><a href="#垃圾回收器分类" class="headerlink" title="垃圾回收器分类"></a>垃圾回收器分类</h2><p>如果垃圾收集算法是内存回收的方法论，那么垃圾收集器就是内存回收的具体实现</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14923529-e4eb4c95e17d0a63.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
+<h3 id="Serial收集器-串行收集器"><a href="#Serial收集器-串行收集器" class="headerlink" title="Serial收集器(串行收集器)"></a>Serial收集器(串行收集器)</h3><p><img src="https://upload-images.jianshu.io/upload_images/14923529-9bf73c0cdf9a7066.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
+<blockquote>
+<p>这是一个单线程的收集器，它在进行垃圾收集时，必须暂停掉其他所有的工作线程，直到它收集结束（Stop The World）</p>
+</blockquote>
+<h3 id="Serial-Old收集器"><a href="#Serial-Old收集器" class="headerlink" title="Serial Old收集器"></a>Serial Old收集器</h3><p><img src="https://upload-images.jianshu.io/upload_images/14923529-7710a429f033fc31.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
+<p>这是Serial收集器是老年代版本，也是一个单线程，使用 <strong>标记-整理</strong> 算法。</p>
+<h3 id="ParNew收集器-串行收集器"><a href="#ParNew收集器-串行收集器" class="headerlink" title="ParNew收集器(串行收集器)"></a>ParNew收集器(串行收集器)</h3><p><img src="https://upload-images.jianshu.io/upload_images/14923529-bdc22bf25c2c8ba7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
+<blockquote>
+<p>ParNew收集器是Serial收集器的多线程版本</p>
+</blockquote>
+<p>除了使用多条线程进行垃圾收集之外，其余行为包括 Serial 收集器可用的所有控制参数（例如：-XX:SurvivorRatio、-XX:PretenureSizeThreshold、-XX:HandlePromotionFailure等）、收集算法、Stop The World、对象分配规则、回收策略等都与 Serial 收集器完全一样，在实现上，这两种收集器也共用了相当多的代码。</p>
+<h3 id="Parallel-Scavenge收集器-并行收集器"><a href="#Parallel-Scavenge收集器-并行收集器" class="headerlink" title="Parallel Scavenge收集器(并行收集器)"></a>Parallel Scavenge收集器(并行收集器)</h3><p>这是一个新生代收集器，使用复制算法，又是并行的多线程收集器。Parallel Scavenge 收集器的目标是达到一个可控制的吞吐量(Througput)</p>
+<blockquote>
+<p>吞吐量 = 运行用户代码时间 /（运行用户代码时间+垃圾收集时间），虚拟机总共运行了 100 分钟，其中垃圾收集花掉1分钟，那吞吐量就是99%</p>
+</blockquote>
+<h3 id="Parallel-Old收集器-并行收集器"><a href="#Parallel-Old收集器-并行收集器" class="headerlink" title="Parallel Old收集器(并行收集器)"></a>Parallel Old收集器(并行收集器)</h3><p><img src="https://upload-images.jianshu.io/upload_images/14923529-627c4ce9f8eae23c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
+<p>这是Parallel Scavenge收集器的老年代版本，使用多线程和<strong>标记-整理算法</strong></p>
+<h3 id="CMS收集器-Concurrent-Mark-Sweep-并发标记扫描"><a href="#CMS收集器-Concurrent-Mark-Sweep-并发标记扫描" class="headerlink" title="CMS收集器(Concurrent Mark Sweep 并发标记扫描)"></a>CMS收集器(Concurrent Mark Sweep 并发标记扫描)</h3><p><img src="https://upload-images.jianshu.io/upload_images/14923529-6401f1a80d3f1c81.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
+<p>这是一种以获取最短回收停顿时间为目标的收集器</p>
+<h3 id="G1收集器【重点】"><a href="#G1收集器【重点】" class="headerlink" title="G1收集器【重点】"></a>G1收集器【重点】</h3><p><img src="https://upload-images.jianshu.io/upload_images/14923529-8cdd3afd7d545435.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
+<h2 id="垃圾回收器的选择"><a href="#垃圾回收器的选择" class="headerlink" title="垃圾回收器的选择"></a>垃圾回收器的选择</h2><h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ul>
+<li><a href="https://www.cnblogs.com/czwbig/p/11127159.html" target="_blank" rel="noopener">https://www.cnblogs.com/czwbig/p/11127159.html</a></li>
+</ul>
+
+    </div>
+
+    <div class="post-footer">
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="https://binchencoder.github.io/" target="_blank">Binchencoder</a>
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+    
+        <a href="/2019/08/21/深入理解JVM - 内存结构/" class="next-post btn btn-default" title='深入理解JVM - 内存结构'>
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">深入理解JVM - 内存结构</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+    <div id="comments">
+        
+	
+<div id="lv-container" data-id="city" data-uid="MTAyMC8zODI1Ny8xNDc4NQ">
+  <script type="text/javascript">
+     (function(d, s) {
+         var j, e = d.getElementsByTagName(s)[0];
+         if (typeof LivereTower === 'function') { return; }
+         j = d.createElement(s);
+         j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+         j.async = true;
+         e.parentNode.insertBefore(j, e);
+     })(document, 'script');
+  </script>
+</div>
+
+
+    </div>
+
+
+
+
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">文章目录</h3>
+        
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#前言"><span class="toc-text">前言</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#垃圾回收机制"><span class="toc-text">垃圾回收机制</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Java垃圾回收主要关注堆"><span class="toc-text">Java垃圾回收主要关注堆</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#判断需要被回收对象的方法"><span class="toc-text">判断需要被回收对象的方法</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#垃圾收集算法"><span class="toc-text">垃圾收集算法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#标记-清除算法-Mark-Sweep"><span class="toc-text">标记-清除算法(Mark-Sweep)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#复制算法-Copying"><span class="toc-text">复制算法(Copying)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#标记-整理算法-Mark-Compact"><span class="toc-text">标记-整理算法(Mark-Compact)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#分代收集算法-Generational-Collection"><span class="toc-text">分代收集算法 (Generational Collection)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#垃圾回收器分类"><span class="toc-text">垃圾回收器分类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Serial收集器-串行收集器"><span class="toc-text">Serial收集器(串行收集器)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Serial-Old收集器"><span class="toc-text">Serial Old收集器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ParNew收集器-串行收集器"><span class="toc-text">ParNew收集器(串行收集器)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Parallel-Scavenge收集器-并行收集器"><span class="toc-text">Parallel Scavenge收集器(并行收集器)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Parallel-Old收集器-并行收集器"><span class="toc-text">Parallel Old收集器(并行收集器)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CMS收集器-Concurrent-Mark-Sweep-并发标记扫描"><span class="toc-text">CMS收集器(Concurrent Mark Sweep 并发标记扫描)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#G1收集器【重点】"><span class="toc-text">G1收集器【重点】</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#垃圾回收器的选择"><span class="toc-text">垃圾回收器的选择</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#References"><span class="toc-text">References</span></a></li></ol></li></ol>
+        
+    </div>
+</aside>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12"> 
+                <span>Copyright &copy; 2017
+                </span> | 
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> | 
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+
+</body>
+</html>
