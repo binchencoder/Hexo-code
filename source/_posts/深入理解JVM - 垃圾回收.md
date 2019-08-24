@@ -253,3 +253,4 @@ Java HotSpot(TM) 64-Bit Server VM (build 25.112-b16, mixed mode)
 ## References
 
 - https://www.cnblogs.com/czwbig/p/11127159.html
+- https://www.oschina.net/translate/java-gc
