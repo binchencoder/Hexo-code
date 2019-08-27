@@ -263,12 +263,21 @@
 </tbody>
 </table>
 <p>综上比较，可以看出<code>RocketMQ</code>和<code>Kafka</code> 优势较为明显，其实对于大多数的服务架构来说，<code>吞吐量</code> 和 <code>消息可靠性</code> 是我们选型中考虑较多的因素。接下来我们就一起来了解下<code>Kafka</code> 相关的内容</p>
-<h1 id="Kafka简介"><a href="#Kafka简介" class="headerlink" title="Kafka简介"></a>Kafka简介</h1><p>Kafka 是Apache旗下的开源产品，</p>
+<h1 id="Kafka简介"><a href="#Kafka简介" class="headerlink" title="Kafka简介"></a>Kafka简介</h1><p>Apache Kafka 起源于LinkedIn，后来余2011年成为Apache开源项目。Kafka是用Scala和Java编写的。</p>
+<p><a href="http://kafka.apachecn.org/intro.html" target="_blank" rel="noopener">Apache Kafka官网</a> 上介绍，Kafka是一个分布式流处理平台，具有以下三个特性：</p>
+<ol>
+<li>可以让你发布和订阅流式的记录。这一方面与消息队列或者企业消息系统类似；</li>
+<li>可以储存流式的记录，并且有较好的容错性；</li>
+<li>可以在流式记录产生时就进行处理。</li>
+</ol>
+<p>接下来我们会就第一个特性，Kafka作为消息队列所具有的优势和特点：</p>
+<p>Kafka作为一个分布式消息队列，具有<code>高性能</code>、<code>持久化</code>、<code>多副本备份</code>、<code>横向扩展能力</code>。生产者往消息队列里写消息，消费者从队列里取消息进行业务逻辑。一般在架构设计中起到<strong>解耦、削峰、异步处理</strong>的作用。</p>
 <h1 id="References"><a href="#References" class="headerlink" title="References"></a>References</h1><ul>
-<li><p><a href="https://maimai.cn/article/detail?fid=1306743575&amp;efid=uZn37YZ12xn5DazBUNqs8Q&amp;from=singlemessage&amp;isappinstalled=0" target="_blank" rel="noopener">https://maimai.cn/article/detail?fid=1306743575&amp;efid=uZn37YZ12xn5DazBUNqs8Q&amp;from=singlemessage&amp;isappinstalled=0</a></p>
+<li><p><a href="https://maimai.cn/article/detail?fid=1306743575&amp;efid=uZn37YZ12xn5DazBUNqs8Q&amp;from=singlemessage&amp;isappinstalled=0" target="_blank" rel="noopener">消息中间件如何实现每秒几十万的高并发写入</a></p>
 </li>
-<li><p><a href="https://mp.weixin.qq.com/s/zxPz_aFEMrshApZQ727h4g" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/zxPz_aFEMrshApZQ727h4g</a></p>
+<li><p><a href="https://mp.weixin.qq.com/s/zxPz_aFEMrshApZQ727h4g" target="_blank" rel="noopener">kafka系统设计开篇</a></p>
 </li>
+<li><a href="https://www.jianshu.com/p/d3e963ff8b70" target="_blank" rel="noopener">https://www.jianshu.com/p/d3e963ff8b70</a></li>
 </ul>
 
     </div>

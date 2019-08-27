@@ -32,12 +32,21 @@ categories:
 
 # Kafka简介
 
-Kafka 是Apache旗下的开源产品，
+Apache Kafka 起源于LinkedIn，后来余2011年成为Apache开源项目。Kafka是用Scala和Java编写的。
 
+[Apache Kafka官网](http://kafka.apachecn.org/intro.html) 上介绍，Kafka是一个分布式流处理平台，具有以下三个特性：
 
+1. 可以让你发布和订阅流式的记录。这一方面与消息队列或者企业消息系统类似；
+2. 可以储存流式的记录，并且有较好的容错性；
+3. 可以在流式记录产生时就进行处理。
+
+接下来我们会就第一个特性，Kafka作为消息队列所具有的优势和特点：
+
+Kafka作为一个分布式消息队列，具有`高性能`、`持久化`、`多副本备份`、`横向扩展能力`。生产者往消息队列里写消息，消费者从队列里取消息进行业务逻辑。一般在架构设计中起到**解耦、削峰、异步处理**的作用。
 
 # References
 
-- https://maimai.cn/article/detail?fid=1306743575&efid=uZn37YZ12xn5DazBUNqs8Q&from=singlemessage&isappinstalled=0
+- [消息中间件如何实现每秒几十万的高并发写入](https://maimai.cn/article/detail?fid=1306743575&efid=uZn37YZ12xn5DazBUNqs8Q&from=singlemessage&isappinstalled=0)
 
-- https://mp.weixin.qq.com/s/zxPz_aFEMrshApZQ727h4g
+- [kafka系统设计开篇](https://mp.weixin.qq.com/s/zxPz_aFEMrshApZQ727h4g)
+- https://www.jianshu.com/p/d3e963ff8b70
