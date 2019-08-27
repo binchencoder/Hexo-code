@@ -29,7 +29,7 @@
     <!--Title-->
 
 
-<title>如何查看MariaDB bin log | Binchen coder</title>
+<title>初识Kafka | Binchen coder</title>
 
 
     <link rel="alternate" href="/atom.xml" title="Binchen coder" type="application/atom+xml">
@@ -145,9 +145,9 @@
                     <p id="process"></p>
 <article class="post">
     <div class="post-head">
-        <h1 id="如何查看MariaDB bin log">
+        <h1 id="初识Kafka">
             
-	            如何查看MariaDB bin log
+	            初识Kafka
             
         </h1>
         <div class="post-meta">
@@ -155,8 +155,8 @@
     
     <span class="categories-meta fa-wrap">
         <i class="fa fa-folder-open-o"></i>
-        <a href="/categories/存储">
-            存储
+        <a href="/categories/后端">
+            后端
         </a>
     </span>
     
@@ -166,12 +166,16 @@
         <span class="tags-meta">
             
                 
-                    <a href="/tags/MariaDB" title='MariaDB'>
-                        MariaDB
+                    <a href="/tags/Java" title='Java'>
+                        Java
                     </a>
                 
-                    <a href="/tags/binlog" title='binlog'>
-                        binlog
+                    <a href="/tags/MQ" title='MQ'>
+                        MQ
+                    </a>
+                
+                    <a href="/tags/Kafka" title='Kafka'>
+                        Kafka
                     </a>
                 
             
@@ -183,7 +187,7 @@
         
         <span class="fa-wrap">
             <i class="fa fa-clock-o"></i>
-            <span class="date-meta">2018/09/04</span>
+            <span class="date-meta">2019/08/27</span>
         </span>
     
 </div>
@@ -193,17 +197,79 @@
     </div>
     
     <div class="post-body post-content">
-        <h2 id="MariaDB-bin-log"><a href="#MariaDB-bin-log" class="headerlink" title="MariaDB bin log"></a>MariaDB bin log</h2><p>今天在学习MariaDB在产线的部署架构时，重新了解了主从复制的原理，同时产生想查看bin log的好奇心，折腾了一番最终搞定</p>
-<h2 id="MariaDB主从复制"><a href="#MariaDB主从复制" class="headerlink" title="MariaDB主从复制"></a>MariaDB主从复制</h2><p><img src="/2018/09/04/查看MariaDB-binlog/mariadb-binlog.png" alt="image"></p>
-<p><strong>MySQL的复制就是基于二进制日志而完成的，其工作原理如下：</strong></p>
-<blockquote>
-<p>当MySQL的Master节点的数据有更改的时候，Master会主动通知Slave，让Slave主动来Master获取二进制日志，于是Slave开启一个I/O thread，向Master请求二进制日志中记录的语句；Master将二进制日志中记录的语句发给Slave，Slave则将这些语句存到中继日志中，进而从中继日志中读取一句，执行一句，直到所有的语句被执行完。而经SQL语句从中继日志中读取出来，再一一执行的进程叫做SQL thread；将这些语句执行完之后，从节点的数据就和主节点的数据相同了，这就是所谓的MySQL主从复制。</p>
-</blockquote>
-<h2 id="查看bin-log"><a href="#查看bin-log" class="headerlink" title="查看bin log"></a>查看bin log</h2><p><strong>在我们的一个测试环境上，通过如下命令查看</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">MariaDB [(none)]&gt; show binary logs;</span><br><span class="line">1381 - You are not using binary logging</span><br><span class="line"></span><br><span class="line">MariaDB [(none)]&gt; show variables like &apos;log_bin&apos;;</span><br><span class="line">+---------------+-------+</span><br><span class="line">| Variable_name | Value |</span><br><span class="line">+---------------+-------+</span><br><span class="line">| log_bin | OFF |</span><br><span class="line">+---------------+-------+</span><br><span class="line"></span><br><span class="line">错误原因：测试环境中部署的实例没有开启bin log</span><br><span class="line"></span><br><span class="line">MariaDB [(none)]&gt; set global log_bin_trust_function_creators=1;</span><br><span class="line"></span><br><span class="line">MariaDB [(none)]&gt; show variables like &apos;log_bin_trust_function_creators&apos;;</span><br><span class="line"></span><br><span class="line">+---------------------------------+-------+</span><br><span class="line">| Variable_name | Value |</span><br><span class="line">+---------------------------------+-------+</span><br><span class="line">| log_bin_trust_function_creators | ON |</span><br><span class="line">+---------------------------------+-------+</span><br><span class="line"></span><br><span class="line">这样添加了参数以后，如果mysqld重启，那个参数又会消失，因此记得在my.cnf配置文件中添加：</span><br><span class="line"></span><br><span class="line">log_bin_trust_function_creators=1</span><br><span class="line"></span><br><span class="line">log_bin=mysql_bin</span><br><span class="line"></span><br><span class="line">添加参数之后重启mysql</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">MariaDB [(none)]&gt; show binary logs;</span><br><span class="line">+------------------+-----------+</span><br><span class="line">| Log_name | File_size |</span><br><span class="line">+------------------+-----------+</span><br><span class="line">| mysql_bin.000001 | 217795 |</span><br><span class="line">+------------------+-----------+</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">[root@mariadb bin]# mysqlbinlog –no-defaults mysql-bin.00001;</span><br><span class="line">/*!50530 SET @@SESSION.PSEUDO_SLAVE_MODE=1*/;</span><br><span class="line">/*!40019 SET @@session.max_insert_delayed_threads=0*/;</span><br><span class="line">/*!50003 SET @OLD_COMPLETION_TYPE=@@COMPLETION_TYPE,COMPLETION_TYPE=0*/;</span><br><span class="line"></span><br><span class="line">DELIMITER /*!*/;</span><br><span class="line">mysqlbinlog: File &apos;&apos; not found (Errcode: 2)</span><br><span class="line"></span><br><span class="line">DELIMITER ;</span><br><span class="line"></span><br><span class="line"># End of log file</span><br><span class="line">ROLLBACK /* added by mysqlbinlog */;</span><br><span class="line"></span><br><span class="line">/*!50003 SET COMPLETION_TYPE=@OLD_COMPLETION_TYPE*/;</span><br><span class="line">/*!50530 SET @@SESSION.PSEUDO_SLAVE_MODE=0*/;</span><br></pre></td></tr></table></figure>
-<h2 id="遗留问题"><a href="#遗留问题" class="headerlink" title="遗留问题"></a>遗留问题</h2><p>从上面Mariadb复制原理中我认为bin log记录的master上执行的sql语句，但是为什么bin log看不到呢？</p>
+        <h1 id="开篇"><a href="#开篇" class="headerlink" title="开篇"></a>开篇</h1><p>在微服务的架构设计中我们一般都会考虑服务之间互相调用的问题，如何做到更好的解耦设计。在秒杀的系统中会使用异步处理的方式来设计高并发、低延迟的系统架构。提到这些相信大家都会想到使用<code>MQ(消息队列)</code>来处理这些问题。</p>
+<p><code>MQ(消息队列)</code> 是跨进程通信方式之一，可理解为异步RPC，上游系统对调用结果的态度往往是重要不紧急。使用消息队列有几个好处：<code>业务解耦</code>、<code>流量削峰</code>、<code>灵活扩展</code></p>
+<h1 id="技术选型"><a href="#技术选型" class="headerlink" title="技术选型"></a>技术选型</h1><p>现在业界主流的MQ有很多，比如：<code>ActiveMQ</code>、<code>RabbitMQ</code>、<code>RocketMQ</code>、<code>Kafka</code> 等，那么我们在技术选型中该怎么选择呢？</p>
+<table>
+<thead>
+<tr>
+<th>特性</th>
+<th>ActiveMQ</th>
+<th>RabbitMQ</th>
+<th>RocketMQ</th>
+<th>Kafka</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>单击吞吐量</td>
+<td>万级，吞吐量比RocketMQ和Kafka要低一个数量级</td>
+<td>万级，吞吐量比RocketMQ和Kafka要低一个数量级</td>
+<td>10万级，RocketMQ也是可以支撑高吞吐的一种MQ</td>
+<td>10万级别，这是Kafka最大的优点，就是吞吐量高。一般配合大数据类的系统来进行实时数据计算，日志采集等场景。</td>
+</tr>
+<tr>
+<td>topic数量对吞吐量的影响</td>
+<td></td>
+<td></td>
+<td>topic可以达到几百，几千个的级别，吞吐量会较小幅度的下降，这是RocketMQ的一大优势，在同等机器下，可以支撑大量的topic。</td>
+<td>topic从几十个到几百个的时候，吞吐量会大幅度下降。所以在同等机器下，Kafka尽量保证topic数量不要过多。如果要支撑大规模topic，需要增加更多机器资源。</td>
+</tr>
+<tr>
+<td>时效性</td>
+<td>ms级</td>
+<td>微妙级，这是rabbitMq的一大特点，延迟是最低的</td>
+<td>ms级</td>
+<td>延迟在ms以内</td>
+</tr>
+<tr>
+<td>可用性</td>
+<td>高，基于主从框架实现高可用性</td>
+<td>高，基于主从架构实现高可用性</td>
+<td>非常高，分布式架构</td>
+<td>非常高，kafka是分布式的，一个数据多个副本，少数机器宕机，不会丢失数据，不会导致不可用</td>
+</tr>
+<tr>
+<td>消息可靠性</td>
+<td>有较低的概率丢失数据</td>
+<td></td>
+<td>经过参数优化配置可以做到0丢失</td>
+<td>经过参数优化配置，消息可以做到0丢失</td>
+</tr>
+<tr>
+<td>功能支持</td>
+<td>MQ领域的功能及其完备</td>
+<td>基于erlang开发，所以并发能力很强，性能及其好，延时很低</td>
+<td>MQ功能较为完善，还是分布式的，扩展性好</td>
+<td>功能较为简单，主要支持简单的MQ功能，在大数据领域的实时计算以及日志采集被大规模使用，是事实上的标准</td>
+</tr>
+<tr>
+<td>优劣势总结</td>
+<td>非常成熟，功能强大，在业内大量的公司以及项目中都有应用。              偶尔会有较低概率的丢失消息。              而且现在社区以及国内应用都越来越少，官方社区现在对ActiveMQ维护越来越少，几个月才发布一个版本。              而且确实主要是基于解耦和异步来用的，较少在大规模吞吐的场景中使用。</td>
+<td>erlang语言开发，性能及其好，延时很低：吞吐量到万级，MQ功能比较完备，而且开源提供的管理界面非常棒，用起来很好用。社区相对比较活跃，几乎每个月都发布几个版本。在国内公司用             rabbitmq也比较多一些                             但是问题也是显而易见的，RabbitMQ确实吞吐量会低一些，这是因为他做的实现机制比较重。                             而且erlang开发，国内有几个公司有实力做erlang源码级别的研究和定制？如果说你没这个实力的话，确实偶尔会有一些问题，你很难去看懂源码，你公司对这个东西的掌控很弱，基本职能依赖于开源社区的快速维护和修复bug。                            而且rabbitmq集群动态扩展会很麻烦，不过这个我觉得还好。其实主要是erlang语言本身带来的问题。很难读源码，很难定制和掌控。</td>
+<td>接口简单易用，而且毕竟在阿里大规模应用过，有阿里品牌保障                             日处理消息上百亿之多，可以做到大规模吞吐，性能也非常好，分布式扩展也很方便，社区维护还可以，可靠性和可用性都是ok的，还可以支撑大规模的topic数量，支持复杂MQ业务场景                             而且一个很大的优势在于，阿里出品都是java系的，我们可以自己阅读源码，定制自己公司的MQ，可以掌控                             社区活跃度相对较为一般，不过也还可以，文档相对来说简单一些，然后接口这块不是按照标准JMS规范走的有些系统要迁移需要修改大量代码                            还有就是阿里出台的技术，你得做好这个技术万一被抛弃，社区黄掉的风险，那如果你们公司有技术实力我觉得用RocketMQ挺好的</td>
+<td>kafka的特点其实很明显，就是仅仅提供较少的核心功能，但是提供超高的吞吐量，ms级的延迟，极高的可用性以及可靠性，而且分布式可以任意扩展                             同时kafka最好是支撑较少的topic数量即可，保证其超高吞吐量                             而且kafka唯一的一点劣势是有可能消息重复消费，那么对数据准确性会造成极其轻微的影响，在大数据领域中以及日志采集中，这点轻微影响可以忽略                            这个特性天然适合大数据实时计算以及日志收集</td>
+</tr>
+</tbody>
+</table>
+<p>综上比较，可以看出<code>RocketMQ</code>和<code>Kafka</code> 优势较为明显，其实对于大多数的服务架构来说，<code>吞吐量</code> 和 <code>消息可靠性</code> 是我们选型中考虑较多的因素。接下来我们就一起来了解下<code>Kafka</code> 相关的内容</p>
+<h1 id="Kafka简介"><a href="#Kafka简介" class="headerlink" title="Kafka简介"></a>Kafka简介</h1><p>Kafka 是Apache旗下的开源产品，</p>
+<h1 id="References"><a href="#References" class="headerlink" title="References"></a>References</h1><ul>
+<li><p><a href="https://maimai.cn/article/detail?fid=1306743575&amp;efid=uZn37YZ12xn5DazBUNqs8Q&amp;from=singlemessage&amp;isappinstalled=0" target="_blank" rel="noopener">https://maimai.cn/article/detail?fid=1306743575&amp;efid=uZn37YZ12xn5DazBUNqs8Q&amp;from=singlemessage&amp;isappinstalled=0</a></p>
+</li>
+<li><p><a href="https://mp.weixin.qq.com/s/zxPz_aFEMrshApZQ727h4g" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/zxPz_aFEMrshApZQ727h4g</a></p>
+</li>
+</ul>
 
     </div>
 
@@ -221,15 +287,10 @@
 
 <div class="article-nav prev-next-wrap clearfix">
     
-        <a href="/2019/01/20/MySQL锁的理解/" class="pre-post btn btn-default" title='MySQL中 乐观锁、悲观锁、共享锁、排它锁、行锁、表锁的理解'>
-            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
-            <span class="hidden-xs">MySQL中 乐观锁、悲观锁、共享锁、排它锁、行锁、表锁的理解</span>
-        </a>
     
-    
-        <a href="/2018/09/01/使用正则引发的血案/" class="next-post btn btn-default" title='使用正则引发的血案'>
+        <a href="/2019/08/24/深入理解JVM - 垃圾回收之世代垃圾收集过程/" class="next-post btn btn-default" title='深入理解JVM - 垃圾回收之世代垃圾收集过程'>
             <span class="hidden-lg">下一篇</span>
-            <span class="hidden-xs">使用正则引发的血案</span><i class="fa fa-angle-right fa-fw"></i>
+            <span class="hidden-xs">深入理解JVM - 垃圾回收之世代垃圾收集过程</span><i class="fa fa-angle-right fa-fw"></i>
         </a>
     
 </div>
@@ -264,7 +325,7 @@
     <div class="widget">
         <h3 class="title">文章目录</h3>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#MariaDB-bin-log"><span class="toc-text">MariaDB bin log</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MariaDB主从复制"><span class="toc-text">MariaDB主从复制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#查看bin-log"><span class="toc-text">查看bin log</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#遗留问题"><span class="toc-text">遗留问题</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#开篇"><span class="toc-text">开篇</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#技术选型"><span class="toc-text">技术选型</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Kafka简介"><span class="toc-text">Kafka简介</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#References"><span class="toc-text">References</span></a></li></ol>
         
     </div>
 </aside>
