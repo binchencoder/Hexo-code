@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://binchencoder.github.io/"/>
-  <updated>2019-08-28T10:51:09.129Z</updated>
+  <updated>2019-08-28T11:02:22.041Z</updated>
   <id>https://binchencoder.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Java面试圣经</title>
+    <link href="https://binchencoder.github.io/2019/08/28/Java%E9%9D%A2%E8%AF%95%E5%9C%A3%E7%BB%8F/"/>
+    <id>https://binchencoder.github.io/2019/08/28/Java面试圣经/</id>
+    <published>2019-08-28T12:53:08.000Z</published>
+    <updated>2019-08-28T11:02:22.041Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;Java面试圣经&quot;&gt;&lt;a href=&quot;#Java面试圣经&quot; class=&quot;headerlink&quot; title=&quot;Java面试圣经&quot;&gt;&lt;/a&gt;Java面试圣经&lt;/h1&gt;&lt;h2 id=&quot;Java基础&quot;&gt;&lt;a href=&quot;#Java基础&quot; class=&quot;headerli
+      
+    
+    </summary>
+    
+      <category term="后端" scheme="https://binchencoder.github.io/categories/%E5%90%8E%E7%AB%AF/"/>
+    
+    
+      <category term="Java" scheme="https://binchencoder.github.io/tags/Java/"/>
+    
+      <category term="面试" scheme="https://binchencoder.github.io/tags/%E9%9D%A2%E8%AF%95/"/>
+    
+  </entry>
   
   <entry>
     <title>Kafka是如何实现几十万的高并发写入</title>
@@ -519,32 +544,6 @@
     
     
       <category term="gRPC" scheme="https://binchencoder.github.io/tags/gRPC/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hexo配合搭建github个人主页</title>
-    <link href="https://binchencoder.github.io/2018/07/21/Hexo%E6%90%AD%E5%BB%BAgithub%E4%B8%BB%E9%A1%B5/"/>
-    <id>https://binchencoder.github.io/2018/07/21/Hexo搭建github主页/</id>
-    <published>2018-07-21T10:03:18.000Z</published>
-    <updated>2019-08-02T08:04:37.592Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;“工欲善其事，必先利其器”，在搭建个人博客的过程中，我深刻体会到这句话的含义。虽然早就决定了要搭建个人博客，但是我并没有草草动手，而是提前做了大量的调研工作，包括采用哪种博客系统、选择哪种主题、怎么购买并绑定个性域名等等。事实证明，正因为前期的充分准备，搭建过程才能按部就班地进行。下面先介绍为何选择GitHub Pages和Hexo来搭建博客&lt;/p&gt;
-&lt;h2 id=&quot;准备&quot;&gt;&lt;a href=&quot;#准备&quot; class=&quot;headerlink&quot; title=&quot;准备&quot;&gt;&lt;/a&gt;准备&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;Node js环境&lt;/li&gt;
-&lt;li&gt;Git环境&lt;/li&gt;
-&lt;/ul&gt;
-    
-    </summary>
-    
-      <category term="Hexo" scheme="https://binchencoder.github.io/categories/Hexo/"/>
-    
-    
-      <category term="Hexo" scheme="https://binchencoder.github.io/tags/Hexo/"/>
-    
-      <category term="GitHub-Pages" scheme="https://binchencoder.github.io/tags/GitHub-Pages/"/>
     
   </entry>
   
