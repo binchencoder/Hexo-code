@@ -219,13 +219,13 @@
 <blockquote>
 <p>通过上图这种方式可以将磁盘文件的写性能提升很多，其实这种方式相当于写内存，不是在写磁盘</p>
 </blockquote>
-<h4 id="顺序写磁盘"><a href="#顺序写磁盘" class="headerlink" title="顺序写磁盘"></a><strong>顺序写磁盘</strong></h4><p>另外还有非常关键的一点，Kafka在写数据的时候是以磁盘顺序写的方式来落盘的，也就是说，仅仅将数据追加到文件的末尾(append)，而不是在文件的随机位置来修改数据。</p>
+<h3 id="顺序写磁盘"><a href="#顺序写磁盘" class="headerlink" title="顺序写磁盘"></a><strong>顺序写磁盘</strong></h3><p>另外还有非常关键的一点，Kafka在写数据的时候是以磁盘顺序写的方式来落盘的，也就是说，仅仅将数据追加到文件的末尾(append)，而不是在文件的随机位置来修改数据。</p>
 <p>对于普通的机械硬盘如果你要是随机写的话，确实性能极低，这里涉及到磁盘寻址的问题。但是如果只是追加文件末尾按照顺序的方式来写数据的话，那么这种磁盘顺序写的性能基本上可以跟写内存的性能本身是差不多的。</p>
 <blockquote>
 <p><strong>来总结一下：</strong> Kafka就是基于<code>页缓存技术 + 磁盘顺序写</code> 技术实现了写入数据的超高性能。</p>
 <p>所以要保证每秒写入几万甚至几十万条数据的核心点，就是尽最大可能提升每条数据写入的性能，这样就可以在单位时间内写入更多的数据量，提升吞吐量。</p>
 </blockquote>
-<h1 id="零拷贝技术-zero-copy"><a href="#零拷贝技术-zero-copy" class="headerlink" title="零拷贝技术(zero-copy)"></a>零拷贝技术(zero-copy)</h1><p>说完了写入这块，再来谈谈消费这块。</p>
+<h2 id="零拷贝技术-zero-copy"><a href="#零拷贝技术-zero-copy" class="headerlink" title="零拷贝技术(zero-copy)"></a>零拷贝技术(zero-copy)</h2><p>说完了写入这块，再来谈谈消费这块。</p>
 <p>大家应该都知道，从Kafka里我们经常要消费数据，那么消费的时候实际上就是要从kafka的磁盘文件里读取某条数据然后发送给下游的消费者，如下图所示：</p>
 <p><img src="/2019/08/28/kafka是如何实现几十万的高并发写入/kafka读磁盘.png" alt="kafka读磁盘"></p>
 <p>如果Kafka以上面这种方式从磁盘中读取数据发送给下游的消费者，大概过程是：</p>
@@ -315,7 +315,7 @@
     <div class="widget">
         <h3 class="title">文章目录</h3>
         
-            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#开篇"><span class="toc-text">开篇</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#持久化"><span class="toc-text">持久化</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#页缓存技术-磁盘顺序写"><span class="toc-text">页缓存技术 + 磁盘顺序写</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#顺序写磁盘"><span class="toc-text">顺序写磁盘</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#零拷贝技术-zero-copy"><span class="toc-text">零拷贝技术(zero-copy)</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#总结"><span class="toc-text">总结</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#名词解释"><span class="toc-text">名词解释</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#References"><span class="toc-text">References</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#开篇"><span class="toc-text">开篇</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#持久化"><span class="toc-text">持久化</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#页缓存技术-磁盘顺序写"><span class="toc-text">页缓存技术 + 磁盘顺序写</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#顺序写磁盘"><span class="toc-text">顺序写磁盘</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#零拷贝技术-zero-copy"><span class="toc-text">零拷贝技术(zero-copy)</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#总结"><span class="toc-text">总结</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#名词解释"><span class="toc-text">名词解释</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#References"><span class="toc-text">References</span></a></li></ol>
         
     </div>
 </aside>
