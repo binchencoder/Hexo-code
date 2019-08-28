@@ -1,12 +1,11 @@
+---
 title: 初识Kafka
 date: 2019-08-27 20:53:08
 tags:
-
     - MQ
     - Java
     - Kafka
 categories:
-
     - 后端
 ---
 
@@ -34,7 +33,7 @@ categories:
 
 # Kafka简介
 
-Apache Kafka 起源于LinkedIn，后来余2011年成为Apache开源项目。Kafka是用Scala和Java编写的。
+Apache Kafka 起源于LinkedIn，后来于2011年成为Apache开源项目。Kafka是用Scala和Java编写的。
 
 [Apache Kafka官网](http://kafka.apachecn.org/intro.html) 上介绍，Kafka是一个分布式流处理平台，具有以下三个特性：
 
@@ -61,13 +60,13 @@ Kafka作为一个分布式消息队列，具有`高性能`、`持久化`、`多�
 - topic2有3个parition（topic2-partition1、topic2-partition2、topic2-partition3），三副本备份
 - topic3有2个partition（topic3-partition1、topic3-partition2），两副本备份
 
-### Topic
+### **Topic**
 
 消息的主题、队列，每一个消息都有它的topic，Kafka通过topic对消息进行归类。Kafka中可以将Topic从物理上划分成一个或多个分区（Partition），每个分区在物理上对应一个文件夹，以”topicName_partitionIndex”的命名方式命名，该dir包含了这个分区的所有消息(.log)和索引文件(.index)，这使得Kafka的吞吐率可以水平扩展
 
 > **See** [http://kafka.apachecn.org/intro.html#intro_topics](http://kafka.apachecn.org/intro.html#intro_topics)
 
-### Partition
+### **Partition**
 
 每个分区都是一个 顺序的、不可变的消息队列， 并且可以持续的添加;分区中的消息都被分了一个序列号，称之为偏移量(offset)，在每个分区中此偏移量都是唯一的。
 
@@ -77,23 +76,23 @@ producer在发布消息的时候，可以为每条消息指定Key，这样消息
 
 > **See** [http://kafka.apachecn.org/intro.html#intro_distribution](http://kafka.apachecn.org/intro.html#intro_distribution)
 
-### Broker
+### **Broker**
 
 Kafka server，用来存储消息，Kafka集群中的每一个服务器都是一个Broker，消费者将从Broker拉取订阅的消息
 
-### Producer
+### **Producer**
 
 向Kafka发送消息，生产者会根据topic分发消息。生产者也负责把消息关联到Topic上的哪一个分区。最简单的方式从分区列表中轮流选择。也可以根据某种算法依照权重选择分区。算法可由开发者定义。
 
 > **See** [http://kafka.apachecn.org/intro.html#intro_producers](http://kafka.apachecn.org/intro.html#intro_producers)
 
-### Cousumer
+### **Cousumer**
 
-Consermer实例可以是独立的进程，负责订阅和消费消息。消费者用consumerGroup来标识自己。同一个消费组可以并发地消费多个分区的消息，同一个partition也可以由多个consumerGroup并发消费，但是在consumerGroup中一个partition只能由一个consumer消费
+Consumer实例可以是独立的进程，负责订阅和消费消息。消费者用consumerGroup来标识自己。同一个消费组可以并发地消费多个分区的消息，同一个partition也可以由多个consumerGroup并发消费，但是在consumerGroup中一个partition只能由一个consumer消费
 
 > **See** [http://kafka.apachecn.org/intro.html#intro_consumers](http://kafka.apachecn.org/intro.html#intro_consumers)
 
-### CousumerGroup
+### **CousumerGroup**
 
 同一个Consumer Group中的Consumers，Kafka将相应Topic中的每个消息只发送给其中一个Consumer
 
@@ -106,6 +105,14 @@ Consermer实例可以是独立的进程，负责订阅和消费消息。消费�
 在Kafka中实现消费的方式是将日志中的分区划分到每一个消费者实例上，以便在任何时间，每个实例都是分区唯一的消费者。维护消费组中的消费关系由Kafka协议动态处理。如果新的实例加入组，他们将从组中其他成员处接管一些 partition 分区;如果一个实例消失，拥有的分区将被分发到剩余的实例。
 
 Kafka 只保证分区内的记录是有序的，而不保证主题中不同分区的顺序。每个 partition 分区按照key值排序足以满足大多数应用程序的需求。但如果你需要总记录在所有记录的上面，可使用仅有一个分区的主题来实现，这意味着每个消费者组只有一个消费者进程。
+
+# Kafka配置项
+
+http://kafka.apachecn.org/documentation.html#configuration
+
+# 名词解释
+
+- [吞吐量(TPS)](https://baike.baidu.com/item/%E5%90%9E%E5%90%90%E9%87%8F)：吞吐量是指对网络、设备、端口、虚电路或其他设施，单位时间内成功地传送[数据](https://baike.baidu.com/item/数据/5947370)的数量（以[比特](https://baike.baidu.com/item/比特/3431582)、[字节](https://baike.baidu.com/item/字节/1096318)、分组等测量）
 
 # References
 
