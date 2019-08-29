@@ -131,3 +131,4 @@ final Node<K, V>[] resize() {
 
 ## HashMap是如何避免key碰撞
 
+See https://www.cnblogs.com/faunjoe88/p/7992234.html
