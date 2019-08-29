@@ -19,7 +19,7 @@ categories:
 
 分代其实就是将堆分成几个部分，分别是新生代、老年代和永久代
 
-![](./hotspot-heap-structure.png)
+![](./深入理解JVM - 垃圾回收之世代垃圾收集过程/hotspot-heap-structure.png)
 
 > 新对象会被分配在**新生代**内存。一旦新生代内存满了，就会开始对死掉的对象，进行所谓的`小型垃圾回收`过程。一旦新生代内存里，死掉的越多，回收过程就越快；至于那些还活着的对象，此时就会老化，并最终老到进入老年代内存。
 > 
@@ -39,25 +39,25 @@ categories:
 现在我们已经理解了为什么堆被分成不同的代，接下来我们一起来看看这些空间是如何相互作用，JVM中的对象是如何分配和老化的
 
 1. **首先，将任何新对象分配给Eden空间，两个survivor空间都是空的**
-![](./object-allocation.png)
+![](./深入理解JVM - 垃圾回收之世代垃圾收集过程/object-allocation.png)
 
 2. **当eden空间填满时，会触发轻微的垃圾收集**
-![](./filling-eden-space.png)
+![](./深入理解JVM - 垃圾回收之世代垃圾收集过程/filling-eden-space.png)
 
 3. **引用的对象被移动到第一个survivor空间，清除eden空间时，将删除未引用的对象**
-![](./coping-referenced-objects.png)
+![](./深入理解JVM - 垃圾回收之世代垃圾收集过程/coping-referenced-objects.png)
 
 4. 在下一次的Minor GC中，Eden区也会做同样的操作。删除未被引用的对象，并将被引用的对象移动到Survivor区。然后，他们被移动到了第二个Survivor区（S1）。此外，第一个Suvivor区（S0）中，在上一次Minor GC幸存的对象，会增加年龄，并被移动到S1中。待所有幸存对象都被移动到S1后，S0和Eden区会被清空。注意，Survivor区中有了不同年龄的对象。
-![](./object-aging.png)
+![](./深入理解JVM - 垃圾回收之世代垃圾收集过程/object-aging.png)
 
 5. 在下一次的Minor GC中，会重复同样的动作。不过，这一次Survivor区会交换。被引用的对象移动到S0，幸存的对象增加年龄。Eden区和S1被清空
-![](./additional-aging.png)
+![](./深入理解JVM - 垃圾回收之世代垃圾收集过程/additional-aging.png)
 
 6. 在较小的GC之后，当老化的物体达到一定的年龄阈值（在该示例中为8）时，它们从年轻一代晋升到老一代。
-![](./promotion1.png)
+![](./深入理解JVM - 垃圾回收之世代垃圾收集过程/promotion1.png)
 
 随着较小的GC持续发生，物体将继续被推广到老一代空间。
-![](./promotion2.png)
+![](./深入理解JVM - 垃圾回收之世代垃圾收集过程/promotion2.png)
 
 所以这几乎涵盖了年轻一代的整个过程。 最终，将主要对老一代进行GC，清理并最终压缩该空间。
-![](./gc-process-summary.png)
+![](./深入理解JVM - 垃圾回收之世代垃圾收集过程/gc-process-summary.png)

@@ -47,7 +47,7 @@ Kafka作为一个分布式消息队列，具有`高性能`、`持久化`、`多�
 
 ## Kafka 架构总览
 
-![](./csdnblogkafka-arc.jpg)
+![kafka架构总览](./初识kafka/csdnblogkafka-arc.jpg)
 
 上图清晰的描述了Kafka的总体数据流，关于broker、topics、partitions 的一些元信息用zk来存
 
@@ -72,7 +72,7 @@ Kafka作为一个分布式消息队列，具有`高性能`、`持久化`、`多�
 
 producer在发布消息的时候，可以为每条消息指定Key，这样消息被发送到broker时，会根据分区算法把消息存储到对应的分区中（一个分区存储多个消息），如果分区规则设置的合理，那么所有的消息将会被均匀的分布到不同的分区中，这样就实现了负载均衡。
 
-![log_anatomy](./log_anatomy.png)
+![log_anatomy](./初识kafka/log_anatomy.png)
 
 > **See** [http://kafka.apachecn.org/intro.html#intro_distribution](http://kafka.apachecn.org/intro.html#intro_distribution)
 
@@ -96,7 +96,7 @@ Consumer实例可以是独立的进程，负责订阅和消费消息。消费者
 
 同一个Consumer Group中的Consumers，Kafka将相应Topic中的每个消息只发送给其中一个Consumer
 
-![consumer-groups](./consumer-groups.png)
+![consumer-groups](./初识kafka/consumer-groups.png)
 
 > 如图，这个 Kafka 集群有两台 server 的，四个分区(p0-p3)和两个消费者组。消费组A有两个消费者，消费组B有四个消费者。
 

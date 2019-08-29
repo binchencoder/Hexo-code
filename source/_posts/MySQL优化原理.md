@@ -15,7 +15,7 @@ categories:
 
 如果能在头脑中构建一幅MySQL各组件之间如何协同工作的架构图，有助于深入理解MySQL服务器。下图展示了MySQL的逻辑架构图。
 
-![MySQL逻辑架构，来自：高性能MySQL](./MySQL.png)
+![MySQL逻辑架构](./MySQL优化原理/MySQL.png)
 
 MySQL逻辑架构整体分为三层，最上层为客户端层，并非MySQL所独有，诸如：连接处理、授权认证、安全等功能均在这一层处理。
 
@@ -29,7 +29,7 @@ MySQL大多数核心服务均在中间这一层，包括查询解析、分析、
 
 当向MySQL发送一个请求的时候，MySQL到底做了些什么呢？
 
-![MySQL查询过程](./MySQL-Process.png)
+![MySQL查询过程](./MySQL优化原理/MySQL-Process.png)
 
 ### 客户端/服务端通信协议
 

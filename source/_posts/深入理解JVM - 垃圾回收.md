@@ -20,7 +20,7 @@ categories:
 
 #### Java垃圾回收主要关注堆
 
-![image](./垃圾回收机制.png)
+![image](./深入理解JVM - 垃圾回收/垃圾回收机制.png)
 
 > Java内存运行时区域中的程序计数器、虚拟机栈、本地方法栈 都是线程私有的，因此它们的生命周期与线程的生命周期是一样的；栈中的栈帧随着方法的进入和退出有条无紊地执行着出栈和入栈操作。每一个栈帧中分配多少内存基本上是在类结构确定下来时就已知的（尽管在运行期会由JIT编译器进行一些优化）。因此这几个区域的内存分配和回收都具备确定性，不需要过多考虑回收的问题，因此方法结束或者线程结束时，内存自然就随着回收了。
 
@@ -36,7 +36,7 @@ categories:
 
 > 解决了`引用计数法` 循环引用的问题
 
-![image](./可达性分析法.png)
+![image](./深入理解JVM - 垃圾回收/可达性分析法.png)
 
 不可达的对象将暂时处于“缓刑”阶段，要真正宣告一个对象死亡，至少要经历两次标记过程
 
@@ -52,7 +52,7 @@ categories:
 - 效率问题
 - 空间问题，标记清除之后会产生大量不连续的内存碎片，空间碎片太多会导致以后需要分配较大的对象空间时，无法找到足够的连续内存而不得不提前触发另一次垃圾收集动作
 
-![image](./标记-清除.png)
+![image](./深入理解JVM - 垃圾回收/标记-清除.png)
 
 ### **复制算法(Copying)**
 
@@ -62,7 +62,7 @@ categories:
 
 这个算法的缺点是可用内存缩小为原来的一半
 
-![image](./复制.png)
+![image](./深入理解JVM - 垃圾回收/复制.png)
 
 ### **标记-整理算法(Mark-Compact)**
 
@@ -70,7 +70,7 @@ categories:
 
 复制算法并不适用于老年代，所以才有了`“标记-整理”` 算法，标记的过程与`“标记-清除”` 是一样的，第二步不是直接对可回收对象进行清理，而是让所有存活的对象都向一端移动，然后直接清理掉端便捷以外的内存
 
-![image](./标记-整理.png)
+![image](./深入理解JVM - 垃圾回收/标记-整理.png)
 
 ### **分代收集算法 (Generational Collection)**
 
@@ -84,23 +84,23 @@ categories:
 
 如果垃圾收集算法是内存回收的方法论，那么垃圾收集器就是内存回收的具体实现
 
-![image](./垃圾收集器分类.png)
+![image](./深入理解JVM - 垃圾回收/垃圾收集器分类.png)
 
 ### Serial收集器(串行收集器)
 
-![image](./serial.png)
+![image](./深入理解JVM - 垃圾回收/serial.png)
 
 > 这是一个单线程的收集器，它在进行垃圾收集时，必须暂停掉其他所有的工作线程，直到它收集结束（Stop The World）
 
 ### Serial Old收集器
 
-![image](./serial-old.png)
+![image](./深入理解JVM - 垃圾回收/serial-old.png)
 
 这是Serial收集器是老年代版本，也是一个单线程，使用 **标记-整理** 算法。
 
 ### ParNew收集器(串行收集器)
 
-![image](./parnew.png)
+![image](./深入理解JVM - 垃圾回收/parnew.png)
 
 > ParNew收集器是Serial收集器的多线程版本
 
@@ -114,7 +114,7 @@ categories:
 
 ### Parallel Old收集器(并行收集器)
 
-![image](./parallel-old.png)
+![image](./深入理解JVM - 垃圾回收/parallel-old.png)
 
 这是Parallel Scavenge收集器的老年代版本，使用多线程和**标记-整理算法**
 
@@ -127,7 +127,7 @@ java -Xmx3800m -Xms3800m -Xmn2g -Xss128k -XX:+UseParallelGC -XX:ParallelGCThread
 
 ### CMS收集器(Concurrent Mark Sweep 并发标记扫描)
 
-![image](./cms.png)
+![image](./深入理解JVM - 垃圾回收/cms.png)
 
 这是一种以获取最短回收停顿时间为目标的收集器
 
@@ -157,7 +157,7 @@ java -Xmx3550m -Xms3550m -Xmn2g -Xss128k-XX:ParallelGCThreads=20  -XX:+UseConcMa
 
 ### G1收集器（Garbage-First）【重点】
 
-![image](./g1.png)
+![image](./深入理解JVM - 垃圾回收/g1.png)
 
 G1 是一款面向服务端应用的垃圾收集器
 
@@ -233,8 +233,8 @@ G1垃圾回收器是针对大Heap的垃圾回收器，如果heap分配的足够�
 
 ### 垃圾收集器参数总结
 
-![](./垃圾收集器参数1.png)
-![](./垃圾收集器参数2.png)
+![](./深入理解JVM - 垃圾回收/垃圾收集器参数1.png)
+![](./深入理解JVM - 垃圾回收/垃圾收集器参数2.png)
 
 ## 查看垃圾回收器
 

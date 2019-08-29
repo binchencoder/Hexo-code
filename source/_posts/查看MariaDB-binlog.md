@@ -2,8 +2,9 @@ title: 如何查看MariaDB bin log
 date: 2018-09-04 21:53:08
 tags:
     - MariaDB
-    - binlog
+        - binlog
 categories:
+
     - 存储
 ---
 
@@ -13,7 +14,7 @@ categories:
 
 ## MariaDB主从复制
 
-![image](./mariadb-binlog.png)
+![image](./查看MariaDB-binlog/mariadb-binlog.png)
 
 **MySQL的复制就是基于二进制日志而完成的，其工作原理如下：**
 

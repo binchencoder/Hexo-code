@@ -3,6 +3,7 @@ date: 2019-08-16 20:53:08
 tags:
     - Bazel
 categories:
+
     - 工具
 ---
 
@@ -49,7 +50,7 @@ workspace(name = "com_github_binchencoder_ease_gateway")
 生成的目标，每个target又可以作为另外一个规则的输入。
 绝大部分的target属于两种基本类型中的一种，file和rule。另外，还有一种其他的target类型，package group。但是他们很少见。
 
-![](./target_tree.png)
+![](./认识Bazel/target_tree.png)
 
 
 ## 进阶
@@ -58,7 +59,7 @@ workspace(name = "com_github_binchencoder_ease_gateway")
 
 另外，我的github有几个更多的例子，可以进一步学习和理解bazel。
 
-References:
+## References:
 
 - https://bazel.build
 - https://github.com/grpc-ecosystem/grpc-gateway

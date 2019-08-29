@@ -1,6 +1,6 @@
 <!DOCTYPE HTML>
 <html lang="zh-CN">
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
     <!--Setting-->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -18,14 +18,14 @@
 
 
 
-<meta name="keywords" content="blog,binchencoder,IT,Web Back End,binchen,chenbin"/>
+<meta name="keywords" content="blog,binchencoder,IT,Web Back End,binchen,chenbin">
 
 
 
-<meta name="robots" content="all" />
-<meta name="google" content="all" />
-<meta name="googlebot" content="all" />
-<meta name="verify" content="all" />
+<meta name="robots" content="all">
+<meta name="google" content="all">
+<meta name="googlebot" content="all">
+<meta name="verify" content="all">
     <!--Title-->
 
 
@@ -63,7 +63,7 @@
     
 </head>
 
-
+</html>
 <!--[if lte IE 8]>
 <style>
     html{ font-size: 1em }
@@ -205,7 +205,7 @@
 <p>那么Kafka是如何做到这么高的吞吐量和性能的呢？在入门之后我们就来深入的扒一下Kafka的架构设计原理，掌握这些原理在互联网面试中会占据优势</p>
 <h1 id="持久化"><a href="#持久化" class="headerlink" title="持久化"></a>持久化</h1><p>Kafka对消息的存储和缓存依赖于文件系统，每次接收数据都会往磁盘上写，人们对于<strong>“磁盘速度慢”</strong>的普遍印象，使得人们对于持久化的架构能够提供强有力的性能产生怀疑。</p>
 <p>事实上，磁盘的速度比人们预期的要慢的多，也快得多，这取决于人们使用磁盘的方式。而且设计合理的磁盘结构通常可以和网络一样快。</p>
-<p><img src="/2019/08/28/kafka是如何实现几十万的高并发写入/持久化.jpg" alt="[顺序磁盘访问在某些情况下比随机内存访问还要快](http://deliveryimages.acm.org/10.1145/1570000/1563874/jacobs3.jpg)"></p>
+<p><img src="/2019/08/28/kafka是如何实现几十万的高并发写入/持久化.jpg" alt="顺序磁盘访问在某些情况下比随机内存访问还要快"></p>
 <blockquote>
 <p>通过上图对比，我们可以看出实际上顺序磁盘访问在某些情况下比随机内存访问还要快，其实Kafka就是利用这一优势来实现高性能写磁盘</p>
 </blockquote>

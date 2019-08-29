@@ -7,7 +7,7 @@ categories:
     - 存储
 ---
 
-![MySQL](./MySQL.jpeg)
+![MySQL](./MySQL锁的理解/MySQL.jpeg)
 
 ## 前言
 
@@ -23,7 +23,7 @@ MySQL给开发者提供了查询存储引擎的功能，我这里使用的是MyS
 SHOW ENGINES
 ```
 
-![engines](./Engines.jpeg)
+![engines](./MySQL锁的理解/Engines.jpeg)
 
 ## 乐观锁
 

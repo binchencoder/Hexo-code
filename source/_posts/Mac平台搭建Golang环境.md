@@ -8,7 +8,7 @@ categories:
 ---
 
 
-![](./golang.png)
+![Golang](./Mac平台搭建Golang环境/golang.png)
 
 # Overview
 

@@ -1,6 +1,6 @@
 <!DOCTYPE HTML>
 <html lang="zh-CN">
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
     <!--Setting-->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -18,14 +18,14 @@
 
 
 
-<meta name="keywords" content="blog,binchencoder,IT,Web Back End,binchen,chenbin"/>
+<meta name="keywords" content="blog,binchencoder,IT,Web Back End,binchen,chenbin">
 
 
 
-<meta name="robots" content="all" />
-<meta name="google" content="all" />
-<meta name="googlebot" content="all" />
-<meta name="verify" content="all" />
+<meta name="robots" content="all">
+<meta name="google" content="all">
+<meta name="googlebot" content="all">
+<meta name="verify" content="all">
     <!--Title-->
 
 
@@ -63,7 +63,7 @@
     
 </head>
 
-
+</html>
 <!--[if lte IE 8]>
 <style>
     html{ font-size: 1em }
@@ -207,7 +207,7 @@
 <h4 id="对象访问"><a href="#对象访问" class="headerlink" title="对象访问"></a>对象访问</h4><p>初始化一个对象，其引用存放于栈帧，对象存放于堆内存，对象包含属性信息和该对象父类、接口等类型数据（该类型数据存储在方法区空间，对象拥有类型数据的地址）</p>
 <h3 id="内存模型"><a href="#内存模型" class="headerlink" title="内存模型"></a>内存模型</h3><h4 id="堆内存"><a href="#堆内存" class="headerlink" title="堆内存"></a>堆内存</h4><p>堆内存是运行时的数据区，从中分配所有的Java类实例和数组的内存，可以理解为目标应用依赖的对象。堆在JVM启动时创建，并在应用程序运行时可能会增大或减小。可以使用<code>-Xms`</code>选项指定堆的大小。堆可以是固定大小或可变大小，具体取决于垃圾收集策略。可以使用<code>-Xmx</code>选项设置最大堆大小。默认情况下，最大堆大小设置为64M。</p>
 <p>JVM堆内存在物理上分为两部分：<code>新生代</code>和<code>老年代</code>。新生代是为分配新对象而保留堆空间。当新生代占用完时，Minor GC垃圾收集器会对新生代区域执行垃圾回收动作。其中在新生代中生活了足够长的所有对象被迁移到老生代，从而释放新生代空间以进行更多的对象分配。此垃圾收集称为<code>Minor GC</code>。新生代分分为三个子区域：<code>伊甸园Eden区</code>和两个<code>幸存区S0`</code>和<code>`S1</code>。</p>
-<p><img src="/2019/08/11/JVM内存管理/JVM内存管理.png" alt=""></p>
+<p><img src="/2019/08/11/JVM内存管理/JVM内存管理.png" alt></p>
 <blockquote>
 <p><strong>关于新生代空间：</strong></p>
 </blockquote>
@@ -288,8 +288,10 @@
 </tr>
 </tbody>
 </table>
-<h2 id="内存回收"><a href="#内存回收" class="headerlink" title="内存回收"></a>内存回收</h2><h3 id="垃圾回收策略"><a href="#垃圾回收策略" class="headerlink" title="垃圾回收策略"></a>垃圾回收策略</h3><h4 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h4><h4 id="策略"><a href="#策略" class="headerlink" title="策略"></a>策略</h4><h4 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h4><p>References:</p>
-<ul>
+<h1 id="名词术语"><a href="#名词术语" class="headerlink" title="名词术语"></a>名词术语</h1><ol>
+<li><strong>Full GC：</strong>新生代和老年代同时回收</li>
+</ol>
+<h1 id="References"><a href="#References" class="headerlink" title="References:"></a>References:</h1><ul>
 <li><a href="https://mp.weixin.qq.com/s/3_DEPdZTnGmdGBd5iTrVjQ" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/3_DEPdZTnGmdGBd5iTrVjQ</a></li>
 <li><a href="https://www.cnblogs.com/manayi/p/9290490.html" target="_blank" rel="noopener">https://www.cnblogs.com/manayi/p/9290490.html</a></li>
 </ul>
@@ -353,7 +355,7 @@
     <div class="widget">
         <h3 class="title">文章目录</h3>
         
-            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#JVM内存管理"><span class="toc-text">JVM内存管理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#内存结构"><span class="toc-text">内存结构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#逻辑分区"><span class="toc-text">逻辑分区</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#程序计数器"><span class="toc-text">程序计数器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#虚拟机栈"><span class="toc-text">虚拟机栈</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#本地方法栈"><span class="toc-text">本地方法栈</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#堆"><span class="toc-text">堆</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#方法区"><span class="toc-text">方法区</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#对象访问"><span class="toc-text">对象访问</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#内存模型"><span class="toc-text">内存模型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#堆内存"><span class="toc-text">堆内存</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#非堆内存"><span class="toc-text">非堆内存</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#内存回收"><span class="toc-text">内存回收</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#垃圾回收策略"><span class="toc-text">垃圾回收策略</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#流程"><span class="toc-text">流程</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#策略"><span class="toc-text">策略</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#算法"><span class="toc-text">算法</span></a></li></ol></li></ol></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#JVM内存管理"><span class="toc-text">JVM内存管理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#内存结构"><span class="toc-text">内存结构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#逻辑分区"><span class="toc-text">逻辑分区</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#程序计数器"><span class="toc-text">程序计数器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#虚拟机栈"><span class="toc-text">虚拟机栈</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#本地方法栈"><span class="toc-text">本地方法栈</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#堆"><span class="toc-text">堆</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#方法区"><span class="toc-text">方法区</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#对象访问"><span class="toc-text">对象访问</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#内存模型"><span class="toc-text">内存模型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#堆内存"><span class="toc-text">堆内存</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#非堆内存"><span class="toc-text">非堆内存</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#名词术语"><span class="toc-text">名词术语</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#References"><span class="toc-text">References:</span></a></li></ol>
         
     </div>
 </aside>
