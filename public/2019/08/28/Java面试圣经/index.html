@@ -216,10 +216,12 @@
 <li>ConcurrentHashMap 的工作原理及代码实现</li>
 <li>HashMap是如何扩容的</li>
 <li>HashMap如何避免key碰撞</li>
+<li>HashMap死循环问题</li>
 </ol>
 <h1 id="进阶篇"><a href="#进阶篇" class="headerlink" title="进阶篇"></a>进阶篇</h1><h2 id="网络"><a href="#网络" class="headerlink" title="网络"></a>网络</h2><ol>
 <li>讲讲TCP/IP</li>
 <li>讲讲TCP、UDP、IP</li>
+<li>TCP三次握手、四次握手</li>
 </ol>
 <h2 id="IO"><a href="#IO" class="headerlink" title="IO"></a>IO</h2><ol>
 <li>IO流概念</li>
@@ -294,10 +296,7 @@
 <li>自己如何实现消息队列</li>
 <li>如何保证消息的有序性</li>
 <li>Kafka为什么快</li>
-<li>Kafka是如何实现几十万的高并发写入<ul>
-<li><a href="https://binchencoder.github.io/2019/08/28/kafka是如何实现几十万的高并发写入">https://binchencoder.github.io/2019/08/28/kafka是如何实现几十万的高并发写入</a></li>
-</ul>
-</li>
+<li><a href="https://binchencoder.github.io/2019/08/28/kafka是如何实现几十万的高并发写入">Kafka是如何实现几十万的高并发写入</a></li>
 </ol>
 <h1 id="框架篇"><a href="#框架篇" class="headerlink" title="框架篇"></a>框架篇</h1><h2 id="Spring"><a href="#Spring" class="headerlink" title="Spring"></a>Spring</h2><ol>
 <li>BeanFactory 和 ApplicationContext 有什么区别</li>
@@ -339,9 +338,18 @@
 <li>说说 CAP 定理、 BASE 理论</li>
 <li>怎么考虑数据一致性问题</li>
 <li>说说最终一致性的实现方案</li>
-<li><a href="http://blog.720ui.com/2017/msa_design/" target="_blank" rel="noopener">微服务如何进行数据库管理</a></li>
-<li><a href="http://blog.720ui.com/2017/msa_design/" target="_blank" rel="noopener">如何应对微服务的链式调用异常</a></li>
-<li><a href="http://blog.720ui.com/2017/msa_design/" target="_blank" rel="noopener">对于快速追踪与定位问题</a></li>
+<li>微服务如何进行数据库管理<ul>
+<li><a href="http://blog.720ui.com/2017/msa_design/" target="_blank" rel="noopener">http://blog.720ui.com/2017/msa_design/</a></li>
+</ul>
+</li>
+<li>如何应对微服务的链式调用异常<ul>
+<li><a href="http://blog.720ui.com/2017/msa_design/" target="_blank" rel="noopener">http://blog.720ui.com/2017/msa_design/</a></li>
+</ul>
+</li>
+<li>对于快速追踪与定位问题<ul>
+<li><a href="http://blog.720ui.com/2017/msa_design/" target="_blank" rel="noopener">http://blog.720ui.com/2017/msa_design/</a></li>
+</ul>
+</li>
 </ol>
 <h2 id="分布式"><a href="#分布式" class="headerlink" title="分布式"></a>分布式</h2><ol>
 <li>谈谈业务中使用分布式的场景</li>
@@ -350,8 +358,14 @@
 <li>分布是锁的实现方案</li>
 <li>分布式事务</li>
 <li>集群与负载均衡的算法与实现</li>
-<li><a href="http://blog.720ui.com/2017/mysql_core_08_multi_db_table/" target="_blank" rel="noopener">说说分库与分表设计</a></li>
-<li><a href="http://blog.720ui.com/2017/mysql_core_09_multi_db_table2/" target="_blank" rel="noopener">分库与分表带来的分布式困境与应对之策</a></li>
+<li>说说分库与分表设计<ul>
+<li><a href="http://blog.720ui.com/2017/mysql_core_08_multi_db_table/" target="_blank" rel="noopener">http://blog.720ui.com/2017/mysql_core_08_multi_db_table/</a></li>
+</ul>
+</li>
+<li>分库与分表带来的分布式困境与应对之策<ul>
+<li><a href="http://blog.720ui.com/2017/mysql_core_09_multi_db_table2/" target="_blank" rel="noopener">http://blog.720ui.com/2017/mysql_core_09_multi_db_table2/</a></li>
+</ul>
+</li>
 </ol>
 <h1 id="高级进阶"><a href="#高级进阶" class="headerlink" title="高级进阶"></a>高级进阶</h1><h2 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h2><h3 id="排序算法"><a href="#排序算法" class="headerlink" title="排序算法"></a>排序算法</h3><ol>
 <li><a href="https://www.runoob.com/w3cnote/bubble-sort.html" target="_blank" rel="noopener">冒泡排序</a></li>
@@ -359,11 +373,11 @@
 <li><a href="https://www.runoob.com/w3cnote/insertion-sort.html" target="_blank" rel="noopener">插入排序</a></li>
 </ol>
 <h2 id="JVM"><a href="#JVM" class="headerlink" title="JVM"></a>JVM</h2><ol>
-<li>JVM内存结构</li>
+<li><a href="https://binchencoder.github.io/2019/08/21/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3JVM%20-%20%E5%86%85%E5%AD%98%E7%BB%93%E6%9E%84/">JVM内存结构</a></li>
 <li><a href="https://binchencoder.github.io/2019/08/11/JVM内存管理/">JVM内存管理</a></li>
 <li>JVM内存模型(JMM)</li>
-<li>JVM垃圾回收</li>
-<li>JVM垃圾回收之世代垃圾收集过程</li>
+<li><a href="https://binchencoder.github.io/2019/08/23/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3JVM%20-%20%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6/">JVM垃圾回收</a></li>
+<li><a href="https://binchencoder.github.io/2019/08/24/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3JVM%20-%20%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E4%B9%8B%E4%B8%96%E4%BB%A3%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E8%BF%87%E7%A8%8B/">JVM垃圾回收之世代垃圾收集过程</a></li>
 </ol>
 <h2 id="性能优化"><a href="#性能优化" class="headerlink" title="性能优化"></a>性能优化</h2><ol>
 <li>性能指标有哪些</li>
@@ -390,6 +404,11 @@
 </article>
 
 <div class="article-nav prev-next-wrap clearfix">
+    
+        <a href="/2019/08/29/Java面试之基础篇 - HashMap/" class="pre-post btn btn-default" title='Java面试之基础篇 - HashMap'>
+            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+            <span class="hidden-xs">Java面试之基础篇 - HashMap</span>
+        </a>
     
     
         <a href="/2019/08/28/kafka是如何实现几十万的高并发写入/" class="next-post btn btn-default" title='Kafka是如何实现几十万的高并发写入'>

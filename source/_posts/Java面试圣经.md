@@ -36,6 +36,7 @@ categories:
 9. ConcurrentHashMap 的工作原理及代码实现
 10. HashMap是如何扩容的
 11. HashMap如何避免key碰撞
+12. HashMap死循环问题
 
 # 进阶篇
 
@@ -43,6 +44,7 @@ categories:
 
 1. 讲讲TCP/IP
 2. 讲讲TCP、UDP、IP
+3. TCP三次握手、四次握手
 
 ## IO
 
@@ -115,8 +117,7 @@ categories:
 4. 自己如何实现消息队列
 5. 如何保证消息的有序性
 6. Kafka为什么快
-7. Kafka是如何实现几十万的高并发写入
-   - [https://binchencoder.github.io/2019/08/28/kafka是如何实现几十万的高并发写入](https://binchencoder.github.io/2019/08/28/kafka是如何实现几十万的高并发写入)
+7. [Kafka是如何实现几十万的高并发写入](https://binchencoder.github.io/2019/08/28/kafka是如何实现几十万的高并发写入)
 
 # 框架篇
 
@@ -161,9 +162,12 @@ categories:
 9. 说说 CAP 定理、 BASE 理论
 10. 怎么考虑数据一致性问题
 11. 说说最终一致性的实现方案
-12. [微服务如何进行数据库管理](http://blog.720ui.com/2017/msa_design/)
-13. [如何应对微服务的链式调用异常](http://blog.720ui.com/2017/msa_design/)
-14. [对于快速追踪与定位问题](http://blog.720ui.com/2017/msa_design/)
+12. 微服务如何进行数据库管理
+    - http://blog.720ui.com/2017/msa_design/
+13. 如何应对微服务的链式调用异常
+    - http://blog.720ui.com/2017/msa_design/
+14. 对于快速追踪与定位问题
+    - http://blog.720ui.com/2017/msa_design/
 
 ## 分布式
 
@@ -173,8 +177,10 @@ categories:
 4. 分布是锁的实现方案
 5. 分布式事务
 6. 集群与负载均衡的算法与实现
-7. [说说分库与分表设计](http://blog.720ui.com/2017/mysql_core_08_multi_db_table/)
-8. [分库与分表带来的分布式困境与应对之策](http://blog.720ui.com/2017/mysql_core_09_multi_db_table2/)
+7. 说说分库与分表设计
+   - http://blog.720ui.com/2017/mysql_core_08_multi_db_table/
+8. 分库与分表带来的分布式困境与应对之策
+   - http://blog.720ui.com/2017/mysql_core_09_multi_db_table2/
 
 # 高级进阶
 
@@ -188,11 +194,11 @@ categories:
 
 ## JVM
 
-1. JVM内存结构
+1. [JVM内存结构](https://binchencoder.github.io/2019/08/21/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3JVM%20-%20%E5%86%85%E5%AD%98%E7%BB%93%E6%9E%84/)
 2. [JVM内存管理](https://binchencoder.github.io/2019/08/11/JVM内存管理/)
 3. JVM内存模型(JMM)
-4. JVM垃圾回收
-5. JVM垃圾回收之世代垃圾收集过程
+4. [JVM垃圾回收](https://binchencoder.github.io/2019/08/23/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3JVM%20-%20%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6/)
+5. [JVM垃圾回收之世代垃圾收集过程](https://binchencoder.github.io/2019/08/24/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3JVM%20-%20%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E4%B9%8B%E4%B8%96%E4%BB%A3%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E8%BF%87%E7%A8%8B/)
 
 ## 性能优化
 
