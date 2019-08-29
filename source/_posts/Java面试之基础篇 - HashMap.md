@@ -15,6 +15,8 @@ categories:
 
 ## JDK1.8中HashMap是如何扩容的？与JDK1.7有什么区别
 
+**See:** https://www.jianshu.com/p/bdfd5f98cc31
+
 先来看图
 
 ![JDK1.7HashMap扩容](./Java面试之基础篇 - HashMap/JDK1.7HashMap扩容.png)
