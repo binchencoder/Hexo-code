@@ -34,8 +34,8 @@ categories:
 7. HashMap 和 ConcurrentHashMap 的区别
 8. HashMap 的工作原理及代码实现
 9. ConcurrentHashMap 的工作原理及代码实现
-10. HashMap是如何扩容的
-11. HashMap如何避免key碰撞
+10. [HashMap是如何扩容的](https://binchencoder.github.io/2019/08/29/Java面试之基础篇%20-%20HashMap/#JDK1-8中HashMap是如何扩容的？与JDK1-7有什么区别)
+11. [HashMap如何避免key碰撞](http://localhost:4000/2019/08/29/Java面试之基础篇%20-%20HashMap/#HashMap是如何避免key碰撞)
 12. HashMap死循环问题
 
 # 进阶篇
