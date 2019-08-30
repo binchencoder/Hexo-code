@@ -66,6 +66,7 @@ categories:
 7. 讲讲线程池的实现原理
 8. 线程池的几种方式与使用场景
 9. 线程的生命周期及几种状态
+   - https://binchencoder.github.io/2018/08/31/Thread-State/
 
 ## 锁机制
 
