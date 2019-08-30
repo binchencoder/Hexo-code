@@ -14,6 +14,7 @@ categories:
 
 1. 面向对象的特征
 2. final, finally, finalize 的区别
+   - https://www.jianshu.com/p/c45b6d782e91
 3. 重载和重写的区别
 4. 说说反射的用途及实现
 5. equals 与 == 的区别
@@ -43,7 +44,9 @@ categories:
 ## 网络
 
 1. 讲讲TCP/IP
+   - https://www.liaoxuefeng.com/wiki/897692888725344/923056618783712
 2. 讲讲TCP、UDP、IP
+   - https://segmentfault.com/a/1190000020121595
 3. TCP三次握手、四次握手
 
 ## IO
