@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://binchencoder.github.io/"/>
-  <updated>2019-08-29T15:13:39.000Z</updated>
+  <updated>2019-08-31T09:57:04.257Z</updated>
   <id>https://binchencoder.github.io/</id>
   
   <author>
@@ -17,11 +17,36 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>TCP三次握手和四次握手</title>
+    <link href="https://binchencoder.github.io/2019/08/31/TCP%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E5%92%8C%E5%9B%9B%E6%AC%A1%E6%8F%A1%E6%89%8B/"/>
+    <id>https://binchencoder.github.io/2019/08/31/TCP三次握手和四次握手/</id>
+    <published>2019-08-31T09:36:21.000Z</published>
+    <updated>2019-08-31T09:57:04.257Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;笔者最近在进行跳槽的前期准备，把基础知识重新温故了一遍，整理了一篇&lt;a href=&quot;https://binchencoder.github.
+      
+    
+    </summary>
+    
+      <category term="后端" scheme="https://binchencoder.github.io/categories/%E5%90%8E%E7%AB%AF/"/>
+    
+    
+      <category term="TCP" scheme="https://binchencoder.github.io/tags/TCP/"/>
+    
+      <category term="网络协议" scheme="https://binchencoder.github.io/tags/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Java面试之基础篇 - HashMap</title>
     <link href="https://binchencoder.github.io/2019/08/29/Java%E9%9D%A2%E8%AF%95%E4%B9%8B%E5%9F%BA%E7%A1%80%E7%AF%87%20-%20HashMap/"/>
     <id>https://binchencoder.github.io/2019/08/29/Java面试之基础篇 - HashMap/</id>
     <published>2019-08-29T13:53:08.000Z</published>
-    <updated>2019-08-29T15:13:39.000Z</updated>
+    <updated>2019-08-31T06:50:11.954Z</updated>
     
     <summary type="html">
     
@@ -48,7 +73,7 @@
     <link href="https://binchencoder.github.io/2019/08/28/Java%E9%9D%A2%E8%AF%95%E5%9C%A3%E7%BB%8F/"/>
     <id>https://binchencoder.github.io/2019/08/28/Java面试圣经/</id>
     <published>2019-08-28T12:53:08.000Z</published>
-    <updated>2019-08-30T15:29:28.000Z</updated>
+    <updated>2019-08-31T09:57:57.393Z</updated>
     
     <summary type="html">
     
@@ -73,7 +98,7 @@
     <link href="https://binchencoder.github.io/2019/08/28/kafka%E6%98%AF%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E5%87%A0%E5%8D%81%E4%B8%87%E7%9A%84%E9%AB%98%E5%B9%B6%E5%8F%91%E5%86%99%E5%85%A5/"/>
     <id>https://binchencoder.github.io/2019/08/28/kafka是如何实现几十万的高并发写入/</id>
     <published>2019-08-28T02:23:58.000Z</published>
-    <updated>2019-08-29T12:52:53.000Z</updated>
+    <updated>2019-08-29T01:32:57.033Z</updated>
     
     <summary type="html">
     
@@ -100,7 +125,7 @@
     <link href="https://binchencoder.github.io/2019/08/27/%E5%88%9D%E8%AF%86kafka/"/>
     <id>https://binchencoder.github.io/2019/08/27/初识kafka/</id>
     <published>2019-08-27T12:53:08.000Z</published>
-    <updated>2019-08-29T12:52:53.000Z</updated>
+    <updated>2019-08-29T01:47:36.733Z</updated>
     
     <summary type="html">
     
@@ -127,7 +152,7 @@
     <link href="https://binchencoder.github.io/2019/08/24/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3JVM%20-%20%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E4%B9%8B%E4%B8%96%E4%BB%A3%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E8%BF%87%E7%A8%8B/"/>
     <id>https://binchencoder.github.io/2019/08/24/深入理解JVM - 垃圾回收之世代垃圾收集过程/</id>
     <published>2019-08-24T09:00:18.000Z</published>
-    <updated>2019-08-29T12:52:53.000Z</updated>
+    <updated>2019-08-29T01:43:46.955Z</updated>
     
     <summary type="html">
     
@@ -154,7 +179,7 @@
     <link href="https://binchencoder.github.io/2019/08/23/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3JVM%20-%20%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6/"/>
     <id>https://binchencoder.github.io/2019/08/23/深入理解JVM - 垃圾回收/</id>
     <published>2019-08-23T15:00:18.000Z</published>
-    <updated>2019-08-29T12:52:53.000Z</updated>
+    <updated>2019-08-29T01:42:41.837Z</updated>
     
     <summary type="html">
     
@@ -181,7 +206,7 @@
     <link href="https://binchencoder.github.io/2019/08/21/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3JVM%20-%20%E5%86%85%E5%AD%98%E7%BB%93%E6%9E%84/"/>
     <id>https://binchencoder.github.io/2019/08/21/深入理解JVM - 内存结构/</id>
     <published>2019-08-21T15:00:18.000Z</published>
-    <updated>2019-08-29T12:52:53.000Z</updated>
+    <updated>2019-08-29T01:44:22.322Z</updated>
     
     <summary type="html">
     
@@ -206,7 +231,7 @@
     <link href="https://binchencoder.github.io/2019/08/16/%E8%AE%A4%E8%AF%86Bazel/"/>
     <id>https://binchencoder.github.io/2019/08/16/认识Bazel/</id>
     <published>2019-08-16T12:53:08.000Z</published>
-    <updated>2019-08-29T12:52:53.000Z</updated>
+    <updated>2019-08-29T01:44:56.676Z</updated>
     
     <summary type="html">
     
@@ -229,7 +254,7 @@
     <link href="https://binchencoder.github.io/2019/08/11/JVM%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/"/>
     <id>https://binchencoder.github.io/2019/08/11/JVM内存管理/</id>
     <published>2019-08-11T12:53:08.000Z</published>
-    <updated>2019-08-29T12:52:53.000Z</updated>
+    <updated>2019-08-29T01:40:44.582Z</updated>
     
     <summary type="html">
     
@@ -254,7 +279,7 @@
     <link href="https://binchencoder.github.io/2019/08/08/Mac%E5%B9%B3%E5%8F%B0%E6%90%AD%E5%BB%BAGolang%E7%8E%AF%E5%A2%83/"/>
     <id>https://binchencoder.github.io/2019/08/08/Mac平台搭建Golang环境/</id>
     <published>2019-08-08T04:10:18.000Z</published>
-    <updated>2019-08-29T12:52:53.000Z</updated>
+    <updated>2019-08-29T01:52:49.611Z</updated>
     
     <summary type="html">
     
@@ -278,7 +303,7 @@
     <link href="https://binchencoder.github.io/2019/08/02/Linux%20%E6%96%87%E4%BB%B6%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/"/>
     <id>https://binchencoder.github.io/2019/08/02/Linux 文件常用命令/</id>
     <published>2019-08-02T09:36:21.000Z</published>
-    <updated>2019-08-03T17:56:08.000Z</updated>
+    <updated>2019-08-08T03:56:05.754Z</updated>
     
     <summary type="html">
     
@@ -301,7 +326,7 @@
     <link href="https://binchencoder.github.io/2019/08/01/Spring%20Boot%E4%B8%ADapplication.properties%E4%B8%8Ebootstrap.properties%E7%9A%84%E5%8C%BA%E5%88%AB/"/>
     <id>https://binchencoder.github.io/2019/08/01/Spring Boot中application.properties与bootstrap.properties的区别/</id>
     <published>2019-07-31T16:00:18.000Z</published>
-    <updated>2019-08-03T17:27:14.000Z</updated>
+    <updated>2019-08-02T08:04:37.596Z</updated>
     
     <summary type="html">
     
@@ -328,7 +353,7 @@
     <link href="https://binchencoder.github.io/2019/07/29/MySQL%E4%BC%98%E5%8C%96%E5%8E%9F%E7%90%86/"/>
     <id>https://binchencoder.github.io/2019/07/29/MySQL优化原理/</id>
     <published>2019-07-29T14:10:18.000Z</published>
-    <updated>2019-08-29T12:52:53.000Z</updated>
+    <updated>2019-08-29T01:50:45.260Z</updated>
     
     <summary type="html">
     
@@ -353,7 +378,7 @@
     <link href="https://binchencoder.github.io/2019/07/29/Linux%E6%9F%A5%E7%9C%8B%E7%B3%BB%E7%BB%9F%E7%A1%AC%E4%BB%B6%E4%BF%A1%E6%81%AF/"/>
     <id>https://binchencoder.github.io/2019/07/29/Linux查看系统硬件信息/</id>
     <published>2019-07-29T05:36:21.000Z</published>
-    <updated>2019-08-03T17:27:14.000Z</updated>
+    <updated>2019-08-02T08:04:37.592Z</updated>
     
     <summary type="html">
     
@@ -378,7 +403,7 @@
     <link href="https://binchencoder.github.io/2019/07/21/RPC%E6%A1%86%E6%9E%B6/"/>
     <id>https://binchencoder.github.io/2019/07/21/RPC框架/</id>
     <published>2019-07-21T10:00:18.000Z</published>
-    <updated>2019-08-29T12:52:53.000Z</updated>
+    <updated>2019-08-29T01:50:04.688Z</updated>
     
     <summary type="html">
     
@@ -401,7 +426,7 @@
     <link href="https://binchencoder.github.io/2019/01/20/MySQL%E9%94%81%E7%9A%84%E7%90%86%E8%A7%A3/"/>
     <id>https://binchencoder.github.io/2019/01/20/MySQL锁的理解/</id>
     <published>2019-01-20T02:00:18.000Z</published>
-    <updated>2019-08-29T12:52:53.000Z</updated>
+    <updated>2019-08-29T01:52:29.279Z</updated>
     
     <summary type="html">
     
@@ -425,7 +450,7 @@
     <link href="https://binchencoder.github.io/2018/09/04/%E6%9F%A5%E7%9C%8BMariaDB-binlog/"/>
     <id>https://binchencoder.github.io/2018/09/04/查看MariaDB-binlog/</id>
     <published>2018-09-04T13:53:08.000Z</published>
-    <updated>2019-08-29T12:52:53.000Z</updated>
+    <updated>2019-08-29T01:48:15.069Z</updated>
     
     <summary type="html">
     
@@ -448,7 +473,7 @@
     <link href="https://binchencoder.github.io/2018/09/01/%E4%BD%BF%E7%94%A8%E6%AD%A3%E5%88%99%E5%BC%95%E5%8F%91%E7%9A%84%E8%A1%80%E6%A1%88/"/>
     <id>https://binchencoder.github.io/2018/09/01/使用正则引发的血案/</id>
     <published>2018-09-01T13:43:21.000Z</published>
-    <updated>2019-08-24T00:31:00.000Z</updated>
+    <updated>2019-08-02T08:04:37.600Z</updated>
     
     <summary type="html">
     
@@ -473,7 +498,7 @@
     <link href="https://binchencoder.github.io/2018/08/31/Thread-State/"/>
     <id>https://binchencoder.github.io/2018/08/31/Thread-State/</id>
     <published>2018-08-31T12:53:08.000Z</published>
-    <updated>2019-08-29T12:52:53.000Z</updated>
+    <updated>2019-08-29T01:49:11.017Z</updated>
     
     <summary type="html">
     
@@ -488,57 +513,6 @@
     
     
       <category term="Java - Thread - Jstack" scheme="https://binchencoder.github.io/tags/Java-Thread-Jstack/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>UsefulScripts-Java脚本</title>
-    <link href="https://binchencoder.github.io/2018/07/22/UsefulScripts-Java%E8%84%9A%E6%9C%AC/"/>
-    <id>https://binchencoder.github.io/2018/07/22/UsefulScripts-Java脚本/</id>
-    <published>2018-07-22T05:46:57.000Z</published>
-    <updated>2019-08-03T17:27:14.000Z</updated>
-    
-    <summary type="html">
-    
-      &lt;!-- START doctoc generated TOC please keep comment here to allow auto update --&gt;
-&lt;!-- DON&#39;T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE --&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;#show-busy-java-threads-sh&quot;&gt;show-busy-java-threads.sh&lt;/a&gt;&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;#%E7%94%A8%E6%B3%95&quot;&gt;用法&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;#%E7%A4%BA%E4%BE%8B&quot;&gt;示例&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;#%E8%B4%A1%E7%8C%AE%E8%80%85&quot;&gt;贡献者&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;#show-duplicate-java-classes-sh&quot;&gt;show-duplicate-java-classes&lt;/a&gt;&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;#%E7%94%A8%E6%B3%95-1&quot;&gt;用法&lt;/a&gt;&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;#jdk%E5%BC%80%E5%8F%91%E5%9C%BA%E6%99%AF%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E&quot;&gt;&lt;code&gt;JDK&lt;/code&gt;开发场景使用说明&lt;/a&gt;&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;#%E5%AF%B9%E4%BA%8E%E4%B8%80%E8%88%AC%E7%9A%84%E5%B7%A5%E7%A8%8B&quot;&gt;对于一般的工程&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;#%E5%AF%B9%E4%BA%8Eweb%E5%B7%A5%E7%A8%8B&quot;&gt;对于&lt;code&gt;Web&lt;/code&gt;工程&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;#android%E5%BC%80%E5%8F%91%E5%9C%BA%E6%99%AF%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E&quot;&gt;&lt;code&gt;Android&lt;/code&gt;开发场景使用说明&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;#%E7%A4%BA%E4%BE%8B-1&quot;&gt;示例&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;#%E8%B4%A1%E7%8C%AE%E8%80%85-1&quot;&gt;贡献者&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;#find-in-jars-sh&quot;&gt;find-in-jars.sh&lt;/a&gt;&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;#%E7%94%A8%E6%B3%95-2&quot;&gt;用法&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;#%E7%A4%BA%E4%BE%8B-2&quot;&gt;示例&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99&quot;&gt;参考资料&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-    
-    </summary>
-    
-      <category term="工具" scheme="https://binchencoder.github.io/categories/%E5%B7%A5%E5%85%B7/"/>
-    
-    
-      <category term="工具" scheme="https://binchencoder.github.io/tags/%E5%B7%A5%E5%85%B7/"/>
-    
-      <category term="后端" scheme="https://binchencoder.github.io/tags/%E5%90%8E%E7%AB%AF/"/>
     
   </entry>
   
