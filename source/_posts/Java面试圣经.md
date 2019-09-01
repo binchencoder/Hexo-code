@@ -21,8 +21,8 @@ categories:
 
 ## 数据结构
 
-1. 二叉树
-2. 链表
+1. [二叉树](https://www.cnblogs.com/ysocean/p/8032642.html)
+2. [链表](https://www.cnblogs.com/ysocean/p/7928988.html)
 
 ## 集合
 
