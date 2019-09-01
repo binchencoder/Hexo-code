@@ -192,6 +192,8 @@ categories:
 
 ### 排序算法
 
+**See** http://data.biancheng.net/sort/
+
 1. [冒泡排序](https://www.runoob.com/w3cnote/bubble-sort.html)
 2. [桶排序](https://www.runoob.com/w3cnote/bucket-sort.html)
 3. [插入排序](https://www.runoob.com/w3cnote/insertion-sort.html)
