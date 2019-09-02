@@ -1,6 +1,6 @@
 <!DOCTYPE HTML>
 <html lang="zh-CN">
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
     <!--Setting-->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -18,14 +18,14 @@
 
 
 
-<meta name="keywords" content="blog,binchencoder,IT,Web Back End,binchen,chenbin"/>
+<meta name="keywords" content="blog,binchencoder,IT,Web Back End,binchen,chenbin">
 
 
 
-<meta name="robots" content="all" />
-<meta name="google" content="all" />
-<meta name="googlebot" content="all" />
-<meta name="verify" content="all" />
+<meta name="robots" content="all">
+<meta name="google" content="all">
+<meta name="googlebot" content="all">
+<meta name="verify" content="all">
     <!--Title-->
 
 
@@ -63,7 +63,7 @@
     
 </head>
 
-
+</html>
 <!--[if lte IE 8]>
 <style>
     html{ font-size: 1em }
@@ -218,7 +218,7 @@
 <li>HashMap 的工作原理及代码实现</li>
 <li>ConcurrentHashMap 的工作原理及代码实现</li>
 <li><a href="https://binchencoder.github.io/2019/08/29/Java面试之基础篇%20-%20HashMap/#JDK1-8中HashMap是如何扩容的？与JDK1-7有什么区别">HashMap是如何扩容的</a></li>
-<li><a href="http://localhost:4000/2019/08/29/Java面试之基础篇%20-%20HashMap/#HashMap是如何避免key碰撞" target="_blank" rel="noopener">HashMap如何避免key碰撞</a></li>
+<li><a href="https://binchencoder.github.com/2019/08/29/Java面试之基础篇%20-%20HashMap/#HashMap是如何避免key碰撞" target="_blank" rel="noopener">HashMap如何避免key碰撞</a></li>
 <li>HashMap死循环问题</li>
 </ol>
 <h1 id="进阶篇"><a href="#进阶篇" class="headerlink" title="进阶篇"></a>进阶篇</h1><h2 id="网络"><a href="#网络" class="headerlink" title="网络"></a>网络</h2><ol>
@@ -233,9 +233,19 @@
 <li><a href="https://binchencoder.github.io/2019/08/31/TCP%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E5%92%8C%E5%9B%9B%E6%AC%A1%E6%8F%A1%E6%89%8B/">TCP三次握手、四次握手</a></li>
 </ol>
 <h2 id="IO"><a href="#IO" class="headerlink" title="IO"></a>IO</h2><ol>
-<li>IO流概念</li>
-<li>Java中IO流的分类</li>
-<li>NIO、BIO</li>
+<li><p>Java中IO流的分类</p>
+<ul>
+<li><a href="https://www.cnblogs.com/shuaiguoguo/p/8883862.html" target="_blank" rel="noopener">https://www.cnblogs.com/shuaiguoguo/p/8883862.html</a></li>
+</ul>
+</li>
+<li><p>NIO、BIO、AIO</p>
+<p><strong>See：</strong> <a href="https://www.cnblogs.com/zedosu/p/6666984.html" target="_blank" rel="noopener">https://www.cnblogs.com/zedosu/p/6666984.html</a></p>
+<ul>
+<li>BIO：同步阻塞式IO，服务器实现模式为一个连接一个线程，即客户端有连接请求时服务器端就需要启动一个线程进行处理，如果这个连接不做任何事情会造成不必要的线程开销，当然可以通过线程池机制改善。 </li>
+<li>NIO：同步非阻塞式IO，服务器实现模式为一个请求一个线程，即客户端发送的连接请求都会注册到<strong>多路复用器上</strong>，多路复用器轮询到连接有I/O请求时才启动一个线程进行处理。</li>
+<li>AIO(NIO 2.0)：异步非阻塞式IO，服务器实现模式为一个有效请求一个线程，客户端的IO请求都是由OS先完成了再通知服务器应用去启动线程进行处理。</li>
+</ul>
+</li>
 </ol>
 <h2 id="线程"><a href="#线程" class="headerlink" title="线程"></a>线程</h2><ol>
 <li>说说 CountDownLatch 原理</li>

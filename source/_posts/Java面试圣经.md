@@ -36,7 +36,7 @@ categories:
 8. HashMap 的工作原理及代码实现
 9. ConcurrentHashMap 的工作原理及代码实现
 10. [HashMap是如何扩容的](https://binchencoder.github.io/2019/08/29/Java面试之基础篇%20-%20HashMap/#JDK1-8中HashMap是如何扩容的？与JDK1-7有什么区别)
-11. [HashMap如何避免key碰撞](http://localhost:4000/2019/08/29/Java面试之基础篇%20-%20HashMap/#HashMap是如何避免key碰撞)
+11. [HashMap如何避免key碰撞](https://binchencoder.github.com/2019/08/29/Java面试之基础篇%20-%20HashMap/#HashMap是如何避免key碰撞)
 12. HashMap死循环问题
 
 # 进阶篇
@@ -51,9 +51,17 @@ categories:
 
 ## IO
 
-1. IO流概念
-2. Java中IO流的分类
-3. NIO、BIO
+1. Java中IO流的分类
+
+   - https://www.cnblogs.com/shuaiguoguo/p/8883862.html
+
+2. NIO、BIO、AIO
+
+   **See：** https://www.cnblogs.com/zedosu/p/6666984.html
+
+   - BIO：同步阻塞式IO，服务器实现模式为一个连接一个线程，即客户端有连接请求时服务器端就需要启动一个线程进行处理，如果这个连接不做任何事情会造成不必要的线程开销，当然可以通过线程池机制改善。 
+   - NIO：同步非阻塞式IO，服务器实现模式为一个请求一个线程，即客户端发送的连接请求都会注册到**多路复用器上**，多路复用器轮询到连接有I/O请求时才启动一个线程进行处理。
+   - AIO(NIO 2.0)：异步非阻塞式IO，服务器实现模式为一个有效请求一个线程，客户端的IO请求都是由OS先完成了再通知服务器应用去启动线程进行处理。
 
 ## 线程
 
