@@ -75,25 +75,34 @@ categories:
 
    ![CyclicBarrier](./Java面试圣经/CyclicBarrier.png)
 
+   > CyclicBarrier 字面意思是可循环（Cyclic）使用的屏障（Barrier）。它要做的事情是让一组线程到达一个屏障（同步点）时被阻塞，直到最后一个线程到达屏障时候，屏障才会开门。所有被屏障拦截的线程才会运行。
+   >
+   > **CyclicBarrier是由ReentrantLock可重入锁和Condition共同实现的。**
+
 3. 说说 Semaphore 原理
 
 4. 说说 Exchanger 原理
 
 5. 说说 CountDownLatch 与 CyclicBarrier 区别
 
+| CountDownLatch                                               | CyclicBarrier                                                |
+| :----------------------------------------------------------- | ------------------------------------------------------------ |
+| 减计数方式                                                   | 加计数方式                                                   |
+| 计算为0时释放所有等待的线程                                  | 计数达到指定值时释放所有等待线程                             |
+| 计数为0时，无法重置                                          | 计数达到指定值时，计数置为0重新开始                          |
+| 调用countDown()方法计数减一，调用await()方法只进行阻塞，对计数没任何影响 | 调用await()方法计数加1，若加1后的值不等于构造方法的值，则线程阻塞 |
+| 不可重复使用                                                 | 可重复利用                                                   |
 6. ThreadLocal 原理分析
 
 7. 讲讲线程池的实现原理
 
 8. 线程池的几种方式与使用场景
 
-9. 线程的生命周期及几种状态
-
-   - https://binchencoder.github.io/2018/08/31/Thread-State/
+9. [线程的生命周期及几种状态](https://binchencoder.github.io/2018/08/31/Thread-State/)
 
 ## 锁机制
 
-### AQS详解
+### 1. AQS详解
 
 ![AQS](./Java面试圣经/AQS.png)
 
@@ -101,19 +110,19 @@ AQS是AbstractQueuedSynchronizer的简称。AQS提供了一种实现阻塞锁和
 
 > **See** https://www.cnblogs.com/waterystone/p/4920797.html
 
-### 说说线程安全问题
+### 2. 说说线程安全问题
 
-### volatile 实现原理
+### 3. volatile 实现原理
 
-### synchronize 实现原理
+### 4. synchronize 实现原理
 
-### synchronized 与 lock 的区别
+### 5. synchronized 与 lock 的区别
 
-### CAS 乐观锁
+### 6. CAS 乐观锁
 
-### 乐观锁的业务场景及实现方式
+### 7. 乐观锁的业务场景及实现方式
 
-### ABA 问题
+### 8. ABA 问题
 
 # 核心篇
 
@@ -190,24 +199,45 @@ AQS是AbstractQueuedSynchronizer的简称。AQS提供了一种实现阻塞锁和
 ## 微服务
 
 1. 微服务哪些框架
+
 2. 如何解决跨域
 
    - http://blog.720ui.com/2016/web_cross_domain/
+
 3. 你怎么理解 RPC 框架
+
+   - [https://binchencoder.github.io/2019/07/21/RPC%E6%A1%86%E6%9E%B6/](https://binchencoder.github.io/2019/07/21/RPC框架/)
+
 4. 说说 RPC 的实现原理
+
 5. 说说 Dubbo 的实现原理
+
 6. 你怎么理解 RESTful
+
 7. 如何理解 RESTful API 的幂等性
+
    - http://blog.720ui.com/2016/restful_idempotent
+
 8. 如何保证接口的幂等性
+
 9. 说说 CAP 定理、 BASE 理论
+
+   ![CAP](./Java面试圣经/CAP.png)
+
 10. 怎么考虑数据一致性问题
+
 11. 说说最终一致性的实现方案
+
 12. 微服务如何进行数据库管理
+
     - http://blog.720ui.com/2017/msa_design/
+
 13. 如何应对微服务的链式调用异常
+
     - http://blog.720ui.com/2017/msa_design/
+
 14. 对于快速追踪与定位问题
+
     - http://blog.720ui.com/2017/msa_design/
 
 ## 分布式
