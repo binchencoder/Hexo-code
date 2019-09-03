@@ -248,29 +248,38 @@
 </li>
 </ol>
 <h2 id="线程"><a href="#线程" class="headerlink" title="线程"></a>线程</h2><ol>
-<li>说说 CountDownLatch 原理</li>
-<li>说说 CyclicBarrier 原理</li>
-<li>说说 Semaphore 原理</li>
-<li>说说 Exchanger 原理</li>
-<li>说说 CountDownLatch 与 CyclicBarrier 区别</li>
-<li>ThreadLocal 原理分析</li>
-<li>讲讲线程池的实现原理</li>
-<li>线程池的几种方式与使用场景</li>
-<li>线程的生命周期及几种状态<ul>
+<li><p>说说 CountDownLatch 原理</p>
+<p>CountDownLatch是同步工具类之一，可以指定一个计数值，在并发环境下由线程进行减1操作，当计数值为0之后，被await方法阻塞的线程将会唤醒，实现线程间的同步。</p>
+<blockquote>
+<p><strong>See</strong> <a href="https://www.jianshu.com/p/7c7a5df5bda6" target="_blank" rel="noopener">https://www.jianshu.com/p/7c7a5df5bda6</a></p>
+</blockquote>
+</li>
+<li><p>说说 CyclicBarrier 原理</p>
+</li>
+<li><p>说说 Semaphore 原理</p>
+</li>
+<li><p>说说 Exchanger 原理</p>
+</li>
+<li><p>说说 CountDownLatch 与 CyclicBarrier 区别</p>
+</li>
+<li><p>ThreadLocal 原理分析</p>
+</li>
+<li><p>讲讲线程池的实现原理</p>
+</li>
+<li><p>线程池的几种方式与使用场景</p>
+</li>
+<li><p>线程的生命周期及几种状态</p>
+<ul>
 <li><a href="https://binchencoder.github.io/2018/08/31/Thread-State/">https://binchencoder.github.io/2018/08/31/Thread-State/</a></li>
 </ul>
 </li>
 </ol>
-<h2 id="锁机制"><a href="#锁机制" class="headerlink" title="锁机制"></a>锁机制</h2><ol>
-<li>说说线程安全问题</li>
-<li>volatile 实现原理</li>
-<li>synchronize 实现原理</li>
-<li>synchronized 与 lock 的区别</li>
-<li>CAS 乐观锁</li>
-<li>乐观锁的业务场景及实现方式</li>
-<li>ABA 问题</li>
-</ol>
-<h1 id="核心篇"><a href="#核心篇" class="headerlink" title="核心篇"></a>核心篇</h1><h2 id="数据存储"><a href="#数据存储" class="headerlink" title="数据存储"></a>数据存储</h2><ol>
+<h2 id="锁机制"><a href="#锁机制" class="headerlink" title="锁机制"></a>锁机制</h2><h3 id="AQS详解"><a href="#AQS详解" class="headerlink" title="AQS详解"></a>AQS详解</h3><p><img src="/2019/08/28/Java面试圣经/AQS.png" alt="AQS"></p>
+<p>AQS是AbstractQueuedSynchronizer的简称。AQS提供了一种实现阻塞锁和一系列依赖FIFO等待队列的同步器的框架。AQS为一系列同步器依赖于一个单独的原子变量（state）的同步器提供了一个非常有用的基础。子类们必须定义改变state变量的protected方法，这些方法定义了state是如何被获取或释放的。</p>
+<blockquote>
+<p><strong>See</strong> <a href="https://www.cnblogs.com/waterystone/p/4920797.html" target="_blank" rel="noopener">https://www.cnblogs.com/waterystone/p/4920797.html</a></p>
+</blockquote>
+<h3 id="说说线程安全问题"><a href="#说说线程安全问题" class="headerlink" title="说说线程安全问题"></a>说说线程安全问题</h3><h3 id="volatile-实现原理"><a href="#volatile-实现原理" class="headerlink" title="volatile 实现原理"></a>volatile 实现原理</h3><h3 id="synchronize-实现原理"><a href="#synchronize-实现原理" class="headerlink" title="synchronize 实现原理"></a>synchronize 实现原理</h3><h3 id="synchronized-与-lock-的区别"><a href="#synchronized-与-lock-的区别" class="headerlink" title="synchronized 与 lock 的区别"></a>synchronized 与 lock 的区别</h3><h3 id="CAS-乐观锁"><a href="#CAS-乐观锁" class="headerlink" title="CAS 乐观锁"></a>CAS 乐观锁</h3><h3 id="乐观锁的业务场景及实现方式"><a href="#乐观锁的业务场景及实现方式" class="headerlink" title="乐观锁的业务场景及实现方式"></a>乐观锁的业务场景及实现方式</h3><h3 id="ABA-问题"><a href="#ABA-问题" class="headerlink" title="ABA 问题"></a>ABA 问题</h3><h1 id="核心篇"><a href="#核心篇" class="headerlink" title="核心篇"></a>核心篇</h1><h2 id="数据存储"><a href="#数据存储" class="headerlink" title="数据存储"></a>数据存储</h2><ol>
 <li>MySQL 索引使用的注意事项</li>
 <li>分库与分表带来的分布式困境与应对之策</li>
 <li>说说 SQL 优化之道</li>
@@ -471,7 +480,7 @@
     <div class="widget">
         <h3 class="title">文章目录</h3>
         
-            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#基础篇"><span class="toc-text">基础篇</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#基本功"><span class="toc-text">基本功</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数据结构"><span class="toc-text">数据结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#集合"><span class="toc-text">集合</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#进阶篇"><span class="toc-text">进阶篇</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#网络"><span class="toc-text">网络</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#IO"><span class="toc-text">IO</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#线程"><span class="toc-text">线程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#锁机制"><span class="toc-text">锁机制</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#核心篇"><span class="toc-text">核心篇</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#数据存储"><span class="toc-text">数据存储</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#缓存使用"><span class="toc-text">缓存使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#消息队列"><span class="toc-text">消息队列</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#框架篇"><span class="toc-text">框架篇</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Spring"><span class="toc-text">Spring</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Netty"><span class="toc-text">Netty</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#微服务篇"><span class="toc-text">微服务篇</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#微服务"><span class="toc-text">微服务</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分布式"><span class="toc-text">分布式</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#高级进阶"><span class="toc-text">高级进阶</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#算法"><span class="toc-text">算法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#排序算法"><span class="toc-text">排序算法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JVM"><span class="toc-text">JVM</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#性能优化"><span class="toc-text">性能优化</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#References"><span class="toc-text">References</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#基础篇"><span class="toc-text">基础篇</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#基本功"><span class="toc-text">基本功</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数据结构"><span class="toc-text">数据结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#集合"><span class="toc-text">集合</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#进阶篇"><span class="toc-text">进阶篇</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#网络"><span class="toc-text">网络</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#IO"><span class="toc-text">IO</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#线程"><span class="toc-text">线程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#锁机制"><span class="toc-text">锁机制</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#AQS详解"><span class="toc-text">AQS详解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#说说线程安全问题"><span class="toc-text">说说线程安全问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#volatile-实现原理"><span class="toc-text">volatile 实现原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#synchronize-实现原理"><span class="toc-text">synchronize 实现原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#synchronized-与-lock-的区别"><span class="toc-text">synchronized 与 lock 的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CAS-乐观锁"><span class="toc-text">CAS 乐观锁</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#乐观锁的业务场景及实现方式"><span class="toc-text">乐观锁的业务场景及实现方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ABA-问题"><span class="toc-text">ABA 问题</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#核心篇"><span class="toc-text">核心篇</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#数据存储"><span class="toc-text">数据存储</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#缓存使用"><span class="toc-text">缓存使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#消息队列"><span class="toc-text">消息队列</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#框架篇"><span class="toc-text">框架篇</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Spring"><span class="toc-text">Spring</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Netty"><span class="toc-text">Netty</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#微服务篇"><span class="toc-text">微服务篇</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#微服务"><span class="toc-text">微服务</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分布式"><span class="toc-text">分布式</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#高级进阶"><span class="toc-text">高级进阶</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#算法"><span class="toc-text">算法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#排序算法"><span class="toc-text">排序算法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JVM"><span class="toc-text">JVM</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#性能优化"><span class="toc-text">性能优化</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#References"><span class="toc-text">References</span></a></li></ol>
         
     </div>
 </aside>

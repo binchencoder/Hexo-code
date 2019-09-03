@@ -66,25 +66,52 @@ categories:
 ## 线程
 
 1. 说说 CountDownLatch 原理
+
+   CountDownLatch是同步工具类之一，可以指定一个计数值，在并发环境下由线程进行减1操作，当计数值为0之后，被await方法阻塞的线程将会唤醒，实现线程间的同步。
+
+   > **See** https://www.jianshu.com/p/7c7a5df5bda6
+
 2. 说说 CyclicBarrier 原理
+
 3. 说说 Semaphore 原理
+
 4. 说说 Exchanger 原理
+
 5. 说说 CountDownLatch 与 CyclicBarrier 区别
+
 6. ThreadLocal 原理分析
+
 7. 讲讲线程池的实现原理
+
 8. 线程池的几种方式与使用场景
+
 9. 线程的生命周期及几种状态
+
    - https://binchencoder.github.io/2018/08/31/Thread-State/
 
 ## 锁机制
 
-1. 说说线程安全问题
-2. volatile 实现原理
-3. synchronize 实现原理
-4. synchronized 与 lock 的区别
-5. CAS 乐观锁
-6. 乐观锁的业务场景及实现方式
-7. ABA 问题
+### AQS详解
+
+![AQS](./Java面试圣经/AQS.png)
+
+AQS是AbstractQueuedSynchronizer的简称。AQS提供了一种实现阻塞锁和一系列依赖FIFO等待队列的同步器的框架。AQS为一系列同步器依赖于一个单独的原子变量（state）的同步器提供了一个非常有用的基础。子类们必须定义改变state变量的protected方法，这些方法定义了state是如何被获取或释放的。
+
+> **See** https://www.cnblogs.com/waterystone/p/4920797.html
+
+### 说说线程安全问题
+
+### volatile 实现原理
+
+### synchronize 实现原理
+
+### synchronized 与 lock 的区别
+
+### CAS 乐观锁
+
+### 乐观锁的业务场景及实现方式
+
+### ABA 问题
 
 # 核心篇
 
