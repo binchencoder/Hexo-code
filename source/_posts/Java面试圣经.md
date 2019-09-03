@@ -73,6 +73,8 @@ categories:
 
 2. 说说 CyclicBarrier 原理
 
+   ![CyclicBarrier](./Java面试圣经/CyclicBarrier.png)
+
 3. 说说 Semaphore 原理
 
 4. 说说 Exchanger 原理
