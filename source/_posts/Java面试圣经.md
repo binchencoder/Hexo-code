@@ -103,6 +103,10 @@ categories:
 
 6. ThreadLocal 原理分析
 
+   **用于防止对可变的单实例变量或全局变量进行共享**
+
+   **See** https://www.cnblogs.com/micrari/p/6790229.html
+
 7. 讲讲线程池的实现原理
 
 8. 线程池的几种方式与使用场景
