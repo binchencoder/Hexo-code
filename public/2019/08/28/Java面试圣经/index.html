@@ -1,6 +1,6 @@
 <!DOCTYPE HTML>
 <html lang="zh-CN">
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
     <!--Setting-->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -18,14 +18,14 @@
 
 
 
-<meta name="keywords" content="blog,binchencoder,IT,Web Back End,binchen,chenbin"/>
+<meta name="keywords" content="blog,binchencoder,IT,Web Back End,binchen,chenbin">
 
 
 
-<meta name="robots" content="all" />
-<meta name="google" content="all" />
-<meta name="googlebot" content="all" />
-<meta name="verify" content="all" />
+<meta name="robots" content="all">
+<meta name="google" content="all">
+<meta name="googlebot" content="all">
+<meta name="verify" content="all">
     <!--Title-->
 
 
@@ -63,7 +63,7 @@
     
 </head>
 
-
+</html>
 <!--[if lte IE 8]>
 <style>
     html{ font-size: 1em }
@@ -298,6 +298,14 @@
 </tr>
 </tbody>
 </table>
+<blockquote>
+<p><strong>CountDownLatch 强调的是一个线程（或多个）需要等待另外的n个线程干完某件事情之后才能继续执行。</strong></p>
+<p>举个例子：有五个人，一个裁判。这五个人同时跑，裁判开始计时，五个人都到终点了，裁判喊停，然后统计这五个人从开始跑到最后一个撞线用了多长时间。 </p>
+<p>我们实现代码的思路可能是这样：main线程是裁判，5个Worker是跑步的，运动员先准备，裁判喊跑，运动员才开始跑(这是第一次同步，对应begin)。5个人谁跑到终点了，countdown一下，直到5个人全部到达，裁判喊停(这是第二次同步，对应end)，然后算时间。 </p>
+</blockquote>
+<blockquote>
+<p><strong>CyclicBarrier强调的是n个线程，大家相互等待，只要有一个没完成，所有人都得等着。</strong></p>
+</blockquote>
 <ol start="6">
 <li><p>ThreadLocal 原理分析</p>
 </li>
