@@ -66,6 +66,8 @@ categories:
 
 ## 线程
 
+> References [Java线程模型](https://www.cnblogs.com/nevermorewang/p/9461410.html)
+
 1. 说说 CountDownLatch 原理
 
    CountDownLatch是同步工具类之一，可以指定一个计数值，在并发环境下由线程进行减1操作，当计数值为0之后，被await方法阻塞的线程将会唤醒，实现线程间的同步。
@@ -136,7 +138,15 @@ AQS是AbstractQueuedSynchronizer的简称。AQS提供了一种实现阻塞锁和
 
 3. volatile 实现原理
 
-4. synchronize 实现原理
+  如果一个字段被声明成volatile，java线程内存模型确保所有线程看到这个变量的值是一致的。这个就是所谓的“可见性”，就是一个线程修改了，其他线程能知道这个操作，这就是**可见性**。如何实现的呢？volatile修饰的变量在生成汇编代码的时候，会产生一条lock指令，lock前缀的指令在多核处理器下会引发两件事情：
+  - 将当前处理器缓存行的数据写回到系统内存；
+  - 这个写回内存的操作会使得在其它cpu里缓存了该内存地址的数据无效。
+
+  **See** https://www.cnblogs.com/nevermorewang/p/9864797.html
+
+4. synchronized 实现原理
+
+   synchronized是用java的monitor机制来实现的，就是synchronized代码块或者方法进入及退出的时候会生成monitorenter跟monitorexit两条命令。线程执行到monitorenter时会尝试获取对象所对应的monitor所有权，即尝试获取的对象的锁；monitorexit即为释放锁。
 
 5. [synchronized 与 lock 的区别](https://binchencoder.github.io/2019/09/05/synchronized%E5%92%8Clock/)
 
@@ -288,6 +298,8 @@ AQS是AbstractQueuedSynchronizer的简称。AQS提供了一种实现阻塞锁和
 3. [插入排序](https://www.runoob.com/w3cnote/insertion-sort.html)
 
 ## JVM
+
+> References [JVM8中内存基本操作](https://www.cnblogs.com/nevermorewang/p/9461417.html)
 
 1. [JVM内存结构](https://binchencoder.github.io/2019/08/21/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3JVM%20-%20%E5%86%85%E5%AD%98%E7%BB%93%E6%9E%84/)
 2. [JVM内存管理](https://binchencoder.github.io/2019/08/11/JVM内存管理/)
