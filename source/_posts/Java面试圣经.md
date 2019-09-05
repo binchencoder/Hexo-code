@@ -48,6 +48,7 @@ categories:
 2. 讲讲TCP、UDP、IP
    - https://segmentfault.com/a/1190000020121595
 3. [TCP三次握手、四次握手](https://binchencoder.github.io/2019/08/31/TCP%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E5%92%8C%E5%9B%9B%E6%AC%A1%E6%8F%A1%E6%89%8B/)
+   - https://note.youdao.com/ynoteshare1/index.html?id=0e999579be9f295f0d895930c98a67b9&type=note
 
 ## IO
 
@@ -109,13 +110,15 @@ categories:
 
 7. 讲讲线程池的实现原理
 
+   **See** https://www.jianshu.com/p/87bff5cc8d8c
+
 8. 线程池的几种方式与使用场景
 
 9. [线程的生命周期及几种状态](https://binchencoder.github.io/2018/08/31/Thread-State/)
 
 ## 锁机制
 
-### 1. AQS详解
+1. AQS详解
 
 ![AQS](./Java面试圣经/AQS.png)
 
@@ -123,19 +126,25 @@ AQS是AbstractQueuedSynchronizer的简称。AQS提供了一种实现阻塞锁和
 
 > **See** https://www.cnblogs.com/waterystone/p/4920797.html
 
-### 2. 说说线程安全问题
+2. 说说线程安全问题
 
-### 3. volatile 实现原理
+   某个属性是被多线程共享的资源，同时多线程有读写操作，**就有可能（注意是有可能）**存在线程安全问题。
 
-### 4. synchronize 实现原理
+   > 即使是有多线程对同一个共享资源都有读写，也不能笼统的说就一定存在线程安全问题
+   >
+   > 要考虑线程安全问题并不代表一定就有线程安全问题。仿佛有点矛盾。判断存不存在线程安全问题，还要根据业务特点和发生问题导致的结果来判断。
 
-### 5. synchronized 与 lock 的区别
+3. volatile 实现原理
 
-### 6. CAS 乐观锁
+4. synchronize 实现原理
 
-### 7. 乐观锁的业务场景及实现方式
+5. [synchronized 与 lock 的区别](https://binchencoder.github.io/2019/09/05/synchronized%E5%92%8Clock/)
 
-### 8. ABA 问题
+6. CAS 乐观锁
+
+7. 乐观锁的业务场景及实现方式
+
+8. ABA 问题
 
 # 核心篇
 
@@ -292,6 +301,11 @@ AQS是AbstractQueuedSynchronizer的简称。AQS提供了一种实现阻塞锁和
 2. 如何发现性能瓶颈
 3. 性能调优的常见手段
 4. 说说你在项目中如何进行性能调优
+
+# 面试官拷问
+
+1. 平时碰到系统CPU飙高和频繁GC，你会怎么排查？
+   - https://www.jianshu.com/p/cf3d157e245f
 
 # References
 
