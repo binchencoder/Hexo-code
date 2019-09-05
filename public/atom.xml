@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://binchencoder.github.io/"/>
-  <updated>2019-09-05T10:54:56.694Z</updated>
+  <updated>2019-09-05T11:01:49.469Z</updated>
   <id>https://binchencoder.github.io/</id>
   
   <author>
@@ -21,13 +21,14 @@
     <link href="https://binchencoder.github.io/2019/09/05/synchronized%E5%92%8Clock/"/>
     <id>https://binchencoder.github.io/2019/09/05/synchronized和lock/</id>
     <published>2019-09-05T13:01:08.000Z</published>
-    <updated>2019-09-05T10:54:56.694Z</updated>
+    <updated>2019-09-05T11:01:49.469Z</updated>
     
     <summary type="html">
     
       
       
-        &lt;h1 id=&quot;synchronized和lock&quot;&gt;&lt;a href=&quot;#synchronized和lock&quot; class=&quot;headerlink&quot; title=&quot;synchronized和lock&quot;&gt;&lt;/a&gt;synchronized和lock&lt;/h1&gt;&lt;p&gt;Java 使用&lt;co
+        &lt;h1 id=&quot;开篇&quot;&gt;&lt;a href=&quot;#开篇&quot; class=&quot;headerlink&quot; title=&quot;开篇&quot;&gt;&lt;/a&gt;开篇&lt;/h1&gt;&lt;p&gt;Java 使用&lt;code&gt;synchronized&lt;/code&gt;和&lt;code&gt;Lock&lt;/code&gt;两种机制实现某种共享资源的同步&lt;/p&gt;
+
       
     
     </summary>

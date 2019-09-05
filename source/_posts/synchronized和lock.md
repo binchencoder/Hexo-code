@@ -9,13 +9,13 @@ categories:
     - 后端
 ---
 
-# synchronized和lock
+# 开篇
 
 Java 使用```synchronized```和```Lock```两种机制实现某种共享资源的同步
 
-**synchronized** 使用Object对象本身的notify、wait、notifyAll调度机制
+- **synchronized** 使用Object对象本身的notify、wait、notifyAll调度机制
 
-**Lock** 可以使用Condition(java.util.concurrent.locks.Condition)进行线程之间的调度，完成synchronized的所有功能
+- **Lock** 可以使用Condition(java.util.concurrent.locks.Condition)进行线程之间的调度，完成synchronized的所有功能
 
 ## 区别
 
