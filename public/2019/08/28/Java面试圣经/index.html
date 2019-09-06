@@ -382,8 +382,21 @@
 </blockquote>
 </li>
 <li><p><a href="https://www.cnblogs.com/LBSer/p/5183300.html" target="_blank" rel="noopener">MySQL 遇到的死锁问题</a></p>
+<blockquote>
+<p><strong>如何避免死锁：</strong></p>
+<ol>
+<li>以固定的顺序访问表和行；</li>
+<li>大事务拆小。大事务更倾向于死锁，如果业务允许，将大事务拆小；</li>
+<li>在同一个事务中，尽可能做到一次锁定所需要的所有资源，减少死锁概率；</li>
+<li>降低隔离级别。如果业务允许，将隔离级别调低也是较好的选择，比如将隔离级别从RR调整为RC，可以避免掉很多因为gap锁造成的死锁；</li>
+<li>为表添加合理的索引。可以看到如果不走索引将会为表的每一行记录添加上锁，死锁的概率大大增大。</li>
+</ol>
+</blockquote>
 </li>
 <li><p>数据库索引的原理</p>
+<ul>
+<li><a href="https://www.jianshu.com/p/4c2a2b0ef3e0" target="_blank" rel="noopener">https://www.jianshu.com/p/4c2a2b0ef3e0</a></li>
+</ul>
 </li>
 <li><p>BTREE与HASH索引的区别, 为什么要用 BTREE索引</p>
 <ul>
@@ -403,7 +416,22 @@
 </li>
 <li><p>倒排索引</p>
 </li>
+<li><p>事务隔离级别</p>
+<ul>
+<li><p>未提交读(Read uncommitted)</p>
+</li>
+<li><p>已提交读(Read committed <strong>[RC]</strong>)：只能读取到已经提交的数据</p>
+</li>
+<li><p>可重复读(Repeatable read <strong>[RR]</strong>)：<strong>在同一个事务内的查询都是事务开始时刻一致的，InnoDB默认级别</strong></p>
+</li>
+<li><p>可串行化(Serializable)</p>
+</li>
+</ul>
+</li>
 </ol>
+<blockquote>
+<p>我们较常用的是RC和RR</p>
+</blockquote>
 <h3 id="References"><a href="#References" class="headerlink" title="References"></a>References</h3><ul>
 <li><a href="https://notes.diguage.com/mysql/" target="_blank" rel="noopener">https://notes.diguage.com/mysql/</a></li>
 </ul>

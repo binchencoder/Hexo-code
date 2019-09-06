@@ -178,7 +178,17 @@ AQS是AbstractQueuedSynchronizer的简称。AQS提供了一种实现阻塞锁和
 
 4. [MySQL 遇到的死锁问题](https://www.cnblogs.com/LBSer/p/5183300.html)
 
+   > **如何避免死锁：**
+   >
+   > 1. 以固定的顺序访问表和行；
+   > 2. 大事务拆小。大事务更倾向于死锁，如果业务允许，将大事务拆小；
+   > 3. 在同一个事务中，尽可能做到一次锁定所需要的所有资源，减少死锁概率；
+   > 4. 降低隔离级别。如果业务允许，将隔离级别调低也是较好的选择，比如将隔离级别从RR调整为RC，可以避免掉很多因为gap锁造成的死锁；
+   > 5. 为表添加合理的索引。可以看到如果不走索引将会为表的每一行记录添加上锁，死锁的概率大大增大。
+
 5. 数据库索引的原理
+
+   - https://www.jianshu.com/p/4c2a2b0ef3e0
 
 6. BTREE与HASH索引的区别, 为什么要用 BTREE索引
    - https://www.cnblogs.com/alphago-1/articles/6724207.html
@@ -195,6 +205,18 @@ AQS是AbstractQueuedSynchronizer的简称。AQS提供了一种实现阻塞锁和
 11. 聊聊 ElasticSearch 使用场景
 
 12. 倒排索引
+
+13. 事务隔离级别
+
+    - 未提交读(Read uncommitted)
+
+    - 已提交读(Read committed **[RC]**)：只能读取到已经提交的数据
+
+    - 可重复读(Repeatable read **[RR]**)：**在同一个事务内的查询都是事务开始时刻一致的，InnoDB默认级别**
+
+    - 可串行化(Serializable)
+
+> 我们较常用的是RC和RR
 
 ### References
 
