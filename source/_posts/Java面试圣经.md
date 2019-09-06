@@ -161,17 +161,44 @@ AQS是AbstractQueuedSynchronizer的简称。AQS提供了一种实现阻塞锁和
 ## 数据存储
 
 1. MySQL 索引使用的注意事项
+
 2. 分库与分表带来的分布式困境与应对之策
+
 3. 说说 SQL 优化之道
-4. MySQL 遇到的死锁问题
+
+   > 1. 负向条件(where != 条件)不能使用索引，可以优化为`in` 查询；
+   >
+   > 2. Like 模糊查询左匹配不能使用索引, 只有右匹配能使用索引；
+   >
+   > 3. 数据区分度不大的字段不宜使用索引，如：性别只有男，女，每次过滤掉的数据很少，不宜使用索引；
+   >
+   > 4. 在属性上进行计算不能命中索引；
+   >
+   > 其他实践 **See** https://www.jianshu.com/p/906fd3ca8dc7
+
+4. [MySQL 遇到的死锁问题](https://www.cnblogs.com/LBSer/p/5183300.html)
+
 5. 数据库索引的原理
-6. B-tree与Hash索引的区别, 为什么要用 B-tree索引
+
+6. BTREE与HASH索引的区别, 为什么要用 BTREE索引
+   - https://www.cnblogs.com/alphago-1/articles/6724207.html
+   - https://mp.weixin.qq.com/s/dhGAUs-S3RbBaOL2yxh1Iw
+
 7. 聚集索引与非聚集索引的区别
+
 8. limit 20000 加载很慢怎么解决
+
 9. 选择合适的数据存储方案
+
 10. 聊聊 MongoDB 使用场景
+
 11. 聊聊 ElasticSearch 使用场景
+
 12. 倒排索引
+
+### References
+
+- https://notes.diguage.com/mysql/
 
 ## 缓存使用
 
