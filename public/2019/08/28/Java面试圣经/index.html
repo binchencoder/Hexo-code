@@ -399,12 +399,21 @@
 </ul>
 </li>
 <li><p>BTREE与HASH索引的区别, 为什么要用 BTREE索引</p>
+<blockquote>
+<p><strong>Hash 索引</strong>只能够用于使用 = 或者 &lt;=&gt; 运算符的相等比较(但是速度更快)。Hash 索引不能够用于诸如 &lt; 等用于查找一个范围值的比较运算符；</p>
+<p><strong>B-tree 索引</strong>可以用于使用 =, &gt;, &gt;=, &lt;, &lt;= 或者 BETWEEN 运算符的列比较。如果 LIKE 的参数是一个没有以通配符起始的常量字符串的话也可以使用这种索引。</p>
+</blockquote>
 <ul>
 <li><a href="https://www.cnblogs.com/alphago-1/articles/6724207.html" target="_blank" rel="noopener">https://www.cnblogs.com/alphago-1/articles/6724207.html</a></li>
 <li><a href="https://mp.weixin.qq.com/s/dhGAUs-S3RbBaOL2yxh1Iw" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/dhGAUs-S3RbBaOL2yxh1Iw</a></li>
 </ul>
 </li>
 <li><p>聚集索引与非聚集索引的区别</p>
+<blockquote>
+<p><strong>聚集索引：</strong>数据行的物理顺序与列值(一般是主键的那一列)的逻辑顺序相同，一个表中只能有一个聚集索引。Mysql中聚集索引就是主键索引，如果没有主键，系统会自动创建一个隐含列作为表的聚集索引。</p>
+<p><strong>非聚集索引：</strong>该索引中索引的逻辑顺序与磁盘上行的物理存储顺序不同，一个表中可以有多个非聚集索引。</p>
+</blockquote>
+<p><strong>See</strong> <a href="https://www.cnblogs.com/s-b-b/p/8334593.html" target="_blank" rel="noopener">https://www.cnblogs.com/s-b-b/p/8334593.html</a></p>
 </li>
 <li><p>limit 20000 加载很慢怎么解决</p>
 </li>
@@ -436,28 +445,43 @@
 <li><a href="https://notes.diguage.com/mysql/" target="_blank" rel="noopener">https://notes.diguage.com/mysql/</a></li>
 </ul>
 <h2 id="缓存使用"><a href="#缓存使用" class="headerlink" title="缓存使用"></a>缓存使用</h2><ol>
-<li>Redis 有哪些类型</li>
-<li>Redis 内部结构</li>
-<li>Redis 内存淘汰机制 <ul>
-<li><a href="http://blog.720ui.com/2016/redis_action_02_maxmemory_policy" target="_blank" rel="noopener">http://blog.720ui.com/2016/redis_action_02_maxmemory_policy</a></li>
-</ul>
+<li><p>Redis 有哪些类型</p>
 </li>
-<li>聊聊 Redis 使用场景<ul>
+<li><p>Redis 内部结构</p>
+</li>
+<li><p><a href="http://blog.720ui.com/2016/redis_action_02_maxmemory_policy" target="_blank" rel="noopener">Redis 内存淘汰机制 </a></p>
+<blockquote>
+<p>volatile-lru：从已设置过期时间的数据集中挑选最近最少使用的数据淘汰</p>
+<p>volatile-ttl：从已设置过期时间的数据集中挑选将要过期的数据淘汰</p>
+<p>volatile-random：从已设置过期时间的数据集中任意选择数据淘汰</p>
+<p>allkeys-lru：从数据集中挑选最近最少使用的数据淘汰</p>
+<p>allkeys-random：从数据集中任意选择数据淘汰</p>
+<p>no-enviction：当内存达到限制的时候，不淘汰任何数据，不可写入任何数据集，所有引起申请内存的命令会报错</p>
+</blockquote>
+</li>
+<li><p>聊聊 Redis 使用场景</p>
+<ul>
 <li><a href="http://blog.720ui.com/2017/redis_core_use" target="_blank" rel="noopener">http://blog.720ui.com/2017/redis_core_use</a></li>
 </ul>
 </li>
-<li>Redis 持久化机制<ul>
+<li><p>Redis 持久化机制</p>
+<ul>
 <li><a href="http://blog.720ui.com/2016/redis_action_03_rdb_aof" target="_blank" rel="noopener">http://blog.720ui.com/2016/redis_action_03_rdb_aof</a></li>
 </ul>
 </li>
-<li>Redis 集群方案与实现<ul>
+<li><p>Redis 集群方案与实现</p>
+<ul>
 <li><a href="http://blog.720ui.com/2016/redis_action_04_cluster" target="_blank" rel="noopener">http://blog.720ui.com/2016/redis_action_04_cluster</a></li>
 </ul>
 </li>
-<li>Redis 为什么是单线程的</li>
-<li>缓存崩溃</li>
-<li>缓存降级</li>
-<li>使用缓存的合理性问题<ul>
+<li><p>Redis 为什么是单线程的</p>
+</li>
+<li><p>缓存崩溃</p>
+</li>
+<li><p>缓存降级</p>
+</li>
+<li><p>使用缓存的合理性问题</p>
+<ul>
 <li><a href="http://blog.720ui.com/2016/redis_action_01_use_core" target="_blank" rel="noopener">http://blog.720ui.com/2016/redis_action_01_use_core</a></li>
 </ul>
 </li>
@@ -569,7 +593,7 @@
 <ol>
 <li><a href="https://binchencoder.github.io/2019/08/21/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3JVM%20-%20%E5%86%85%E5%AD%98%E7%BB%93%E6%9E%84/">JVM内存结构</a></li>
 <li><a href="https://binchencoder.github.io/2019/08/11/JVM内存管理/">JVM内存管理</a></li>
-<li>JVM内存模型(JMM)</li>
+<li><a href="https://www.jianshu.com/p/d3fda02d4cae" target="_blank" rel="noopener">JVM内存模型(JMM)</a></li>
 <li><a href="https://binchencoder.github.io/2019/08/23/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3JVM%20-%20%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6/">JVM垃圾回收</a></li>
 <li><a href="https://binchencoder.github.io/2019/08/24/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3JVM%20-%20%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E4%B9%8B%E4%B8%96%E4%BB%A3%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E8%BF%87%E7%A8%8B/">JVM垃圾回收之世代垃圾收集过程</a></li>
 </ol>

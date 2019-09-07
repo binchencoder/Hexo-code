@@ -191,10 +191,21 @@ AQS是AbstractQueuedSynchronizer的简称。AQS提供了一种实现阻塞锁和
    - https://www.jianshu.com/p/4c2a2b0ef3e0
 
 6. BTREE与HASH索引的区别, 为什么要用 BTREE索引
+
+   > **Hash 索引**只能够用于使用 = 或者 <=> 运算符的相等比较(但是速度更快)。Hash 索引不能够用于诸如 < 等用于查找一个范围值的比较运算符；
+   >
+   > **B-tree 索引**可以用于使用 =, >, >=, <, <= 或者 BETWEEN 运算符的列比较。如果 LIKE 的参数是一个没有以通配符起始的常量字符串的话也可以使用这种索引。
+
    - https://www.cnblogs.com/alphago-1/articles/6724207.html
    - https://mp.weixin.qq.com/s/dhGAUs-S3RbBaOL2yxh1Iw
 
 7. 聚集索引与非聚集索引的区别
+
+   > **聚集索引：**数据行的物理顺序与列值(一般是主键的那一列)的逻辑顺序相同，一个表中只能有一个聚集索引。Mysql中聚集索引就是主键索引，如果没有主键，系统会自动创建一个隐含列作为表的聚集索引。
+   >
+   > **非聚集索引：**该索引中索引的逻辑顺序与磁盘上行的物理存储顺序不同，一个表中可以有多个非聚集索引。
+
+   **See** https://www.cnblogs.com/s-b-b/p/8334593.html
 
 8. limit 20000 加载很慢怎么解决
 
@@ -225,19 +236,42 @@ AQS是AbstractQueuedSynchronizer的简称。AQS提供了一种实现阻塞锁和
 ## 缓存使用
 
 1. Redis 有哪些类型
+
 2. Redis 内部结构
-3. Redis 内存淘汰机制 
-	- http://blog.720ui.com/2016/redis_action_02_maxmemory_policy
+
+3. [Redis 内存淘汰机制 ](http://blog.720ui.com/2016/redis_action_02_maxmemory_policy)
+	
+	> volatile-lru：从已设置过期时间的数据集中挑选最近最少使用的数据淘汰
+	>
+	> volatile-ttl：从已设置过期时间的数据集中挑选将要过期的数据淘汰
+	>
+	> volatile-random：从已设置过期时间的数据集中任意选择数据淘汰
+	>
+	> allkeys-lru：从数据集中挑选最近最少使用的数据淘汰
+	>
+	> allkeys-random：从数据集中任意选择数据淘汰
+	>
+	> no-enviction：当内存达到限制的时候，不淘汰任何数据，不可写入任何数据集，所有引起申请内存的命令会报错
 4. 聊聊 Redis 使用场景
-	- http://blog.720ui.com/2017/redis_core_use
+
+  - http://blog.720ui.com/2017/redis_core_use
+
 5. Redis 持久化机制
+
    - http://blog.720ui.com/2016/redis_action_03_rdb_aof
+
 6. Redis 集群方案与实现
+
    - http://blog.720ui.com/2016/redis_action_04_cluster
+
 7. Redis 为什么是单线程的
+
 8. 缓存崩溃
+
 9. 缓存降级
+
 10. 使用缓存的合理性问题
+
     - http://blog.720ui.com/2016/redis_action_01_use_core
 
 ## 消息队列
@@ -352,7 +386,7 @@ AQS是AbstractQueuedSynchronizer的简称。AQS提供了一种实现阻塞锁和
 
 1. [JVM内存结构](https://binchencoder.github.io/2019/08/21/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3JVM%20-%20%E5%86%85%E5%AD%98%E7%BB%93%E6%9E%84/)
 2. [JVM内存管理](https://binchencoder.github.io/2019/08/11/JVM内存管理/)
-3. JVM内存模型(JMM)
+3. [JVM内存模型(JMM)](https://www.jianshu.com/p/d3fda02d4cae)
 4. [JVM垃圾回收](https://binchencoder.github.io/2019/08/23/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3JVM%20-%20%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6/)
 5. [JVM垃圾回收之世代垃圾收集过程](https://binchencoder.github.io/2019/08/24/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3JVM%20-%20%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E4%B9%8B%E4%B8%96%E4%BB%A3%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E8%BF%87%E7%A8%8B/)
 
