@@ -252,19 +252,24 @@ AQS是AbstractQueuedSynchronizer的简称。AQS提供了一种实现阻塞锁和
 	> allkeys-random：从数据集中任意选择数据淘汰
 	>
 	> no-enviction：当内存达到限制的时候，不淘汰任何数据，不可写入任何数据集，所有引起申请内存的命令会报错
+	
 4. 聊聊 Redis 使用场景
 
   - http://blog.720ui.com/2017/redis_core_use
 
 5. Redis 持久化机制
 
-   - http://blog.720ui.com/2016/redis_action_03_rdb_aof
+   > **RDB：** 这是Redis默认的持久化方式，按照一定的时间周期策略把内存的数据以快照的形式保存到硬盘的二进制文件；
+   >
+   > **AOF：** Redis会将每一个收到的写命令都通过Write函数追加到文件最后，类似于MySQL的binlog。当Redis重启是会通过重新执行文件中保存的写命令来在内存中重建整个数据库的内容。
+
+   **See** http://blog.720ui.com/2016/redis_action_03_rdb_aof
 
 6. Redis 集群方案与实现
 
    - http://blog.720ui.com/2016/redis_action_04_cluster
 
-7. Redis 为什么是单线程的
+7. [Redis 为什么是单线程的](https://cloud.tencent.com/developer/article/1120615)
 
 8. 缓存崩溃
 
@@ -272,7 +277,7 @@ AQS是AbstractQueuedSynchronizer的简称。AQS提供了一种实现阻塞锁和
 
 10. 使用缓存的合理性问题
 
-    - http://blog.720ui.com/2016/redis_action_01_use_core
+   - http://blog.720ui.com/2016/redis_action_01_use_core
 
 ## 消息队列
 

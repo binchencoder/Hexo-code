@@ -1,6 +1,6 @@
 <!DOCTYPE HTML>
 <html lang="zh-CN">
-<head><meta name="generator" content="Hexo 3.9.0">
+<head>
     <!--Setting-->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -18,14 +18,14 @@
 
 
 
-<meta name="keywords" content="blog,binchencoder,IT,Web Back End,binchen,chenbin">
+<meta name="keywords" content="blog,binchencoder,IT,Web Back End,binchen,chenbin"/>
 
 
 
-<meta name="robots" content="all">
-<meta name="google" content="all">
-<meta name="googlebot" content="all">
-<meta name="verify" content="all">
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
     <!--Title-->
 
 
@@ -63,7 +63,7 @@
     
 </head>
 
-</html>
+
 <!--[if lte IE 8]>
 <style>
     html{ font-size: 1em }
@@ -465,16 +465,18 @@
 </ul>
 </li>
 <li><p>Redis 持久化机制</p>
-<ul>
-<li><a href="http://blog.720ui.com/2016/redis_action_03_rdb_aof" target="_blank" rel="noopener">http://blog.720ui.com/2016/redis_action_03_rdb_aof</a></li>
-</ul>
+<blockquote>
+<p><strong>RDB：</strong> 这是Redis默认的持久化方式，按照一定的时间周期策略把内存的数据以快照的形式保存到硬盘的二进制文件；</p>
+<p><strong>AOF：</strong> Redis会将每一个收到的写命令都通过Write函数追加到文件最后，类似于MySQL的binlog。当Redis重启是会通过重新执行文件中保存的写命令来在内存中重建整个数据库的内容。</p>
+</blockquote>
+<p><strong>See</strong> <a href="http://blog.720ui.com/2016/redis_action_03_rdb_aof" target="_blank" rel="noopener">http://blog.720ui.com/2016/redis_action_03_rdb_aof</a></p>
 </li>
 <li><p>Redis 集群方案与实现</p>
 <ul>
 <li><a href="http://blog.720ui.com/2016/redis_action_04_cluster" target="_blank" rel="noopener">http://blog.720ui.com/2016/redis_action_04_cluster</a></li>
 </ul>
 </li>
-<li><p>Redis 为什么是单线程的</p>
+<li><p><a href="https://cloud.tencent.com/developer/article/1120615" target="_blank" rel="noopener">Redis 为什么是单线程的</a></p>
 </li>
 <li><p>缓存崩溃</p>
 </li>
