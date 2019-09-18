@@ -410,5 +410,6 @@ AQS是AbstractQueuedSynchronizer的简称。AQS提供了一种实现阻塞锁和
 # References
 
 - http://blog.720ui.com/2018/java_interview_final
+- https://www.jianshu.com/p/76959115d486
 
 
