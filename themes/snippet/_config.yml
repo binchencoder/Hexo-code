@@ -23,8 +23,8 @@ menu:
 - page: 工具
   url: /categories/工具/
   icon:
-- page: Hexo
-  url: /categories/Hexo/
+- page: 其他
+  url: /categories/其他/
   icon:
 - page: 时间轴
   url: /archives/
