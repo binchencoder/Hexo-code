@@ -4,6 +4,28 @@
 
     
   <url>
+    <loc>https://binchencoder.github.io/2019/08/28/Java%E9%9D%A2%E8%AF%95%E5%9C%A3%E7%BB%8F/</loc>
+    <lastmod>2019-11-27T14:32:30.000Z</lastmod>
+    <data>
+        <display>
+        <title>Java面试圣经</title>
+        <pubTime>2019-08-28T12:53:08.000Z</pubTime>
+        
+        <tag>Java</tag>
+         
+        <tag>面试</tag>
+         
+         
+           
+             
+              <breadCrumb title="后端" url="https://binchencoder.github.io/categories/%E5%90%8E%E7%AB%AF/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://binchencoder.github.io/2019/11/09/%E5%A4%9A%E7%BA%BF%E7%A8%8B%20%E5%88%B0%E5%BA%95%E8%AF%A5%E8%AE%BE%E7%BD%AE%E5%A4%9A%E5%B0%91%E7%BA%BF%E7%A8%8B/</loc>
     <lastmod>2019-11-09T08:18:05.000Z</lastmod>
     <data>
@@ -15,9 +37,9 @@
          
         <tag>面试</tag>
          
-        <tag>多线程</tag>
-         
         <tag>后端</tag>
+         
+        <tag>多线程</tag>
          
          
            
@@ -150,28 +172,6 @@
            
              
               <breadCrumb title="系统问题排查" url="https://binchencoder.github.io/categories/%E7%B3%BB%E7%BB%9F%E9%97%AE%E9%A2%98%E6%8E%92%E6%9F%A5/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://binchencoder.github.io/2019/08/28/Java%E9%9D%A2%E8%AF%95%E5%9C%A3%E7%BB%8F/</loc>
-    <lastmod>2019-09-18T15:12:29.000Z</lastmod>
-    <data>
-        <display>
-        <title>Java面试圣经</title>
-        <pubTime>2019-08-28T12:53:08.000Z</pubTime>
-        
-        <tag>Java</tag>
-         
-        <tag>面试</tag>
-         
-         
-           
-             
-              <breadCrumb title="后端" url="https://binchencoder.github.io/categories/%E5%90%8E%E7%AB%AF/"/>
           
         </display>
     </data>

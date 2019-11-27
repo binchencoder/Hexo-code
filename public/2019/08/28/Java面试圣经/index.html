@@ -446,7 +446,54 @@
 </ul>
 <h2 id="缓存使用"><a href="#缓存使用" class="headerlink" title="缓存使用"></a>缓存使用</h2><ol>
 <li><p>Redis 有哪些类型</p>
+<blockquote>
+<p>Redis支持五种数据类型：string（字符串），hash（哈希），list（列表），set（集合）及zset(sorted set：有序集合)</p>
+</blockquote>
 </li>
+</ol>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">类型</th>
+<th style="text-align:left">简介</th>
+<th style="text-align:left">特性</th>
+<th style="text-align:left">场景</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">String(字符串)</td>
+<td style="text-align:left">二进制安全</td>
+<td style="text-align:left">可以包含任何数据,比如jpg图片或者序列化的对象,一个键最大能存储512M</td>
+<td style="text-align:left">—</td>
+</tr>
+<tr>
+<td style="text-align:left">Hash(字典)</td>
+<td style="text-align:left">键值对集合,即编程语言中的Map类型</td>
+<td style="text-align:left">适合存储对象,并且可以像数据库中update一个属性一样只修改某一项属性值(Memcached中需要取出整个字符串反序列化成对象修改完再序列化存回去)</td>
+<td style="text-align:left">存储、读取、修改用户属性</td>
+</tr>
+<tr>
+<td style="text-align:left">List(列表)</td>
+<td style="text-align:left">链表(双向链表)</td>
+<td style="text-align:left">增删快,提供了操作某一段元素的API</td>
+<td style="text-align:left">1,最新消息排行等功能(比如朋友圈的时间线) 2,消息队列</td>
+</tr>
+<tr>
+<td style="text-align:left">Set(集合)</td>
+<td style="text-align:left">哈希表实现,元素不重复</td>
+<td style="text-align:left">1、添加、删除,查找的复杂度都是O(1) 2、为集合提供了求交集、并集、差集等操作</td>
+<td style="text-align:left">1、共同好友 2、利用唯一性,统计访问网站的所有独立ip 3、好友推荐时,根据tag求交集,大于某个阈值就可以推荐</td>
+</tr>
+<tr>
+<td style="text-align:left">Sorted Set(有序集合)</td>
+<td style="text-align:left">将Set中的元素增加一个权重参数score,元素按score有序排列</td>
+<td style="text-align:left">数据插入集合时,已经进行天然排序</td>
+<td style="text-align:left">1、排行榜 2、带权重的消息队列</td>
+</tr>
+</tbody>
+</table>
+<ol start="2">
 <li><p>Redis 内部结构</p>
 </li>
 <li><p><a href="http://blog.720ui.com/2016/redis_action_02_maxmemory_policy" target="_blank" rel="noopener">Redis 内存淘汰机制 </a></p>
