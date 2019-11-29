@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://binchencoder.github.io/"/>
-  <updated>2019-11-09T08:18:05.000Z</updated>
+  <updated>2019-11-29T15:10:47.000Z</updated>
   <id>https://binchencoder.github.io/</id>
   
   <author>
@@ -15,6 +15,60 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>排查CPU负载高</title>
+    <link href="https://binchencoder.github.io/2019/11/29/%E6%8E%92%E6%9F%A5CPU%E8%B4%9F%E8%BD%BD%E9%AB%98/"/>
+    <id>https://binchencoder.github.io/2019/11/29/排查CPU负载高/</id>
+    <published>2019-11-29T14:53:08.000Z</published>
+    <updated>2019-11-29T15:10:47.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;一、Overview&quot;&gt;&lt;a href=&quot;#一、Overview&quot; class=&quot;headerlink&quot; title=&quot;一、Overview&quot;&gt;&lt;/a&gt;一、Overview&lt;/h1&gt;&lt;p&gt;本篇文章针对的是排查Java程序出现高负载的情况，如果是其他语言写的程序，如
+      
+    
+    </summary>
+    
+      <category term="工具" scheme="https://binchencoder.github.io/categories/%E5%B7%A5%E5%85%B7/"/>
+    
+    
+      <category term="Java" scheme="https://binchencoder.github.io/tags/Java/"/>
+    
+      <category term="面试" scheme="https://binchencoder.github.io/tags/%E9%9D%A2%E8%AF%95/"/>
+    
+      <category term="线上诊断" scheme="https://binchencoder.github.io/tags/%E7%BA%BF%E4%B8%8A%E8%AF%8A%E6%96%AD/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Arthas</title>
+    <link href="https://binchencoder.github.io/2019/11/29/Arthas/"/>
+    <id>https://binchencoder.github.io/2019/11/29/Arthas/</id>
+    <published>2019-11-29T12:53:08.000Z</published>
+    <updated>2019-11-29T15:08:54.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;Arthas&quot;&gt;&lt;a href=&quot;#Arthas&quot; class=&quot;headerlink&quot; title=&quot;Arthas&quot;&gt;&lt;/a&gt;Arthas&lt;/h1&gt;&lt;p&gt;&lt;strong&gt;Arthas 是Alibaba开源的Java诊断工具，深受开发者喜爱。&lt;/strong&gt;&lt;/
+      
+    
+    </summary>
+    
+      <category term="工具" scheme="https://binchencoder.github.io/categories/%E5%B7%A5%E5%85%B7/"/>
+    
+    
+      <category term="Java" scheme="https://binchencoder.github.io/tags/Java/"/>
+    
+      <category term="后端" scheme="https://binchencoder.github.io/tags/%E5%90%8E%E7%AB%AF/"/>
+    
+      <category term="线上诊断" scheme="https://binchencoder.github.io/tags/%E7%BA%BF%E4%B8%8A%E8%AF%8A%E6%96%AD/"/>
+    
+  </entry>
   
   <entry>
     <title>多线程, 到底该设置多少线程</title>
@@ -41,9 +95,9 @@
     
       <category term="面试" scheme="https://binchencoder.github.io/tags/%E9%9D%A2%E8%AF%95/"/>
     
-      <category term="后端" scheme="https://binchencoder.github.io/tags/%E5%90%8E%E7%AB%AF/"/>
-    
       <category term="多线程" scheme="https://binchencoder.github.io/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/"/>
+    
+      <category term="后端" scheme="https://binchencoder.github.io/tags/%E5%90%8E%E7%AB%AF/"/>
     
   </entry>
   
@@ -73,7 +127,7 @@
     <link href="https://binchencoder.github.io/2019/09/26/%E6%8E%92%E6%9F%A5%E4%BA%A7%E7%BA%BF%E7%B3%BB%E7%BB%9F%E5%83%B5%E6%AD%BB/"/>
     <id>https://binchencoder.github.io/2019/09/26/排查产线系统僵死/</id>
     <published>2019-09-26T07:53:08.000Z</published>
-    <updated>2019-11-04T13:17:18.000Z</updated>
+    <updated>2019-11-29T15:09:04.000Z</updated>
     
     <summary type="html">
     
@@ -85,10 +139,14 @@
     
     </summary>
     
-      <category term="系统问题排查" scheme="https://binchencoder.github.io/categories/%E7%B3%BB%E7%BB%9F%E9%97%AE%E9%A2%98%E6%8E%92%E6%9F%A5/"/>
+      <category term="工具" scheme="https://binchencoder.github.io/categories/%E5%B7%A5%E5%85%B7/"/>
     
+    
+      <category term="Java" scheme="https://binchencoder.github.io/tags/Java/"/>
     
       <category term="后端" scheme="https://binchencoder.github.io/tags/%E5%90%8E%E7%AB%AF/"/>
+    
+      <category term="线上诊断" scheme="https://binchencoder.github.io/tags/%E7%BA%BF%E4%B8%8A%E8%AF%8A%E6%96%AD/"/>
     
   </entry>
   
@@ -475,56 +533,6 @@
       <category term="SpringBoot" scheme="https://binchencoder.github.io/tags/SpringBoot/"/>
     
       <category term="Spring Cloud" scheme="https://binchencoder.github.io/tags/Spring-Cloud/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>MySQL优化原理</title>
-    <link href="https://binchencoder.github.io/2019/07/29/MySQL%E4%BC%98%E5%8C%96%E5%8E%9F%E7%90%86/"/>
-    <id>https://binchencoder.github.io/2019/07/29/MySQL优化原理/</id>
-    <published>2019-07-29T14:10:18.000Z</published>
-    <updated>2019-08-29T12:52:53.000Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;说起MySQL的查询优化，相信大家收藏了一堆奇技淫巧：不能使用SELECT *、不使用NULL字段、合理创建索引、为字段选择合适的数据类型…
-      
-    
-    </summary>
-    
-      <category term="存储" scheme="https://binchencoder.github.io/categories/%E5%AD%98%E5%82%A8/"/>
-    
-    
-      <category term="MySQL" scheme="https://binchencoder.github.io/tags/MySQL/"/>
-    
-      <category term="存储" scheme="https://binchencoder.github.io/tags/%E5%AD%98%E5%82%A8/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Linux查看系统硬件信息</title>
-    <link href="https://binchencoder.github.io/2019/07/29/Linux%E6%9F%A5%E7%9C%8B%E7%B3%BB%E7%BB%9F%E7%A1%AC%E4%BB%B6%E4%BF%A1%E6%81%AF/"/>
-    <id>https://binchencoder.github.io/2019/07/29/Linux查看系统硬件信息/</id>
-    <published>2019-07-29T05:36:21.000Z</published>
-    <updated>2019-08-03T17:27:14.000Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;Linux查看系统硬件信息&quot;&gt;&lt;a href=&quot;#Linux查看系统硬件信息&quot; class=&quot;headerlink&quot; title=&quot;Linux查看系统硬件信息&quot;&gt;&lt;/a&gt;Linux查看系统硬件信息&lt;/h1&gt;&lt;h2 id=&quot;查看当前操作系统内核信息&quot;&gt;&lt;a href
-      
-    
-    </summary>
-    
-      <category term="Linux" scheme="https://binchencoder.github.io/categories/Linux/"/>
-    
-    
-      <category term="Linux" scheme="https://binchencoder.github.io/tags/Linux/"/>
-    
-      <category term="Systerm" scheme="https://binchencoder.github.io/tags/Systerm/"/>
     
   </entry>
   
