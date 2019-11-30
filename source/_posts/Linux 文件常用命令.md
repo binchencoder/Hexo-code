@@ -2,9 +2,9 @@
 title: Linux文件常用命令
 date: 2019-08-02 17:36:21
 tags:
-  - Linux
+	- Linux
 categories:
-  - Linux
+	- Linux
 ---
 
 # Linux文件常用命令

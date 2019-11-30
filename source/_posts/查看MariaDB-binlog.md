@@ -1,10 +1,11 @@
+---
 title: 如何查看MariaDB bin log
 date: 2018-09-04 21:53:08
 tags:
-    - MariaDB
-    - binlog
+	- MariaDB
+	- Binlog
 categories:
-    - 存储
+	- 存储
 ---
 
 ## MariaDB bin log

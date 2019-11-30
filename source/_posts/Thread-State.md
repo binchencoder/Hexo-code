@@ -1,13 +1,12 @@
+---
 title: Thread State
 date: 2018-08-31 20:53:08
 tags:
-
-    - Java
-        - Thread
-        - Jstack
+	- Java
+	- Thread
+	- Jstack
 categories:
-
-    - 后端
+	- 后端
 ---
 
 ## Java 线程状态分析

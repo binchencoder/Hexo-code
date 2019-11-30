@@ -2,11 +2,11 @@
 title: TCP三次握手和四次握手
 date: 2019-08-31 17:36:21
 tags:
-  - TCP
-  - TCP/IP
-  - 网络协议
+	- TCP
+	- TCP/IP
+	- 网络协议
 categories:
-  - 后端
+	- 面试
 ---
 
 # 唠叨几句

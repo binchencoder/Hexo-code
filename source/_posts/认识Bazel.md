@@ -1,10 +1,10 @@
+---
 title: 认识Bazel
 date: 2019-08-16 20:53:08
 tags:
-    - Bazel
+	- Bazel
 categories:
-
-    - 工具
+	- 工具
 ---
 
 # Bazel入门

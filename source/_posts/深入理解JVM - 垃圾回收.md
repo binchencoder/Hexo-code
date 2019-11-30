@@ -2,11 +2,12 @@
 title: 深入理解JVM - 垃圾回收
 date: 2019-08-23 23:00:18
 tags:
-    - JVM
-    - 垃圾回收
-    - Java
+	- JVM
+	- 垃圾回收
+	- Java
+	- 后端
 categories:
-    - 后端
+	- 面试
 ---
 
 # 前言

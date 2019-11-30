@@ -1,13 +1,12 @@
 ---
 title: Spring Boot中application.properties与bootstrap.properties的区别
-tags:
-  - Spring
-  - SpringBoot
-  - Spring Cloud
-categories:
-  - 后端
-abbrlink: 584
 date: 2019-08-01 00:00:18
+tags:
+	- Spring
+	- SpringBoot
+	- Spring Cloud
+categories:
+	- 后端
 ---
 
 # application.propertes (application.yml)

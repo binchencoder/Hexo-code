@@ -19,9 +19,9 @@
             
             <tag> Java </tag>
             
-            <tag> 面试 </tag>
-            
             <tag> 线上诊断 </tag>
+            
+            <tag> 面试 </tag>
             
         </tags>
       
@@ -62,8 +62,6 @@
           
           <category> 面试 </category>
           
-          <category> 后端 </category>
-          
       </categories>
       
       
@@ -75,7 +73,7 @@
             
             <tag> 多线程 </tag>
             
-            <tag> 后端 </tag>
+            <tag> 服务端 </tag>
             
         </tags>
       
@@ -93,6 +91,12 @@
           
       </categories>
       
+      
+        <tags>
+            
+            <tag> 面试 </tag>
+            
+        </tags>
       
     </entry>
     
@@ -159,9 +163,9 @@
             
             <tag> 线程安全 </tag>
             
-            <tag> synchronized </tag>
+            <tag> Synchronized </tag>
             
-            <tag> lock </tag>
+            <tag> Lock </tag>
             
         </tags>
       
@@ -175,7 +179,7 @@
       
       <categories>
           
-          <category> 后端 </category>
+          <category> 面试 </category>
           
       </categories>
       
@@ -225,7 +229,7 @@
       
       <categories>
           
-          <category> 后端 </category>
+          <category> 面试 </category>
           
       </categories>
       
@@ -280,7 +284,7 @@
       
         <tags>
             
-            <tag> Java </tag>
+            <tag> 面试 </tag>
             
             <tag> MQ </tag>
             
@@ -298,7 +302,7 @@
       
       <categories>
           
-          <category> 后端 </category>
+          <category> 面试 </category>
           
       </categories>
       
@@ -306,6 +310,8 @@
         <tags>
             
             <tag> Java </tag>
+            
+            <tag> 后端 </tag>
             
             <tag> JVM </tag>
             
@@ -323,7 +329,7 @@
       
       <categories>
           
-          <category> 后端 </category>
+          <category> 面试 </category>
           
       </categories>
       
@@ -331,6 +337,8 @@
         <tags>
             
             <tag> Java </tag>
+            
+            <tag> 后端 </tag>
             
             <tag> JVM </tag>
             
@@ -348,7 +356,7 @@
       
       <categories>
           
-          <category> 后端 </category>
+          <category> 面试 </category>
           
       </categories>
       
@@ -356,6 +364,8 @@
         <tags>
             
             <tag> Java </tag>
+            
+            <tag> 后端 </tag>
             
             <tag> JVM </tag>
             
@@ -579,7 +589,7 @@
             
             <tag> MariaDB </tag>
             
-            <tag> binlog </tag>
+            <tag> Binlog </tag>
             
         </tags>
       
@@ -600,9 +610,9 @@
       
         <tags>
             
-            <tag> 正则表达式 </tag>
-            
             <tag> Jstack </tag>
+            
+            <tag> 正则表达式 </tag>
             
         </tags>
       
@@ -623,7 +633,11 @@
       
         <tags>
             
-            <tag> Java - Thread - Jstack </tag>
+            <tag> Java </tag>
+            
+            <tag> Thread </tag>
+            
+            <tag> Jstack </tag>
             
         </tags>
       
@@ -646,7 +660,7 @@
             
             <tag> 后端 </tag>
             
-            <tag> 工具 </tag>
+            <tag> Shell </tag>
             
         </tags>
       
@@ -668,6 +682,8 @@
         <tags>
             
             <tag> gRPC </tag>
+            
+            <tag> RPC </tag>
             
         </tags>
       

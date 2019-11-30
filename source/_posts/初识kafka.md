@@ -2,11 +2,11 @@
 title: 初识Kafka
 date: 2019-08-27 20:53:08
 tags:
-    - MQ
-    - Java
-    - Kafka
+	- MQ
+	- Kafka
+	- 面试
 categories:
-    - 后端
+	- 后端
 ---
 
 # 开篇

@@ -2,9 +2,9 @@
 title: MySQL中 乐观锁、悲观锁、共享锁、排它锁、行锁、表锁的理解
 date: 2019-01-20 10:00:18
 tags:
-    - MySQL
+	- MySQL
 categories:
-    - 存储
+	- 存储
 ---
 
 ![MySQL](./MySQL锁的理解/MySQL.jpeg)

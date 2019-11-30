@@ -2,10 +2,10 @@
 title: Linux查看系统硬件信息
 date: 2019-07-29 13:36:21
 tags:
-  - Linux
-  - Systerm
+	- Linux
+	- Systerm
 categories:
-  - Linux
+	- Linux
 ---
 
 # Linux查看系统硬件信息

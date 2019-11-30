@@ -2,10 +2,10 @@
 title: JVM内存管理
 date: 2019-08-11 20:53:08
 tags:
-    - Java
-    - JVM
+	- Java
+	- JVM
 categories:
-    - 后端
+	- 后端
 ---
 
 # JVM内存管理

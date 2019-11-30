@@ -2,11 +2,11 @@
 title: synchronized和lock
 date: 2019-09-05 21:01:08
 tags:
-    - 线程安全
-    - synchronized
-    - lock
+	- 线程安全
+	- Synchronized
+	- Lock
 categories:
-    - 后端
+	- 后端
 ---
 
 # 开篇

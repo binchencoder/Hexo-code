@@ -2,10 +2,11 @@
 title: 深入理解JVM - 内存结构
 date: 2019-08-21 23:00:18
 tags:
-    - JVM
-    - Java
+	- JVM
+	- Java
+	- 后端
 categories:
-    - 后端
+	- 面试
 ---
 
 # 前言

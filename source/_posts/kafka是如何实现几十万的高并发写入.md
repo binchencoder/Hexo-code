@@ -2,11 +2,11 @@
 title: Kafka是如何实现几十万的高并发写入
 date: 2019-08-28 10:23:58
 tags:
-    - MQ
-    - Java
-    - Kafka
+	- MQ
+	- Java
+	- Kafka
 categories:
-    - 后端
+	- 后端
 ---
 
 # 开篇
