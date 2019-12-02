@@ -1,6 +1,6 @@
 <!DOCTYPE HTML>
 <html lang="zh-CN">
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
     <!--Setting-->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -18,14 +18,14 @@
 
 
 
-<meta name="keywords" content="blog,binchencoder,IT,Web Back End,binchen,chenbin"/>
+<meta name="keywords" content="blog,binchencoder,IT,Web Back End,binchen,chenbin">
 
 
 
-<meta name="robots" content="all" />
-<meta name="google" content="all" />
-<meta name="googlebot" content="all" />
-<meta name="verify" content="all" />
+<meta name="robots" content="all">
+<meta name="google" content="all">
+<meta name="googlebot" content="all">
+<meta name="verify" content="all">
     <!--Title-->
 
 
@@ -63,7 +63,7 @@
     
 </head>
 
-
+</html>
 <!--[if lte IE 8]>
 <style>
     html{ font-size: 1em }
@@ -170,12 +170,12 @@
                         Java
                     </a>
                 
-                    <a href="/tags/线上诊断" title='线上诊断'>
-                        线上诊断
-                    </a>
-                
                     <a href="/tags/面试" title='面试'>
                         面试
+                    </a>
+                
+                    <a href="/tags/线上诊断" title='线上诊断'>
+                        线上诊断
                     </a>
                 
             
@@ -207,17 +207,17 @@
 <ol>
 <li>按数字1，显示多核CPU信息</li>
 <li>键入P(大写p)，进程按照CPU使用率排序</li>
-<li>键入m，进程按照内存使用率排序</li>
+<li>键入M(大写m)，进程按照内存使用率排序</li>
 </ol>
 </blockquote>
-<p><img src="/2019/11/29/排查CPU负载高/top-c.jpeg" alt=""></p>
+<p><img src="/2019/11/29/排查CPU负载高/top-c.jpeg" alt></p>
 <h3 id="1-2-找到最耗CPU的线程"><a href="#1-2-找到最耗CPU的线程" class="headerlink" title="1.2. 找到最耗CPU的线程"></a>1.2. 找到最耗CPU的线程</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">top -H -p [PID]</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p><strong>显示一个进程的线程运行信息列表</strong></p>
 </blockquote>
 <p>例：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">top -Hp 17326</span><br></pre></td></tr></table></figure></p>
 <p>如下图所示，可以看到多个高耗CPU使用率的线程</p>
-<p><img src="/2019/11/29/排查CPU负载高/top-h.jpeg" alt=""></p>
+<p><img src="/2019/11/29/排查CPU负载高/top-h.jpeg" alt></p>
 <h3 id="1-3-转换线程PID为十六进制"><a href="#1-3-转换线程PID为十六进制" class="headerlink" title="1.3. 转换线程PID为十六进制"></a>1.3. 转换线程PID为十六进制</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">printf</span> <span class="string">"%x\n"</span> [线程PID]</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p><strong>转换多个线程数字为十六进制，使用时前面加0x</strong></p>
@@ -230,7 +230,7 @@
 </blockquote>
 <p>例：</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jstack 17376 | grep <span class="string">'0x43e2'</span> -A10</span><br></pre></td></tr></table></figure>
-<p><img src="/2019/11/29/排查CPU负载高/jstack.jpeg" alt=""></p>
+<p><img src="/2019/11/29/排查CPU负载高/jstack.jpeg" alt></p>
 <p>看上图中的“GC task thread#0 (ParallelGC)”，代表垃圾回收线程，该线程会负责进行垃圾回收。<br>为什么会有两个线程一直在进行垃圾回收，并且占用那么高的CPU使用率呢？</p>
 <h3 id="1-5-存储堆栈，批量查看"><a href="#1-5-存储堆栈，批量查看" class="headerlink" title="1.5. 存储堆栈，批量查看"></a>1.5. <strong>存储堆栈，批量查看</strong></h3><p>可以先将jstack堆栈信息存储起来</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jstack [进程PID] &gt; [文件]</span><br></pre></td></tr></table></figure>
@@ -238,7 +238,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jstack 17376 &gt; yao.dump</span><br></pre></td></tr></table></figure>
 <p>存储17376进程的堆栈信息，再使用cat + grep查找看看后面几个高CPU线程的堆栈信息。</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat -n yao.dump | grep -A10 <span class="string">'0x4404'</span></span><br></pre></td></tr></table></figure>
-<p><img src="/2019/11/29/排查CPU负载高/jstack2.jpeg" alt=""></p>
+<p><img src="/2019/11/29/排查CPU负载高/jstack2.jpeg" alt></p>
 <p>可以看到线程0x4404【线程17426】产生堆栈信息，直指方法whileTrue</p>
 <h3 id="1-6-GC查看"><a href="#1-6-GC查看" class="headerlink" title="1.6. GC查看"></a>1.6. <strong>GC查看</strong></h3><p>我们看到CPU占用率最高的并不是0x4404，而是0x43e2、0x43e3。但是并没法看到其中是什么类与方法，只有一条GC信息。</p>
 <p>是不是死循环导致了GC太频繁，导致CPU使用率居高不下呢？<br>我们使用jstat看下jvm的GC信息看看。</p>
@@ -246,7 +246,7 @@
 <p>例：</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jstat -gcutil 17376 2000 5</span><br></pre></td></tr></table></figure>
 <p>查看17376进程的GC信息，每2秒打印一次，共打印5次</p>
-<p><img src="/2019/11/29/排查CPU负载高/jstat-gc.jpeg" alt=""></p>
+<p><img src="/2019/11/29/排查CPU负载高/jstat-gc.jpeg" alt></p>
 <p>可以看到Full GC的次数高达506次，Full GC的持续时间很长，平均每次Full GC耗时达到9秒（4766/506，即GCT/FGC）。</p>
 <p>确实验证了我们之前的想法，再返回第4或第5步查看其他几个高CPU占用率线程，找到非GC信息的堆栈，查看具体的代码。</p>
 <h2 id="2-Arthas-阿里开源"><a href="#2-Arthas-阿里开源" class="headerlink" title="2. Arthas (阿里开源)"></a>2. Arthas (阿里开源)</h2><p>这是阿里开源出来的一个针对Java的线上诊断工具，功能非常强大，支持Linux/Mac/Windows，采用命令行交互模式</p>
