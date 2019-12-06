@@ -1,5 +1,6 @@
 <!DOCTYPE HTML>
 <html lang="zh-CN">
+
 <head><meta name="generator" content="Hexo 3.9.0">
     <!--Setting-->
     <meta charset="UTF-8">
@@ -8,18 +9,25 @@
     <meta http-equiv="Cache-Control" content="no-siteapp">
     <meta http-equiv="Cache-Control" content="no-transform">
     <meta name="renderer" content="webkit|ie-comp|ie-stand">
-    <meta name="apple-mobile-web-app-capable" content="Binchen coder">
+    <meta name="apple-mobile-web-app-capable" content="Binchen coder&#39;s Blog">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="format-detection" content="telephone=no,email=no,adress=no">
     <meta name="browsermode" content="application">
     <meta name="screen-orientation" content="portrait">
+    <meta name="theme-version" content="1.2.3">
+    <meta name="root" content="/">
     <link rel="dns-prefetch" href="https://binchencoder.github.io">
     <!--SEO-->
 
+<meta name="keywords" content="RPC,gRPC">
 
 
-<meta name="keywords" content="blog,binchencoder,IT,Web Back End,binchen,chenbin">
-
+<meta name="description" content="
+Status.INVALID_ARGUMENT [400]
+Status.OK [200]
+Status.CANCELLED [408]
+Status.UNKNOWN [500]
+Status...">
 
 
 <meta name="robots" content="all">
@@ -28,42 +36,51 @@
 <meta name="verify" content="all">
     <!--Title-->
 
+<title>
+    
+    gRPC Status and HTTP Code Relation |
+    
+    Binchen coder&#39;s Blog
+</title>
 
-<title>gRPC Status and HTTP Code Relation | Binchen coder</title>
+<link rel="alternate" href="/atom.xml" title="Binchen coder&#39;s Blog" type="application/atom+xml">
 
 
-    <link rel="alternate" href="/atom.xml" title="Binchen coder" type="application/atom+xml">
-
-
-    <link rel="icon" href="/favicon.ico">
+<link rel="icon" href="/favicon.ico">
 
     
-
-
 
 <link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
-<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.7.0">
 <link rel="stylesheet" href="/css/style.css?rev=@@hash">
+    
+<div class="hide">
+    <script type="text/javascript">
+    var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+</div>
 
 
 
 
     
-	<div class="hide">
-		<script type="text/javascript">
-			var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
-		</script>
-	</div>
 
+<script>
+(function() {
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    } else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
 
-
-
-
-
-    
-</head>
-
-</html>
+</head></html>
 <!--[if lte IE 8]>
 <style>
     html{ font-size: 1em }
@@ -72,19 +89,22 @@
 <!--[if lte IE 9]>
 <div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
 <![endif]-->
-
 <body>
-    <header class="main-header"  style="background-image:url(/img/banner.jpg)"  >
+    <header class="main-header"  style="background-image:url(
+    /img/banner.jpg)"
+     >
     <div class="main-header-box">
         <a class="header-avatar" href="/" title='Bin Chen'>
             <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
         </a>
         <div class="branding">
-        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            <!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
             
-                <h2> 夜晚的灯塔一直都在，只是灯亮的时候，你才看见它 </h2>
+            <h2>
+                夜晚的灯塔一直都在，只是灯亮的时候，你才看见它
+            </h2>
             
-    	</div>
+        </div>
     </div>
 </header>
     <nav class="main-navigation">
@@ -92,45 +112,54 @@
         <div class="row">
             <div class="col-sm-12">
                 <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
-                    <span class="sr-only"></span>
+                        <span class="sr-only"></span>
                         <i class="fa fa-bars"></i>
                     </span>
-                    <a class="navbar-brand" href="https://binchencoder.github.io">Binchen coder</a>
+                    <a class="navbar-brand" href="https://binchencoder.github.io">
+                        Binchen coder&#39;s Blog</a>
                 </div>
                 <div class="collapse navbar-collapse" id="main-menu">
                     <ul class="menu">
                         
-                            <li role="presentation" class="text-center">
-                                <a href="/"><i class="fa "></i>首页</a>
-                            </li>
+                        <li role="presentation" class="text-center">
+                            <a href="/"><i class="fa "></i>
+                                首页</a>
+                        </li>
                         
-                            <li role="presentation" class="text-center">
-                                <a href="/categories/后端/"><i class="fa "></i>后端</a>
-                            </li>
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/后端/"><i class="fa "></i>
+                                后端</a>
+                        </li>
                         
-                            <li role="presentation" class="text-center">
-                                <a href="/categories/Linux/"><i class="fa "></i>Linux</a>
-                            </li>
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/Linux/"><i class="fa "></i>
+                                Linux</a>
+                        </li>
                         
-                            <li role="presentation" class="text-center">
-                                <a href="/categories/存储/"><i class="fa "></i>存储</a>
-                            </li>
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/存储/"><i class="fa "></i>
+                                存储</a>
+                        </li>
                         
-                            <li role="presentation" class="text-center">
-                                <a href="/categories/面试/"><i class="fa "></i>面试</a>
-                            </li>
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/面试/"><i class="fa "></i>
+                                面试</a>
+                        </li>
                         
-                            <li role="presentation" class="text-center">
-                                <a href="/categories/工具/"><i class="fa "></i>工具</a>
-                            </li>
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/工具/"><i class="fa "></i>
+                                工具</a>
+                        </li>
                         
-                            <li role="presentation" class="text-center">
-                                <a href="/categories/其他/"><i class="fa "></i>其他</a>
-                            </li>
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/其他/"><i class="fa "></i>
+                                其他</a>
+                        </li>
                         
-                            <li role="presentation" class="text-center">
-                                <a href="/archives/"><i class="fa "></i>时间轴</a>
-                            </li>
+                        <li role="presentation" class="text-center">
+                            <a href="/archives/"><i class="fa "></i>
+                                时间轴</a>
+                        </li>
                         
                     </ul>
                 </div>
@@ -147,17 +176,14 @@
     <div class="post-head">
         <h1 id="gRPC Status and HTTP Code Relation">
             
-	            gRPC Status and HTTP Code Relation
+            gRPC Status and HTTP Code Relation
             
         </h1>
         <div class="post-meta">
     
-    
     <span class="categories-meta fa-wrap">
         <i class="fa fa-folder-open-o"></i>
-        <a href="/categories/后端">
-            后端
-        </a>
+        <a class="category-link" href="/categories/后端/">后端</a>
     </span>
     
     
@@ -165,31 +191,28 @@
         <i class="fa fa-tags"></i>
         <span class="tags-meta">
             
-                
-                    <a href="/tags/RPC" title='RPC'>
-                        RPC
-                    </a>
-                
-                    <a href="/tags/gRPC" title='gRPC'>
-                        gRPC
-                    </a>
-                
+            <a class="tag-link" href="/tags/RPC/">RPC</a> <a class="tag-link" href="/tags/gRPC/">gRPC</a>
             
         </span>
     </span>
     
-
     
-        
-        <span class="fa-wrap">
-            <i class="fa fa-clock-o"></i>
-            <span class="date-meta">2018/07/22</span>
-        </span>
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta">
+            2018/07/22</span>
+    </span>
+    
+    <span class="fa-wrap">
+        <i class="fa fa-eye"></i>
+        <span id="busuanzi_value_page_pv"></span>
+    </span>
+    
     
 </div>
-
-            
-            
+        
+        
     </div>
     
     <div class="post-body post-content">
@@ -214,11 +237,13 @@
 </ul>
 
     </div>
-
+    
     <div class="post-footer">
         <div>
             
-                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="https://binchencoder.github.io/" target="_blank">Binchencoder</a>
+            转载声明：
+            商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="https://binchencoder.github.io/" target="_blank">Binchencoder</a>
+            
             
         </div>
         <div>
@@ -226,57 +251,52 @@
         </div>
     </div>
 </article>
-
 <div class="article-nav prev-next-wrap clearfix">
     
-        <a href="/2018/07/22/UsefulScripts-Java脚本/" class="pre-post btn btn-default" title='UsefulScripts-Java脚本'>
-            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
-            <span class="hidden-xs">UsefulScripts-Java脚本</span>
-        </a>
+    <a href="/2018/07/22/UsefulScripts-Java脚本/" class="pre-post btn btn-default" title='UsefulScripts-Java脚本'>
+        <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+        <span class="hidden-xs">
+            UsefulScripts-Java脚本</span>
+    </a>
     
     
-        <a href="/2018/07/21/Hexo搭建github主页/" class="next-post btn btn-default" title='Hexo配合搭建github个人主页'>
-            <span class="hidden-lg">下一篇</span>
-            <span class="hidden-xs">Hexo配合搭建github个人主页</span><i class="fa fa-angle-right fa-fw"></i>
-        </a>
+    <a href="/2018/07/21/Hexo搭建github主页/" class="next-post btn btn-default" title='Hexo配合搭建github个人主页'>
+        <span class="hidden-lg">下一篇</span>
+        <span class="hidden-xs">
+            Hexo配合搭建github个人主页</span><i class="fa fa-angle-right fa-fw"></i>
+    </a>
     
 </div>
 
-
-    <div id="comments">
-        
-	
+<div id="comments">
+    
 <div id="lv-container" data-id="city" data-uid="MTAyMC8zODI1Ny8xNDc4NQ">
-  <script type="text/javascript">
-     (function(d, s) {
-         var j, e = d.getElementsByTagName(s)[0];
-         if (typeof LivereTower === 'function') { return; }
-         j = d.createElement(s);
-         j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
-         j.async = true;
-         e.parentNode.insertBefore(j, e);
-     })(document, 'script');
-  </script>
+    <script type="text/javascript">
+    (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+    })(document, 'script');
+    </script>
 </div>
 
-
-    </div>
-
-
-
-
+</div>
 
                 </main>
                 
                     <aside id="article-toc" role="navigation" class="col-md-4">
     <div class="widget">
-        <h3 class="title">文章目录</h3>
+        <h3 class="title">
+            文章目录
+        </h3>
         
-            <p>暂无目录</p>
+        <p>暂无目录</p>
         
     </div>
 </aside>
-
                 
             </div>
         </div>
@@ -287,23 +307,35 @@
         </div>
     </div>
 </footer>
-
 <a id="back-to-top" class="icon-btn hide">
-	<i class="fa fa-chevron-up"></i>
+    <i class="fa fa-chevron-up"></i>
 </a>
-
-
-
-
     <div class="copyright">
     <div class="container">
         <div class="row">
-            <div class="col-sm-12"> 
-                <span>Copyright &copy; 2017
-                </span> | 
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+    访问量:
+    <strong id="busuanzi_value_site_pv">
+        <i class="fa fa-spinner fa-spin"></i>
+    </strong>
+    &nbsp; | &nbsp;
+    访客数:
+    <strong id="busuanzi_value_site_uv">
+        <i class="fa fa-spinner fa-spin"></i>
+    </strong>
+    
+</div>
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy;
+                    2017
+                    
+                </span> |
                 <span>
                     Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
-                </span> | 
+                </span> |
                 <span>
                     Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
                 </span>
@@ -314,8 +346,8 @@
 
 
 
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
 <script src="/js/app.js?rev=@@hash"></script>
-
-
 </body>
 </html>

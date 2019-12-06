@@ -1,5 +1,6 @@
 <!DOCTYPE HTML>
 <html lang="zh-CN">
+
 <head><meta name="generator" content="Hexo 3.9.0">
     <!--Setting-->
     <meta charset="UTF-8">
@@ -8,18 +9,21 @@
     <meta http-equiv="Cache-Control" content="no-siteapp">
     <meta http-equiv="Cache-Control" content="no-transform">
     <meta name="renderer" content="webkit|ie-comp|ie-stand">
-    <meta name="apple-mobile-web-app-capable" content="Binchen coder">
+    <meta name="apple-mobile-web-app-capable" content="Binchen coder&#39;s Blog">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="format-detection" content="telephone=no,email=no,adress=no">
     <meta name="browsermode" content="application">
     <meta name="screen-orientation" content="portrait">
+    <meta name="theme-version" content="1.2.3">
+    <meta name="root" content="/">
     <link rel="dns-prefetch" href="https://binchencoder.github.io">
     <!--SEO-->
 
+<meta name="keywords" content="Java,后端,JVM,垃圾回收">
 
 
-<meta name="keywords" content="blog,binchencoder,IT,Web Back End,binchen,chenbin">
-
+<meta name="description" content="前言在 JVM内存结构 中我们详细讲解了JVM中的内存是如何分布和组成的。
+我们已经知道JVM内存结构主要有三大块：堆内存、方法区和栈内存，而堆又是JVM中占用内存最大的一块，但是堆占用的空间也...">
 
 
 <meta name="robots" content="all">
@@ -28,42 +32,51 @@
 <meta name="verify" content="all">
     <!--Title-->
 
+<title>
+    
+    深入理解JVM - 垃圾回收 |
+    
+    Binchen coder&#39;s Blog
+</title>
 
-<title>深入理解JVM - 垃圾回收 | Binchen coder</title>
+<link rel="alternate" href="/atom.xml" title="Binchen coder&#39;s Blog" type="application/atom+xml">
 
 
-    <link rel="alternate" href="/atom.xml" title="Binchen coder" type="application/atom+xml">
-
-
-    <link rel="icon" href="/favicon.ico">
+<link rel="icon" href="/favicon.ico">
 
     
-
-
 
 <link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
-<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.7.0">
 <link rel="stylesheet" href="/css/style.css?rev=@@hash">
+    
+<div class="hide">
+    <script type="text/javascript">
+    var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+</div>
 
 
 
 
     
-	<div class="hide">
-		<script type="text/javascript">
-			var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
-		</script>
-	</div>
 
+<script>
+(function() {
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    } else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
 
-
-
-
-
-    
-</head>
-
-</html>
+</head></html>
 <!--[if lte IE 8]>
 <style>
     html{ font-size: 1em }
@@ -72,19 +85,22 @@
 <!--[if lte IE 9]>
 <div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
 <![endif]-->
-
 <body>
-    <header class="main-header"  style="background-image:url(/img/banner.jpg)"  >
+    <header class="main-header"  style="background-image:url(
+    /img/banner.jpg)"
+     >
     <div class="main-header-box">
         <a class="header-avatar" href="/" title='Bin Chen'>
             <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
         </a>
         <div class="branding">
-        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            <!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
             
-                <h2> 夜晚的灯塔一直都在，只是灯亮的时候，你才看见它 </h2>
+            <h2>
+                夜晚的灯塔一直都在，只是灯亮的时候，你才看见它
+            </h2>
             
-    	</div>
+        </div>
     </div>
 </header>
     <nav class="main-navigation">
@@ -92,45 +108,54 @@
         <div class="row">
             <div class="col-sm-12">
                 <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
-                    <span class="sr-only"></span>
+                        <span class="sr-only"></span>
                         <i class="fa fa-bars"></i>
                     </span>
-                    <a class="navbar-brand" href="https://binchencoder.github.io">Binchen coder</a>
+                    <a class="navbar-brand" href="https://binchencoder.github.io">
+                        Binchen coder&#39;s Blog</a>
                 </div>
                 <div class="collapse navbar-collapse" id="main-menu">
                     <ul class="menu">
                         
-                            <li role="presentation" class="text-center">
-                                <a href="/"><i class="fa "></i>首页</a>
-                            </li>
+                        <li role="presentation" class="text-center">
+                            <a href="/"><i class="fa "></i>
+                                首页</a>
+                        </li>
                         
-                            <li role="presentation" class="text-center">
-                                <a href="/categories/后端/"><i class="fa "></i>后端</a>
-                            </li>
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/后端/"><i class="fa "></i>
+                                后端</a>
+                        </li>
                         
-                            <li role="presentation" class="text-center">
-                                <a href="/categories/Linux/"><i class="fa "></i>Linux</a>
-                            </li>
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/Linux/"><i class="fa "></i>
+                                Linux</a>
+                        </li>
                         
-                            <li role="presentation" class="text-center">
-                                <a href="/categories/存储/"><i class="fa "></i>存储</a>
-                            </li>
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/存储/"><i class="fa "></i>
+                                存储</a>
+                        </li>
                         
-                            <li role="presentation" class="text-center">
-                                <a href="/categories/面试/"><i class="fa "></i>面试</a>
-                            </li>
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/面试/"><i class="fa "></i>
+                                面试</a>
+                        </li>
                         
-                            <li role="presentation" class="text-center">
-                                <a href="/categories/工具/"><i class="fa "></i>工具</a>
-                            </li>
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/工具/"><i class="fa "></i>
+                                工具</a>
+                        </li>
                         
-                            <li role="presentation" class="text-center">
-                                <a href="/categories/其他/"><i class="fa "></i>其他</a>
-                            </li>
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/其他/"><i class="fa "></i>
+                                其他</a>
+                        </li>
                         
-                            <li role="presentation" class="text-center">
-                                <a href="/archives/"><i class="fa "></i>时间轴</a>
-                            </li>
+                        <li role="presentation" class="text-center">
+                            <a href="/archives/"><i class="fa "></i>
+                                时间轴</a>
+                        </li>
                         
                     </ul>
                 </div>
@@ -147,17 +172,14 @@
     <div class="post-head">
         <h1 id="深入理解JVM - 垃圾回收">
             
-	            深入理解JVM - 垃圾回收
+            深入理解JVM - 垃圾回收
             
         </h1>
         <div class="post-meta">
     
-    
     <span class="categories-meta fa-wrap">
         <i class="fa fa-folder-open-o"></i>
-        <a href="/categories/面试">
-            面试
-        </a>
+        <a class="category-link" href="/categories/面试/">面试</a>
     </span>
     
     
@@ -165,35 +187,28 @@
         <i class="fa fa-tags"></i>
         <span class="tags-meta">
             
-                
-                    <a href="/tags/Java" title='Java'>
-                        Java
-                    </a>
-                
-                    <a href="/tags/后端" title='后端'>
-                        后端
-                    </a>
-                
-                    <a href="/tags/JVM" title='JVM'>
-                        JVM
-                    </a>
-                
+            <a class="tag-link" href="/tags/JVM/">JVM</a> <a class="tag-link" href="/tags/Java/">Java</a> <a class="tag-link" href="/tags/后端/">后端</a> <a class="tag-link" href="/tags/垃圾回收/">垃圾回收</a>
             
         </span>
     </span>
     
-
     
-        
-        <span class="fa-wrap">
-            <i class="fa fa-clock-o"></i>
-            <span class="date-meta">2019/08/23</span>
-        </span>
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta">
+            2019/08/23</span>
+    </span>
+    
+    <span class="fa-wrap">
+        <i class="fa fa-eye"></i>
+        <span id="busuanzi_value_page_pv"></span>
+    </span>
+    
     
 </div>
-
-            
-            
+        
+        
     </div>
     
     <div class="post-body post-content">
@@ -358,11 +373,13 @@
 </ul>
 
     </div>
-
+    
     <div class="post-footer">
         <div>
             
-                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="https://binchencoder.github.io/" target="_blank">Binchencoder</a>
+            转载声明：
+            商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="https://binchencoder.github.io/" target="_blank">Binchencoder</a>
+            
             
         </div>
         <div>
@@ -370,57 +387,52 @@
         </div>
     </div>
 </article>
-
 <div class="article-nav prev-next-wrap clearfix">
     
-        <a href="/2019/08/24/深入理解JVM - 垃圾回收之世代垃圾收集过程/" class="pre-post btn btn-default" title='深入理解JVM - 垃圾回收之世代垃圾收集过程'>
-            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
-            <span class="hidden-xs">深入理解JVM - 垃圾回收之世代垃圾收集过程</span>
-        </a>
+    <a href="/2019/08/24/深入理解JVM - 垃圾回收之世代垃圾收集过程/" class="pre-post btn btn-default" title='深入理解JVM - 垃圾回收之世代垃圾收集过程'>
+        <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+        <span class="hidden-xs">
+            深入理解JVM - 垃圾回收之世代垃圾收集过程</span>
+    </a>
     
     
-        <a href="/2019/08/21/深入理解JVM - 内存结构/" class="next-post btn btn-default" title='深入理解JVM - 内存结构'>
-            <span class="hidden-lg">下一篇</span>
-            <span class="hidden-xs">深入理解JVM - 内存结构</span><i class="fa fa-angle-right fa-fw"></i>
-        </a>
+    <a href="/2019/08/21/深入理解JVM - 内存结构/" class="next-post btn btn-default" title='深入理解JVM - 内存结构'>
+        <span class="hidden-lg">下一篇</span>
+        <span class="hidden-xs">
+            深入理解JVM - 内存结构</span><i class="fa fa-angle-right fa-fw"></i>
+    </a>
     
 </div>
 
-
-    <div id="comments">
-        
-	
+<div id="comments">
+    
 <div id="lv-container" data-id="city" data-uid="MTAyMC8zODI1Ny8xNDc4NQ">
-  <script type="text/javascript">
-     (function(d, s) {
-         var j, e = d.getElementsByTagName(s)[0];
-         if (typeof LivereTower === 'function') { return; }
-         j = d.createElement(s);
-         j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
-         j.async = true;
-         e.parentNode.insertBefore(j, e);
-     })(document, 'script');
-  </script>
+    <script type="text/javascript">
+    (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+    })(document, 'script');
+    </script>
 </div>
 
-
-    </div>
-
-
-
-
+</div>
 
                 </main>
                 
                     <aside id="article-toc" role="navigation" class="col-md-4">
     <div class="widget">
-        <h3 class="title">文章目录</h3>
+        <h3 class="title">
+            文章目录
+        </h3>
         
-            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#前言"><span class="toc-text">前言</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#垃圾回收机制"><span class="toc-text">垃圾回收机制</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Java垃圾回收主要关注堆"><span class="toc-text">Java垃圾回收主要关注堆</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#判断需要被回收对象的方法"><span class="toc-text">判断需要被回收对象的方法</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#垃圾收集算法"><span class="toc-text">垃圾收集算法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#标记-清除算法-Mark-Sweep"><span class="toc-text">标记-清除算法(Mark-Sweep)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#复制算法-Copying"><span class="toc-text">复制算法(Copying)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#标记-整理算法-Mark-Compact"><span class="toc-text">标记-整理算法(Mark-Compact)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#分代收集算法-Generational-Collection"><span class="toc-text">分代收集算法 (Generational Collection)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#垃圾回收器分类"><span class="toc-text">垃圾回收器分类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Serial收集器-串行收集器"><span class="toc-text">Serial收集器(串行收集器)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Serial-Old收集器"><span class="toc-text">Serial Old收集器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ParNew收集器-串行收集器"><span class="toc-text">ParNew收集器(串行收集器)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Parallel-Scavenge收集器-并行收集器"><span class="toc-text">Parallel Scavenge收集器(并行收集器)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Parallel-Old收集器-并行收集器"><span class="toc-text">Parallel Old收集器(并行收集器)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CMS收集器-Concurrent-Mark-Sweep-并发标记扫描"><span class="toc-text">CMS收集器(Concurrent Mark Sweep 并发标记扫描)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#G1收集器（Garbage-First）【重点】"><span class="toc-text">G1收集器（Garbage-First）【重点】</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#GC日志"><span class="toc-text">GC日志</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#垃圾回收器的选择"><span class="toc-text">垃圾回收器的选择</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#垃圾收集器参数总结"><span class="toc-text">垃圾收集器参数总结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#查看垃圾回收器"><span class="toc-text">查看垃圾回收器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#名词术语"><span class="toc-text">名词术语</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#References"><span class="toc-text">References</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#前言"><span class="toc-text">前言</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#垃圾回收机制"><span class="toc-text">垃圾回收机制</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Java垃圾回收主要关注堆"><span class="toc-text">Java垃圾回收主要关注堆</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#判断需要被回收对象的方法"><span class="toc-text">判断需要被回收对象的方法</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#垃圾收集算法"><span class="toc-text">垃圾收集算法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#标记-清除算法-Mark-Sweep"><span class="toc-text">标记-清除算法(Mark-Sweep)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#复制算法-Copying"><span class="toc-text">复制算法(Copying)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#标记-整理算法-Mark-Compact"><span class="toc-text">标记-整理算法(Mark-Compact)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#分代收集算法-Generational-Collection"><span class="toc-text">分代收集算法 (Generational Collection)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#垃圾回收器分类"><span class="toc-text">垃圾回收器分类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Serial收集器-串行收集器"><span class="toc-text">Serial收集器(串行收集器)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Serial-Old收集器"><span class="toc-text">Serial Old收集器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ParNew收集器-串行收集器"><span class="toc-text">ParNew收集器(串行收集器)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Parallel-Scavenge收集器-并行收集器"><span class="toc-text">Parallel Scavenge收集器(并行收集器)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Parallel-Old收集器-并行收集器"><span class="toc-text">Parallel Old收集器(并行收集器)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CMS收集器-Concurrent-Mark-Sweep-并发标记扫描"><span class="toc-text">CMS收集器(Concurrent Mark Sweep 并发标记扫描)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#G1收集器（Garbage-First）【重点】"><span class="toc-text">G1收集器（Garbage-First）【重点】</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#GC日志"><span class="toc-text">GC日志</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#垃圾回收器的选择"><span class="toc-text">垃圾回收器的选择</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#垃圾收集器参数总结"><span class="toc-text">垃圾收集器参数总结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#查看垃圾回收器"><span class="toc-text">查看垃圾回收器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#名词术语"><span class="toc-text">名词术语</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#References"><span class="toc-text">References</span></a></li></ol></li></ol>
         
     </div>
 </aside>
-
                 
             </div>
         </div>
@@ -431,23 +443,35 @@
         </div>
     </div>
 </footer>
-
 <a id="back-to-top" class="icon-btn hide">
-	<i class="fa fa-chevron-up"></i>
+    <i class="fa fa-chevron-up"></i>
 </a>
-
-
-
-
     <div class="copyright">
     <div class="container">
         <div class="row">
-            <div class="col-sm-12"> 
-                <span>Copyright &copy; 2017
-                </span> | 
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+    访问量:
+    <strong id="busuanzi_value_site_pv">
+        <i class="fa fa-spinner fa-spin"></i>
+    </strong>
+    &nbsp; | &nbsp;
+    访客数:
+    <strong id="busuanzi_value_site_uv">
+        <i class="fa fa-spinner fa-spin"></i>
+    </strong>
+    
+</div>
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy;
+                    2017
+                    
+                </span> |
                 <span>
                     Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
-                </span> | 
+                </span> |
                 <span>
                     Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
                 </span>
@@ -458,8 +482,8 @@
 
 
 
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
 <script src="/js/app.js?rev=@@hash"></script>
-
-
 </body>
 </html>

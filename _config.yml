@@ -3,8 +3,8 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Binchen coder
-subtitle:
+title: Binchen coder's Blog
+subtitle: Binchen's Blog
 description:
 keywords:
   - blog
@@ -83,7 +83,7 @@ pagination_dir: page
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
 theme: snippet
-theme_config: _theme-snippet-config.yml
+theme_config:
 search:
   path: search.xml
   field: post

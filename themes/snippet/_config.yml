@@ -103,8 +103,21 @@ cate_config:
 ## 文章归档设置
 arch_config:
    type: 'monthly'
+   format: 'YYYY年MM月'
    show_count: true
    order: -1
+
+## 标签云设置
+tagcloud:
+  tag3d: false
+  textColour: '#444'
+  outlineMethod: 'block'
+  outlineColour: '#FFDAB9'
+  interval: 30
+  freezeActive: true
+  frontSelect: true
+  reverse: true
+  wheelZoom: false
 
 ## 友链设置
 links:
@@ -154,6 +167,11 @@ declaration:
   tip: |-
       商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="https://binchencoder.github.io/" target="_blank">Binchencoder</a>
 
+## 文章打赏
+reward:
+  alipay: ''
+  wepay: ''
+  tip: 赞赏是不耍流氓的鼓励
 
 ## 主题评论
 
@@ -200,7 +218,12 @@ valine:
    meta: nick,mail
    pageSize: 10
 
-## 网站访问统计
+## 网站访客统计
+visit_counter:
+   site: true
+   page: true
+
+## 网站访问统计分析
 
 ### 网盟CNZZ统计
 cnzz_analytics: 1263868967
@@ -214,10 +237,14 @@ google_analytics:
 ### 腾讯分析
 tencent_analytics:
 
-### 百度文章推送
-baidu_push:
+### 百度站点认证
+baidu_site_verification:
+
+### 百度自动推送
+baidu_push: true
 
 #网站主题配置
 since: 2017
+beian:
 robot: 'all' ### 控制搜索引擎的抓取和索引编制行为，默认为all
-version: 1.2.1
+version: 1.2.3
