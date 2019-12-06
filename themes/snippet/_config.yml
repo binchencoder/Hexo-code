@@ -39,6 +39,7 @@ rss: /atom.xml
 ## Carousel
 carousel:
   img: img/head-img.jpg
+  url: 'javascript:'
 
 # 各个小工具的设置
 
@@ -74,7 +75,7 @@ notification: |-
             <strong style="color: #e67e22; font-size: 16px;">学技术需要不断的积淀！</strong>
             </p>
 
-## 社交设置
+## 社交设置{@name:社交工具名字，@icon:社交工具图标，@href:设置工具链接} [参考图标](http://fontawesome.io/icons/)
 social:
  - name: Github
    icon: git
@@ -107,7 +108,7 @@ arch_config:
    show_count: true
    order: -1
 
-## 标签云设置
+## 标签云设置{/*参数参考：http://www.goat1000.com/tagcanvas-options.php */}
 tagcloud:
   tag3d: false
   textColour: '#444'
@@ -136,6 +137,9 @@ banner:
 ## 首页列表底部面板
 homePanel: true
 
+## 首页文章列表缩略图
+### 加载规则: 自定义文章缩略图(在Front-matter中添加的'img'字段) > 文章内的图片 > defaultImgs(随机获取) > 无图模式列表
+
 ## 缩略图自定义随机图片
 defaultImgs:
   -
@@ -147,12 +151,12 @@ excerptLength: 120
 toc: true
 
 ## 代码高亮配置
-highlightTheme:
+highlightTheme: default
 
 ## bootstrap配置
 bootstrap:
 
-## ICON配置
+## ICON配置 (不配则启用本地Font Icon)
 fontAwesome:
 
 ## 文章过期提醒功能
@@ -167,7 +171,7 @@ declaration:
   tip: |-
       商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="https://binchencoder.github.io/" target="_blank">Binchencoder</a>
 
-## 文章打赏
+## 文章打赏{@reward: {alipay:支付宝打赏,wepay:微信打赏,tip:打赏提示语; 链接都为空,关闭打赏功能}}
 reward:
   alipay: ''
   wepay: ''
@@ -182,19 +186,21 @@ gitment:
   repo:
   client_id:
   client_secret:
-  perPage: 10
+  labels:
+  perPage:
+  maxCommentHeight:
 
-### 来必力
+### 来必力(默认选项)
 livere:
   enable: true
   livere_uid: MTAyMC8zODI1Ny8xNDc4NQ
 
-### 友言评论(服务不稳定)
+### 友言评论(服务不稳定，经常无法加载)
 uyan:
   enable: false
   uyan_id: 1966422
 
-### Disqus评论
+### Disqus评论(需要翻墙，或者搭建代理)
 disqus:
   enable: false
   shortname: snippet
@@ -206,22 +212,37 @@ changyan:
   appid:
   conf:
 
-## Valine评论
+### Valine评论 参考网站: [valine评论](https://valine.js.org/)
 valine:
-   enable: false
-   appId: xOKV9J4UeQAtVkvnJC7Kq2Jn-gzGzoHsz
-   appKey: erIpQac4azoCmgfBB7Dl9maa
-   placeholder: 说点什么吧
-   notify: false
-   verify: false
-   avatar: mm
-   meta: nick,mail
-   pageSize: 10
+  enable: false
+  appId: xOKV9J4UeQAtVkvnJC7Kq2Jn-gzGzoHsz
+  appKey: erIpQac4azoCmgfBB7Dl9maa
+  placeholder: 说点什么吧
+  notify: false # 邮件通知
+  verify: false # 验证码
+  avatar: mm # avatar头像
+  meta: nick,mail # 输入框内容，可选值nick,mail,link
+  pageSize: 10
 
-## 网站访客统计
+## Gitalk评论 参考网站: [一个基于Github Issue和Preact开发的评论插件](https://gitalk.github.io/)
+gitalk:
+   enable: false
+   clientID: "" # Github 应用ID
+   clientSecret: "" # Github 应用密钥
+   repo: shenliyang.github.io # Github仓库地址
+   owner: shenliyang  # Github 用户名(Github仓库拥有者)
+   admin: shenliyang # GitHub repository 的所有者和合作者 (对这个 repository 有写权限的用户)可以有一个或多个，如果有多名可使用，例如：admin: admin1,admin2 配置
+   perPage: 10 # 每次加载的数据大小，最多100
+   distractionFreeMode: true # 是否启用无干扰模式，类似Facebook评论框的全屏遮罩效果
+
+   ## 以下参数主题会默认处理，不需要配置
+   # language // 语言类型，默认为站点配置中选项
+   # id // 页面的唯一标识, 已使用md5对pathname转换生成唯一id处理
+
+## 网站访客统计 [不蒜子统计](http://busuanzi.ibruce.info/)
 visit_counter:
-   site: true
-   page: true
+   site: true # 总访问量和访问人数统计
+   page: true # 文章阅读量统计
 
 ## 网站访问统计分析
 
