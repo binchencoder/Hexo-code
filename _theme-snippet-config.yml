@@ -1,0 +1,223 @@
+# ---------------------------------------------------------------
+#   Site Information And Theme Configuration Settings
+#   language: zh-CN
+# ---------------------------------------------------------------
+
+## menu
+menu:
+- page: home
+  url: /
+  icon:
+- page: 后端
+  url: /categories/后端/
+  icon:
+- page: Linux
+  url: /categories/Linux/
+  icon:
+- page: 存储
+  url: /categories/存储/
+  icon:
+- page: 面试
+  url: /categories/面试/
+  icon:
+- page: 工具
+  url: /categories/工具/
+  icon:
+- page: 其他
+  url: /categories/其他/
+  icon:
+- page: 时间轴
+  url: /archives/
+  icon:
+
+## favicon
+favicon: /favicon.ico
+
+## Feed
+rss: /atom.xml
+
+## Carousel
+carousel:
+  img: img/head-img.jpg
+
+# 各个小工具的设置
+
+## widgets
+widgets:
+  - search
+  - notification
+  - social
+  - category
+  - archive
+  - tagcloud
+  - friends
+
+## 搜索
+jsonContent:
+  searchLocal: true
+  searchGoogle: false
+  posts:
+    title: true
+    text: true
+    content: true
+    categories: true
+    tags: true
+
+## 网站公告设置
+notification: |-
+            <p>
+            欢迎光临 Binchen Coder 技术博客 🤝🤝🤝 <br/>
+            <hr/>
+            <p style="color: #e67e22; background-image: -webkit-linear-gradient(left, #cddc39, #e67e22 25%, #cddc39 50%, #e67e22 75%, #cddc39) !important; -webkit-text-fill-color: transparent!important; -webkit-background-clip:text!important; background-size: 200% 100%!important; animation: masked-animation 2s infinite linear !important;">
+            面对过去无怨无悔，把握现在充满信心，备战未来无所畏惧。保持信念，克服恐惧！一点一滴的积累，一点一滴的沉淀。
+            </p>
+            <strong style="color: #e67e22; font-size: 16px;">学技术需要不断的积淀！</strong>
+            </p>
+
+## 社交设置
+social:
+ - name: Github
+   icon: git
+   href: //github.com/binchencoder
+ - name: 邮箱
+   icon: envelope-o
+   href: mailto:c1325791024@163.com
+ - name: 联系QQ
+   icon: qq
+   href: /
+ - name: 微信
+   icon: weixin
+   href: /
+ - name: QQ群
+   icon: users
+   href: /
+ - name: RSS
+   icon: feed
+   href: /atom.xml
+
+## 文章分类设置
+cate_config:
+   show_count: true
+   show_current: true
+
+## 文章归档设置
+arch_config:
+   type: 'monthly'
+   show_count: true
+   order: -1
+
+## 友链设置
+links:
+  - 个人博客: https://binchencoder.github.io/
+
+
+# 主题自定义个性化配置
+
+## 网站宣传语
+branding: 夜晚的灯塔一直都在，只是灯亮的时候，你才看见它
+
+## 设置banner背景图片
+banner:
+    img: /img/banner.jpg
+
+## 首页列表底部面板
+homePanel: true
+
+## 缩略图自定义随机图片
+defaultImgs:
+  -
+
+## 截取文章首页描述字数
+excerptLength: 120
+
+## 是否开启文章目录
+toc: true
+
+## 代码高亮配置
+highlightTheme:
+
+## bootstrap配置
+bootstrap:
+
+## ICON配置
+fontAwesome:
+
+## 文章过期提醒功能
+warning:
+  days: 1000
+  text: '本文于%d天之前发表，文中内容可能已经过时。'
+
+## 文章内声明
+declaration:
+  enable: true
+  title: '转载声明'
+  tip: |-
+      商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="https://binchencoder.github.io/" target="_blank">Binchencoder</a>
+
+
+## 主题评论
+
+### gitment
+gitment:
+  enable: false
+  owner:
+  repo:
+  client_id:
+  client_secret:
+  perPage: 10
+
+### 来必力
+livere:
+  enable: true
+  livere_uid: MTAyMC8zODI1Ny8xNDc4NQ
+
+### 友言评论(服务不稳定)
+uyan:
+  enable: false
+  uyan_id: 1966422
+
+### Disqus评论
+disqus:
+  enable: false
+  shortname: snippet
+  count: false
+
+### 畅言评论(需要ICP备案)
+changyan:
+  enable: false
+  appid:
+  conf:
+
+## Valine评论
+valine:
+   enable: false
+   appId: xOKV9J4UeQAtVkvnJC7Kq2Jn-gzGzoHsz
+   appKey: erIpQac4azoCmgfBB7Dl9maa
+   placeholder: 说点什么吧
+   notify: false
+   verify: false
+   avatar: mm
+   meta: nick,mail
+   pageSize: 10
+
+## 网站访问统计
+
+### 网盟CNZZ统计
+cnzz_analytics: 1263868967
+
+### 百度统计
+baidu_analytics:
+
+### 谷歌统计
+google_analytics:
+
+### 腾讯分析
+tencent_analytics:
+
+### 百度文章推送
+baidu_push:
+
+#网站主题配置
+since: 2017
+robot: 'all' ### 控制搜索引擎的抓取和索引编制行为，默认为all
+version: 1.2.1

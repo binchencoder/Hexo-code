@@ -6,7 +6,7 @@
     "version": "3.9.0"
   },
   "dependencies": {
-    "hexo": "^3.7.1",
+    "hexo": "^4.0.0",
     "hexo-asset-image": "git+https://github.com/CodeFalling/hexo-asset-image.git",
     "hexo-autoprefixer": "^1.0.0",
     "hexo-deployer-git": "^0.3.1",
