@@ -66,14 +66,14 @@ jsonContent:
 
 ## 网站公告设置
 notification: |-
-            <p>
-            欢迎光临 Binchen Coder 技术博客 🤝🤝🤝 <br/>
-            <hr/>
-            <p style="color: #e67e22; background-image: -webkit-linear-gradient(left, #cddc39, #e67e22 25%, #cddc39 50%, #e67e22 75%, #cddc39) !important; -webkit-text-fill-color: transparent!important; -webkit-background-clip:text!important; background-size: 200% 100%!important; animation: masked-animation 2s infinite linear !important;">
-            面对过去无怨无悔，把握现在充满信心，备战未来无所畏惧。保持信念，克服恐惧！一点一滴的积累，一点一滴的沉淀。
-            </p>
-            <strong style="color: #e67e22; font-size: 16px;">学技术需要不断的积淀！</strong>
-            </p>
+  <p>
+  欢迎光临 Binchen Coder 技术博客 🤝🤝🤝 <br/>
+  <hr/>
+  <p style="color: #e67e22; background-image: -webkit-linear-gradient(left, #cddc39, #e67e22 25%, #cddc39 50%, #e67e22 75%, #cddc39) !important; -webkit-text-fill-color: transparent!important; -webkit-background-clip:text!important; background-size: 200% 100%!important; animation: masked-animation 2s infinite linear !important;">
+  面对过去无怨无悔，把握现在充满信心，备战未来无所畏惧。保持信念，克服恐惧！一点一滴的积累，一点一滴的沉淀。
+  </p>
+  <strong style="color: #e67e22; font-size: 16px;">学技术需要不断的积淀！</strong>
+  </p>
 
 ## 社交设置{@name:社交工具名字，@icon:社交工具图标，@href:设置工具链接} [参考图标](http://fontawesome.io/icons/)
 social:
@@ -192,7 +192,7 @@ gitment:
 
 ### 来必力(默认选项)
 livere:
-  enable: true
+  enable: false
   livere_uid: MTAyMC8zODI1Ny8xNDc4NQ
 
 ### 友言评论(服务不稳定，经常无法加载)
@@ -214,9 +214,9 @@ changyan:
 
 ### Valine评论 参考网站: [valine评论](https://valine.js.org/)
 valine:
-  enable: false
-  appId: xOKV9J4UeQAtVkvnJC7Kq2Jn-gzGzoHsz
-  appKey: erIpQac4azoCmgfBB7Dl9maa
+  enable: true
+  appId: xHUsTpzIlelbKBsefohA5b4m-gzGzoHsz
+  appKey: RzKuChrzRGTQEgtRSKHy8s7L
   placeholder: 说点什么吧
   notify: false # 邮件通知
   verify: false # 验证码
