@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>多线程 — 概述及底层实现机制浅析</title>
+      <link href="/2020/04/15/%E5%A4%9A%E7%BA%BF%E7%A8%8B%20%E2%80%94%20%E6%A6%82%E8%BF%B0%E5%8F%8A%E5%BA%95%E5%B1%82%E5%AE%9E%E7%8E%B0%E6%9C%BA%E5%88%B6%E6%B5%85%E6%9E%90/"/>
+      <url>/2020/04/15/%E5%A4%9A%E7%BA%BF%E7%A8%8B%20%E2%80%94%20%E6%A6%82%E8%BF%B0%E5%8F%8A%E5%BA%95%E5%B1%82%E5%AE%9E%E7%8E%B0%E6%9C%BA%E5%88%B6%E6%B5%85%E6%9E%90/</url>
+      
+        <content type="html"><![CDATA[<h1 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h1><p>多线程是为了使得多个线程并行的工作以完成多项任务, 以提高系统的效率. 线程是在同一时间需要完成多项任务的时候被实现的.</p><h2 id="什么是线程、进程"><a href="#什么是线程、进程" class="headerlink" title="什么是线程、进程"></a>什么是线程、进程</h2><p>在讨论多线程之前, 我们需要先认识一下, 进程、线程, 以及相关值得注意的问题.</p><p>我们一起先来读一个有趣的故事<a href="http://www.ruanyifeng.com/blog/2013/04/processes_and_threads.html" target="_blank" rel="noopener">《进程与线程的一个简单解释》</a>, 浅显易懂, 生动形象的解释了多线程相关的很多典型问题.</p><h4 id="进程"><a href="#进程" class="headerlink" title="进程"></a>进程</h4><p><strong>程序的一次执行</strong></p><blockquote><p>进程是计算机中的程序关于某数据集合上的一次运行活动. 是系统进行资源分配和调度的基本单位, 是操作系统结构的基础. 进程是计算机中已运行程序的实体. 其本身并不是内部运行单位, 是<strong>线程的容器</strong></p></blockquote><h4 id="线程"><a href="#线程" class="headerlink" title="线程"></a>线程</h4><p><strong>CPU的基本调度单位</strong></p><blockquote><p>线程是操作系统能够进行运算调度的最小单位. 线程是一组指令的集合它被包含在进程之中, 是进程中的实际运作单位. 一条线程指的是进程中一个单一顺序的控制流, 一个进程中可以并发多个线程, 每条线程并行执行不同的任务. 线程是独立调度和分派的基本单位. 同一进程中的多条线程将共享该进程中的全部系统资源, 但是自有调度堆栈和寄存器环境.</p></blockquote><h2 id="线程、进程的不同"><a href="#线程、进程的不同" class="headerlink" title="线程、进程的不同"></a>线程、进程的不同</h2><ul><li>主线程在程序中的地位和其他线程不同，它是其他线程最终的父线程，且所有界面的显示操作即AppKit或 UIKit的操作必须在主线程进行</li><li>进程和线程都是操作系统的概念。进程是应用程序的执行实例，每个进程是由私有的虚拟地址空间、代码、数据和其它各种系统资源组成</li><li>线程和进程十分相似，不同的只是线程比进程小。首先，线程采用了多个线程可共享资源的设计思想；例如，它们的操作大部分都是在同一地址空间进行的。其次，从一个线程切换到另一线程所花费的代价比进程低。再次，进程本身的信息在内存中占用的空间比线程大，因此线程更能允分地利用内存</li><li>线程是进程的一部分<br>CPU调度的是线程<br>系统为进程分配资源，不对线程分配资源</li></ul><h2 id="线程、进程的关系"><a href="#线程、进程的关系" class="headerlink" title="线程、进程的关系"></a>线程、进程的关系</h2><p>一个线程只能属于一个进程，而一个进程可以有多个线程，但至少有一个线程。 资源分配给进程，同一进程的所有线程共享该进程的所有资源。 处理机分给线程，即真正在处理机上运行的是线程。 线程在执行过程中，需要协作同步。不同进程的线程间要利用消息通信的办法实现同步</p><h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ul><li><a href="http://www.ruanyifeng.com/blog/2013/04/processes_and_threads.html" target="_blank" rel="noopener">http://www.ruanyifeng.com/blog/2013/04/processes_and_threads.html</a></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 后端 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Java </tag>
+            
+            <tag> 多线程 </tag>
+            
+            <tag> 线程 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>linux top命令VIRT,RES,SHR,DATA的含义</title>
       <link href="/2020/01/03/linux%20top%E5%91%BD%E4%BB%A4VIRT,RES,SHR,DATA%E7%9A%84%E5%90%AB%E4%B9%89/"/>
       <url>/2020/01/03/linux%20top%E5%91%BD%E4%BB%A4VIRT,RES,SHR,DATA%E7%9A%84%E5%90%AB%E4%B9%89/</url>
