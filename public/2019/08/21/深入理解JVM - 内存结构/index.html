@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html lang="zh-CN">
 
-<head><meta name="generator" content="Hexo 3.9.0">
+<head>
     <!--Setting-->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -19,16 +19,16 @@
     <link rel="dns-prefetch" href="https://binchencoder.github.io">
     <!--SEO-->
 
-<meta name="keywords" content="Java,后端,JVM">
+<meta name="keywords" content="Java,后端,JVM" />
 
 
-<meta name="description" content="前言每个使用Java的开发者都知道Java字节码是在JRE中运行，JRE由Java API和JVM组成，JVM通过类加载器(Class Loader)加载Java应用，并通过Java API进行...">
+<meta name="description" content="前言每个使用Java的开发者都知道Java字节码是在JRE中运行，JRE由Java API和JVM组成，JVM通过类加载器(Class Loader)加载Java应用，并通过Java API进行..." />
 
 
-<meta name="robots" content="all">
-<meta name="google" content="all">
-<meta name="googlebot" content="all">
-<meta name="verify" content="all">
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
     <!--Title-->
 
 <title>
@@ -75,7 +75,7 @@
 })();
 </script>
 
-</head></html>
+</head>
 <!--[if lte IE 8]>
 <style>
     html{ font-size: 1em }
@@ -244,7 +244,7 @@
 <p>老年代空间大小 = 堆空间大小 - 年轻代大空间大小</p>
 </blockquote>
 <h2 id="Java运行时数据区"><a href="#Java运行时数据区" class="headerlink" title="Java运行时数据区"></a>Java运行时数据区</h2><p>Java虚拟机在执行Java程序的过程中会将其管理的内存划分为若干个不同的数据区域，这些区域有各自的用途、创建和销毁的时间，有些区域随虚拟机进程的启动而存在，有些区域则是依赖用户线程的启动和结束来建立和销毁。Java虚拟机所管理的内存包括以下几个运行时数据区域，如图：</p>
-<p><img src="/2019/08/21/深入理解JVM - 内存结构/runtime data area.png" alt></p>
+<p><img src="/2019/08/21/深入理解JVM - 内存结构/runtime data area.png" alt=""></p>
 <h3 id="Java堆-Heap"><a href="#Java堆-Heap" class="headerlink" title="Java堆(Heap)"></a>Java堆(Heap)</h3><p>对于大多数应用来说，Java堆（Java Heap）是Java虚拟机所管理的内存中<strong>最大</strong>的一块。Java堆是被所有线程共享的一块内存区域，在虚拟机启动时创建。此内存区域的唯一目的就是存放对象实例，<strong>几乎所有的对象实例都在这里分配内存。</strong></p>
 <p>Java堆是垃圾收集器管理的主要区域，因此很多时候也被称做<strong>“GC堆”</strong>。如果从内存回收的角度看，由于现在收集器基本都是采用的分代收集算法，所以Java堆中还可以细分为：<strong>新生代</strong>和<strong>老年代</strong>；再细致一点的有<strong>Eden空间</strong>、<strong>From Survivor空间</strong>、<strong>To Survivor空间</strong>等。</p>
 <p>根据Java虚拟机规范的规定，Java堆可以处于物理上不连续的内存空间中，只要逻辑上是连续的即可，就像我们的磁盘空间一样。在实现时，既可以实现成固定大小的，也可以是可扩展的，不过当前主流的虚拟机都是按照可扩展来实现的（通过-Xmx和-Xms控制）。</p>

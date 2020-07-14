@@ -60,7 +60,9 @@ Options:
 
 ## Screenshots
 
-TODO
+![Home](./Docular/home.jpg)
+
+![Ease Gateway Details](./Docular/ease-gateway-details.jpg)
 
 ## References
 
