@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://binchencoder.github.io/"/>
-  <updated>2020-04-15T08:46:27.495Z</updated>
+  <updated>2020-07-14T09:08:59.688Z</updated>
   <id>https://binchencoder.github.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Docular</title>
+    <link href="https://binchencoder.github.io/2020/07/14/Docular/"/>
+    <id>https://binchencoder.github.io/2020/07/14/Docular/</id>
+    <published>2020-07-14T09:00:08.000Z</published>
+    <updated>2020-07-14T09:08:59.688Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;Docular&quot;&gt;&lt;a href=&quot;#Docular&quot; class=&quot;headerlink&quot; title=&quot;Docular&quot;&gt;&lt;/a&gt;Docular&lt;/h1&gt;&lt;p&gt;Docular是一个个人文档服务，它提供了一个本地HTTP服务器来服务给定文件夹中的文档。该文件夹包
+      
+    
+    </summary>
+    
+      <category term="工具" scheme="https://binchencoder.github.io/categories/%E5%B7%A5%E5%85%B7/"/>
+    
+    
+      <category term="MarkDown" scheme="https://binchencoder.github.io/tags/MarkDown/"/>
+    
+      <category term="Document Preview" scheme="https://binchencoder.github.io/tags/Document-Preview/"/>
+    
+      <category term="Document Service" scheme="https://binchencoder.github.io/tags/Document-Service/"/>
+    
+  </entry>
   
   <entry>
     <title>多线程 — 概述及底层实现机制浅析</title>
@@ -519,30 +546,6 @@
       <category term="Java" scheme="https://binchencoder.github.io/tags/Java/"/>
     
       <category term="JVM" scheme="https://binchencoder.github.io/tags/JVM/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Mac平台搭建Golang环境</title>
-    <link href="https://binchencoder.github.io/2019/08/08/Mac%E5%B9%B3%E5%8F%B0%E6%90%AD%E5%BB%BAGolang%E7%8E%AF%E5%A2%83/"/>
-    <id>https://binchencoder.github.io/2019/08/08/Mac平台搭建Golang环境/</id>
-    <published>2019-08-08T04:10:18.000Z</published>
-    <updated>2019-12-02T02:08:24.473Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;img src=&quot;/2019/08/08/Mac平台搭建Golang环境/golang.png&quot; alt=&quot;Golang&quot;&gt;&lt;/p&gt;
-&lt;h1 id=&quot;Overview&quot;&gt;&lt;a href=&quot;#Overview&quot; class=&quot;headerlink&quot; title=&quot;Overv
-      
-    
-    </summary>
-    
-      <category term="后端" scheme="https://binchencoder.github.io/categories/%E5%90%8E%E7%AB%AF/"/>
-    
-    
-      <category term="Golang" scheme="https://binchencoder.github.io/tags/Golang/"/>
     
   </entry>
   

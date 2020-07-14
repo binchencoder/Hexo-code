@@ -11,7 +11,7 @@ categories:
 
 # Docular
 
-Docular is a personal document service which provides a local HTTP server to serve documents from a given folder. The folder contains the following supported file formats: HTML, MarkDown, MAFF.
+Docular是一个个人文档服务，它提供了一个本地HTTP服务器来服务给定文件夹中的文档。该文件夹包含以下支持的文件格式：HTML，MarkDown，MAFF
 
 ## Install
 
@@ -33,7 +33,7 @@ Docular 在Linux 和 Mac 平台上都能很好的支持
 
   > *NOTE*
   >
-  > Mac上安装稍微麻烦一点，需要将webstatic 目录下载到本地
+  > Mac上安装稍微麻烦一点，需要将webstatic 目录下载到本地，然后在运行时指定 -webstatic
 
 ## Launch
 
