@@ -1,0 +1,619 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="Binchen coder&#39;s Blog">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="theme-version" content="1.2.3">
+    <meta name="root" content="/">
+    <link rel="dns-prefetch" href="https://binchencoder.github.io">
+    <!--SEO-->
+
+<meta name="keywords" content="blog,binchencoder,IT,Web Back End,binchen,chenbin">
+
+
+<meta name="description" content>
+
+
+<meta name="robots" content="all">
+<meta name="google" content="all">
+<meta name="googlebot" content="all">
+<meta name="verify" content="all">
+    <!--Title-->
+
+<title>
+    
+    标签: Java |
+    
+    Binchen coder&#39;s Blog
+</title>
+
+<link rel="alternate" href="/atom.xml" title="Binchen coder&#39;s Blog" type="application/atom+xml">
+
+
+<link rel="icon" href="/favicon.ico">
+
+    
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.7.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+    
+<div class="hide">
+    <script type="text/javascript">
+    var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+</div>
+
+
+
+
+    
+
+<script>
+(function() {
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    } else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+</head></html>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+<body>
+    <header class="main-header"  style="background-image:url(
+    /img/banner.jpg)"
+     >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='Bin Chen'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+            <!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+            <h2>
+                小时候，哭是我们解决问题的绝招。长大后，笑是我们面对现实的武器。
+            </h2>
+            
+        </div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                        <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="https://binchencoder.github.io">
+                        Binchen coder&#39;s Blog</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/"><i class="fa "></i>
+                                首页</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/后端/"><i class="fa "></i>
+                                后端</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/Linux/"><i class="fa "></i>
+                                Linux</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/存储/"><i class="fa "></i>
+                                存储</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/面试/"><i class="fa "></i>
+                                面试</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/工具/"><i class="fa "></i>
+                                工具</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/其他/"><i class="fa "></i>
+                                其他</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/archives/"><i class="fa "></i>
+                                时间轴</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content ">
+                    <ol class="breadcrumb">
+    
+    <li>
+        Java
+    </li>
+    
+    
+</ol>
+
+<article class="post">
+    
+    <div class="post-content">
+        <div class="post-head home-post-head">
+            <h1 class="post-title">
+                <a href="/2020/04/15/多线程 — 概述及底层实现机制浅析/">
+                    多线程 — 概述及底层实现机制浅析</a>
+            </h1>
+            <div class="post-meta"> &bull;
+                <time class="post-date" datetime="" title="">
+                    2020年04月15日
+                </time>
+            </div>
+        </div>
+        <p class="brief">
+            
+            多线程多线程是为了使得多个线程并行的工作以完成多项任务, 以提高系统的效率. 线程是在同一时间需要完成多项任务的时候被实现的.
+什么是线程、进程在讨论多线程之前, 我们需要先认识一下, 进程、线程, 以及相关值得注意的问题.
+我们一起...
+            
+        </p>
+    </div>
+</article>
+
+<article class="post">
+    
+    <div class="post-content">
+        <div class="post-head home-post-head">
+            <h1 class="post-title">
+                <a href="/2019/12/03/Java面试圣经/">
+                    Java面试圣经</a>
+            </h1>
+            <div class="post-meta"> &bull;
+                <time class="post-date" datetime="" title="">
+                    2019年12月03日
+                </time>
+            </div>
+        </div>
+        <p class="brief">
+            
+            基础篇基本功
+面向对象的特征
+final, finally, finalize 的区别
+https://www.jianshu.com/p/c45b6d782e91
+
+
+重载和重写的区别
+说说反射的用途及实现
+equals 与 == ...
+            
+        </p>
+    </div>
+</article>
+
+<article class="post">
+    
+    <div class="post-content">
+        <div class="post-head home-post-head">
+            <h1 class="post-title">
+                <a href="/2019/11/29/排查CPU负载高/">
+                    排查CPU负载高</a>
+            </h1>
+            <div class="post-meta"> &bull;
+                <time class="post-date" datetime="" title="">
+                    2019年11月29日
+                </time>
+            </div>
+        </div>
+        <p class="brief">
+            
+            一、Overview本篇文章针对的是排查Java程序出现高负载的情况，如果是其他语言写的程序，如：php、python、go，无非就是换个工具，排查的步骤是类似的
+以下三类工具 从原生的top、jstack到功能强大的Arthas 和...
+            
+        </p>
+    </div>
+</article>
+
+<article class="post">
+    
+    <div class="post-content">
+        <div class="post-head home-post-head">
+            <h1 class="post-title">
+                <a href="/2019/11/29/Arthas/">
+                    Arthas</a>
+            </h1>
+            <div class="post-meta"> &bull;
+                <time class="post-date" datetime="" title="">
+                    2019年11月29日
+                </time>
+            </div>
+        </div>
+        <p class="brief">
+            
+            ArthasArthas 是Alibaba开源的Java诊断工具，深受开发者喜爱。
+
+当你遇到以下类似问题而束手无策时，Arthas可以帮助你解决：
+这个类从哪个 jar 包加载的？为什么会报各种类相关的 Exception？
+我改的...
+            
+        </p>
+    </div>
+</article>
+
+<article class="post">
+    
+    <div class="post-content">
+        <div class="post-head home-post-head">
+            <h1 class="post-title">
+                <a href="/2019/11/09/多线程 到底该设置多少线程/">
+                    多线程, 到底该设置多少线程</a>
+            </h1>
+            <div class="post-meta"> &bull;
+                <time class="post-date" datetime="" title="">
+                    2019年11月09日
+                </time>
+            </div>
+        </div>
+        <p class="brief">
+            
+            一、前言作为2年以上的开发人员，如果还不理解多线程与多进程之间的区别，那你就赶紧停停手头的工作，回去好好复习吧
+现在的程序设计中基本上都是多线程的，作为业务开发人员可能很多人都没有写过多线程的代码，因为这些高危的代码都由框架帮我们实现...
+            
+        </p>
+    </div>
+</article>
+
+<article class="post">
+    
+    <div class="post-content">
+        <div class="post-head home-post-head">
+            <h1 class="post-title">
+                <a href="/2019/09/26/排查产线系统僵死/">
+                    排查产线系统僵死</a>
+            </h1>
+            <div class="post-meta"> &bull;
+                <time class="post-date" datetime="" title="">
+                    2019年09月26日
+                </time>
+            </div>
+        </div>
+        <p class="brief">
+            
+            查看某个进程下各个线程运行情况
+12345678910toptop - 15:14:57 up 18 days, 20:55,  2 users,  load average: 8.29, 8.57, 8.88Tasks:  16 t...
+            
+        </p>
+    </div>
+</article>
+
+<article class="post">
+    
+    <div class="post-content">
+        <div class="post-head home-post-head">
+            <h1 class="post-title">
+                <a href="/2019/08/29/Java面试之基础篇 - HashMap/">
+                    Java面试之基础篇 - HashMap</a>
+            </h1>
+            <div class="post-meta"> &bull;
+                <time class="post-date" datetime="" title="">
+                    2019年08月29日
+                </time>
+            </div>
+        </div>
+        <p class="brief">
+            
+            前言掌握Java基础技能不仅能在工作中得心应手，在面试中也会占尽优势。相信大家在过去的面试过程中一定被问到过关于HashMap的知识，最近笔者也在准备面试，打算重新学习一遍Java集合的知识。在此带领大家一起来学习下
+
+HashMap...
+            
+        </p>
+    </div>
+</article>
+
+<article class="post">
+    
+    <div class="post-content">
+        <div class="post-head home-post-head">
+            <h1 class="post-title">
+                <a href="/2019/08/28/kafka是如何实现几十万的高并发写入/">
+                    Kafka是如何实现几十万的高并发写入</a>
+            </h1>
+            <div class="post-meta"> &bull;
+                <time class="post-date" datetime="" title="">
+                    2019年08月28日
+                </time>
+            </div>
+        </div>
+        <p class="brief">
+            
+            开篇在初识kafka 一文中讲了使用MQ(消息队列)来设计系统带来的好处：业务解耦、流量削峰、灵活扩展
+当下流行的MQ有很多，因为我们公司在技术选型上选择了使用Kafka，所以我就整理了一篇关于Kafka的入门知识。通过技术选型 我们...
+            
+        </p>
+    </div>
+</article>
+
+<article class="post">
+    
+    <div class="post-content">
+        <div class="post-head home-post-head">
+            <h1 class="post-title">
+                <a href="/2019/08/24/深入理解JVM - 垃圾回收之世代垃圾收集过程/">
+                    深入理解JVM - 垃圾回收之世代垃圾收集过程</a>
+            </h1>
+            <div class="post-meta"> &bull;
+                <time class="post-date" datetime="" title="">
+                    2019年08月24日
+                </time>
+            </div>
+        </div>
+        <p class="brief">
+            
+            前言在 深入理解 - 垃圾回收 中我们详细讲解了JVM垃圾回收的机制、垃圾收集算法以及各种垃圾回收器的原理和优缺点。
+通过上一篇文章我们知道现在主流的垃圾回收器都采用了分代收集算法，本文我们就来详细讲解下垃圾回收器是如何进行分代收集垃...
+            
+        </p>
+    </div>
+</article>
+
+<article class="post">
+    
+    <div class="post-content">
+        <div class="post-head home-post-head">
+            <h1 class="post-title">
+                <a href="/2019/08/23/深入理解JVM - 垃圾回收/">
+                    深入理解JVM - 垃圾回收</a>
+            </h1>
+            <div class="post-meta"> &bull;
+                <time class="post-date" datetime="" title="">
+                    2019年08月23日
+                </time>
+            </div>
+        </div>
+        <p class="brief">
+            
+            前言在 JVM内存结构 中我们详细讲解了JVM中的内存是如何分布和组成的。
+我们已经知道JVM内存结构主要有三大块：堆内存、方法区和栈内存，而堆又是JVM中占用内存最大的一块，但是堆占用的空间也不是无限的(在JVM中会有参数来进行控制...
+            
+        </p>
+    </div>
+</article>
+
+
+<nav class="pagination" role="navigation">
+    <div id="page-nav">
+        <span class="page-number current">1</span><a class="page-number" href="/tags/Java/page/2/">2</a><a class="extend next" rel="next" href="/tags/Java/page/2/"><i class='fa fa-angle-right'></i></a>
+    </div>
+</nav>
+
+                </main>
+                
+                    
+<aside class="col-md-4 sidebar">
+    
+    
+<div class="widget">
+    <h3 class="title">
+        搜索
+    </h3>
+    <div id="search-form">
+        <div id="result-mask" class="hide"></div>
+        <div class="search-area">
+            
+            <input id="search-key" type="search" autocomplete="off" placeholder="搜点什么呢？">
+            <button type="button" class="search-form-submit" id="search-local">
+                站内搜索</button>
+            
+            
+        </div>
+        <div id="result-wrap" class="hide">
+            <div id="search-result"></div>
+        </div>
+        <div class="hide">
+            <template id="search-tpl">
+                <div class="item">
+                    <a href="/{path}" title="{title}">
+                        <div class="title">{title}</div>
+                        <div class="content">{content}</div>
+                    </a>
+                </div>
+            </template>
+        </div>
+    </div>
+</div>
+
+    
+    
+<div class="widget">
+    <h3 class="title">
+        网站公告
+    </h3>
+    <div class="notification">
+        <p>
+欢迎光临 Binchen Coder 技术博客 🤝🤝🤝 <br/>
+<hr/>
+<p style="color: #e67e22; background-image: -webkit-linear-gradient(left, #cddc39, #e67e22 25%, #cddc39 50%, #e67e22 75%, #cddc39) !important; -webkit-text-fill-color: transparent!important; -webkit-background-clip:text!important; background-size: 200% 100%!important; animation: masked-animation 2s infinite linear !important;">
+面对过去无怨无悔，把握现在充满信心，备战未来无所畏惧。保持信念，克服恐惧！一点一滴的积累，一点一滴的沉淀。
+</p>
+<strong style="color: #e67e22; font-size: 16px;">学技术需要不断的积淀！</strong>
+</p>
+    </div>
+</div>
+
+    
+    
+<div class="widget">
+    <h3 class="title">
+        社交
+    </h3>
+    <div class="content social">
+        
+        <a href="//github.com/binchencoder" rel="external nofollow" title="Github" target="_blank">
+            <i class="git fa fa-git"></i>
+        </a>
+        
+        <a href="mailto:c1325791024@163.com" rel="external nofollow" title="邮箱" target="_blank">
+            <i class="envelope-o fa fa-envelope-o"></i>
+        </a>
+        
+        <a href="/" rel="external nofollow" title="联系QQ" target="_blank">
+            <i class="qq fa fa-qq"></i>
+        </a>
+        
+        <a href="/" rel="external nofollow" title="微信" target="_blank">
+            <i class="weixin fa fa-weixin"></i>
+        </a>
+        
+        <a href="/" rel="external nofollow" title="QQ群" target="_blank">
+            <i class="users fa fa-users"></i>
+        </a>
+        
+        <a href="/atom.xml" rel="external nofollow" title="RSS" target="_blank">
+            <i class="feed fa fa-feed"></i>
+        </a>
+        
+    </div>
+</div>
+
+    
+    
+<div class="widget">
+    <h3 class="title">
+        分类
+    </h3>
+    <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/"><i class="fa" aria-hidden="true">Linux</i></a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/其他/"><i class="fa" aria-hidden="true">其他</i></a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/后端/"><i class="fa" aria-hidden="true">后端</i></a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/存储/"><i class="fa" aria-hidden="true">存储</i></a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/工具/"><i class="fa" aria-hidden="true">工具</i></a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/面试/"><i class="fa" aria-hidden="true">面试</i></a><span class="category-list-count">7</span></li></ul>
+</div>
+
+    
+    
+<div class="widget">
+    <h3 class="title">
+        归档
+    </h3>
+    <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/"><i class="fa" aria-hidden="true">2020年07月</i></a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/"><i class="fa" aria-hidden="true">2020年04月</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/"><i class="fa" aria-hidden="true">2020年01月</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/"><i class="fa" aria-hidden="true">2019年12月</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/"><i class="fa" aria-hidden="true">2019年11月</i></a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/"><i class="fa" aria-hidden="true">2019年09月</i></a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/"><i class="fa" aria-hidden="true">2019年08月</i></a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/"><i class="fa" aria-hidden="true">2019年07月</i></a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/"><i class="fa" aria-hidden="true">2019年01月</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/"><i class="fa" aria-hidden="true">2018年09月</i></a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/"><i class="fa" aria-hidden="true">2018年08月</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/"><i class="fa" aria-hidden="true">2018年07月</i></a><span class="archive-list-count">4</span></li></ul>
+</div>
+
+    
+    
+<div class="widget">
+    <h3 class="title">
+        标签云
+    </h3>
+    <div class="content tag-cloud">
+        
+        <a href="/tags/Bazel/" style="font-size: 10px;">Bazel</a> <a href="/tags/Binlog/" style="font-size: 10px;">Binlog</a> <a href="/tags/Document-Preview/" style="font-size: 10px;">Document Preview</a> <a href="/tags/Document-Service/" style="font-size: 10px;">Document Service</a> <a href="/tags/Golang/" style="font-size: 10px;">Golang</a> <a href="/tags/Hello-World/" style="font-size: 10px;">Hello World</a> <a href="/tags/Hexo/" style="font-size: 12px;">Hexo</a> <a href="/tags/JVM/" style="font-size: 16px;">JVM</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Jstack/" style="font-size: 12px;">Jstack</a> <a href="/tags/Kafka/" style="font-size: 12px;">Kafka</a> <a href="/tags/Linux/" style="font-size: 14px;">Linux</a> <a href="/tags/LoadBalancer/" style="font-size: 12px;">LoadBalancer</a> <a href="/tags/Lock/" style="font-size: 10px;">Lock</a> <a href="/tags/MQ/" style="font-size: 12px;">MQ</a> <a href="/tags/MariaDB/" style="font-size: 10px;">MariaDB</a> <a href="/tags/MarkDown/" style="font-size: 10px;">MarkDown</a> <a href="/tags/MySQL/" style="font-size: 12px;">MySQL</a> <a href="/tags/RPC/" style="font-size: 12px;">RPC</a> <a href="/tags/Registry-Discovery/" style="font-size: 12px;">Registry/Discovery</a> <a href="/tags/Shell/" style="font-size: 10px;">Shell</a> <a href="/tags/Spring/" style="font-size: 10px;">Spring</a> <a href="/tags/Spring-Cloud/" style="font-size: 10px;">Spring Cloud</a> <a href="/tags/SpringBoot/" style="font-size: 10px;">SpringBoot</a> <a href="/tags/Synchronized/" style="font-size: 10px;">Synchronized</a> <a href="/tags/Systerm/" style="font-size: 10px;">Systerm</a> <a href="/tags/TCP/" style="font-size: 10px;">TCP</a> <a href="/tags/TCP-IP/" style="font-size: 10px;">TCP/IP</a> <a href="/tags/Thread/" style="font-size: 10px;">Thread</a> <a href="/tags/Top/" style="font-size: 10px;">Top</a> <a href="/tags/gRPC/" style="font-size: 14px;">gRPC</a> <a href="/tags/后端/" style="font-size: 18px;">后端</a> <a href="/tags/垃圾回收/" style="font-size: 12px;">垃圾回收</a> <a href="/tags/多线程/" style="font-size: 12px;">多线程</a> <a href="/tags/存储/" style="font-size: 10px;">存储</a> <a href="/tags/感悟/" style="font-size: 10px;">感悟</a> <a href="/tags/服务端/" style="font-size: 10px;">服务端</a> <a href="/tags/正则表达式/" style="font-size: 10px;">正则表达式</a> <a href="/tags/线上诊断/" style="font-size: 14px;">线上诊断</a> <a href="/tags/线程/" style="font-size: 10px;">线程</a> <a href="/tags/线程安全/" style="font-size: 10px;">线程安全</a> <a href="/tags/网络协议/" style="font-size: 10px;">网络协议</a> <a href="/tags/集合/" style="font-size: 10px;">集合</a> <a href="/tags/面试/" style="font-size: 18px;">面试</a>
+        
+    </div>
+</div>
+
+    
+    
+<div class="widget">
+    <h3 class="title">
+        友链
+    </h3>
+    <div class="content friends-link">
+        
+        <a href="https://binchencoder.github.io/" class="fa" target="_blank">
+            个人博客</a>
+        
+    </div>
+</div>
+
+    
+</aside>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+<a id="back-to-top" class="icon-btn hide">
+    <i class="fa fa-chevron-up"></i>
+</a>
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+    访问量:
+    <strong id="busuanzi_value_site_pv">
+        <i class="fa fa-spinner fa-spin"></i>
+    </strong>
+    &nbsp; | &nbsp;
+    访客数:
+    <strong id="busuanzi_value_site_uv">
+        <i class="fa fa-spinner fa-spin"></i>
+    </strong>
+    
+</div>
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy;
+                    2017
+                    
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/js/search.js?rev=@@hash"></script>
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<script src="/js/app.js?rev=@@hash"></script>
+</body>
+</html>

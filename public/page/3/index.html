@@ -1,0 +1,949 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="Binchen coder&#39;s Blog">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="theme-version" content="1.2.3">
+    <meta name="root" content="/">
+    <link rel="dns-prefetch" href="https://binchencoder.github.io">
+    <!--SEO-->
+
+<meta name="keywords" content="blog,binchencoder,IT,Web Back End,binchen,chenbin">
+
+
+<meta name="description" content>
+
+
+<meta name="robots" content="all">
+<meta name="google" content="all">
+<meta name="googlebot" content="all">
+<meta name="verify" content="all">
+    <!--Title-->
+
+<title>
+    
+    Binchen coder&#39;s Blog
+</title>
+
+<link rel="alternate" href="/atom.xml" title="Binchen coder&#39;s Blog" type="application/atom+xml">
+
+
+<link rel="icon" href="/favicon.ico">
+
+    
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.7.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+    
+<div class="hide">
+    <script type="text/javascript">
+    var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+</div>
+
+
+
+
+    
+
+<script>
+(function() {
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    } else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+</head></html>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+<body>
+    <header class="main-header"  style="background-image:url(
+    /img/banner.jpg)"
+     >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='Bin Chen'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+            <!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+            <h2>
+                小时候，哭是我们解决问题的绝招。长大后，笑是我们面对现实的武器。
+            </h2>
+            
+        </div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                        <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="https://binchencoder.github.io">
+                        Binchen coder&#39;s Blog</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/"><i class="fa "></i>
+                                首页</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/后端/"><i class="fa "></i>
+                                后端</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/Linux/"><i class="fa "></i>
+                                Linux</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/存储/"><i class="fa "></i>
+                                存储</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/面试/"><i class="fa "></i>
+                                面试</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/工具/"><i class="fa "></i>
+                                工具</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/其他/"><i class="fa "></i>
+                                其他</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/archives/"><i class="fa "></i>
+                                时间轴</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content ">
+                    
+<div class="carousel">
+    <a href="javascript:" target="_blank">
+        <img src="/img/head-img.jpg" alt="">
+    </a>
+</div>
+
+
+
+
+<article class="post">
+    
+    <div class="post-media">
+        <a href="/2019/08/16/认识Bazel/">
+            <img class="img-ajax" src="/img/loading.gif" data-src="/2019/08/16/认识Bazel/target_tree.png" alt="认识Bazel">
+        </a>
+    </div>
+    
+    <div class="post-content">
+        <div class="post-head home-post-head">
+            <h1 class="post-title">
+                <a href="/2019/08/16/认识Bazel/">
+                    认识Bazel</a>
+            </h1>
+            <div class="post-meta"> &bull;
+                <time class="post-date" datetime="" title="">
+                    2019年08月16日
+                </time>
+            </div>
+        </div>
+        <p class="brief">
+            
+            Bazel入门最近一直在研究网关这玩意，想借鉴我们公司的网关架构自己实现一下。思路是引入grpc-gateway，只是在这套系统的基础上增加一些定制的功能，如：负载均衡，权限验证，API参数检查。因为grpc-gateway采用的是B...
+            
+        </p>
+    </div>
+    
+    <footer class="post-footer clearfix">
+        <div class="pull-left tag-list">
+            <div class="post-meta">
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a class="category-link" href="/categories/工具/">工具</a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            <a class="tag-link" href="/tags/Bazel/">Bazel</a>
+            
+        </span>
+    </span>
+    
+    
+</div>
+        </div>
+        <div class="post-permalink">
+            <a href="/2019/08/16/认识Bazel/" class="btn btn-default">
+                阅读全文</a>
+        </div>
+    </footer>
+    
+</article>
+
+
+<article class="post">
+    
+    <div class="post-media">
+        <a href="/2019/08/11/JVM内存管理/">
+            <img class="img-ajax" src="/img/loading.gif" data-src="/2019/08/11/JVM内存管理/JVM内存管理.png" alt="JVM内存管理">
+        </a>
+    </div>
+    
+    <div class="post-content">
+        <div class="post-head home-post-head">
+            <h1 class="post-title">
+                <a href="/2019/08/11/JVM内存管理/">
+                    JVM内存管理</a>
+            </h1>
+            <div class="post-meta"> &bull;
+                <time class="post-date" datetime="" title="">
+                    2019年08月11日
+                </time>
+            </div>
+        </div>
+        <p class="brief">
+            
+            JVM内存管理作为三大工业级别语言之一的JAVA如此受企业青睐有加，离不开她背后JVM的默默复出。只是由于JAVA过于成功以至于我们常常忘了JVM平台上还运行着像Clojure/Groovy/Kotlin/Scala/JRuby/Jy...
+            
+        </p>
+    </div>
+    
+    <footer class="post-footer clearfix">
+        <div class="pull-left tag-list">
+            <div class="post-meta">
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a class="category-link" href="/categories/后端/">后端</a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            <a class="tag-link" href="/tags/JVM/">JVM</a> <a class="tag-link" href="/tags/Java/">Java</a>
+            
+        </span>
+    </span>
+    
+    
+</div>
+        </div>
+        <div class="post-permalink">
+            <a href="/2019/08/11/JVM内存管理/" class="btn btn-default">
+                阅读全文</a>
+        </div>
+    </footer>
+    
+</article>
+
+
+<article class="post">
+    
+    <div class="post-media">
+        <a href="/2019/08/08/Mac平台搭建Golang环境/">
+            <img class="img-ajax" src="/img/loading.gif" data-src="/2019/08/08/Mac平台搭建Golang环境/golang.png" alt="Mac平台搭建Golang环境">
+        </a>
+    </div>
+    
+    <div class="post-content">
+        <div class="post-head home-post-head">
+            <h1 class="post-title">
+                <a href="/2019/08/08/Mac平台搭建Golang环境/">
+                    Mac平台搭建Golang环境</a>
+            </h1>
+            <div class="post-meta"> &bull;
+                <time class="post-date" datetime="" title="">
+                    2019年08月08日
+                </time>
+            </div>
+        </div>
+        <p class="brief">
+            
+            
+Overview我大概是在两年前开始接触Golang语言，当时我们公司在北美成立研发中心，核心成员都是来自Google、微软等世界一流互联网公司。那时起我们才真正有了CTO这个职位。他来自Google，所以把Google的核心开发语...
+            
+        </p>
+    </div>
+    
+    <footer class="post-footer clearfix">
+        <div class="pull-left tag-list">
+            <div class="post-meta">
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a class="category-link" href="/categories/后端/">后端</a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            <a class="tag-link" href="/tags/Golang/">Golang</a>
+            
+        </span>
+    </span>
+    
+    
+</div>
+        </div>
+        <div class="post-permalink">
+            <a href="/2019/08/08/Mac平台搭建Golang环境/" class="btn btn-default">
+                阅读全文</a>
+        </div>
+    </footer>
+    
+</article>
+
+
+<article class="post">
+    
+    <div class="post-content">
+        <div class="post-head home-post-head">
+            <h1 class="post-title">
+                <a href="/2019/08/02/Linux 文件常用命令/">
+                    Linux文件常用命令</a>
+            </h1>
+            <div class="post-meta"> &bull;
+                <time class="post-date" datetime="" title="">
+                    2019年08月02日
+                </time>
+            </div>
+        </div>
+        <p class="brief">
+            
+            Linux文件常用命令文件解压缩
+解压 .tar.gz 和 .tgz1tar zxvf filename.tar.gz
+
+
+压缩 .tar.gz 和 .tgz1tar zcvf filename.tar.gz
+
+linux下tar命令...
+            
+        </p>
+    </div>
+    
+    <footer class="post-footer clearfix">
+        <div class="pull-left tag-list">
+            <div class="post-meta">
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a class="category-link" href="/categories/Linux/">Linux</a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            <a class="tag-link" href="/tags/Linux/">Linux</a>
+            
+        </span>
+    </span>
+    
+    
+</div>
+        </div>
+        <div class="post-permalink">
+            <a href="/2019/08/02/Linux 文件常用命令/" class="btn btn-default">
+                阅读全文</a>
+        </div>
+    </footer>
+    
+</article>
+
+
+<article class="post">
+    
+    <div class="post-content">
+        <div class="post-head home-post-head">
+            <h1 class="post-title">
+                <a href="/2019/08/01/Spring Boot中application.properties与bootstrap.properties的区别/">
+                    Spring Boot中application.properties与bootstrap.properties的区别</a>
+            </h1>
+            <div class="post-meta"> &bull;
+                <time class="post-date" datetime="" title="">
+                    2019年08月01日
+                </time>
+            </div>
+        </div>
+        <p class="brief">
+            
+            application.propertes (application.yml)现在使用SpringBoot是Java世界里的主流选择，它大大简化了应用初始搭建以及开发过程，该框架使用了特定的方式来进行配置，从而是开发人员不在需要定义样...
+            
+        </p>
+    </div>
+    
+    <footer class="post-footer clearfix">
+        <div class="pull-left tag-list">
+            <div class="post-meta">
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a class="category-link" href="/categories/后端/">后端</a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            <a class="tag-link" href="/tags/Spring/">Spring</a> <a class="tag-link" href="/tags/Spring-Cloud/">Spring Cloud</a> <a class="tag-link" href="/tags/SpringBoot/">SpringBoot</a>
+            
+        </span>
+    </span>
+    
+    
+</div>
+        </div>
+        <div class="post-permalink">
+            <a href="/2019/08/01/Spring Boot中application.properties与bootstrap.properties的区别/" class="btn btn-default">
+                阅读全文</a>
+        </div>
+    </footer>
+    
+</article>
+
+
+<article class="post">
+    
+    <div class="post-media">
+        <a href="/2019/07/29/MySQL优化原理/">
+            <img class="img-ajax" src="/img/loading.gif" data-src="/2019/07/29/MySQL优化原理/MySQL.png" alt="MySQL优化原理">
+        </a>
+    </div>
+    
+    <div class="post-content">
+        <div class="post-head home-post-head">
+            <h1 class="post-title">
+                <a href="/2019/07/29/MySQL优化原理/">
+                    MySQL优化原理</a>
+            </h1>
+            <div class="post-meta"> &bull;
+                <time class="post-date" datetime="" title="">
+                    2019年07月29日
+                </time>
+            </div>
+        </div>
+        <p class="brief">
+            
+            前言说起MySQL的查询优化，相信大家收藏了一堆奇技淫巧：不能使用SELECT *、不使用NULL字段、合理创建索引、为字段选择合适的数据类型….. 你是否真的理解这些优化技巧？是否理解其背后的工作原理？在实际场景下性能真有提升吗？我...
+            
+        </p>
+    </div>
+    
+    <footer class="post-footer clearfix">
+        <div class="pull-left tag-list">
+            <div class="post-meta">
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a class="category-link" href="/categories/存储/">存储</a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            <a class="tag-link" href="/tags/MySQL/">MySQL</a> <a class="tag-link" href="/tags/存储/">存储</a>
+            
+        </span>
+    </span>
+    
+    
+</div>
+        </div>
+        <div class="post-permalink">
+            <a href="/2019/07/29/MySQL优化原理/" class="btn btn-default">
+                阅读全文</a>
+        </div>
+    </footer>
+    
+</article>
+
+
+<article class="post">
+    
+    <div class="post-content">
+        <div class="post-head home-post-head">
+            <h1 class="post-title">
+                <a href="/2019/07/29/Linux查看系统硬件信息/">
+                    Linux查看系统硬件信息</a>
+            </h1>
+            <div class="post-meta"> &bull;
+                <time class="post-date" datetime="" title="">
+                    2019年07月29日
+                </time>
+            </div>
+        </div>
+        <p class="brief">
+            
+            Linux查看系统硬件信息查看当前操作系统内核信息12chenbin@chenbin-ThinkPad:~$ uname -aLinux chenbin-ThinkPad 4.15.0-36-generic #39-Ubuntu SM...
+            
+        </p>
+    </div>
+    
+    <footer class="post-footer clearfix">
+        <div class="pull-left tag-list">
+            <div class="post-meta">
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a class="category-link" href="/categories/Linux/">Linux</a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            <a class="tag-link" href="/tags/Linux/">Linux</a> <a class="tag-link" href="/tags/Systerm/">Systerm</a>
+            
+        </span>
+    </span>
+    
+    
+</div>
+        </div>
+        <div class="post-permalink">
+            <a href="/2019/07/29/Linux查看系统硬件信息/" class="btn btn-default">
+                阅读全文</a>
+        </div>
+    </footer>
+    
+</article>
+
+
+<article class="post">
+    
+    <div class="post-media">
+        <a href="/2019/07/21/RPC框架/">
+            <img class="img-ajax" src="/img/loading.gif" data-src="/2019/07/21/RPC框架/what-rpc1.png" alt="RPC框架">
+        </a>
+    </div>
+    
+    <div class="post-content">
+        <div class="post-head home-post-head">
+            <h1 class="post-title">
+                <a href="/2019/07/21/RPC框架/">
+                    RPC框架</a>
+            </h1>
+            <div class="post-meta"> &bull;
+                <time class="post-date" datetime="" title="">
+                    2019年07月21日
+                </time>
+            </div>
+        </div>
+        <p class="brief">
+            
+            前言大概是三年前我开始接触RPC，那时作为一个刚入职场三年的新兵，在公司技术架构决策层上还没有什么发言权。一直沿用前辈搭建的技术架构来开发应用系统，当时还没有前后端分离，采用的框架是Spring MVC + JSP，每个应用服务都是一...
+            
+        </p>
+    </div>
+    
+    <footer class="post-footer clearfix">
+        <div class="pull-left tag-list">
+            <div class="post-meta">
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a class="category-link" href="/categories/后端/">后端</a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            <a class="tag-link" href="/tags/RPC/">RPC</a>
+            
+        </span>
+    </span>
+    
+    
+</div>
+        </div>
+        <div class="post-permalink">
+            <a href="/2019/07/21/RPC框架/" class="btn btn-default">
+                阅读全文</a>
+        </div>
+    </footer>
+    
+</article>
+
+
+<article class="post">
+    
+    <div class="post-media">
+        <a href="/2019/01/20/MySQL锁的理解/">
+            <img class="img-ajax" src="/img/loading.gif" data-src="/2019/01/20/MySQL锁的理解/MySQL.jpeg" alt="MySQL中 乐观锁、悲观锁、共享锁、排它锁、行锁、表锁的理解">
+        </a>
+    </div>
+    
+    <div class="post-content">
+        <div class="post-head home-post-head">
+            <h1 class="post-title">
+                <a href="/2019/01/20/MySQL锁的理解/">
+                    MySQL中 乐观锁、悲观锁、共享锁、排它锁、行锁、表锁的理解</a>
+            </h1>
+            <div class="post-meta"> &bull;
+                <time class="post-date" datetime="" title="">
+                    2019年01月20日
+                </time>
+            </div>
+        </div>
+        <p class="brief">
+            
+            
+前言MySQL/InnoDB的加锁，一直是一个面试中常见的话题。例如，数据库如果有高并发请求，如果保证数据完整性？产生死锁问题如何排查并解决？我在工作过程中，也会经常用到，乐观锁，排它锁 等。最近针对这几个概念进行学习，记录一下。
+...
+            
+        </p>
+    </div>
+    
+    <footer class="post-footer clearfix">
+        <div class="pull-left tag-list">
+            <div class="post-meta">
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a class="category-link" href="/categories/存储/">存储</a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            <a class="tag-link" href="/tags/MySQL/">MySQL</a>
+            
+        </span>
+    </span>
+    
+    
+</div>
+        </div>
+        <div class="post-permalink">
+            <a href="/2019/01/20/MySQL锁的理解/" class="btn btn-default">
+                阅读全文</a>
+        </div>
+    </footer>
+    
+</article>
+
+
+<article class="post">
+    
+    <div class="post-media">
+        <a href="/2018/09/04/查看MariaDB-binlog/">
+            <img class="img-ajax" src="/img/loading.gif" data-src="/2018/09/04/查看MariaDB-binlog/mariadb-binlog.png" alt="如何查看MariaDB bin log">
+        </a>
+    </div>
+    
+    <div class="post-content">
+        <div class="post-head home-post-head">
+            <h1 class="post-title">
+                <a href="/2018/09/04/查看MariaDB-binlog/">
+                    如何查看MariaDB bin log</a>
+            </h1>
+            <div class="post-meta"> &bull;
+                <time class="post-date" datetime="" title="">
+                    2018年09月04日
+                </time>
+            </div>
+        </div>
+        <p class="brief">
+            
+            MariaDB bin log今天在学习MariaDB在产线的部署架构时，重新了解了主从复制的原理，同时产生想查看bin log的好奇心，折腾了一番最终搞定
+MariaDB主从复制
+MySQL的复制就是基于二进制日志而完成的，其工作原...
+            
+        </p>
+    </div>
+    
+    <footer class="post-footer clearfix">
+        <div class="pull-left tag-list">
+            <div class="post-meta">
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a class="category-link" href="/categories/存储/">存储</a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            <a class="tag-link" href="/tags/Binlog/">Binlog</a> <a class="tag-link" href="/tags/MariaDB/">MariaDB</a>
+            
+        </span>
+    </span>
+    
+    
+</div>
+        </div>
+        <div class="post-permalink">
+            <a href="/2018/09/04/查看MariaDB-binlog/" class="btn btn-default">
+                阅读全文</a>
+        </div>
+    </footer>
+    
+</article>
+
+
+
+<nav class="pagination" role="navigation">
+    <div id="page-nav">
+        <a class="extend prev" rel="prev" href="/page/2/"><i class='fa fa-angle-left'></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/"><i class='fa fa-angle-right'></i></a>
+    </div>
+</nav>
+
+                </main>
+                
+                    
+<aside class="col-md-4 sidebar">
+    
+    
+<div class="widget">
+    <h3 class="title">
+        搜索
+    </h3>
+    <div id="search-form">
+        <div id="result-mask" class="hide"></div>
+        <div class="search-area">
+            
+            <input id="search-key" type="search" autocomplete="off" placeholder="搜点什么呢？">
+            <button type="button" class="search-form-submit" id="search-local">
+                站内搜索</button>
+            
+            
+        </div>
+        <div id="result-wrap" class="hide">
+            <div id="search-result"></div>
+        </div>
+        <div class="hide">
+            <template id="search-tpl">
+                <div class="item">
+                    <a href="/{path}" title="{title}">
+                        <div class="title">{title}</div>
+                        <div class="content">{content}</div>
+                    </a>
+                </div>
+            </template>
+        </div>
+    </div>
+</div>
+
+    
+    
+<div class="widget">
+    <h3 class="title">
+        网站公告
+    </h3>
+    <div class="notification">
+        <p>
+欢迎光临 Binchen Coder 技术博客 🤝🤝🤝 <br/>
+<hr/>
+<p style="color: #e67e22; background-image: -webkit-linear-gradient(left, #cddc39, #e67e22 25%, #cddc39 50%, #e67e22 75%, #cddc39) !important; -webkit-text-fill-color: transparent!important; -webkit-background-clip:text!important; background-size: 200% 100%!important; animation: masked-animation 2s infinite linear !important;">
+面对过去无怨无悔，把握现在充满信心，备战未来无所畏惧。保持信念，克服恐惧！一点一滴的积累，一点一滴的沉淀。
+</p>
+<strong style="color: #e67e22; font-size: 16px;">学技术需要不断的积淀！</strong>
+</p>
+    </div>
+</div>
+
+    
+    
+<div class="widget">
+    <h3 class="title">
+        社交
+    </h3>
+    <div class="content social">
+        
+        <a href="//github.com/binchencoder" rel="external nofollow" title="Github" target="_blank">
+            <i class="git fa fa-git"></i>
+        </a>
+        
+        <a href="mailto:c1325791024@163.com" rel="external nofollow" title="邮箱" target="_blank">
+            <i class="envelope-o fa fa-envelope-o"></i>
+        </a>
+        
+        <a href="/" rel="external nofollow" title="联系QQ" target="_blank">
+            <i class="qq fa fa-qq"></i>
+        </a>
+        
+        <a href="/" rel="external nofollow" title="微信" target="_blank">
+            <i class="weixin fa fa-weixin"></i>
+        </a>
+        
+        <a href="/" rel="external nofollow" title="QQ群" target="_blank">
+            <i class="users fa fa-users"></i>
+        </a>
+        
+        <a href="/atom.xml" rel="external nofollow" title="RSS" target="_blank">
+            <i class="feed fa fa-feed"></i>
+        </a>
+        
+    </div>
+</div>
+
+    
+    
+<div class="widget">
+    <h3 class="title">
+        分类
+    </h3>
+    <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/"><i class="fa" aria-hidden="true">Linux</i></a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/其他/"><i class="fa" aria-hidden="true">其他</i></a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/后端/"><i class="fa" aria-hidden="true">后端</i></a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/存储/"><i class="fa" aria-hidden="true">存储</i></a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/工具/"><i class="fa" aria-hidden="true">工具</i></a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/面试/"><i class="fa" aria-hidden="true">面试</i></a><span class="category-list-count">7</span></li></ul>
+</div>
+
+    
+    
+<div class="widget">
+    <h3 class="title">
+        归档
+    </h3>
+    <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/"><i class="fa" aria-hidden="true">2020年07月</i></a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/"><i class="fa" aria-hidden="true">2020年04月</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/"><i class="fa" aria-hidden="true">2020年01月</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/"><i class="fa" aria-hidden="true">2019年12月</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/"><i class="fa" aria-hidden="true">2019年11月</i></a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/"><i class="fa" aria-hidden="true">2019年09月</i></a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/"><i class="fa" aria-hidden="true">2019年08月</i></a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/"><i class="fa" aria-hidden="true">2019年07月</i></a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/"><i class="fa" aria-hidden="true">2019年01月</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/"><i class="fa" aria-hidden="true">2018年09月</i></a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/"><i class="fa" aria-hidden="true">2018年08月</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/"><i class="fa" aria-hidden="true">2018年07月</i></a><span class="archive-list-count">4</span></li></ul>
+</div>
+
+    
+    
+<div class="widget">
+    <h3 class="title">
+        标签云
+    </h3>
+    <div class="content tag-cloud">
+        
+        <a href="/tags/Bazel/" style="font-size: 10px;">Bazel</a> <a href="/tags/Binlog/" style="font-size: 10px;">Binlog</a> <a href="/tags/Document-Preview/" style="font-size: 10px;">Document Preview</a> <a href="/tags/Document-Service/" style="font-size: 10px;">Document Service</a> <a href="/tags/Golang/" style="font-size: 10px;">Golang</a> <a href="/tags/Hello-World/" style="font-size: 10px;">Hello World</a> <a href="/tags/Hexo/" style="font-size: 12px;">Hexo</a> <a href="/tags/JVM/" style="font-size: 16px;">JVM</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Jstack/" style="font-size: 12px;">Jstack</a> <a href="/tags/Kafka/" style="font-size: 12px;">Kafka</a> <a href="/tags/Linux/" style="font-size: 14px;">Linux</a> <a href="/tags/LoadBalancer/" style="font-size: 12px;">LoadBalancer</a> <a href="/tags/Lock/" style="font-size: 10px;">Lock</a> <a href="/tags/MQ/" style="font-size: 12px;">MQ</a> <a href="/tags/MariaDB/" style="font-size: 10px;">MariaDB</a> <a href="/tags/MarkDown/" style="font-size: 10px;">MarkDown</a> <a href="/tags/MySQL/" style="font-size: 12px;">MySQL</a> <a href="/tags/RPC/" style="font-size: 12px;">RPC</a> <a href="/tags/Registry-Discovery/" style="font-size: 12px;">Registry/Discovery</a> <a href="/tags/Shell/" style="font-size: 10px;">Shell</a> <a href="/tags/Spring/" style="font-size: 10px;">Spring</a> <a href="/tags/Spring-Cloud/" style="font-size: 10px;">Spring Cloud</a> <a href="/tags/SpringBoot/" style="font-size: 10px;">SpringBoot</a> <a href="/tags/Synchronized/" style="font-size: 10px;">Synchronized</a> <a href="/tags/Systerm/" style="font-size: 10px;">Systerm</a> <a href="/tags/TCP/" style="font-size: 10px;">TCP</a> <a href="/tags/TCP-IP/" style="font-size: 10px;">TCP/IP</a> <a href="/tags/Thread/" style="font-size: 10px;">Thread</a> <a href="/tags/Top/" style="font-size: 10px;">Top</a> <a href="/tags/gRPC/" style="font-size: 14px;">gRPC</a> <a href="/tags/后端/" style="font-size: 18px;">后端</a> <a href="/tags/垃圾回收/" style="font-size: 12px;">垃圾回收</a> <a href="/tags/多线程/" style="font-size: 12px;">多线程</a> <a href="/tags/存储/" style="font-size: 10px;">存储</a> <a href="/tags/感悟/" style="font-size: 10px;">感悟</a> <a href="/tags/服务端/" style="font-size: 10px;">服务端</a> <a href="/tags/正则表达式/" style="font-size: 10px;">正则表达式</a> <a href="/tags/线上诊断/" style="font-size: 14px;">线上诊断</a> <a href="/tags/线程/" style="font-size: 10px;">线程</a> <a href="/tags/线程安全/" style="font-size: 10px;">线程安全</a> <a href="/tags/网络协议/" style="font-size: 10px;">网络协议</a> <a href="/tags/集合/" style="font-size: 10px;">集合</a> <a href="/tags/面试/" style="font-size: 18px;">面试</a>
+        
+    </div>
+</div>
+
+    
+    
+<div class="widget">
+    <h3 class="title">
+        友链
+    </h3>
+    <div class="content friends-link">
+        
+        <a href="https://binchencoder.github.io/" class="fa" target="_blank">
+            个人博客</a>
+        
+    </div>
+</div>
+
+    
+</aside>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+<a id="back-to-top" class="icon-btn hide">
+    <i class="fa fa-chevron-up"></i>
+</a>
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+    访问量:
+    <strong id="busuanzi_value_site_pv">
+        <i class="fa fa-spinner fa-spin"></i>
+    </strong>
+    &nbsp; | &nbsp;
+    访客数:
+    <strong id="busuanzi_value_site_uv">
+        <i class="fa fa-spinner fa-spin"></i>
+    </strong>
+    
+</div>
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy;
+                    2017
+                    
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/js/search.js?rev=@@hash"></script>
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<script src="/js/app.js?rev=@@hash"></script>
+</body>
+</html>

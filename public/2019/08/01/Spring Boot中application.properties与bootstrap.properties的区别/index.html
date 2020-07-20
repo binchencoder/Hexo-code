@@ -1,0 +1,350 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="Binchen coder&#39;s Blog">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="theme-version" content="1.2.3">
+    <meta name="root" content="/">
+    <link rel="dns-prefetch" href="https://binchencoder.github.io">
+    <!--SEO-->
+
+<meta name="keywords" content="Spring,SpringBoot,Spring Cloud">
+
+
+<meta name="description" content="application.propertes (application.yml)现在使用SpringBoot是Java世界里的主流选择，它大大简化了应用初始搭建以及开发过程，该框架使用了特定的方式...">
+
+
+<meta name="robots" content="all">
+<meta name="google" content="all">
+<meta name="googlebot" content="all">
+<meta name="verify" content="all">
+    <!--Title-->
+
+<title>
+    
+    Spring Boot中application.properties与bootstrap.properties的区别 |
+    
+    Binchen coder&#39;s Blog
+</title>
+
+<link rel="alternate" href="/atom.xml" title="Binchen coder&#39;s Blog" type="application/atom+xml">
+
+
+<link rel="icon" href="/favicon.ico">
+
+    
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.7.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+    
+<div class="hide">
+    <script type="text/javascript">
+    var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+</div>
+
+
+
+
+    
+
+<script>
+(function() {
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    } else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+</head></html>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+<body>
+    <header class="main-header"  style="background-image:url(
+    /img/banner.jpg)"
+     >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='Bin Chen'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+            <!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+            <h2>
+                小时候，哭是我们解决问题的绝招。长大后，笑是我们面对现实的武器。
+            </h2>
+            
+        </div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                        <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="https://binchencoder.github.io">
+                        Binchen coder&#39;s Blog</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/"><i class="fa "></i>
+                                首页</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/后端/"><i class="fa "></i>
+                                后端</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/Linux/"><i class="fa "></i>
+                                Linux</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/存储/"><i class="fa "></i>
+                                存储</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/面试/"><i class="fa "></i>
+                                面试</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/工具/"><i class="fa "></i>
+                                工具</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/其他/"><i class="fa "></i>
+                                其他</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/archives/"><i class="fa "></i>
+                                时间轴</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="Spring Boot中application.properties与bootstrap.properties的区别">
+            
+            Spring Boot中application.properties与bootstrap.properties的区别
+            
+        </h1>
+        <div class="post-meta">
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a class="category-link" href="/categories/后端/">后端</a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            <a class="tag-link" href="/tags/Spring/">Spring</a> <a class="tag-link" href="/tags/Spring-Cloud/">Spring Cloud</a> <a class="tag-link" href="/tags/SpringBoot/">SpringBoot</a>
+            
+        </span>
+    </span>
+    
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta">
+            2019/08/01</span>
+    </span>
+    
+    <span class="fa-wrap">
+        <i class="fa fa-eye"></i>
+        <span id="busuanzi_value_page_pv"></span>
+    </span>
+    
+    
+</div>
+        
+        
+    </div>
+    
+    <div class="post-body post-content">
+        <h1 id="application-propertes-application-yml"><a href="#application-propertes-application-yml" class="headerlink" title="application.propertes (application.yml)"></a>application.propertes (application.yml)</h1><p>现在使用SpringBoot是Java世界里的主流选择，它大大简化了应用初始搭建以及开发过程，该框架使用了特定的方式来进行配置，从而是开发人员不在需要定义样板化的配置。今天就带大家来了解下application.properties</p>
+<p>使用application.properties，一般情况下主要用来配置服务中一些最基本的属性，如 数据库连接、日志相关配置。其他的用法还有 一般属性使用、自定义属性使用、属性间的引用(占位符)、随机数的使用、数据类型自动转换、嵌套属性注入</p>
+<p>如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">spring.profiles.active=dev,vexillary-service,skylb,file_server,kafka_monitor_0.8,metrics</span><br><span class="line"></span><br><span class="line">#gRPC</span><br><span class="line">grpc.port=6567</span><br><span class="line"></span><br><span class="line">#metrics</span><br><span class="line">metrics.scrapePort=10000</span><br><span class="line"></span><br><span class="line"># logging level</span><br><span class="line">logging.level.root=error</span><br><span class="line">logging.level.com.jingoal.grpc=debug</span><br><span class="line">logging.level.com.jingoal.approval=debug</span><br></pre></td></tr></table></figure></p>
+<h2 id="application-properties与bootstrap-properties的区别"><a href="#application-properties与bootstrap-properties的区别" class="headerlink" title="application.properties与bootstrap.properties的区别"></a>application.properties与bootstrap.properties的区别</h2><p>两者主要区别是加载顺序不同，bootstrap.properties在application.properties 之前加载，bootstrap.properties用于应用程序上下文的引导阶段</p>
+<h3 id="典型场景"><a href="#典型场景" class="headerlink" title="典型场景"></a>典型场景</h3><ol>
+<li>当时用Spring Cloud Config Server的时候，你应该在bootstraop.properties里面指定spring.application.name 和 spring.cloud.config.server.git.uri</li>
+<li>一些加密/解密的信息</li>
+</ol>
+<p>技术上, bootstrap.properties由父Spring ApplicationContext加载。父ApplicationContext 被加载到使用application.properties的之前。</p>
+<p>当使用SpringCloud的时候，配置信息一般是从config server加载的，为了取得配置信息（比如密码等），你需要一些提早的或引导配置。因此，把config server信息放在bootstrap.properties，用来加载真正需要的配置信息。</p>
+<h3 id="属性覆盖问题"><a href="#属性覆盖问题" class="headerlink" title="属性覆盖问题"></a>属性覆盖问题</h3><p>启动上下文时，<strong>Spring Cloud</strong>会创建一个<code>BootStrap Context</code>，作为Spring应用的<code>Application Context</code>的父上下文。初始化的时候，<code>Bootstrap Context</code>负责从外部源加载配置属性并解析配置。这两个上下文共享一个从外部获取的<code>Environment</code>。</p>
+<p><strong>Bootstrap属性有高优先级，默认情况下，他们不会被本地配置覆盖</strong>。<br><code>Bootstrap  Context</code>和<code>Application Context</code>有着不同的约定，所以新增了一个<code>bootstrap.properties</code>，而不是使用<code>application.properties</code>。保证<code>Bootstrap Context</code>和<code>Application Context</code>配置的分离。</p>
+
+    </div>
+    
+    <div class="post-footer">
+        <div>
+            
+            转载声明：
+            商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="https://binchencoder.github.io/" target="_blank">Binchencoder</a>
+            
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+<div class="article-nav prev-next-wrap clearfix">
+    
+    <a href="/2019/08/02/Linux 文件常用命令/" class="pre-post btn btn-default" title='Linux文件常用命令'>
+        <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+        <span class="hidden-xs">
+            Linux文件常用命令</span>
+    </a>
+    
+    
+    <a href="/2019/07/29/MySQL优化原理/" class="next-post btn btn-default" title='MySQL优化原理'>
+        <span class="hidden-lg">下一篇</span>
+        <span class="hidden-xs">
+            MySQL优化原理</span><i class="fa fa-angle-right fa-fw"></i>
+    </a>
+    
+</div>
+
+<div id="comments">
+    
+
+<div id="vcomments" class="valine"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="/assets/valine.min.js"></script>
+<script>
+new Valine({
+    av: AV,
+    el: '#vcomments',
+    appId: 'xHUsTpzIlelbKBsefohA5b4m-gzGzoHsz',
+    appKey: 'RzKuChrzRGTQEgtRSKHy8s7L',
+    placeholder: '说点什么吧',
+    notify: false,
+    verify: false,
+    avatar: 'mm',
+    meta: 'nick,mail'.split(','),
+    pageSize: '10',
+    path: window.location.pathname,
+    lang: 'zh-CN'.toLowerCase()
+})
+</script>
+
+
+</div>
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">
+            文章目录
+        </h3>
+        
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#application-propertes-application-yml"><span class="toc-text">application.propertes (application.yml)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#application-properties与bootstrap-properties的区别"><span class="toc-text">application.properties与bootstrap.properties的区别</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#典型场景"><span class="toc-text">典型场景</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#属性覆盖问题"><span class="toc-text">属性覆盖问题</span></a></li></ol></li></ol></li></ol>
+        
+    </div>
+</aside>
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+<a id="back-to-top" class="icon-btn hide">
+    <i class="fa fa-chevron-up"></i>
+</a>
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+    访问量:
+    <strong id="busuanzi_value_site_pv">
+        <i class="fa fa-spinner fa-spin"></i>
+    </strong>
+    &nbsp; | &nbsp;
+    访客数:
+    <strong id="busuanzi_value_site_uv">
+        <i class="fa fa-spinner fa-spin"></i>
+    </strong>
+    
+</div>
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy;
+                    2017
+                    
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<script src="/js/app.js?rev=@@hash"></script>
+</body>
+</html>

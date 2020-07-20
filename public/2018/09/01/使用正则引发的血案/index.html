@@ -1,0 +1,372 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="Binchen coder&#39;s Blog">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="theme-version" content="1.2.3">
+    <meta name="root" content="/">
+    <link rel="dns-prefetch" href="https://binchencoder.github.io">
+    <!--SEO-->
+
+<meta name="keywords" content="Jstack,正则表达式">
+
+
+<meta name="description" content="正则表达式正则表达式, 一个十分古老而又强大的文本处理工具, 仅仅用一段非常简短的表达式语句, 便能够快速实现一个非常复杂的业务逻辑. 熟练地掌握正则表达式的话, 能够使你的开发效率得到极大的提...">
+
+
+<meta name="robots" content="all">
+<meta name="google" content="all">
+<meta name="googlebot" content="all">
+<meta name="verify" content="all">
+    <!--Title-->
+
+<title>
+    
+    使用正则引发的血案 |
+    
+    Binchen coder&#39;s Blog
+</title>
+
+<link rel="alternate" href="/atom.xml" title="Binchen coder&#39;s Blog" type="application/atom+xml">
+
+
+<link rel="icon" href="/favicon.ico">
+
+    
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.7.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+    
+<div class="hide">
+    <script type="text/javascript">
+    var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+</div>
+
+
+
+
+    
+
+<script>
+(function() {
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    } else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+</head></html>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+<body>
+    <header class="main-header"  style="background-image:url(
+    /img/banner.jpg)"
+     >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='Bin Chen'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+            <!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+            <h2>
+                小时候，哭是我们解决问题的绝招。长大后，笑是我们面对现实的武器。
+            </h2>
+            
+        </div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                        <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="https://binchencoder.github.io">
+                        Binchen coder&#39;s Blog</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/"><i class="fa "></i>
+                                首页</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/后端/"><i class="fa "></i>
+                                后端</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/Linux/"><i class="fa "></i>
+                                Linux</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/存储/"><i class="fa "></i>
+                                存储</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/面试/"><i class="fa "></i>
+                                面试</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/工具/"><i class="fa "></i>
+                                工具</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/其他/"><i class="fa "></i>
+                                其他</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/archives/"><i class="fa "></i>
+                                时间轴</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="使用正则引发的血案">
+            
+            使用正则引发的血案
+            
+        </h1>
+        <div class="post-meta">
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a class="category-link" href="/categories/后端/">后端</a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            <a class="tag-link" href="/tags/Jstack/">Jstack</a> <a class="tag-link" href="/tags/正则表达式/">正则表达式</a>
+            
+        </span>
+    </span>
+    
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta">
+            2018/09/01</span>
+    </span>
+    
+    <span class="fa-wrap">
+        <i class="fa fa-eye"></i>
+        <span id="busuanzi_value_page_pv"></span>
+    </span>
+    
+    
+</div>
+        
+        
+    </div>
+    
+    <div class="post-body post-content">
+        <h2 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h2><p>正则表达式, 一个十分古老而又强大的文本处理工具, 仅仅用一段非常简短的表达式语句, 便能够快速实现一个非常复杂的业务逻辑. 熟练地掌握正则表达式的话, 能够使你的开发效率得到极大的提升.</p>
+<p>对于一些简单的表单式语句我们可以自己编写, 但是复杂一些并且通用的表达式我们往往会从网上直接拷贝来用. 经过大部分人实践过的一般不会出现问题, 但是偶尔也会踩坑. 最近我就在这个上面掉进了深坑.</p>
+<h2 id="案发"><a href="#案发" class="headerlink" title="案发"></a>案发</h2><p>最近产线上的一个服务连续两天出现问题, 现象就是访问出现 “502 Bad Gateway” 错误. 这个服务是部署在Tomcat下的, 字面上理解就是网关出现问题了, 第一次出现问题后为了紧急修复就直接重启了服务器, 重启后就正常了. 这次事故就这样草草收场，没有留下任何有用的日志信息用来分析, 就没有继续追查下去了.</p>
+<p>偷懒是会受到惩罚的. 果不其然, 第二天问题继续出现, 并且还引起了其他的故障. 有了前车之鉴, 这一次受到了足够重视. 为了尽快恢复服务, 重启了部分节点用来恢复产线服务. 留了一个故障节点来断案.</p>
+<h2 id="断案"><a href="#断案" class="headerlink" title="断案"></a>断案</h2><h3 id="排查思路"><a href="#排查思路" class="headerlink" title="排查思路"></a>排查思路</h3><ol>
+<li>系统本身代码有问题, 如果是这样, 通过查看日志应该能发现集中的日志. 但是却没有, <strong>初步排除代码逻辑处理错误</strong></li>
+<li>内部下游系统的问题导致的雪崩效应, 我们联系了内部下游系统观察了他们的监控，发现一起正常。<strong>可以排除下游系统故障对我们的影响</strong></li>
+<li>机器本身的问题, 查看机器监控, 排除机器故障问题。</li>
+</ol>
+<p><strong>即通过上述方法没有直接定位到问题。</strong></p>
+<h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><p>之前为了快速恢复服务, 我们留下了一个故障节点, 从产线上摘除, 重启了其他节点恢复服务.</p>
+<p>下面通过jstack来分析故障</p>
+<ol>
+<li><p>查看当前Tomcat线程pid</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@xxx ~]# ps -ef | grep tomcat</span><br><span class="line">root       142     1  0 Aug20 ?        02:46:26 /usr/local/jdk/jre/bin/java -Djava.util.logging.config.file=/usr/local/tomcat_xxx/conf/logging.properties -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/tmp/tomcat_xxx/ -server -Xmx512m -Xms512m -XX:NewSize=64m -XX:MaxNewSize=128m -Djava.library.path=/usr/local/apr/lib -Dsun.lang.ClassLoader.allowArraySyntax=true -Djava.net.preferIPv4Stack=true -XX:PermSize=64M -XX:MaxPermSize=378m -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.port=7080 -Dcom.sun.management.jmxremote -classpath /usr/local/tomcat_igoal/bin/bootstrap.jar -Dcatalina.base=/usr/local/tomcat_igoal -Dcatalina.home=/usr/local/tomcat_igoal -Djava.io.tmpdir=/usr/local/tomcat_igoal/temp org.apache.catalina.startup.Bootstrap start</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>打印jstack日志</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@xxx ~]# jstack -l 142 &gt; /tmp/jstack.txt</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>jstack.txt 文件中的内容很多， 根据关键字(程序中的包名或者类名 等) 找到匹配的内容分析线程状态</p>
+<p>如何分析线程状态，可以查看我博客中的一篇文章 <a href="https://binchencoder.github.io/2018/08/31/Thread%20State/">Thread State</a></p>
+<p>我通过查找 ‘xxx’ 关键字找到很多内容， 但是有些是正常的，就直接过滤掉。最后找到这样一段内容，发现jstack日志中大量重复出现<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br></pre></td><td class="code"><pre><span class="line">&quot;http-192.168.0.185-12491-600&quot; #4971 daemon prio=5 os_prio=0 tid=0x00007f59a0334000 nid=0x1e7e runnable [0x00007f58c7ffc000]</span><br><span class="line">   java.lang.Thread.State: RUNNABLE</span><br><span class="line">	at java.util.regex.Pattern$5.isSatisfiedBy(Pattern.java:5251)</span><br><span class="line">	at java.util.regex.Pattern$5.isSatisfiedBy(Pattern.java:5251)</span><br><span class="line">	at java.util.regex.Pattern$CharProperty.match(Pattern.java:3776)</span><br><span class="line">	at java.util.regex.Pattern$Curly.match(Pattern.java:4227)</span><br><span class="line">	at java.util.regex.Pattern$GroupHead.match(Pattern.java:4658)</span><br><span class="line">	at java.util.regex.Pattern$Loop.match(Pattern.java:4785)</span><br><span class="line">	at java.util.regex.Pattern$GroupTail.match(Pattern.java:4717)</span><br><span class="line">	at java.util.regex.Pattern$Ques.match(Pattern.java:4182)</span><br><span class="line">	at java.util.regex.Pattern$Curly.match0(Pattern.java:4272)</span><br><span class="line">	at java.util.regex.Pattern$Curly.match(Pattern.java:4234)</span><br><span class="line">	at java.util.regex.Pattern$GroupHead.match(Pattern.java:4658)</span><br><span class="line">	at java.util.regex.Pattern$Loop.match(Pattern.java:4785)</span><br><span class="line">	at java.util.regex.Pattern$GroupTail.match(Pattern.java:4717)</span><br><span class="line">	at java.util.regex.Pattern$Ques.match(Pattern.java:4182)</span><br><span class="line">	at java.util.regex.Pattern$Curly.match0(Pattern.java:4272)</span><br><span class="line">	at java.util.regex.Pattern$Curly.match(Pattern.java:4234)</span><br><span class="line">	at java.util.regex.Pattern$GroupHead.match(Pattern.java:4658)</span><br><span class="line">	at java.util.regex.Pattern$Loop.match(Pattern.java:4785)</span><br><span class="line">	at java.util.regex.Pattern$GroupTail.match(Pattern.java:4717)</span><br><span class="line">	at java.util.regex.Pattern$Ques.match(Pattern.java:4182)</span><br><span class="line">	at java.util.regex.Pattern$Curly.match0(Pattern.java:4272)</span><br><span class="line">	at java.util.regex.Pattern$Curly.match(Pattern.java:4234)</span><br><span class="line">	at java.util.regex.Pattern$GroupHead.match(Pattern.java:4658)</span><br><span class="line">	at java.util.regex.Pattern$Loop.match(Pattern.java:4785)</span><br><span class="line">	at java.util.regex.Pattern$GroupTail.match(Pattern.java:4717)</span><br><span class="line">	at java.util.regex.Pattern$Ques.match(Pattern.java:4182)</span><br><span class="line">	at java.util.regex.Pattern$Curly.match0(Pattern.java:4272)</span><br><span class="line">	at java.util.regex.Pattern$Curly.match(Pattern.java:4234)</span><br><span class="line">	at java.util.regex.Pattern$GroupHead.match(Pattern.java:4658)</span><br><span class="line">	at java.util.regex.Pattern$Loop.match(Pattern.java:4785)</span><br><span class="line">	at java.util.regex.Pattern$GroupTail.match(Pattern.java:4717)</span><br><span class="line">	at java.util.regex.Pattern$Ques.match(Pattern.java:4182)</span><br><span class="line">	at java.util.regex.Pattern$Curly.match0(Pattern.java:4272)</span><br><span class="line">	at java.util.regex.Pattern$Curly.match(Pattern.java:4234)</span><br><span class="line">	at java.util.regex.Pattern$GroupHead.match(Pattern.java:4658)</span><br><span class="line">	at java.util.regex.Pattern$Loop.match(Pattern.java:4785)</span><br><span class="line">	at java.util.regex.Pattern$GroupTail.match(Pattern.java:4717)</span><br><span class="line">	at java.util.regex.Pattern$Ques.match(Pattern.java:4182)</span><br><span class="line">	at java.util.regex.Pattern$Curly.match0(Pattern.java:4272)</span><br><span class="line">	at java.util.regex.Pattern$Curly.match(Pattern.java:4234)</span><br><span class="line">	at java.util.regex.Pattern$GroupHead.match(Pattern.java:4658)</span><br><span class="line">	at java.util.regex.Pattern$Loop.match(Pattern.java:4785)</span><br><span class="line">	at java.util.regex.Pattern$GroupTail.match(Pattern.java:4717)</span><br><span class="line">	at java.util.regex.Pattern$Ques.match(Pattern.java:4182)</span><br><span class="line">	at java.util.regex.Pattern$Curly.match0(Pattern.java:4272)</span><br><span class="line">	at java.util.regex.Pattern$Curly.match(Pattern.java:4234)</span><br><span class="line">	at java.util.regex.Pattern$GroupHead.match(Pattern.java:4658)</span><br><span class="line">	at java.util.regex.Pattern$Loop.match(Pattern.java:4785)</span><br><span class="line">	at java.util.regex.Pattern$GroupTail.match(Pattern.java:4717)</span><br><span class="line">	at java.util.regex.Pattern$Ques.match(Pattern.java:4182)</span><br><span class="line">	at java.util.regex.Pattern$Curly.match0(Pattern.java:4272)</span><br><span class="line">	at java.util.regex.Pattern$Curly.match(Pattern.java:4234)</span><br><span class="line">	at java.util.regex.Pattern$GroupHead.match(Pattern.java:4658)</span><br><span class="line">	at java.util.regex.Pattern$Loop.match(Pattern.java:4785)</span><br><span class="line">	at java.util.regex.Pattern$GroupTail.match(Pattern.java:4717)</span><br><span class="line">	at java.util.regex.Pattern$Ques.match(Pattern.java:4182)</span><br><span class="line">	at java.util.regex.Pattern$Curly.match0(Pattern.java:4272)</span><br><span class="line">	at java.util.regex.Pattern$Curly.match(Pattern.java:4234)</span><br><span class="line">	at java.util.regex.Pattern$GroupHead.match(Pattern.java:4658)</span><br><span class="line">	at java.util.regex.Pattern$Loop.match(Pattern.java:4785)</span><br><span class="line">	at java.util.regex.Pattern$GroupTail.match(Pattern.java:4717)</span><br><span class="line">	at java.util.regex.Pattern$Ques.match(Pattern.java:4182)</span><br><span class="line">	at java.util.regex.Pattern$Curly.match0(Pattern.java:4272)</span><br><span class="line">	at java.util.regex.Pattern$Curly.match(Pattern.java:4234)</span><br><span class="line">	at java.util.regex.Pattern$GroupHead.match(Pattern.java:4658)</span><br><span class="line">	at java.util.regex.Pattern$Loop.match(Pattern.java:4785)</span><br><span class="line">	at java.util.regex.Pattern$GroupTail.match(Pattern.java:4717)</span><br><span class="line">	at java.util.regex.Pattern$Ques.match(Pattern.java:4182)</span><br><span class="line">	at java.util.regex.Pattern$Curly.match0(Pattern.java:4272)</span><br><span class="line">	at java.util.regex.Pattern$Curly.match(Pattern.java:4234)</span><br><span class="line">	at java.util.regex.Pattern$GroupHead.match(Pattern.java:4658)</span><br><span class="line">	at java.util.regex.Pattern$Loop.match(Pattern.java:4785)</span><br><span class="line">	at java.util.regex.Pattern$GroupTail.match(Pattern.java:4717)</span><br><span class="line">	at java.util.regex.Pattern$Ques.match(Pattern.java:4182)</span><br><span class="line">	at java.util.regex.Pattern$Curly.match0(Pattern.java:4272)</span><br><span class="line">	at java.util.regex.Pattern$Curly.match(Pattern.java:4234)</span><br><span class="line">	at java.util.regex.Pattern$GroupHead.match(Pattern.java:4658)</span><br><span class="line">	at java.util.regex.Pattern$Loop.match(Pattern.java:4785)</span><br><span class="line">	at java.util.regex.Pattern$GroupTail.match(Pattern.java:4717)</span><br><span class="line">	at java.util.regex.Pattern$Ques.match(Pattern.java:4182)</span><br><span class="line">	at java.util.regex.Pattern$Curly.match0(Pattern.java:4272)</span><br><span class="line">	at java.util.regex.Pattern$Curly.match(Pattern.java:4234)</span><br><span class="line">	at java.util.regex.Pattern$GroupHead.match(Pattern.java:4658)</span><br><span class="line">	at java.util.regex.Pattern$Loop.matchInit(Pattern.java:4804)</span><br><span class="line">	at java.util.regex.Pattern$Prolog.match(Pattern.java:4741)</span><br><span class="line">	at java.util.regex.Pattern$Begin.match(Pattern.java:3525)</span><br><span class="line">	at java.util.regex.Matcher.match(Matcher.java:1270)</span><br><span class="line">	at java.util.regex.Matcher.matches(Matcher.java:604)</span><br><span class="line">	at com.xxx.xxx.util4sysmng.ValidateUtil.checkEmail(ValidateUtil.java:30)</span><br><span class="line">	at com.xxx.xxx.register.action.RegisterController.regAccountSendVcode(RegisterController.java:538)</span><br><span class="line">	at com.xxx.xxx.register.action.RegisterController$$FastClassByCGLIB$$58ed8719.invoke(&lt;generated&gt;)</span><br><span class="line">	at net.sf.cglib.proxy.MethodProxy.invoke(MethodProxy.java:191)</span><br><span class="line">	at org.springframework.aop.framework.Cglib2AopProxy$CglibMethodInvocation.invokeJoinpoint(Cglib2AopProxy.java:689)</span><br><span class="line">	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:150)</span><br><span class="line">	at org.springframework.aop.aspectj.MethodInvocationProceedingJoinPoint.proceed(MethodInvocationProceedingJoinPoint.java:80)</span><br><span class="line">	at com.xxx.prometheus.aspect.PrometheusAspect.process(PrometheusAspect.java:35)</span><br><span class="line">	at sun.reflect.GeneratedMethodAccessor121.invoke(Unknown Source)</span><br><span class="line">	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)</span><br><span class="line">	at java.lang.reflect.Method.invoke(Method.java:497)</span><br><span class="line">	at org.springframework.aop.aspectj.AbstractAspectJAdvice.invokeAdviceMethodWithGivenArgs(AbstractAspectJAdvice.java:621)</span><br><span class="line">	at org.springframework.aop.aspectj.AbstractAspectJAdvice.invokeAdviceMethod(AbstractAspectJAdvice.java:610)</span><br><span class="line">	at org.springframework.aop.aspectj.AspectJAroundAdvice.invoke(AspectJAroundAdvice.java:65)</span><br><span class="line">	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:161)</span><br><span class="line">	at org.springframework.aop.framework.adapter.ThrowsAdviceInterceptor.invoke(ThrowsAdviceInterceptor.java:124)</span><br><span class="line">	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:172)</span><br><span class="line">	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:90)</span><br><span class="line">	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:172)</span><br><span class="line">	at org.springframework.aop.framework.Cglib2AopProxy$DynamicAdvisedInterceptor.intercept(Cglib2AopProxy.java:622)</span><br><span class="line">	at com.xxx.xxx.register.action.RegisterController$$EnhancerByCGLIB$$972a02bd.regAccountSendVcode(&lt;generated&gt;)</span><br><span class="line">	at sun.reflect.GeneratedMethodAccessor124.invoke(Unknown Source)</span><br><span class="line">	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)</span><br><span class="line">	at java.lang.reflect.Method.invoke(Method.java:497)</span><br><span class="line">	at org.springframework.web.method.support.InvocableHandlerMethod.invoke(InvocableHandlerMethod.java:212)</span><br><span class="line">	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:126)</span><br><span class="line">	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:96)</span><br><span class="line">	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:617)</span><br><span class="line">	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:578)</span><br><span class="line">	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:80)</span><br><span class="line">	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:900)</span><br><span class="line">	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:827)</span><br><span class="line">	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:882)</span><br><span class="line">	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:778)</span><br><span class="line">	at javax.servlet.http.HttpServlet.service(HttpServlet.java:617)</span><br><span class="line">	at javax.servlet.http.HttpServlet.service(HttpServlet.java:723)</span><br><span class="line">	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:290)</span><br><span class="line">	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206)</span><br><span class="line">	at com.xxx.xxx.sysmng.filter.SysmngSecurityFilter.doFilter(SysmngSecurityFilter.java:46)</span><br><span class="line">	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:235)</span><br><span class="line">	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206)</span><br><span class="line">	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:88)</span><br><span class="line">	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:76)</span><br><span class="line">	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:235)</span><br><span class="line">	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206)</span><br><span class="line">	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:233)</span><br><span class="line">	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:191)</span><br><span class="line">	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:127)</span><br><span class="line">	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:103)</span><br><span class="line">	at org.apache.catalina.valves.AccessLogValve.invoke(AccessLogValve.java:615)</span><br><span class="line">	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:109)</span><br><span class="line">	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:293)</span><br><span class="line">	at org.apache.coyote.http11.Http11Processor.process(Http11Processor.java:861)</span><br><span class="line">	at org.apache.coyote.http11.Http11Protocol$Http11ConnectionHandler.process(Http11Protocol.java:606)</span><br><span class="line">	at org.apache.tomcat.util.net.JIoEndpoint$Worker.run(JIoEndpoint.java:489)</span><br><span class="line">	at java.lang.Thread.run(Thread.java:745)</span><br></pre></td></tr></table></figure></p>
+<p>通过上面这段内容分析，在正则验证时出现大量线程等待，一直消耗系统CPU，最终造成服务处于假死状态，无法响应。</p>
+<p>定位到具体的代码，经过测试 确认是验证Email的一个正则表达式有问题。代码中使用的Email正则表达式是这样写的：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">^([a-z0-9A-Z]+[-|\\._]?)+[a-z0-9A-Z]@([a-z0-9A-Z]+(-[a-z0-9A-Z]+)?\\.)+[a-zA-Z]&#123;2,&#125;$</span><br></pre></td></tr></table></figure></p>
+<p>测试代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">@Test</span><br><span class="line">public void testRegexFailed() &#123;</span><br><span class="line">  String email = &quot;dnjnfslkffkjkjkslioeo9edkdjfks&quot;;</span><br><span class="line">  String regex = &quot;^([a-z0-9A-Z]+[-|_|\\\\.]?)*[a-z0-9A-Z]@([a-z0-9A-Z]+(-[a-z0-9A-Z]+)?\\\\.)+[a-z0-9A-Z]&#123;2,&#125;$&quot;;</span><br><span class="line"></span><br><span class="line">  Pattern pattern = Pattern.compile(regex);</span><br><span class="line">  Matcher matcher = pattern.matcher(email);</span><br><span class="line">  System.out.println(email + &quot; : &quot; + matcher.matches());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>这段代码会出现死循环，使我电脑消耗CPU急剧增加，我在测试过程中打印了该进程消耗系统资源的数据<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">chenbin@chenbin-ThinkPad:~$ jps </span><br><span class="line">23617 Launcher </span><br><span class="line">21422 JUnitStarter </span><br><span class="line">chenbin@chenbin-ThinkPad:~$ top -Hp 21422</span><br><span class="line">Threads: 16 total, 1 running, 15 sleeping, 0 stopped, 0 zombie </span><br><span class="line">%Cpu(s): 30.8 us, 3.6 sy, 0.0 ni, 65.4 id, 0.1 wa, 0.0 hi, 0.1 si, 0.0 st </span><br><span class="line">KiB Mem : 7861372 total, 202784 free, 6652340 used, 1006248 buff/cache </span><br><span class="line">KiB Swap: 8076284 total, 3543620 free, 4532664 used. 872480 avail Mem </span><br><span class="line"></span><br><span class="line">PID   USER    PR NI VIRT     RES   SHR S% CPU% MEM TIME+ COMMAND </span><br><span class="line">21425 chenbin 20 0 4468684 100360 18136 R 99.7 1.3 0:22.25 java </span><br><span class="line">21422 chenbin 20 0 4468684 100360 18136 S 0.0 1.3 0:00.00 java </span><br><span class="line">21434 chenbin 20 0 4468684 100360 18136 S 0.0 1.3 0:00.00 java </span><br><span class="line">21435 chenbin 20 0 4468684 100360 18136 S 0.0 1.3 0:00.00 java </span><br><span class="line">21436 chenbin 20 0 4468684 100360 18136 S 0.0 1.3 0:00.00 java </span><br><span class="line">21437 chenbin 20 0 4468684 100360 18136 S 0.0 1.3 0:00.00 java </span><br><span class="line">21438 chenbin 20 0 4468684 100360 18136 S 0.0 1.3 0:00.00 java </span><br><span class="line">21439 chenbin 20 0 4468684 100360 18136 S 0.0 1.3 0:00.00 java </span><br><span class="line">21440 chenbin 20 0 4468684 100360 18136 S 0.0 1.3 0:00.00 java </span><br><span class="line">21441 chenbin 20 0 4468684 100360 18136 S 0.0 1.3 0:00.00 java </span><br><span class="line">21442 chenbin 20 0 4468684 100360 18136 S 0.0 1.3 0:00.00 java </span><br><span class="line">21443 chenbin 20 0 4468684 100360 18136 S 0.0 1.3 0:00.88 java </span><br><span class="line">21444 chenbin 20 0 4468684 100360 18136 S 0.0 1.3 0:00.72 java </span><br><span class="line">21445 chenbin 20 0 4468684 100360 18136 S 0.0 1.3 0:00.09 java </span><br><span class="line">21446 chenbin 20 0 4468684 100360 18136 S 0.0 1.3 0:00.00 java </span><br><span class="line">21447 chenbin 20 0 4468684 100360 18136 S 0.0 1.3 0:00.00 java</span><br></pre></td></tr></table></figure></p>
+<p><strong>测试中发现</strong></p>
+<blockquote>
+<p>在输入的字符串比较短的时候，验证没有问题。<br>但是在输入字符较长，并且不符合email规则的时候，会出现死循环。<br>如果输入过长，但是符合这个email规则，也不会有这个问题！</p>
+</blockquote>
+<h2 id="结案"><a href="#结案" class="headerlink" title="结案"></a>结案</h2><p>最后我们只能修改代码，替换这个正则表达式。因为这是通过的表达式，而且比较复杂，我们就没有造轮子。直接在网上找的, 经过验证，发现这个网站提供的正则比较靠谱<br><a href="https://howtodoinjava.com/regex/java-regex-validate-email-address/" target="_blank" rel="noopener">Java Email Address Validation</a></p>
+<h2 id="END"><a href="#END" class="headerlink" title="END"></a>END</h2><p>能匹配空字符串的子匹配不要循环无限次。如果括号内的子表达式中的每一部分都可以匹配 0 次，而这个括号整体又可以匹配无限次，匹配过程中可能死循环。虽然现在有些正则表达式引擎已经通过办法避免了这种情况出现死循环了，比如 .NET 的正则表达式，但是我们仍然应该尽量避免出现这种情况。如果我们在写表达式时遇到了死循环，也可以从这一点入手。</p>
+<p><strong>正则表达式虽然使用起来很方便, 但是一定要慎用.</strong></p>
+
+    </div>
+    
+    <div class="post-footer">
+        <div>
+            
+            转载声明：
+            商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="https://binchencoder.github.io/" target="_blank">Binchencoder</a>
+            
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+<div class="article-nav prev-next-wrap clearfix">
+    
+    <a href="/2018/09/04/查看MariaDB-binlog/" class="pre-post btn btn-default" title='如何查看MariaDB bin log'>
+        <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+        <span class="hidden-xs">
+            如何查看MariaDB bin log</span>
+    </a>
+    
+    
+    <a href="/2018/08/31/Thread-State/" class="next-post btn btn-default" title='Thread State'>
+        <span class="hidden-lg">下一篇</span>
+        <span class="hidden-xs">
+            Thread State</span><i class="fa fa-angle-right fa-fw"></i>
+    </a>
+    
+</div>
+
+<div id="comments">
+    
+
+<div id="vcomments" class="valine"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="/assets/valine.min.js"></script>
+<script>
+new Valine({
+    av: AV,
+    el: '#vcomments',
+    appId: 'xHUsTpzIlelbKBsefohA5b4m-gzGzoHsz',
+    appKey: 'RzKuChrzRGTQEgtRSKHy8s7L',
+    placeholder: '说点什么吧',
+    notify: false,
+    verify: false,
+    avatar: 'mm',
+    meta: 'nick,mail'.split(','),
+    pageSize: '10',
+    path: window.location.pathname,
+    lang: 'zh-CN'.toLowerCase()
+})
+</script>
+
+
+</div>
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">
+            文章目录
+        </h3>
+        
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#正则表达式"><span class="toc-text">正则表达式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#案发"><span class="toc-text">案发</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#断案"><span class="toc-text">断案</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#排查思路"><span class="toc-text">排查思路</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#解决方案"><span class="toc-text">解决方案</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#结案"><span class="toc-text">结案</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#END"><span class="toc-text">END</span></a></li></ol>
+        
+    </div>
+</aside>
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+<a id="back-to-top" class="icon-btn hide">
+    <i class="fa fa-chevron-up"></i>
+</a>
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+    访问量:
+    <strong id="busuanzi_value_site_pv">
+        <i class="fa fa-spinner fa-spin"></i>
+    </strong>
+    &nbsp; | &nbsp;
+    访客数:
+    <strong id="busuanzi_value_site_uv">
+        <i class="fa fa-spinner fa-spin"></i>
+    </strong>
+    
+</div>
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy;
+                    2017
+                    
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<script src="/js/app.js?rev=@@hash"></script>
+</body>
+</html>

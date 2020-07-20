@@ -1,0 +1,389 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="Binchen coder&#39;s Blog">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="theme-version" content="1.2.3">
+    <meta name="root" content="/">
+    <link rel="dns-prefetch" href="https://binchencoder.github.io">
+    <!--SEO-->
+
+<meta name="keywords" content="Java,Thread,Jstack">
+
+
+<meta name="description" content="Java 线程状态分析Java线程的生命周期中, 存在着六种状态. 在Thread类里有一个枚举类型State, 定义了线程的几种状态. 下图比较清晰的展示了这六种状态之间的转换关系
+
+
+NEW...">
+
+
+<meta name="robots" content="all">
+<meta name="google" content="all">
+<meta name="googlebot" content="all">
+<meta name="verify" content="all">
+    <!--Title-->
+
+<title>
+    
+    Thread State |
+    
+    Binchen coder&#39;s Blog
+</title>
+
+<link rel="alternate" href="/atom.xml" title="Binchen coder&#39;s Blog" type="application/atom+xml">
+
+
+<link rel="icon" href="/favicon.ico">
+
+    
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.7.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+    
+<div class="hide">
+    <script type="text/javascript">
+    var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+</div>
+
+
+
+
+    
+
+<script>
+(function() {
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    } else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+</head></html>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+<body>
+    <header class="main-header"  style="background-image:url(
+    /img/banner.jpg)"
+     >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='Bin Chen'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+            <!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+            <h2>
+                小时候，哭是我们解决问题的绝招。长大后，笑是我们面对现实的武器。
+            </h2>
+            
+        </div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                        <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="https://binchencoder.github.io">
+                        Binchen coder&#39;s Blog</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/"><i class="fa "></i>
+                                首页</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/后端/"><i class="fa "></i>
+                                后端</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/Linux/"><i class="fa "></i>
+                                Linux</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/存储/"><i class="fa "></i>
+                                存储</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/面试/"><i class="fa "></i>
+                                面试</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/工具/"><i class="fa "></i>
+                                工具</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/其他/"><i class="fa "></i>
+                                其他</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/archives/"><i class="fa "></i>
+                                时间轴</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="Thread State">
+            
+            Thread State
+            
+        </h1>
+        <div class="post-meta">
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a class="category-link" href="/categories/后端/">后端</a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            <a class="tag-link" href="/tags/Java/">Java</a> <a class="tag-link" href="/tags/Jstack/">Jstack</a> <a class="tag-link" href="/tags/Thread/">Thread</a>
+            
+        </span>
+    </span>
+    
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta">
+            2018/08/31</span>
+    </span>
+    
+    <span class="fa-wrap">
+        <i class="fa fa-eye"></i>
+        <span id="busuanzi_value_page_pv"></span>
+    </span>
+    
+    
+</div>
+        
+        
+    </div>
+    
+    <div class="post-body post-content">
+        <h2 id="Java-线程状态分析"><a href="#Java-线程状态分析" class="headerlink" title="Java 线程状态分析"></a>Java 线程状态分析</h2><p>Java线程的生命周期中, 存在着六种状态. 在Thread类里有一个枚举类型State, 定义了线程的几种状态. 下图比较清晰的展示了这六种状态之间的转换关系</p>
+<p><img src="/2018/08/31/Thread-State/Thread-state.png" alt="线程状态"></p>
+<ul>
+<li><p>NEW: 线程创建之后，但是还没有启动(not yet started)。这时候它的状态就是NEW</p>
+</li>
+<li><p>RUNNABLE: 正在Java虚拟机下跑任务的线程的状态。在RUNNABLE状态下的线程可能会处于等待状态， 因为它正在等待一些系统资源的释放，比如IO</p>
+</li>
+<li><p>BLOCKED: 阻塞状态，等待锁的释放，比如线程A进入了一个synchronized方法，线程B也想进入这个方法，但是这个方法的锁已经被线程A获取了，这个时候线程B就处于BLOCKED状态</p>
+</li>
+<li><p>WAITING: 等待状态，处于等待状态的线程是由于执行了3个方法中的任意方法。 </p>
+<ol>
+<li>Object的wait方法，并且没有使用timeout参数;</li>
+<li>Thread的join方法，没有使用timeout参数 </li>
+<li>LockSupport的park方法。 处于waiting状态的线程会等待另外一个线程处理特殊的行为。 再举个例子，如果一个线程调用了一个对象的wait方法，那么这个线程就会处于waiting状态直到另外一个线程调用这个对象的notify或者notifyAll方法后才会解除这个状态</li>
+</ol>
+</li>
+<li><p>TIMED_WAITING: 有等待时间的等待状态，比如调用了以下几个方法中的任意方法，并且指定了等待时间，线程就会处于这个状态。 </p>
+<ol>
+<li>Thread.sleep方法 </li>
+<li>Object的wait方法，带有时间 </li>
+<li>Thread.join方法，带有时间 </li>
+<li>LockSupport的parkNanos方法，带有时间 </li>
+<li>LockSupport的parkUntil方法，带有时间</li>
+</ol>
+</li>
+</ul>
+<p>TERMINATED: 线程中止的状态，这个线程已经完整地执行了它的任务</p>
+<h3 id="NEW-State"><a href="#NEW-State" class="headerlink" title="NEW State"></a>NEW State</h3><p>NEW状态比较简单，实例化一个线程之后，并且这个线程没有开始执行，这个时候的状态就是NEW：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Thread thread = new Thread();</span><br><span class="line">System.out.println(thread.getState()); // NEW</span><br></pre></td></tr></table></figure></p>
+<h3 id="RUNNABLE-State"><a href="#RUNNABLE-State" class="headerlink" title="RUNNABLE State"></a>RUNNABLE State</h3><p>正在运行的状态<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Thread thread = new Thread(new Runnable() &#123;</span><br><span class="line">    @Override</span><br><span class="line">    public void run() &#123;</span><br><span class="line">        for(int i = 0; i &lt; Integer.MAX_VALUE; i ++) &#123;</span><br><span class="line">            System.out.println(i);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;, &quot;RUNNABLE-Thread&quot;);</span><br><span class="line">thread.start();</span><br></pre></td></tr></table></figure></p>
+<p>使用jstack查看线程状态：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&quot;RUNNABLE-Thread&quot; #10 prio=5 os_prio=31 tid=0x00007f8e04981000 nid=0x4f03 runnable [0x000070000124c000]</span><br><span class="line">   java.lang.Thread.State: RUNNABLE</span><br><span class="line">  at java.io.FileOutputStream.writeBytes(Native Method)</span><br><span class="line">  at java.io.FileOutputStream.write(FileOutputStream.java:315)</span><br><span class="line">  at java.io.BufferedOutputStream.flushBuffer(BufferedOutputStream.java:82)</span><br><span class="line">  at java.io.BufferedOutputStream.flush(BufferedOutputStream.java:140)</span><br><span class="line">  - locked &lt;0x000000079764cc50&gt; (a java.io.BufferedOutputStream)</span><br><span class="line">  at java.io.PrintStream.write(PrintStream.java:482)</span><br><span class="line">  - locked &lt;0x0000000797604dc0&gt; (a java.io.PrintStream)</span><br><span class="line">  at sun.nio.cs.StreamEncoder.writeBytes(StreamEncoder.java:221)</span><br><span class="line">  at sun.nio.cs.StreamEncoder.implFlushBuffer(StreamEncoder.java:291)</span><br><span class="line">  at sun.nio.cs.StreamEncoder.flushBuffer(StreamEncoder.java:104)</span><br><span class="line">  - locked &lt;0x0000000797604d78&gt; (a java.io.OutputStreamWriter)</span><br><span class="line">  at java.io.OutputStreamWriter.flushBuffer(OutputStreamWriter.java:185)</span><br><span class="line">  at java.io.PrintStream.write(PrintStream.java:527)</span><br><span class="line">  - eliminated &lt;0x0000000797604dc0&gt; (a java.io.PrintStream)</span><br><span class="line">  at java.io.PrintStream.print(PrintStream.java:597)</span><br><span class="line">  at java.io.PrintStream.println(PrintStream.java:736)</span><br><span class="line">  - locked &lt;0x0000000797604dc0&gt; (a java.io.PrintStream)</span><br><span class="line">  at study.thread.ThreadStateTest$1.run(ThreadStateTest.java:23)</span><br><span class="line">  at java.lang.Thread.run(Thread.java:745)</span><br></pre></td></tr></table></figure>
+<h3 id="BLOCKED-State"><a href="#BLOCKED-State" class="headerlink" title="BLOCKED State"></a>BLOCKED State</h3><p>线程A和线程B都需要持有lock对象的锁才能调用方法。如果线程A持有锁，那么线程B处于BLOCKED状态；如果线程B持有锁，那么线程A处于BLOCKED状态。例子中使用Thread.sleep方法主要是用于调试方便：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">final Object lock = new Object();</span><br><span class="line">Thread threadA = new Thread(new Runnable() &#123;</span><br><span class="line">    @Override</span><br><span class="line">    public void run() &#123;</span><br><span class="line">        synchronized (lock) &#123;</span><br><span class="line">            System.out.println(Thread.currentThread().getName() + &quot; invoke&quot;);</span><br><span class="line">            try &#123;</span><br><span class="line">                Thread.sleep(20000l);</span><br><span class="line">            &#125; catch (InterruptedException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;, &quot;BLOCKED-Thread-A&quot;);</span><br><span class="line">Thread threadB = new Thread(new Runnable() &#123;</span><br><span class="line">    @Override</span><br><span class="line">    public void run() &#123;</span><br><span class="line">        synchronized (lock) &#123;</span><br><span class="line">            System.out.println(Thread.currentThread().getName() + &quot; invoke&quot;);</span><br><span class="line">            try &#123;</span><br><span class="line">                Thread.sleep(20000l);</span><br><span class="line">            &#125; catch (InterruptedException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;, &quot;BLOCKED-Thread-B&quot;);</span><br><span class="line">threadA.start();</span><br><span class="line">threadB.start();</span><br></pre></td></tr></table></figure></p>
+<p>使用jstack查看线程状态。由于线程A先执行，线程B后执行，而且线程A执行后调用了Thread.sleep方法，所以线程A会处于TIMED_WAITING状态，线程B处于BLOCKED状态：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&quot;BLOCKED-Thread-B&quot; #11 prio=5 os_prio=31 tid=0x00007fa7db8ff000 nid=0x5103 waiting for monitor entry [0x000070000134f000]</span><br><span class="line">   java.lang.Thread.State: BLOCKED (on object monitor)</span><br><span class="line">  at study.thread.ThreadStateTest$3.run(ThreadStateTest.java:50)</span><br><span class="line">  - waiting to lock &lt;0x0000000795a03bf8&gt; (a java.lang.Object)</span><br><span class="line">  at java.lang.Thread.run(Thread.java:745)</span><br><span class="line"></span><br><span class="line">&quot;BLOCKED-Thread-A&quot; #10 prio=5 os_prio=31 tid=0x00007fa7db15a000 nid=0x4f03 waiting on condition [0x000070000124c000]</span><br><span class="line">   java.lang.Thread.State: TIMED_WAITING (sleeping)</span><br><span class="line">  at java.lang.Thread.sleep(Native Method)</span><br><span class="line">  at study.thread.ThreadStateTest$2.run(ThreadStateTest.java:39)</span><br><span class="line">  - locked &lt;0x0000000795a03bf8&gt; (a java.lang.Object)</span><br><span class="line">  at java.lang.Thread.run(Thread.java:745)</span><br></pre></td></tr></table></figure></p>
+<h3 id="WAITING-State"><a href="#WAITING-State" class="headerlink" title="WAITING State"></a>WAITING State</h3><p>Object的wait方法、Thread的join方法以及Conditon的await方法都会产生WAITING状态。</p>
+<p>1.没有时间参数的Object的wait方法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">final Object lock = new Object();</span><br><span class="line">Thread threadA = new Thread(new Runnable() &#123;</span><br><span class="line">    @Override</span><br><span class="line">    public void run() &#123;</span><br><span class="line">        synchronized (lock) &#123;</span><br><span class="line">            try &#123;</span><br><span class="line">                lock.wait();</span><br><span class="line">                System.out.println(&quot;wait over&quot;);</span><br><span class="line">            &#125; catch (InterruptedException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;, &quot;WAITING-Thread-A&quot;);</span><br><span class="line">Thread threadB = new Thread(new Runnable() &#123;</span><br><span class="line">    @Override</span><br><span class="line">    public void run() &#123;</span><br><span class="line">        synchronized (lock) &#123;</span><br><span class="line">            try &#123;</span><br><span class="line">                Thread.sleep(20000);</span><br><span class="line">            &#125; catch (InterruptedException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">            lock.notifyAll();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;, &quot;WAITING-Thread-B&quot;);</span><br><span class="line">threadA.start();</span><br><span class="line">threadB.start();</span><br></pre></td></tr></table></figure></p>
+<p>WAITING-Thread-A调用了lock的wait，处于WAITING状态：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&quot;WAITING-Thread-B&quot; #11 prio=5 os_prio=31 tid=0x00007f8de992d800 nid=0x5103 waiting on condition [0x000070000134f000]</span><br><span class="line">   java.lang.Thread.State: TIMED_WAITING (sleeping)</span><br><span class="line">  at java.lang.Thread.sleep(Native Method)</span><br><span class="line">  at study.thread.ThreadStateTest$5.run(ThreadStateTest.java:84)</span><br><span class="line">  - locked &lt;0x0000000795a03e40&gt; (a java.lang.Object)</span><br><span class="line">  at java.lang.Thread.run(Thread.java:745)</span><br><span class="line"></span><br><span class="line">&quot;WAITING-Thread-A&quot; #10 prio=5 os_prio=31 tid=0x00007f8dea193000 nid=0x4f03 in Object.wait() [0x000070000124c000]</span><br><span class="line">   java.lang.Thread.State: WAITING (on object monitor)</span><br><span class="line">  at java.lang.Object.wait(Native Method)</span><br><span class="line">  - waiting on &lt;0x0000000795a03e40&gt; (a java.lang.Object)</span><br><span class="line">  at java.lang.Object.wait(Object.java:502)</span><br><span class="line">  at study.thread.ThreadStateTest$4.run(ThreadStateTest.java:71)</span><br><span class="line">  - locked &lt;0x0000000795a03e40&gt; (a java.lang.Object)</span><br><span class="line">  at java.lang.Thread.run(Thread.java:745)</span><br></pre></td></tr></table></figure></p>
+<p>2.Thread的join方法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">Thread threadA = new Thread(new Runnable() &#123;</span><br><span class="line">    @Override</span><br><span class="line">    public void run() &#123;</span><br><span class="line">        try &#123;</span><br><span class="line">            Thread.sleep(20000);</span><br><span class="line">        &#125; catch (InterruptedException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(&quot;Thread-A over&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;, &quot;WAITING-Thread-A&quot;);</span><br><span class="line">threadA.start();</span><br><span class="line">try &#123;</span><br><span class="line">    threadA.join();</span><br><span class="line">&#125; catch (InterruptedException e) &#123;</span><br><span class="line">    e.printStackTrace();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>主线程main处于WAITING状态：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&quot;WAITING-Thread-A&quot; #10 prio=5 os_prio=31 tid=0x00007fd2d5100000 nid=0x4e03 waiting on condition [0x000070000124c000]</span><br><span class="line">   java.lang.Thread.State: TIMED_WAITING (sleeping)</span><br><span class="line">  at java.lang.Thread.sleep(Native Method)</span><br><span class="line">  at study.thread.ThreadStateTest$6.run(ThreadStateTest.java:103)</span><br><span class="line">  at java.lang.Thread.run(Thread.java:745)</span><br><span class="line">&quot;main&quot; #1 prio=5 os_prio=31 tid=0x00007fd2d3815000 nid=0x1003 in Object.wait() [0x0000700000182000]</span><br><span class="line">   java.lang.Thread.State: WAITING (on object monitor)</span><br><span class="line">  at java.lang.Object.wait(Native Method)</span><br><span class="line">  - waiting on &lt;0x0000000795a03ec0&gt; (a java.lang.Thread)</span><br><span class="line">  at java.lang.Thread.join(Thread.java:1245)</span><br><span class="line">  - locked &lt;0x0000000795a03ec0&gt; (a java.lang.Thread)</span><br><span class="line">  at java.lang.Thread.join(Thread.java:1319)</span><br><span class="line">  at study.thread.ThreadStateTest.WAITING_join(ThreadStateTest.java:118)</span><br><span class="line">  at study.thread.ThreadStateTest.main(ThreadStateTest.java:13)</span><br><span class="line">  at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)</span><br><span class="line">  at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)</span><br><span class="line">  at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)</span><br><span class="line">  at java.lang.reflect.Method.invoke(Method.java:483)</span><br><span class="line">  at com.intellij.rt.execution.application.AppMain.main(AppMain.java:140)</span><br></pre></td></tr></table></figure></p>
+<p>3.没有时间参数的Condition的await方法</p>
+<p>Condition的await方法跟Obejct的wait方法原理是一样的，故也是WAITING状态</p>
+<h3 id="TIMED-WAITING-State"><a href="#TIMED-WAITING-State" class="headerlink" title="TIMED_WAITING State"></a>TIMED_WAITING State</h3><p>TIMED_WAITING状态跟TIMEING状态类似，是一个有等待时间的等待状态，不会一直等待下去。</p>
+<p>最简单的TIMED_WAITING状态例子就是Thread的sleep方法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">Thread threadA = new Thread(new Runnable() &#123;</span><br><span class="line">    @Override</span><br><span class="line">    public void run() &#123;</span><br><span class="line">        try &#123;</span><br><span class="line">            Thread.sleep(20000);</span><br><span class="line">        &#125; catch (InterruptedException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(&quot;Thread-A over&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;, &quot;WAITING-Thread-A&quot;);</span><br><span class="line">threadA.start();</span><br><span class="line">try &#123;</span><br><span class="line">    Thread.sleep(5000);</span><br><span class="line">&#125; catch (InterruptedException e) &#123;</span><br><span class="line">    e.printStackTrace();</span><br><span class="line">&#125;</span><br><span class="line">System.out.println(threadA.getState()); // TIMED_WAITING</span><br></pre></td></tr></table></figure></p>
+<p>或者是Object的wait方法带有时间参数、Thread的join方法带有时间参数也会让线程的状态处于TIMED_WAITING状态。</p>
+<h3 id="TERMINATED-State"><a href="#TERMINATED-State" class="headerlink" title="TERMINATED State"></a>TERMINATED State</h3><p>线程终止的状态，线程执行完成，结束生命周期。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Thread threadA = new Thread();</span><br><span class="line">threadA.start();</span><br><span class="line">try &#123;</span><br><span class="line">    Thread.sleep(5000l);</span><br><span class="line">&#125; catch (InterruptedException e) &#123;</span><br><span class="line">    e.printStackTrace();</span><br><span class="line">&#125;</span><br><span class="line">System.out.println(threadA.getState()); // TERMINATED</span><br></pre></td></tr></table></figure></p>
+<h2 id="END"><a href="#END" class="headerlink" title="END"></a>END</h2><p>了解线程的状态可以分析一些问题。</p>
+<p>比如线程处于BLOCKED状态，这个时候可以分析一下是不是lock加锁的时候忘记释放了，或者释放的时机不对。导致另外的线程一直处于BLOCKED状态。</p>
+<p>比如线程处于WAITING状态，这个时候可以分析一下notifyAll或者signalAll方法的调用时机是否不对。</p>
+<p>java自带的jstack工具可以分析查看线程的状态、优先级、描述等具体信息。</p>
+
+    </div>
+    
+    <div class="post-footer">
+        <div>
+            
+            转载声明：
+            商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="https://binchencoder.github.io/" target="_blank">Binchencoder</a>
+            
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+<div class="article-nav prev-next-wrap clearfix">
+    
+    <a href="/2018/09/01/使用正则引发的血案/" class="pre-post btn btn-default" title='使用正则引发的血案'>
+        <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+        <span class="hidden-xs">
+            使用正则引发的血案</span>
+    </a>
+    
+    
+    <a href="/2018/07/22/UsefulScripts-Java脚本/" class="next-post btn btn-default" title='UsefulScripts-Java脚本'>
+        <span class="hidden-lg">下一篇</span>
+        <span class="hidden-xs">
+            UsefulScripts-Java脚本</span><i class="fa fa-angle-right fa-fw"></i>
+    </a>
+    
+</div>
+
+<div id="comments">
+    
+
+<div id="vcomments" class="valine"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="/assets/valine.min.js"></script>
+<script>
+new Valine({
+    av: AV,
+    el: '#vcomments',
+    appId: 'xHUsTpzIlelbKBsefohA5b4m-gzGzoHsz',
+    appKey: 'RzKuChrzRGTQEgtRSKHy8s7L',
+    placeholder: '说点什么吧',
+    notify: false,
+    verify: false,
+    avatar: 'mm',
+    meta: 'nick,mail'.split(','),
+    pageSize: '10',
+    path: window.location.pathname,
+    lang: 'zh-CN'.toLowerCase()
+})
+</script>
+
+
+</div>
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">
+            文章目录
+        </h3>
+        
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Java-线程状态分析"><span class="toc-text">Java 线程状态分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#NEW-State"><span class="toc-text">NEW State</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#RUNNABLE-State"><span class="toc-text">RUNNABLE State</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#BLOCKED-State"><span class="toc-text">BLOCKED State</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#WAITING-State"><span class="toc-text">WAITING State</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#TIMED-WAITING-State"><span class="toc-text">TIMED_WAITING State</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#TERMINATED-State"><span class="toc-text">TERMINATED State</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#END"><span class="toc-text">END</span></a></li></ol>
+        
+    </div>
+</aside>
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+<a id="back-to-top" class="icon-btn hide">
+    <i class="fa fa-chevron-up"></i>
+</a>
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+    访问量:
+    <strong id="busuanzi_value_site_pv">
+        <i class="fa fa-spinner fa-spin"></i>
+    </strong>
+    &nbsp; | &nbsp;
+    访客数:
+    <strong id="busuanzi_value_site_uv">
+        <i class="fa fa-spinner fa-spin"></i>
+    </strong>
+    
+</div>
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy;
+                    2017
+                    
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<script src="/js/app.js?rev=@@hash"></script>
+</body>
+</html>
