@@ -223,9 +223,9 @@ proto...">
 <li>支持多种语言（可以把proto文件看做IDL文件）；</li>
 <li>Netty等一些框架集成；</li>
 </ol>
-<p>但是<code>gRPC</code> 作为企业级框架，他的开源组件官方并未直接提供服务注册与发现的功能实现。而是在设计文档(<a href="https://github.com/grpc/grpc/blob/master/doc/load-balancing.md" target="_blank" rel="noopener">load-balancing.md</a>)中提供了实现的思路，并在不同语言的<code>gRPC</code>代码API中提供了命名解析和负载均衡接口供扩展。</p>
-<p>关于<code>gRPC</code> 服务发现&amp;负载均衡，可以参见我之前写的一篇文章 <a href="https://binchencoder.github.io/2020/07/20/gRPC%E6%9C%8D%E5%8A%A1%E5%8F%91%E7%8E%B0&amp;%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/">gRPC服务发现&amp;负载均衡</a></p>
-<p><em>gRPC SkyLB</em> 采用独立LB进程（External Load Balancing Service）负载均衡方式，支持轮询、一致性哈希两种负载均衡策略，并支持服务端权重。采用etcd作为注册中心。</p>
+<p>服务注册/发现 是RPC框架的核心组件，但是<code>gRPC</code> 作为企业级框架，他的开源组件官方并未直接提供服务注册与发现的功能实现。而是在设计文档(<a href="https://github.com/grpc/grpc/blob/master/doc/load-balancing.md" target="_blank" rel="noopener">load-balancing.md</a>)中提供了实现的思路，并在不同语言的<code>gRPC</code>代码API中提供了命名解析和负载均衡接口供扩展。</p>
+<p>关于<code>gRPC</code> 服务发现&amp;负载均衡的介绍，可以参见我之前写的一篇文章 <a href="https://binchencoder.github.io/2020/07/20/gRPC%E6%9C%8D%E5%8A%A1%E5%8F%91%E7%8E%B0&amp;%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/">gRPC服务发现&amp;负载均衡</a></p>
+<h2 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h2><p><em>gRPC SkyLB</em> 采用独立LB进程（External Load Balancing Service）负载均衡方式，支持轮询、一致性哈希两种负载均衡策略，并支持服务端权重。采用etcd作为注册中心。</p>
 <p>项目地址：</p>
 <p><a href="https://github.com/binchencoder/grpc-skylb" target="_blank" rel="noopener">https://github.com/binchencoder/grpc-skylb</a></p>
 <h2 id="Architecture-of-SkyLB"><a href="#Architecture-of-SkyLB" class="headerlink" title="Architecture of SkyLB"></a>Architecture of SkyLB</h2><p><img src="/2020/07/20/gRPC SkyLB/architecture.png" alt></p>
@@ -302,7 +302,7 @@ new Valine({
             文章目录
         </h3>
         
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#gRPC-SkyLB"><span class="toc-text">gRPC SkyLB</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Architecture-of-SkyLB"><span class="toc-text">Architecture of SkyLB</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Samples"><span class="toc-text">Samples</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#References"><span class="toc-text">References</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#gRPC-SkyLB"><span class="toc-text">gRPC SkyLB</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Overview"><span class="toc-text">Overview</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Architecture-of-SkyLB"><span class="toc-text">Architecture of SkyLB</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Samples"><span class="toc-text">Samples</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#References"><span class="toc-text">References</span></a></li></ol></li></ol>
         
     </div>
 </aside>
