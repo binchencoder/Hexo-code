@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://binchencoder.github.io/"/>
-  <updated>2020-07-20T09:55:47.642Z</updated>
+  <updated>2020-07-20T09:50:50.033Z</updated>
   <id>https://binchencoder.github.io/</id>
   
   <author>
@@ -17,17 +17,17 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>gRPC SkyLB (an gRPC load balancer based on External Load Balancing Service)</title>
-    <link href="https://binchencoder.github.io/2020/07/20/gRPC%20SkyLB/"/>
-    <id>https://binchencoder.github.io/2020/07/20/gRPC SkyLB/</id>
+    <title>gRPC服务发现&amp;负载均衡</title>
+    <link href="https://binchencoder.github.io/2020/07/20/gRPC%E6%9C%8D%E5%8A%A1%E5%8F%91%E7%8E%B0&amp;%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/"/>
+    <id>https://binchencoder.github.io/2020/07/20/gRPC服务发现&amp;负载均衡/</id>
     <published>2020-07-20T09:00:08.000Z</published>
-    <updated>2020-07-20T09:55:47.642Z</updated>
+    <updated>2020-07-20T09:50:50.033Z</updated>
     
     <summary type="html">
     
       
       
-        &lt;h1 id=&quot;gRPC-SkyLB-an-gRPC-load-balancer-based-on-External-Load-Balancing-Service&quot;&gt;&lt;a href=&quot;#gRPC-SkyLB-an-gRPC-load-balancer-based-on-Exter
+        &lt;h1 id=&quot;gRPC服务发现-amp-负载均衡&quot;&gt;&lt;a href=&quot;#gRPC服务发现-amp-负载均衡&quot; class=&quot;headerlink&quot; title=&quot;gRPC服务发现&amp;amp;负载均衡&quot;&gt;&lt;/a&gt;gRPC服务发现&amp;amp;负载均衡&lt;/h1&gt;&lt;p&gt;&lt;code&gt;gRPC
       
     
     </summary>
@@ -44,17 +44,17 @@
   </entry>
   
   <entry>
-    <title>gRPC服务发现&amp;负载均衡</title>
-    <link href="https://binchencoder.github.io/2020/07/20/gRPC%E6%9C%8D%E5%8A%A1%E5%8F%91%E7%8E%B0&amp;%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/"/>
-    <id>https://binchencoder.github.io/2020/07/20/gRPC服务发现&amp;负载均衡/</id>
+    <title>gRPC SkyLB (an gRPC load balancer based on External Load Balancing Service)</title>
+    <link href="https://binchencoder.github.io/2020/07/20/gRPC%20SkyLB/"/>
+    <id>https://binchencoder.github.io/2020/07/20/gRPC SkyLB/</id>
     <published>2020-07-20T09:00:08.000Z</published>
-    <updated>2020-07-20T09:50:50.033Z</updated>
+    <updated>2020-07-22T10:22:00.304Z</updated>
     
     <summary type="html">
     
       
       
-        &lt;h1 id=&quot;gRPC服务发现-amp-负载均衡&quot;&gt;&lt;a href=&quot;#gRPC服务发现-amp-负载均衡&quot; class=&quot;headerlink&quot; title=&quot;gRPC服务发现&amp;amp;负载均衡&quot;&gt;&lt;/a&gt;gRPC服务发现&amp;amp;负载均衡&lt;/h1&gt;&lt;p&gt;&lt;code&gt;gRPC
+        &lt;h1 id=&quot;gRPC-SkyLB&quot;&gt;&lt;a href=&quot;#gRPC-SkyLB&quot; class=&quot;headerlink&quot; title=&quot;gRPC SkyLB&quot;&gt;&lt;/a&gt;gRPC SkyLB&lt;/h1&gt;&lt;p&gt;&lt;code&gt;gRPC&lt;/code&gt; 作为一款高性能、通用的 RPC 框架，相
       
     
     </summary>
@@ -119,9 +119,9 @@
     
       <category term="Java" scheme="https://binchencoder.github.io/tags/Java/"/>
     
-      <category term="多线程" scheme="https://binchencoder.github.io/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/"/>
-    
       <category term="线程" scheme="https://binchencoder.github.io/tags/%E7%BA%BF%E7%A8%8B/"/>
+    
+      <category term="多线程" scheme="https://binchencoder.github.io/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/"/>
     
   </entry>
   
