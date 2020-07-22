@@ -1,6 +1,6 @@
 ---
 title: gRPC SkyLB (an gRPC load balancer based on External Load Balancing Service)
-date: 2020-07-20 17:00:08
+date: 2020-07-22 22:00:08
 tags:
 	- gRPC
 	- LoadBalancer
@@ -39,9 +39,131 @@ https://github.com/binchencoder/grpc-skylb
 
 服务提供者起来后想注册中心(SkyLB) 注册自己的信息，ip、端口、权重等，并保持心跳。客户端监听注册中心，获取服务器列表，一旦服务器发生变化，客户端马上更新本地的服务器列表。客户端每个请求都通过负载均衡策略选择一个合适的服务器去访问。
 
-## Samples
+## Demo
 
+1. Implements gRPC API
 
+   ```java
+   public class DemoGrpcImpl extends DemoGrpc.DemoImplBase {
+     private final Logger LOGGER = LoggerFactory.getLogger(DemoGrpcImpl.class);
+   
+     private Random rand = new Random(System.currentTimeMillis());
+     private int port;
+     public DemoGrpcImpl(int port_) {
+       this.port = port_;
+     }
+   
+     @Override
+     public void greeting(GreetingProtos.GreetingRequest request,
+         StreamObserver<GreetingProtos.GreetingResponse> responseObserver) {
+       LOGGER.info("Got req: {}", request);
+   
+       // 随机耗时350~550毫秒.
+       int elapse = 350 + rand.nextInt(200);
+       try {
+         TimeUnit.MILLISECONDS.sleep(elapse);
+       } catch (InterruptedException ie) {
+         LOGGER.warn("sleep interrupted");
+       }
+   
+       GreetingResponse reply = GreetingResponse.newBuilder().setGreeting(
+           "Hello " + request.getName() + ", from :" + port + ", elapse " + elapse + "ms").build();
+       responseObserver.onNext(reply);
+       responseObserver.onCompleted();
+     }
+   
+     @Override
+     public void greetingForEver(GreetingProtos.GreetingRequest request,
+         StreamObserver<GreetingProtos.GreetingResponse> responseObserver) {
+       super.greetingForEver(request, responseObserver);
+     }
+   }
+   ```
+
+2. Register gRPC Server to SkyLB Server
+
+   ```java
+   Server server = ServerTemplate.create({gRPC port} 9090, new DemoGrpcImpl(), 
+                                         {serviceName} "shared-test-client-service")
+     .build()
+     .start();
+   
+   SkyLBServiceReporter reporter = ServerTemplate.reportLoad({skylbAddr} "skylb://127.0.0.1:1900/",
+                                                             {serviceName} ServiceNameUtil.toString(ServiceId.CUSTOM_EASE_GATEWAY_TEST),
+                                                             {portName} "grpc",
+                                                             {gRPC port} 9090);
+   ```
+
+3. Call gRPC Server
+
+   Create gRPC Stub
+
+   ```java
+   ManagedChannel channel = ClientTemplate.createChannel({skylbAddr} "skylb://127.0.0.1:1900/",
+                                                         {calleeServiceName} ServiceNameUtil.toString(ServiceId.CUSTOM_EASE_GATEWAY_TEST),
+                                                         {calleePortName} "grpc", 
+                                                         {calleeNamespace} null,                                   
+                                                         {callerServiceName} ServiceNameUtil.toString(ServiceId.SERVICE_NONE)).getOriginChannel();
+   
+   DemoGrpc.DemoBlockingStub blockingStub = DemoGrpc.newBlockingStub(channel);
+   ```
+
+   ```java
+   GreetingRequest request = GreetingRequest.newBuilder()
+     .setName("GC " + Calendar.getInstance().get(Calendar.SECOND))
+     .build();
+   GreetingResponse response = blockingStub
+     .withDeadlineAfter(2000, TimeUnit.MILLISECONDS)
+     .greeting(request);
+   ```
+
+## Run Demo
+
+1. Build SkyLB Server
+
+   ```shell
+   chenbindeMacBook-Pro:grpc-skylb chenbin$ cd skylb-server
+   chenbindeMacBook-Pro:skylb-server chenbin$ mvn clean package
+   ```
+
+   > 最终skylb.jar 打包到 skylb-server/target 目录下
+
+2. Start SkyLB Server
+
+   **Start ETCD**
+
+   ```shell
+   
+   ```
+
+   ```shell
+   chenbindeMacBook-Pro:skylb-server chenbin$ cd target/skylblib
+   
+   chenbindeMacBook-Pro:skylblib chenbin$ java -jar skylb.jar -h
+   	Usage: java -jar skylb.jar [options] [command] [command options]
+     Options:
+       --auto-disconn-timeout, -auto-disconn-timeout
+         The timeout to automatically disconnect the resolve RPC. e.g. 10s(10 
+         Seconds), 10m(10 Minutes)
+         Default: PT5M
+     Commands:
+       etcd      Help for etcd options
+         Usage: etcd [options]
+           Options:
+             --etcd-endpoints, -etcd-endpoints
+               The comma separated ETCD endpoints. e.g., 
+               http://etcd1:2379,http://etcd2:2379 
+               Default: [http://127.0.0.1:2379]
+             --etcd-key-ttl, -etcd-key-ttl
+               The etcd key time-to-live. e.g. 10s(10 Seconds), 10m(10 Minutes)
+               Default: PT10S
+   
+   chenbindeMacBook-Pro:skylblib chenbin$ java -jar skylb.jar -etcd-endpoints=http://127.0.0.1:2379
+   ```
+
+3. Start gRPC Server
+
+4. Start gRPC Client
 
 ## References
 

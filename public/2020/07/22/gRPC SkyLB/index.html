@@ -199,7 +199,7 @@ proto..." />
     <span class="fa-wrap">
         <i class="fa fa-clock-o"></i>
         <span class="date-meta">
-            2020/07/20</span>
+            2020/07/22</span>
     </span>
     
     <span class="fa-wrap">
@@ -228,7 +228,7 @@ proto..." />
 <h2 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h2><p><em>gRPC SkyLB</em> 采用独立LB进程（External Load Balancing Service）负载均衡方式，支持轮询、一致性哈希两种负载均衡策略，并支持服务端权重。采用etcd作为注册中心。</p>
 <p>项目地址：</p>
 <p><a href="https://github.com/binchencoder/grpc-skylb" target="_blank" rel="noopener">https://github.com/binchencoder/grpc-skylb</a></p>
-<h2 id="Architecture-of-SkyLB"><a href="#Architecture-of-SkyLB" class="headerlink" title="Architecture of SkyLB"></a>Architecture of SkyLB</h2><p><img src="/2020/07/20/gRPC SkyLB/architecture.png" alt=""></p>
+<h2 id="Architecture-of-SkyLB"><a href="#Architecture-of-SkyLB" class="headerlink" title="Architecture of SkyLB"></a>Architecture of SkyLB</h2><p><img src="/2020/07/22/gRPC SkyLB/architecture.png" alt=""></p>
 <p>服务提供者起来后想注册中心(SkyLB) 注册自己的信息，ip、端口、权重等，并保持心跳。客户端监听注册中心，获取服务器列表，一旦服务器发生变化，客户端马上更新本地的服务器列表。客户端每个请求都通过负载均衡策略选择一个合适的服务器去访问。</p>
 <h2 id="Demo"><a href="#Demo" class="headerlink" title="Demo"></a>Demo</h2><ol>
 <li><p>Implements gRPC API</p>
