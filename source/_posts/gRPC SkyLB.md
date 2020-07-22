@@ -21,9 +21,11 @@ gRPC SkyLB
 5. 支持多种语言（可以把proto文件看做IDL文件）；
 6. Netty等一些框架集成；
 
-但是`gRPC` 作为企业级框架，他的开源组件官方并未直接提供服务注册与发现的功能实现。而是在设计文档([load-balancing.md](https://github.com/grpc/grpc/blob/master/doc/load-balancing.md))中提供了实现的思路，并在不同语言的`gRPC`代码API中提供了命名解析和负载均衡接口供扩展。
+服务注册/发现 是RPC框架的核心组件，但是`gRPC` 作为企业级框架，他的开源组件官方并未直接提供服务注册与发现的功能实现。而是在设计文档([load-balancing.md](https://github.com/grpc/grpc/blob/master/doc/load-balancing.md))中提供了实现的思路，并在不同语言的`gRPC`代码API中提供了命名解析和负载均衡接口供扩展。
 
-关于`gRPC` 服务发现&负载均衡，可以参见我之前写的一篇文章 [gRPC服务发现&负载均衡](https://binchencoder.github.io/2020/07/20/gRPC%E6%9C%8D%E5%8A%A1%E5%8F%91%E7%8E%B0&%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/)
+关于`gRPC` 服务发现&负载均衡的介绍，可以参见我之前写的一篇文章 [gRPC服务发现&负载均衡](https://binchencoder.github.io/2020/07/20/gRPC%E6%9C%8D%E5%8A%A1%E5%8F%91%E7%8E%B0&%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/)
+
+## Overview
 
 *gRPC SkyLB* 采用独立LB进程（External Load Balancing Service）负载均衡方式，支持轮询、一致性哈希两种负载均衡策略，并支持服务端权重。采用etcd作为注册中心。
 
