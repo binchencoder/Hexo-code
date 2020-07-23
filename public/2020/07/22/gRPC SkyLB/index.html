@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html lang="zh-CN">
 
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
     <!--Setting-->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -19,19 +19,19 @@
     <link rel="dns-prefetch" href="https://binchencoder.github.io">
     <!--SEO-->
 
-<meta name="keywords" content="gRPC,LoadBalancer,Registry/Discovery" />
+<meta name="keywords" content="gRPC,LoadBalancer,Registry/Discovery">
 
 
 <meta name="description" content="gRPC SkyLBgRPC 作为一款高性能、通用的 RPC 框架，相比传统的RPC框架有着自己天然的优势：
 
 protobuf二进制消息，性能好/效率高（空间和时间效率都很不错）；
-proto..." />
+proto...">
 
 
-<meta name="robots" content="all" />
-<meta name="google" content="all" />
-<meta name="googlebot" content="all" />
-<meta name="verify" content="all" />
+<meta name="robots" content="all">
+<meta name="google" content="all">
+<meta name="googlebot" content="all">
+<meta name="verify" content="all">
     <!--Title-->
 
 <title>
@@ -78,7 +78,7 @@ proto..." />
 })();
 </script>
 
-</head>
+</head></html>
 <!--[if lte IE 8]>
 <style>
     html{ font-size: 1em }
@@ -228,18 +228,23 @@ proto..." />
 <h2 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h2><p><em>gRPC SkyLB</em> 采用独立LB进程（External Load Balancing Service）负载均衡方式，支持轮询、一致性哈希两种负载均衡策略，并支持服务端权重。采用etcd作为注册中心。</p>
 <p>项目地址：</p>
 <p><a href="https://github.com/binchencoder/grpc-skylb" target="_blank" rel="noopener">https://github.com/binchencoder/grpc-skylb</a></p>
-<h2 id="Architecture-of-SkyLB"><a href="#Architecture-of-SkyLB" class="headerlink" title="Architecture of SkyLB"></a>Architecture of SkyLB</h2><p><img src="/2020/07/22/gRPC SkyLB/architecture.png" alt=""></p>
-<p>服务提供者起来后想注册中心(SkyLB) 注册自己的信息，ip、端口、权重等，并保持心跳。客户端监听注册中心，获取服务器列表，一旦服务器发生变化，客户端马上更新本地的服务器列表。客户端每个请求都通过负载均衡策略选择一个合适的服务器去访问。</p>
-<h2 id="Demo"><a href="#Demo" class="headerlink" title="Demo"></a>Demo</h2><ol>
+<h2 id="Architecture-of-SkyLB"><a href="#Architecture-of-SkyLB" class="headerlink" title="Architecture of SkyLB"></a>Architecture of SkyLB</h2><p><img src="/2020/07/22/gRPC SkyLB/architecture.png" alt></p>
+<p>服务提供者起来后向注册中心(SkyLB) 注册自己的信息，ip、端口、权重等，并保持心跳。客户端监听注册中心，获取服务器列表，一旦服务器发生变化，客户端马上更新本地的服务器列表。客户端每个请求都通过负载均衡策略选择一个合适的服务器去访问。</p>
+<h2 id="Usage"><a href="#Usage" class="headerlink" title="Usage"></a>Usage</h2><ol>
+<li><p>Dependency</p>
+<p><strong>Install skylb-client local repository</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chenbindeMacBook-Pro:grpc-skylb chenbin$ mvn clean install</span><br></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">	&lt;groupId&gt;com.binchencoder.skylb&lt;/groupId&gt;</span><br><span class="line">	&lt;artifactId&gt;skylb-client&lt;/artifactId&gt;</span><br><span class="line">	&lt;version&gt;1.0-SNAPSHOT&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>Implements gRPC API</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DemoGrpcImpl</span> <span class="keyword">extends</span> <span class="title">DemoGrpc</span>.<span class="title">DemoImplBase</span> </span>&#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">final</span> Logger LOGGER = LoggerFactory.getLogger(DemoGrpcImpl.class);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">private</span> Random rand = <span class="keyword">new</span> Random(System.currentTimeMillis());</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">int</span> port;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">DemoGrpcImpl</span><span class="params">(<span class="keyword">int</span> port_)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.port = port_;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">greeting</span><span class="params">(GreetingProtos.GreetingRequest request,</span></span></span><br><span class="line"><span class="function"><span class="params">      StreamObserver&lt;GreetingProtos.GreetingResponse&gt; responseObserver)</span> </span>&#123;</span><br><span class="line">    LOGGER.info(<span class="string">"Got req: &#123;&#125;"</span>, request);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 随机耗时350~550毫秒.</span></span><br><span class="line">    <span class="keyword">int</span> elapse = <span class="number">350</span> + rand.nextInt(<span class="number">200</span>);</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">      TimeUnit.MILLISECONDS.sleep(elapse);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (InterruptedException ie) &#123;</span><br><span class="line">      LOGGER.warn(<span class="string">"sleep interrupted"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    GreetingResponse reply = GreetingResponse.newBuilder().setGreeting(</span><br><span class="line">        <span class="string">"Hello "</span> + request.getName() + <span class="string">", from :"</span> + port + <span class="string">", elapse "</span> + elapse + <span class="string">"ms"</span>).build();</span><br><span class="line">    responseObserver.onNext(reply);</span><br><span class="line">    responseObserver.onCompleted();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">greetingForEver</span><span class="params">(GreetingProtos.GreetingRequest request,</span></span></span><br><span class="line"><span class="function"><span class="params">      StreamObserver&lt;GreetingProtos.GreetingResponse&gt; responseObserver)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">super</span>.greetingForEver(request, responseObserver);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>Register gRPC Server to SkyLB Server</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Server server = ServerTemplate.create(&#123;gRPC port&#125; <span class="number">9090</span>, <span class="keyword">new</span> DemoGrpcImpl(), </span><br><span class="line">                                      &#123;serviceName&#125; <span class="string">"shared-test-client-service"</span>)</span><br><span class="line">  .build()</span><br><span class="line">  .start();</span><br><span class="line"></span><br><span class="line">SkyLBServiceReporter reporter = ServerTemplate.reportLoad(&#123;skylbAddr&#125; <span class="string">"skylb://127.0.0.1:1900/"</span>,</span><br><span class="line">                                                          &#123;serviceName&#125; ServiceNameUtil.toString(ServiceId.CUSTOM_EASE_GATEWAY_TEST),</span><br><span class="line">                                                          &#123;portName&#125; <span class="string">"grpc"</span>,</span><br><span class="line">                                                          &#123;gRPC port&#125; <span class="number">9090</span>);</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Server server = ServerTemplate.create(</span><br><span class="line">			&#123;port&#125; <span class="number">9090</span>, </span><br><span class="line">			&#123;bindableService&#125; <span class="keyword">new</span> DemoGrpcImpl(), </span><br><span class="line">			&#123;serviceName&#125; <span class="string">"shared-test-client-service"</span>)</span><br><span class="line">  .build()</span><br><span class="line">  .start();</span><br><span class="line"></span><br><span class="line">SkyLBServiceReporter reporter = ServerTemplate.reportLoad(</span><br><span class="line">			&#123;skylbUri&#125; <span class="string">"skylb://127.0.0.1:1900/"</span>,</span><br><span class="line">			&#123;serviceName&#125; ServiceNameUtil.toString(ServiceId.CUSTOM_EASE_GATEWAY_TEST),</span><br><span class="line">			&#123;portName&#125; <span class="string">"grpc"</span>,</span><br><span class="line">			&#123;port&#125; <span class="number">9090</span>);</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>Call gRPC Server</p>
 <p>Create gRPC Stub</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">ManagedChannel channel = ClientTemplate.createChannel(&#123;skylbAddr&#125; <span class="string">"skylb://127.0.0.1:1900/"</span>,</span><br><span class="line">                                                      &#123;calleeServiceName&#125; ServiceNameUtil.toString(ServiceId.CUSTOM_EASE_GATEWAY_TEST),</span><br><span class="line">                                                      &#123;calleePortName&#125; <span class="string">"grpc"</span>, </span><br><span class="line">                                                      &#123;calleeNamespace&#125; <span class="keyword">null</span>,                                   </span><br><span class="line">                                                      &#123;callerServiceName&#125; ServiceNameUtil.toString(ServiceId.SERVICE_NONE)).getOriginChannel();</span><br><span class="line"></span><br><span class="line">DemoGrpc.DemoBlockingStub blockingStub = DemoGrpc.newBlockingStub(channel);</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">ManagedChannel channel = ClientTemplate.createChannel(</span><br><span class="line">			&#123;skylbAddr&#125; <span class="string">"skylb://127.0.0.1:1900/"</span>,</span><br><span class="line">			&#123;calleeServiceName&#125; ServiceNameUtil.toString(ServiceId.CUSTOM_EASE_GATEWAY_TEST),</span><br><span class="line">			&#123;calleePortName&#125; <span class="string">"grpc"</span>, </span><br><span class="line">			&#123;calleeNamespace&#125; <span class="keyword">null</span>,                                   </span><br><span class="line">			&#123;callerServiceName&#125; ServiceNameUtil.toString(ServiceId.SERVICE_NONE)).getOriginChannel();</span><br><span class="line"></span><br><span class="line">DemoGrpc.DemoBlockingStub blockingStub = DemoGrpc.newBlockingStub(channel);</span><br></pre></td></tr></table></figure>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">GreetingRequest request = GreetingRequest.newBuilder()</span><br><span class="line">  .setName(<span class="string">"GC "</span> + Calendar.getInstance().get(Calendar.SECOND))</span><br><span class="line">  .build();</span><br><span class="line">GreetingResponse response = blockingStub</span><br><span class="line">  .withDeadlineAfter(<span class="number">2000</span>, TimeUnit.MILLISECONDS)</span><br><span class="line">  .greeting(request);</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
@@ -251,19 +256,49 @@ proto..." />
 </blockquote>
 </li>
 <li><p>Start SkyLB Server</p>
-<p><strong>Start ETCD</strong></p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"> </span><br></pre></td></tr></table></figure>
+<p><strong>Start ETCD3</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">yum install etcd -y</span><br><span class="line"></span><br><span class="line">systemctl enable etcd &amp;&amp; systemctl start etcd</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>NOTE</strong></p>
+<p>部署ETCD遇到问题可参考 <a href="https://www.cnblogs.com/shawhe/p/10640820.html" target="_blank" rel="noopener">https://www.cnblogs.com/shawhe/p/10640820.html</a></p>
+</blockquote>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">chenbindeMacBook-Pro:skylb-server chenbin$ cd target/skylblib</span><br><span class="line"></span><br><span class="line">chenbindeMacBook-Pro:skylblib chenbin$ java -jar skylb.jar -h</span><br><span class="line">	Usage: java -jar skylb.jar [options] [command] [command options]</span><br><span class="line">  Options:</span><br><span class="line">    --auto-disconn-timeout, -auto-disconn-timeout</span><br><span class="line">      The timeout to automatically disconnect the resolve RPC. e.g. 10s(10 </span><br><span class="line">      Seconds), 10m(10 Minutes)</span><br><span class="line">      Default: PT5M</span><br><span class="line">  Commands:</span><br><span class="line">    etcd      Help for etcd options</span><br><span class="line">      Usage: etcd [options]</span><br><span class="line">        Options:</span><br><span class="line">          --etcd-endpoints, -etcd-endpoints</span><br><span class="line">            The comma separated ETCD endpoints. e.g., </span><br><span class="line">            http://etcd1:2379,http://etcd2:2379 </span><br><span class="line">            Default: [http://127.0.0.1:2379]</span><br><span class="line">          --etcd-key-ttl, -etcd-key-ttl</span><br><span class="line">            The etcd key time-to-live. e.g. 10s(10 Seconds), 10m(10 Minutes)</span><br><span class="line">            Default: PT10S</span><br><span class="line"></span><br><span class="line">chenbindeMacBook-Pro:skylblib chenbin$ java -jar skylb.jar -etcd-endpoints=http://127.0.0.1:2379</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>Start gRPC Server</p>
+<p><a href="https://github.com/binchencoder/grpc-skylb/blob/master/examples/demo/src/main/java/com/binchencoder/skylb/demo/grpc/server/GreetingServer.java" target="_blank" rel="noopener">https://github.com/binchencoder/grpc-skylb/blob/master/examples/demo/src/main/java/com/binchencoder/skylb/demo/grpc/server/GreetingServer.java</a></p>
+<blockquote>
+<p> Run com/binchencoder/skylb/demo/grpc/server/GreetingServer#main</p>
+</blockquote>
 </li>
 <li><p>Start gRPC Client</p>
+<p><a href="https://github.com/binchencoder/grpc-skylb/blob/master/examples/demo/src/main/java/com/binchencoder/skylb/demo/grpc/client/GreetingClient.java" target="_blank" rel="noopener">https://github.com/binchencoder/grpc-skylb/blob/master/examples/demo/src/main/java/com/binchencoder/skylb/demo/grpc/client/GreetingClient.java</a></p>
+<blockquote>
+<p>Run com/binchencoder/skylb/demo/grpc/client/GreetingClient#main</p>
+</blockquote>
 </li>
 </ol>
+<h2 id="More-Examples"><a href="#More-Examples" class="headerlink" title="More Examples"></a>More Examples</h2><p>grpc-skylb/examples/echo</p>
+<p>该示例采用SpringBoot脚手架，在spring-boot-grpc-common.jar中封装好了注册服务的逻辑，启动方式比较简单</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@GrpcService</span>(applyGlobalInterceptors = <span class="keyword">true</span>) <span class="comment">// Default use Global Interceptor</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">EchoGrpcService</span> <span class="keyword">extends</span> <span class="title">EchoServiceGrpc</span>.<span class="title">EchoServiceImplBase</span> </span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol>
+<li><p>使用<code>@GrpcService</code> 注解方式标示gRPC Service</p>
+</li>
+<li><p>在 spring-boot-grpc-common.jar 中默认配置两个Global Interceptor(ExceptionInterceptor, AuthenticationInterceptor)</p>
+</li>
+<li><p>使用者可通过注解不使用Global Interceptor，实现自己的Interceptor</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@GrpcService</span>(applyGlobalInterceptors = <span class="keyword">false</span>, interceptors = ExceptionInterceptor.class)</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="Features"><a href="#Features" class="headerlink" title="Features"></a>Features</h2><ul>
+<li>@GrpcService Annotation</li>
+<li>支持配置全局拦截器</li>
+<li>将来计划支持skylb-client Golang版本</li>
+</ul>
 <h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ul>
-<li><a href="https://binchencoder.github.io/2020/07/20/gRPC%E6%9C%8D%E5%8A%A1%E5%8F%91%E7%8E%B0&amp;%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/">https://binchencoder.github.io/2020/07/20/gRPC%E6%9C%8D%E5%8A%A1%E5%8F%91%E7%8E%B0&amp;%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/</a></li>
+<li><a href="https://binchencoder.github.io/2020/07/20/gRPC%E6%9C%8D%E5%8A%A1%E5%8F%91%E7%8E%B0&amp;%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/">gRPC服务发现&amp;负载均衡</a></li>
 <li><a href="https://github.com/binchencoder/grpc-skylb" target="_blank" rel="noopener">https://github.com/binchencoder/grpc-skylb</a></li>
 <li><a href="https://github.com/grpc/grpc/blob/master/doc/load-balancing.md" target="_blank" rel="noopener">https://github.com/grpc/grpc/blob/master/doc/load-balancing.md</a></li>
+<li><a href="https://www.cnblogs.com/shawhe/p/10640820.html" target="_blank" rel="noopener">部署ETCD3集群</a></li>
 </ul>
 
     </div>
@@ -326,7 +361,7 @@ new Valine({
             文章目录
         </h3>
         
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#gRPC-SkyLB"><span class="toc-text">gRPC SkyLB</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Overview"><span class="toc-text">Overview</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Architecture-of-SkyLB"><span class="toc-text">Architecture of SkyLB</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Demo"><span class="toc-text">Demo</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Run-Demo"><span class="toc-text">Run Demo</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#References"><span class="toc-text">References</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#gRPC-SkyLB"><span class="toc-text">gRPC SkyLB</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Overview"><span class="toc-text">Overview</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Architecture-of-SkyLB"><span class="toc-text">Architecture of SkyLB</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Usage"><span class="toc-text">Usage</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Run-Demo"><span class="toc-text">Run Demo</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#More-Examples"><span class="toc-text">More Examples</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Features"><span class="toc-text">Features</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#References"><span class="toc-text">References</span></a></li></ol></li></ol>
         
     </div>
 </aside>

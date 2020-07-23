@@ -37,11 +37,27 @@ https://github.com/binchencoder/grpc-skylb
 
 ![](./gRPC SkyLB/architecture.png)
 
-服务提供者起来后想注册中心(SkyLB) 注册自己的信息，ip、端口、权重等，并保持心跳。客户端监听注册中心，获取服务器列表，一旦服务器发生变化，客户端马上更新本地的服务器列表。客户端每个请求都通过负载均衡策略选择一个合适的服务器去访问。
+服务提供者起来后向注册中心(SkyLB) 注册自己的信息，ip、端口、权重等，并保持心跳。客户端监听注册中心，获取服务器列表，一旦服务器发生变化，客户端马上更新本地的服务器列表。客户端每个请求都通过负载均衡策略选择一个合适的服务器去访问。
 
-## Demo
+## Usage
 
-1. Implements gRPC API
+1. Dependency
+
+   **Install skylb-client local repository**
+
+   ```shell
+   chenbindeMacBook-Pro:grpc-skylb chenbin$ mvn clean install
+   ```
+
+   ```java
+   <dependency>
+   	<groupId>com.binchencoder.skylb</groupId>
+   	<artifactId>skylb-client</artifactId>
+   	<version>1.0-SNAPSHOT</version>
+   </dependency>
+   ```
+
+2. Implements gRPC API
 
    ```java
    public class DemoGrpcImpl extends DemoGrpc.DemoImplBase {
@@ -80,30 +96,34 @@ https://github.com/binchencoder/grpc-skylb
    }
    ```
 
-2. Register gRPC Server to SkyLB Server
+3. Register gRPC Server to SkyLB Server
 
    ```java
-   Server server = ServerTemplate.create({gRPC port} 9090, new DemoGrpcImpl(), 
-                                         {serviceName} "shared-test-client-service")
+   Server server = ServerTemplate.create(
+   			{port} 9090, 
+   			{bindableService} new DemoGrpcImpl(), 
+   			{serviceName} "shared-test-client-service")
      .build()
      .start();
    
-   SkyLBServiceReporter reporter = ServerTemplate.reportLoad({skylbAddr} "skylb://127.0.0.1:1900/",
-                                                             {serviceName} ServiceNameUtil.toString(ServiceId.CUSTOM_EASE_GATEWAY_TEST),
-                                                             {portName} "grpc",
-                                                             {gRPC port} 9090);
+   SkyLBServiceReporter reporter = ServerTemplate.reportLoad(
+   			{skylbUri} "skylb://127.0.0.1:1900/",
+   			{serviceName} ServiceNameUtil.toString(ServiceId.CUSTOM_EASE_GATEWAY_TEST),
+   			{portName} "grpc",
+   			{port} 9090);
    ```
 
-3. Call gRPC Server
+4. Call gRPC Server
 
    Create gRPC Stub
 
    ```java
-   ManagedChannel channel = ClientTemplate.createChannel({skylbAddr} "skylb://127.0.0.1:1900/",
-                                                         {calleeServiceName} ServiceNameUtil.toString(ServiceId.CUSTOM_EASE_GATEWAY_TEST),
-                                                         {calleePortName} "grpc", 
-                                                         {calleeNamespace} null,                                   
-                                                         {callerServiceName} ServiceNameUtil.toString(ServiceId.SERVICE_NONE)).getOriginChannel();
+   ManagedChannel channel = ClientTemplate.createChannel(
+   			{skylbAddr} "skylb://127.0.0.1:1900/",
+   			{calleeServiceName} ServiceNameUtil.toString(ServiceId.CUSTOM_EASE_GATEWAY_TEST),
+   			{calleePortName} "grpc", 
+   			{calleeNamespace} null,                                   
+   			{callerServiceName} ServiceNameUtil.toString(ServiceId.SERVICE_NONE)).getOriginChannel();
    
    DemoGrpc.DemoBlockingStub blockingStub = DemoGrpc.newBlockingStub(channel);
    ```
@@ -130,11 +150,17 @@ https://github.com/binchencoder/grpc-skylb
 
 2. Start SkyLB Server
 
-   **Start ETCD**
+   **Start ETCD3**
 
    ```shell
+   yum install etcd -y
    
+   systemctl enable etcd && systemctl start etcd
    ```
+
+   > **NOTE**
+   >
+   > 部署ETCD遇到问题可参考 https://www.cnblogs.com/shawhe/p/10640820.html
 
    ```shell
    chenbindeMacBook-Pro:skylb-server chenbin$ cd target/skylblib
@@ -163,10 +189,47 @@ https://github.com/binchencoder/grpc-skylb
 
 3. Start gRPC Server
 
+   https://github.com/binchencoder/grpc-skylb/blob/master/examples/demo/src/main/java/com/binchencoder/skylb/demo/grpc/server/GreetingServer.java
+
+   >  Run com/binchencoder/skylb/demo/grpc/server/GreetingServer#main
+
 4. Start gRPC Client
+
+   https://github.com/binchencoder/grpc-skylb/blob/master/examples/demo/src/main/java/com/binchencoder/skylb/demo/grpc/client/GreetingClient.java
+
+   > Run com/binchencoder/skylb/demo/grpc/client/GreetingClient#main
+
+## More Examples
+
+grpc-skylb/examples/echo
+
+该示例采用SpringBoot脚手架，在spring-boot-grpc-common.jar中封装好了注册服务的逻辑，启动方式比较简单
+
+````java
+@GrpcService(applyGlobalInterceptors = true) // Default use Global Interceptor
+public class EchoGrpcService extends EchoServiceGrpc.EchoServiceImplBase {
+}
+````
+
+1. 使用`@GrpcService` 注解方式标示gRPC Service
+
+2. 在 spring-boot-grpc-common.jar 中默认配置两个Global Interceptor(ExceptionInterceptor, AuthenticationInterceptor)
+
+3. 使用者可通过注解不使用Global Interceptor，实现自己的Interceptor
+
+   ```java
+   @GrpcService(applyGlobalInterceptors = false, interceptors = ExceptionInterceptor.class)
+   ```
+
+## Features
+
+- @GrpcService Annotation
+- 支持配置全局拦截器
+- 将来计划支持skylb-client Golang版本
 
 ## References
 
-- https://binchencoder.github.io/2020/07/20/gRPC%E6%9C%8D%E5%8A%A1%E5%8F%91%E7%8E%B0&%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/
-- https://github.com/binchencoder/grpc-skylb
+- [gRPC服务发现&负载均衡](https://binchencoder.github.io/2020/07/20/gRPC%E6%9C%8D%E5%8A%A1%E5%8F%91%E7%8E%B0&%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/)
+-  https://github.com/binchencoder/grpc-skylb
 - https://github.com/grpc/grpc/blob/master/doc/load-balancing.md
+- [部署ETCD3集群](https://www.cnblogs.com/shawhe/p/10640820.html)
