@@ -237,9 +237,13 @@ https://www.jianshu.com/p/c45b6d782e91
 <li>List 和 Map 区别</li>
 <li>Arraylist 与 LinkedList 区别</li>
 <li>ArrayList 与 Vector 区别</li>
-<li>HashMap 和 Hashtable 的区别</li>
+<li><a href="https://blog.csdn.net/heting717/article/details/103868691" target="_blank" rel="noopener">HashMap、HashTable、ConcurrentHashMap共同点与区别</a><ul>
+<li>HashMap和HashTable 都是底层数组+链表实现，ConcurrentHashMap底层结构是散列表(数组+链表)+红黑树</li>
+<li>HashMap可以存储null键和null值，HasTable和ConcurrentHashMap的key和value都不能为null</li>
+<li>HasMap线程不安全，HashTable和ConcurrentHashMap是线程安全的。HashTable实现线程安全的方式是在修改数据时<strong>锁住整个HashTable</strong>，效率低，而ConcurrentHashMap作为一个高并发的容器，它是通过<strong>部分锁定+CAS算法来进行实现线程安全的</strong>。CAS算法也可以认为是<strong>乐观锁</strong>的一种</li>
+</ul>
+</li>
 <li>HashSet 和 HashMap 区别</li>
-<li>HashMap 和 ConcurrentHashMap 的区别</li>
 <li>HashMap 的工作原理及代码实现</li>
 <li>ConcurrentHashMap 的工作原理及代码实现</li>
 <li><a href="https://binchencoder.github.io/2019/08/29/Java面试之基础篇%20-%20HashMap/#JDK1-8中HashMap是如何扩容的？与JDK1-7有什么区别">HashMap是如何扩容的</a></li>
@@ -651,17 +655,31 @@ https://www.jianshu.com/p/c45b6d782e91
 </li>
 </ol>
 <h2 id="分布式"><a href="#分布式" class="headerlink" title="分布式"></a>分布式</h2><ol>
-<li>谈谈业务中使用分布式的场景</li>
-<li>Session 分布式方案</li>
-<li>分布式锁的场景</li>
-<li>分布式锁的实现方案</li>
-<li>分布式事务</li>
-<li>集群与负载均衡的算法与实现</li>
-<li>说说分库与分表设计<ul>
+<li><p>谈谈业务中使用分布式的场景</p>
+</li>
+<li><p>Session 分布式方案</p>
+</li>
+<li><p>分布式锁的场景</p>
+</li>
+<li><p>分布式锁的实现方案</p>
+<p><a href="https://blog.csdn.net/wuzhiwei549/article/details/80692278" target="_blank" rel="noopener">三种实现分布式锁的方式</a></p>
+<ul>
+<li>基于数据库实现排他锁</li>
+<li>基于redis实现</li>
+<li>基于zookeeper实现</li>
+</ul>
+</li>
+<li><p>分布式事务</p>
+</li>
+<li><p>集群与负载均衡的算法与实现</p>
+</li>
+<li><p>说说分库与分表设计</p>
+<ul>
 <li><a href="http://blog.720ui.com/2017/mysql_core_08_multi_db_table/" target="_blank" rel="noopener">http://blog.720ui.com/2017/mysql_core_08_multi_db_table/</a></li>
 </ul>
 </li>
-<li>分库与分表带来的分布式困境与应对之策<ul>
+<li><p>分库与分表带来的分布式困境与应对之策</p>
+<ul>
 <li><a href="http://blog.720ui.com/2017/mysql_core_09_multi_db_table2/" target="_blank" rel="noopener">http://blog.720ui.com/2017/mysql_core_09_multi_db_table2/</a></li>
 </ul>
 </li>

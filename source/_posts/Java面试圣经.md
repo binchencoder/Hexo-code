@@ -30,14 +30,16 @@ categories:
 2. List 和 Map 区别
 3. Arraylist 与 LinkedList 区别
 4. ArrayList 与 Vector 区别
-5. HashMap 和 Hashtable 的区别
+5. [HashMap、HashTable、ConcurrentHashMap共同点与区别](https://blog.csdn.net/heting717/article/details/103868691)
+   - HashMap和HashTable 都是底层数组+链表实现，ConcurrentHashMap底层结构是散列表(数组+链表)+红黑树
+   - HashMap可以存储null键和null值，HasTable和ConcurrentHashMap的key和value都不能为null
+   - HasMap线程不安全，HashTable和ConcurrentHashMap是线程安全的。HashTable实现线程安全的方式是在修改数据时**锁住整个HashTable**，效率低，而ConcurrentHashMap作为一个高并发的容器，它是通过**部分锁定+CAS算法来进行实现线程安全的**。CAS算法也可以认为是**乐观锁**的一种
 6. HashSet 和 HashMap 区别
-7. HashMap 和 ConcurrentHashMap 的区别
-8. HashMap 的工作原理及代码实现
-9. ConcurrentHashMap 的工作原理及代码实现
-10. [HashMap是如何扩容的](https://binchencoder.github.io/2019/08/29/Java面试之基础篇%20-%20HashMap/#JDK1-8中HashMap是如何扩容的？与JDK1-7有什么区别)
-11. [HashMap如何避免key碰撞](https://binchencoder.github.com/2019/08/29/Java面试之基础篇%20-%20HashMap/#HashMap是如何避免key碰撞)
-12. HashMap死循环问题
+7. HashMap 的工作原理及代码实现
+8. ConcurrentHashMap 的工作原理及代码实现
+9. [HashMap是如何扩容的](https://binchencoder.github.io/2019/08/29/Java面试之基础篇%20-%20HashMap/#JDK1-8中HashMap是如何扩容的？与JDK1-7有什么区别)
+10. [HashMap如何避免key碰撞](https://binchencoder.github.com/2019/08/29/Java面试之基础篇%20-%20HashMap/#HashMap是如何避免key碰撞)
+11. HashMap死循环问题
 
 # 进阶篇
 
@@ -387,14 +389,29 @@ AQS是AbstractQueuedSynchronizer的简称。AQS提供了一种实现阻塞锁和
 ## 分布式
 
 1. 谈谈业务中使用分布式的场景
+
 2. Session 分布式方案
+
 3. 分布式锁的场景
+
 4. 分布式锁的实现方案
+
+   [三种实现分布式锁的方式](https://blog.csdn.net/wuzhiwei549/article/details/80692278)
+
+   - 基于数据库实现排他锁
+   - 基于redis实现
+   - 基于zookeeper实现
+
 5. 分布式事务
+
 6. 集群与负载均衡的算法与实现
+
 7. 说说分库与分表设计
+
    - http://blog.720ui.com/2017/mysql_core_08_multi_db_table/
+
 8. 分库与分表带来的分布式困境与应对之策
+
    - http://blog.720ui.com/2017/mysql_core_09_multi_db_table2/
 
 # 高级进阶
