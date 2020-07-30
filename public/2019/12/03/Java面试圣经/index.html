@@ -481,6 +481,12 @@ https://www.jianshu.com/p/c45b6d782e91
 <blockquote>
 <p>我们较常用的是RC和RR</p>
 </blockquote>
+<ol start="14">
+<li><p>MySQL的事务隔离级别是如何实现的</p>
+<p><strong>每行数据</strong>其实在数据库都是多个版本的，可能同一时间有很多事务在更新一条数据，事务在开始的时候会申请一个id，这个id是严格随着时间递增的，先开始的事务id总是小的，数据库的版本就是事务id的版本。</p>
+<p><a href="https://blog.csdn.net/A1028151949/article/details/88430895" target="_blank" rel="noopener">https://blog.csdn.net/A1028151949/article/details/88430895</a></p>
+</li>
+</ol>
 <h3 id="References"><a href="#References" class="headerlink" title="References"></a>References</h3><ul>
 <li><a href="https://notes.diguage.com/mysql/" target="_blank" rel="noopener">https://notes.diguage.com/mysql/</a></li>
 </ul>

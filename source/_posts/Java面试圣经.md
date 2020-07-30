@@ -245,6 +245,12 @@ AQS是AbstractQueuedSynchronizer的简称。AQS提供了一种实现阻塞锁和
 
 > 我们较常用的是RC和RR
 
+14. MySQL的事务隔离级别是如何实现的
+
+    **每行数据**其实在数据库都是多个版本的，可能同一时间有很多事务在更新一条数据，事务在开始的时候会申请一个id，这个id是严格随着时间递增的，先开始的事务id总是小的，数据库的版本就是事务id的版本。
+
+    https://blog.csdn.net/A1028151949/article/details/88430895
+
 ### References
 
 - https://notes.diguage.com/mysql/
