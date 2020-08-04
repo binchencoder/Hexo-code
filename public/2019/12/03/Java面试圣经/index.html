@@ -163,6 +163,11 @@ https://www.jianshu.com/p/c45b6d782e91
                                 时间轴</a>
                         </li>
                         
+                        <li role="presentation" class="text-center">
+                            <a href="https://tech.meituan.com"><i class="fa "></i>
+                                美团技术团队</a>
+                        </li>
+                        
                     </ul>
                 </div>
             </div>
@@ -591,14 +596,25 @@ https://www.jianshu.com/p/c45b6d782e91
 <li><a href="https://binchencoder.github.io/2019/08/28/kafka是如何实现几十万的高并发写入">Kafka是如何实现几十万的高并发写入</a></li>
 </ol>
 <h1 id="框架篇"><a href="#框架篇" class="headerlink" title="框架篇"></a>框架篇</h1><h2 id="Spring"><a href="#Spring" class="headerlink" title="Spring"></a>Spring</h2><ol>
-<li>BeanFactory 和 ApplicationContext 有什么区别</li>
-<li>Spring IOC 如何实现</li>
-<li>说说 Spring AOP</li>
-<li>Spring AOP 实现原理</li>
-<li>动态代理（cglib 与 JDK）</li>
-<li>Spring 事务实现方式</li>
-<li>Spring 事务底层原理</li>
-<li>Spring 其他产品（Srping Boot、Spring Cloud、Spring Secuirity、Spring Data、Spring AMQP 等）</li>
+<li><p>BeanFactory 和 ApplicationContext 有什么区别</p>
+</li>
+<li><p>Spring IOC 如何实现</p>
+</li>
+<li><p>说说 Spring AOP</p>
+</li>
+<li><p>Spring AOP 实现原理</p>
+</li>
+<li><p>动态代理（cglib 与 JDK）</p>
+<blockquote>
+<p>JDK的动态代理机制只能代理实现了接口的类，而不能实现接口的类就不能实现JDK的动态代理，cglib是针对类来实现代理的，他的原理是对指定的目标类生成一个子类，并覆盖其中方法实现增强，但<strong>因为采用的是继承，所以不能对final修饰的类进行代理。 </strong></p>
+</blockquote>
+</li>
+<li><p>Spring 事务实现方式</p>
+</li>
+<li><p>Spring 事务底层原理</p>
+</li>
+<li><p>Spring 其他产品（Srping Boot、Spring Cloud、Spring Secuirity、Spring Data、Spring AMQP 等）</p>
+</li>
 </ol>
 <h2 id="Netty"><a href="#Netty" class="headerlink" title="Netty"></a>Netty</h2><ol>
 <li>为什么选择 Netty</li>

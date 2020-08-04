@@ -29,6 +29,9 @@ menu:
 - page: 时间轴
   url: /archives/
   icon:
+- page: 美团技术团队
+  url: https://tech.meituan.com
+  icon:
 
 ## favicon
 favicon: /favicon.ico

@@ -326,12 +326,21 @@ AQS是AbstractQueuedSynchronizer的简称。AQS提供了一种实现阻塞锁和
 ## Spring
 
 1. BeanFactory 和 ApplicationContext 有什么区别
+
 2. Spring IOC 如何实现
+
 3. 说说 Spring AOP
+
 4. Spring AOP 实现原理
+
 5. 动态代理（cglib 与 JDK）
+
+   > JDK的动态代理机制只能代理实现了接口的类，而不能实现接口的类就不能实现JDK的动态代理，cglib是针对类来实现代理的，他的原理是对指定的目标类生成一个子类，并覆盖其中方法实现增强，但**因为采用的是继承，所以不能对final修饰的类进行代理。 **
+
 6. Spring 事务实现方式
+
 7. Spring 事务底层原理
+
 8. Spring 其他产品（Srping Boot、Spring Cloud、Spring Secuirity、Spring Data、Spring AMQP 等）
 
 ## Netty
