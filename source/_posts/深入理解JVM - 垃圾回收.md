@@ -176,6 +176,10 @@ G1 是一款面向服务端应用的垃圾收集器
 3. 空间整合：G1从整体上看是基于“标记-整理”算法实现的，从局部（两个 Region 之间）上来看是基于“复制”算法实现的。这意味着G1运行期间不会产生内存碎片，收集后能提供规整的内存空间
 4. 可预测的停顿：可建立可预测的停顿时间模型，能让使用者明确指定在一个长度为M毫秒的时间片段内，消耗在垃圾收集上的时间不得超过N毫秒
 
+#### **Rerferences**
+
+1. [大白话讲解Jvm的G1垃圾收集器](https://www.itqiankun.com/article/jvm-g1-memory-management-model)
+
 ## GC日志
 
 阅读 GC 日志是处理 Java 虚拟机内存问题的基础技能，它只是一些人为确定的规则，没有太多技术含量。
@@ -253,5 +257,7 @@ Java HotSpot(TM) 64-Bit Server VM (build 25.112-b16, mixed mode)
 
 ## References
 
-- https://www.cnblogs.com/czwbig/p/11127159.html
-- https://www.oschina.net/translate/java-gc
+- [Java垃圾回收](https://www.cnblogs.com/czwbig/p/11127159.html)
+
+- [Java 垃圾回收机制](https://www.oschina.net/translate/java-gc)
+
