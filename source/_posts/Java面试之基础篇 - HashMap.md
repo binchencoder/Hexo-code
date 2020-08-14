@@ -133,5 +133,6 @@ final Node<K, V>[] resize() {
 
 ### References
 
-- https://www.cnblogs.com/faunjoe88/p/7992234.html
-- https://www.cnblogs.com/xiaoxi/p/7233201.html
+- [HashMap对HashCode碰撞的处理](https://www.cnblogs.com/faunjoe88/p/7992234.html)
+
+- [JDK1.8 HashMap源码分析](https://www.cnblogs.com/xiaoxi/p/7233201.html)

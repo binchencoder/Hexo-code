@@ -240,8 +240,10 @@
 <p>在 JDK1.7 中扩容操作时，哈希冲突的数组索引处的旧链表元素扩容到新数组时，如果扩容后索引位置在新数组的索引位置与原数组中索引位置相同，则链表元素会发生倒置（即如上面图1，原来链表头扩容后变为尾巴）；而在 JDK1.8 中不会出现链表倒置现象。</p>
 <p>其次，由于 JDK1.7 中发生哈希冲突时仅仅采用了链表结构存储冲突元素，所以扩容时仅仅是重新计算其存储位置而已，而 JDK1.8 中为了性能在同一索引处发生哈希冲突到一定程度时链表结构会转换为红黑数结构存储冲突元素，故在扩容时如果当前索引中元素结构是红黑树且元素个数小于链表还原阈值（哈希冲突程度常量）时就会把树形结构缩小或直接还原为链表结构（其实现就是上面代码片段中的 split() 方法）。</p>
 <h2 id="HashMap是如何避免key碰撞"><a href="#HashMap是如何避免key碰撞" class="headerlink" title="HashMap是如何避免key碰撞"></a>HashMap是如何避免key碰撞</h2><h3 id="References"><a href="#References" class="headerlink" title="References"></a>References</h3><ul>
-<li><a href="https://www.cnblogs.com/faunjoe88/p/7992234.html" target="_blank" rel="noopener">https://www.cnblogs.com/faunjoe88/p/7992234.html</a></li>
-<li><a href="https://www.cnblogs.com/xiaoxi/p/7233201.html" target="_blank" rel="noopener">https://www.cnblogs.com/xiaoxi/p/7233201.html</a></li>
+<li><p><a href="https://www.cnblogs.com/faunjoe88/p/7992234.html" target="_blank" rel="noopener">HashMap对HashCode碰撞的处理</a></p>
+</li>
+<li><p><a href="https://www.cnblogs.com/xiaoxi/p/7233201.html" target="_blank" rel="noopener">JDK1.8 HashMap源码分析</a></p>
+</li>
 </ul>
 
     </div>
