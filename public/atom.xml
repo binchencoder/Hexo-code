@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://binchencoder.github.io/"/>
-  <updated>2020-07-23T02:35:01.855Z</updated>
+  <updated>2020-08-20T03:16:20.129Z</updated>
   <id>https://binchencoder.github.io/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>架构师技术图谱，助你早日成为架构师</title>
+    <link href="https://binchencoder.github.io/2020/08/20/%E6%9E%B6%E6%9E%84%E5%B8%88%E6%8A%80%E6%9C%AF%E5%9B%BE%E8%B0%B1%EF%BC%8C%E5%8A%A9%E4%BD%A0%E6%97%A9%E6%97%A5%E6%88%90%E4%B8%BA%E6%9E%B6%E6%9E%84%E5%B8%88/"/>
+    <id>https://binchencoder.github.io/2020/08/20/架构师技术图谱，助你早日成为架构师/</id>
+    <published>2020-08-20T04:00:08.000Z</published>
+    <updated>2020-08-20T03:16:20.129Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;架构师技术图谱，助你早日成为架构师&quot;&gt;&lt;a href=&quot;#架构师技术图谱，助你早日成为架构师&quot; class=&quot;headerlink&quot; title=&quot;架构师技术图谱，助你早日成为架构师&quot;&gt;&lt;/a&gt;架构师技术图谱，助你早日成为架构师&lt;/h2&gt;&lt;blockquote&gt;
+
+      
+    
+    </summary>
+    
+      <category term="面试" scheme="https://binchencoder.github.io/categories/%E9%9D%A2%E8%AF%95/"/>
+    
+    
+      <category term="后端" scheme="https://binchencoder.github.io/tags/%E5%90%8E%E7%AB%AF/"/>
+    
+      <category term="面试" scheme="https://binchencoder.github.io/tags/%E9%9D%A2%E8%AF%95/"/>
+    
+      <category term="架构师" scheme="https://binchencoder.github.io/tags/%E6%9E%B6%E6%9E%84%E5%B8%88/"/>
+    
+  </entry>
   
   <entry>
     <title>gRPC SkyLB (an gRPC load balancer based on External Load Balancing Service)</title>
@@ -525,33 +553,6 @@
       <category term="JVM" scheme="https://binchencoder.github.io/tags/JVM/"/>
     
       <category term="垃圾回收" scheme="https://binchencoder.github.io/tags/%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>深入理解JVM - 内存结构</title>
-    <link href="https://binchencoder.github.io/2019/08/21/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3JVM%20-%20%E5%86%85%E5%AD%98%E7%BB%93%E6%9E%84/"/>
-    <id>https://binchencoder.github.io/2019/08/21/深入理解JVM - 内存结构/</id>
-    <published>2019-08-21T15:00:18.000Z</published>
-    <updated>2019-12-02T02:08:24.481Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;每个使用Java的开发者都知道Java字节码是在&lt;code&gt;JRE&lt;/code&gt;中运行，JRE由Java API和JVM组成，JVM通过类加
-      
-    
-    </summary>
-    
-      <category term="面试" scheme="https://binchencoder.github.io/categories/%E9%9D%A2%E8%AF%95/"/>
-    
-    
-      <category term="Java" scheme="https://binchencoder.github.io/tags/Java/"/>
-    
-      <category term="后端" scheme="https://binchencoder.github.io/tags/%E5%90%8E%E7%AB%AF/"/>
-    
-      <category term="JVM" scheme="https://binchencoder.github.io/tags/JVM/"/>
     
   </entry>
   
