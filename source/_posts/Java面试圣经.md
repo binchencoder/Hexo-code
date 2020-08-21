@@ -317,7 +317,7 @@ AQS是AbstractQueuedSynchronizer的简称。AQS提供了一种实现阻塞锁和
 2. 消息的重发补偿解决思路
 3. 消息的堆积解决思路
 4. 自己如何实现消息队列
-5. 如何保证消息的有序性
+5. [如何保证消息的有序性](https://xie.infoq.cn/article/c84491a814f99c7b9965732b1)
 6. Kafka为什么快
 7. [Kafka是如何实现几十万的高并发写入](https://binchencoder.github.io/2019/08/28/kafka是如何实现几十万的高并发写入)
 
