@@ -450,6 +450,7 @@ AQS是AbstractQueuedSynchronizer的简称。AQS提供了一种实现阻塞锁和
 1. [JVM内存结构](https://binchencoder.github.io/2019/08/21/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3JVM%20-%20%E5%86%85%E5%AD%98%E7%BB%93%E6%9E%84/)
 2. [JVM内存管理](https://binchencoder.github.io/2019/08/11/JVM内存管理/)
 3. [JVM内存模型(JMM)](https://www.jianshu.com/p/d3fda02d4cae)
+   - [Java内存模型的基础](https://www.cnblogs.com/tydd/p/13460941.html)
 4. [JVM垃圾回收](https://binchencoder.github.io/2019/08/23/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3JVM%20-%20%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6/)
 5. [JVM垃圾回收之世代垃圾收集过程](https://binchencoder.github.io/2019/08/24/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3JVM%20-%20%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E4%B9%8B%E4%B8%96%E4%BB%A3%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E8%BF%87%E7%A8%8B/)
 
@@ -463,11 +464,11 @@ AQS是AbstractQueuedSynchronizer的简称。AQS提供了一种实现阻塞锁和
 # 面试官拷问
 
 1. 平时碰到系统CPU飙高和频繁GC，你会怎么排查？
-   - https://www.jianshu.com/p/cf3d157e245f
+   - [面试官问：平时碰到系统CPU飙高和频繁GC，你会怎么排查？](https://www.jianshu.com/p/cf3d157e245f)
 
 # References
 
-- http://blog.720ui.com/2018/java_interview_final
-- https://www.jianshu.com/p/76959115d486
+- [Java面试通关要点汇总集【终极版】](http://blog.720ui.com/2018/java_interview_final)
+- [深入理解JVM-内存模型（jmm）和GC](https://www.jianshu.com/p/76959115d486)
 
 
