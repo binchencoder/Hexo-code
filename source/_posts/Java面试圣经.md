@@ -231,7 +231,9 @@ AQS是AbstractQueuedSynchronizer的简称。AQS提供了一种实现阻塞锁和
 
 11. 聊聊 ElasticSearch 使用场景
 
-12. 倒排索引
+12. [倒排索引](https://blog.csdn.net/jiaojiao521765146514/article/details/83750548)
+
+    不是由记录来确定属性值，而是由属性值来确定记录的位置
 
 13. 事务隔离级别
 
