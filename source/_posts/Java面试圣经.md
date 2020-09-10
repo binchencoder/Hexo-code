@@ -136,6 +136,8 @@ categories:
 
    **See** https://www.jianshu.com/p/87bff5cc8d8c
 
+   ![ThreadPool](./Java面试圣经/ThreadPool.png)
+
 8. 线程池的几种方式与使用场景
 
 9. [线程的生命周期及几种状态](https://binchencoder.github.io/2018/08/31/Thread-State/)
