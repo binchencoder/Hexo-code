@@ -249,8 +249,8 @@ https://www.jianshu.com/p/c45b6d782e91
 </ul>
 </li>
 <li>HashSet 和 HashMap 区别</li>
-<li>HashMap 的工作原理及代码实现</li>
-<li>ConcurrentHashMap 的工作原理及代码实现</li>
+<li><a href="https://yikun.github.io/2015/04/01/Java-HashMap%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86%E5%8F%8A%E5%AE%9E%E7%8E%B0/" target="_blank" rel="noopener">HashMap 的工作原理及代码实现</a></li>
+<li><a href="https://www.cnblogs.com/heqiyoujing/p/10928423.html" target="_blank" rel="noopener">ConcurrentHashMap 的工作原理及代码实现</a></li>
 <li><a href="https://binchencoder.github.io/2019/08/29/Java面试之基础篇%20-%20HashMap/#JDK1-8中HashMap是如何扩容的？与JDK1-7有什么区别">HashMap是如何扩容的</a></li>
 <li><a href="https://binchencoder.github.com/2019/08/29/Java面试之基础篇%20-%20HashMap/#HashMap是如何避免key碰撞" target="_blank" rel="noopener">HashMap如何避免key碰撞</a></li>
 <li>HashMap死循环问题</li>
@@ -292,6 +292,7 @@ https://www.jianshu.com/p/c45b6d782e91
 <p>CountDownLatch是同步工具类之一，可以指定一个计数值，在并发环境下由线程进行减1操作，当计数值为0之后，被await方法阻塞的线程将会唤醒，实现线程间的同步。</p>
 <blockquote>
 <p><strong>See</strong> <a href="https://www.jianshu.com/p/7c7a5df5bda6" target="_blank" rel="noopener">https://www.jianshu.com/p/7c7a5df5bda6</a></p>
+<p><strong>My Sample: </strong><a href="https://github.com/binchencoder/java-tutorials/blob/master/src/test/java/com/binchencoder/study/concurrent/CountDownLatchTest.java" target="_blank" rel="noopener">https://github.com/binchencoder/java-tutorials/blob/master/src/test/java/com/binchencoder/study/concurrent/CountDownLatchTest.java</a></p>
 </blockquote>
 </li>
 <li><p>说说 CyclicBarrier 原理</p>
@@ -299,6 +300,7 @@ https://www.jianshu.com/p/c45b6d782e91
 <blockquote>
 <p>CyclicBarrier 字面意思是可循环（Cyclic）使用的屏障（Barrier）。它要做的事情是让一组线程到达一个屏障（同步点）时被阻塞，直到最后一个线程到达屏障时候，屏障才会开门。所有被屏障拦截的线程才会运行。</p>
 <p><strong>CyclicBarrier是由ReentrantLock可重入锁和Condition共同实现的。</strong></p>
+<p><strong>My Sample: </strong><a href="https://github.com/binchencoder/java-tutorials/blob/master/src/test/java/com/binchencoder/study/concurrent/CyclicBarrierTest.java" target="_blank" rel="noopener">https://github.com/binchencoder/java-tutorials/blob/master/src/test/java/com/binchencoder/study/concurrent/CyclicBarrierTest.java</a></p>
 </blockquote>
 </li>
 <li><p>说说 Semaphore 原理</p>
@@ -312,6 +314,7 @@ https://www.jianshu.com/p/c45b6d782e91
 <blockquote>
 <p><strong>应用场景 :</strong></p>
 <p>Semaphore可以用来做流量分流，特别是对公共资源有限的场景，比如数据库连接。<br>假设有这个的需求，读取几万个文件的数据到数据库中，由于文件读取是IO密集型任务，可以启动几十个线程并发读取，但是数据库连接数只有10个，这时就必须控制最多只有10个线程能够拿到数据库连接进行操作。这个时候，就可以使用Semaphore做流量控制</p>
+<p><strong>My Sample: </strong><a href="https://github.com/binchencoder/java-tutorials/blob/master/src/test/java/com/binchencoder/study/concurrent/PrintABC.java" target="_blank" rel="noopener">https://github.com/binchencoder/java-tutorials/blob/master/src/test/java/com/binchencoder/study/concurrent/PrintABC.java</a></p>
 </blockquote>
 </li>
 <li><p>说说 Exchanger 原理</p>
@@ -726,6 +729,9 @@ https://www.jianshu.com/p/c45b6d782e91
 <li><a href="https://binchencoder.github.io/2019/08/23/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3JVM%20-%20%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6/">JVM垃圾回收</a></li>
 <li><a href="https://binchencoder.github.io/2019/08/24/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3JVM%20-%20%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E4%B9%8B%E4%B8%96%E4%BB%A3%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E8%BF%87%E7%A8%8B/">JVM垃圾回收之世代垃圾收集过程</a></li>
 </ol>
+<h3 id="References-1"><a href="#References-1" class="headerlink" title="References"></a>References</h3><ul>
+<li><a href="https://doocs.gitee.io/jvm/#/?id=java-虚拟机底层原理知识总结" target="_blank" rel="noopener">Java 虚拟机底层原理知识总结</a></li>
+</ul>
 <h2 id="性能优化"><a href="#性能优化" class="headerlink" title="性能优化"></a>性能优化</h2><ol>
 <li>性能指标有哪些</li>
 <li>如何发现性能瓶颈</li>
@@ -738,7 +744,7 @@ https://www.jianshu.com/p/c45b6d782e91
 </ul>
 </li>
 </ol>
-<h1 id="References-1"><a href="#References-1" class="headerlink" title="References"></a>References</h1><ul>
+<h1 id="References-2"><a href="#References-2" class="headerlink" title="References"></a>References</h1><ul>
 <li><a href="http://blog.720ui.com/2018/java_interview_final" target="_blank" rel="noopener">Java面试通关要点汇总集【终极版】</a></li>
 <li><a href="https://www.jianshu.com/p/76959115d486" target="_blank" rel="noopener">深入理解JVM-内存模型（jmm）和GC</a></li>
 </ul>
@@ -809,7 +815,7 @@ new Valine({
             文章目录
         </h3>
         
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#基础篇"><span class="toc-text">基础篇</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#基本功"><span class="toc-text">基本功</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数据结构"><span class="toc-text">数据结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#集合"><span class="toc-text">集合</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#进阶篇"><span class="toc-text">进阶篇</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#网络"><span class="toc-text">网络</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#IO"><span class="toc-text">IO</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#线程"><span class="toc-text">线程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#锁机制"><span class="toc-text">锁机制</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#核心篇"><span class="toc-text">核心篇</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#数据存储"><span class="toc-text">数据存储</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#References"><span class="toc-text">References</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#缓存使用"><span class="toc-text">缓存使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#消息队列"><span class="toc-text">消息队列</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#框架篇"><span class="toc-text">框架篇</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Spring"><span class="toc-text">Spring</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Netty"><span class="toc-text">Netty</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#微服务篇"><span class="toc-text">微服务篇</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#微服务"><span class="toc-text">微服务</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分布式"><span class="toc-text">分布式</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#高级进阶"><span class="toc-text">高级进阶</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#算法"><span class="toc-text">算法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#排序算法"><span class="toc-text">排序算法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JVM"><span class="toc-text">JVM</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#性能优化"><span class="toc-text">性能优化</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#面试官拷问"><span class="toc-text">面试官拷问</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#References-1"><span class="toc-text">References</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#基础篇"><span class="toc-text">基础篇</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#基本功"><span class="toc-text">基本功</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数据结构"><span class="toc-text">数据结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#集合"><span class="toc-text">集合</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#进阶篇"><span class="toc-text">进阶篇</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#网络"><span class="toc-text">网络</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#IO"><span class="toc-text">IO</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#线程"><span class="toc-text">线程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#锁机制"><span class="toc-text">锁机制</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#核心篇"><span class="toc-text">核心篇</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#数据存储"><span class="toc-text">数据存储</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#References"><span class="toc-text">References</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#缓存使用"><span class="toc-text">缓存使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#消息队列"><span class="toc-text">消息队列</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#框架篇"><span class="toc-text">框架篇</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Spring"><span class="toc-text">Spring</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Netty"><span class="toc-text">Netty</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#微服务篇"><span class="toc-text">微服务篇</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#微服务"><span class="toc-text">微服务</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分布式"><span class="toc-text">分布式</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#高级进阶"><span class="toc-text">高级进阶</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#算法"><span class="toc-text">算法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#排序算法"><span class="toc-text">排序算法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JVM"><span class="toc-text">JVM</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#References-1"><span class="toc-text">References</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#性能优化"><span class="toc-text">性能优化</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#面试官拷问"><span class="toc-text">面试官拷问</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#References-2"><span class="toc-text">References</span></a></li></ol>
         
     </div>
 </aside>

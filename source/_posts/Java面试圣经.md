@@ -35,8 +35,8 @@ categories:
    - HashMap可以存储null键和null值，HasTable和ConcurrentHashMap的key和value都不能为null
    - HasMap线程不安全，HashTable和ConcurrentHashMap是线程安全的。HashTable实现线程安全的方式是在修改数据时**锁住整个HashTable**，效率低，而ConcurrentHashMap作为一个高并发的容器，它是通过**部分锁定+CAS算法来进行实现线程安全的**。CAS算法也可以认为是**乐观锁**的一种
 6. HashSet 和 HashMap 区别
-7. HashMap 的工作原理及代码实现
-8. ConcurrentHashMap 的工作原理及代码实现
+7. [HashMap 的工作原理及代码实现](https://yikun.github.io/2015/04/01/Java-HashMap%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86%E5%8F%8A%E5%AE%9E%E7%8E%B0/)
+8. [ConcurrentHashMap 的工作原理及代码实现](https://www.cnblogs.com/heqiyoujing/p/10928423.html)
 9. [HashMap是如何扩容的](https://binchencoder.github.io/2019/08/29/Java面试之基础篇%20-%20HashMap/#JDK1-8中HashMap是如何扩容的？与JDK1-7有什么区别)
 10. [HashMap如何避免key碰撞](https://binchencoder.github.com/2019/08/29/Java面试之基础篇%20-%20HashMap/#HashMap是如何避免key碰撞)
 11. HashMap死循环问题
@@ -75,7 +75,8 @@ categories:
    CountDownLatch是同步工具类之一，可以指定一个计数值，在并发环境下由线程进行减1操作，当计数值为0之后，被await方法阻塞的线程将会唤醒，实现线程间的同步。
 
    > **See** https://www.jianshu.com/p/7c7a5df5bda6
-
+   >
+   > **My Sample: **https://github.com/binchencoder/java-tutorials/blob/master/src/test/java/com/binchencoder/study/concurrent/CountDownLatchTest.java
 2. 说说 CyclicBarrier 原理
 
    ![CyclicBarrier](./Java面试圣经/CyclicBarrier.png)
@@ -83,6 +84,8 @@ categories:
    > CyclicBarrier 字面意思是可循环（Cyclic）使用的屏障（Barrier）。它要做的事情是让一组线程到达一个屏障（同步点）时被阻塞，直到最后一个线程到达屏障时候，屏障才会开门。所有被屏障拦截的线程才会运行。
    >
    > **CyclicBarrier是由ReentrantLock可重入锁和Condition共同实现的。**
+   >
+   > **My Sample: **https://github.com/binchencoder/java-tutorials/blob/master/src/test/java/com/binchencoder/study/concurrent/CyclicBarrierTest.java
 
 3. 说说 Semaphore 原理
 
@@ -99,6 +102,8 @@ categories:
    >
    > Semaphore可以用来做流量分流，特别是对公共资源有限的场景，比如数据库连接。
    > 假设有这个的需求，读取几万个文件的数据到数据库中，由于文件读取是IO密集型任务，可以启动几十个线程并发读取，但是数据库连接数只有10个，这时就必须控制最多只有10个线程能够拿到数据库连接进行操作。这个时候，就可以使用Semaphore做流量控制
+   >
+   > **My Sample: **https://github.com/binchencoder/java-tutorials/blob/master/src/test/java/com/binchencoder/study/concurrent/PrintABC.java
 
 4. 说说 Exchanger 原理
 
@@ -453,6 +458,10 @@ AQS是AbstractQueuedSynchronizer的简称。AQS提供了一种实现阻塞锁和
    - [Java内存模型的基础](https://www.cnblogs.com/tydd/p/13460941.html)
 4. [JVM垃圾回收](https://binchencoder.github.io/2019/08/23/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3JVM%20-%20%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6/)
 5. [JVM垃圾回收之世代垃圾收集过程](https://binchencoder.github.io/2019/08/24/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3JVM%20-%20%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E4%B9%8B%E4%B8%96%E4%BB%A3%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E8%BF%87%E7%A8%8B/)
+
+### References
+
+- [Java 虚拟机底层原理知识总结](https://doocs.gitee.io/jvm/#/?id=java-虚拟机底层原理知识总结)
 
 ## 性能优化
 
