@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html lang="zh-CN">
 
-<head><meta name="generator" content="Hexo 3.9.0">
+<head>
     <!--Setting-->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -19,17 +19,17 @@
     <link rel="dns-prefetch" href="https://binchencoder.github.io">
     <!--SEO-->
 
-<meta name="keywords" content="Java,面试,多线程,服务端">
+<meta name="keywords" content="Java,面试,多线程,服务端" />
 
 
 <meta name="description" content="一、前言作为2年以上的开发人员，如果还不理解多线程与多进程之间的区别，那你就赶紧停停手头的工作，回去好好复习吧
-现在的程序设计中基本上都是多线程的，作为业务开发人员可能很多人都没有写过多线程的代...">
+现在的程序设计中基本上都是多线程的，作为业务开发人员可能很多人都没有写过多线程的代..." />
 
 
-<meta name="robots" content="all">
-<meta name="google" content="all">
-<meta name="googlebot" content="all">
-<meta name="verify" content="all">
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
     <!--Title-->
 
 <title>
@@ -76,7 +76,7 @@
 })();
 </script>
 
-</head></html>
+</head>
 <!--[if lte IE 8]>
 <style>
     html{ font-size: 1em }
@@ -231,7 +231,7 @@
 <p><img src="/2019/11/09/多线程 到底该设置多少线程/并行与并发.png" alt="并发与并行"><br><br></p>
 <h1 id="二、-线程执行"><a href="#二、-线程执行" class="headerlink" title="二、 线程执行"></a>二、 线程执行</h1><p><strong>线程的执行，是由CPU进行调度的，一个CPU在同一时刻只会执行一个线程</strong></p>
 <p>为了让用户感觉这些任务正在同时进行，<strong>操作系统利用了时间片轮转的方式，CPU给每个任务都服务一定的时间，然后把当前任务的状态保存下来，在加载下一任务的状态后，继续服务下一任务。任务的状态保存及再加载，这段过程就叫做上下文切换</strong><br><br></p>
-<h1 id="三、为什么要用多线程"><a href="#三、为什么要用多线程" class="headerlink" title="三、为什么要用多线程"></a>三、为什么要用多线程</h1><h2 id="系统执行流程"><a href="#系统执行流程" class="headerlink" title="系统执行流程"></a>系统执行流程</h2><p><img src="/2019/11/09/多线程 到底该设置多少线程/多线程.png" alt></p>
+<h1 id="三、为什么要用多线程"><a href="#三、为什么要用多线程" class="headerlink" title="三、为什么要用多线程"></a>三、为什么要用多线程</h1><h2 id="系统执行流程"><a href="#系统执行流程" class="headerlink" title="系统执行流程"></a>系统执行流程</h2><p><img src="/2019/11/09/多线程 到底该设置多少线程/多线程.png" alt=""></p>
 <p>上图是我们我们在设计Web系统中一个比较简单的流程：</p>
 <blockquote>
 <ol>

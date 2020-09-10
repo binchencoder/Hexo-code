@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html lang="zh-CN">
 
-<head><meta name="generator" content="Hexo 3.9.0">
+<head>
     <!--Setting-->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -19,19 +19,19 @@
     <link rel="dns-prefetch" href="https://binchencoder.github.io">
     <!--SEO-->
 
-<meta name="keywords" content="gRPC,LoadBalancer,Registry/Discovery">
+<meta name="keywords" content="gRPC,LoadBalancer,Registry/Discovery" />
 
 
 <meta name="description" content="gRPC SkyLBgRPC 作为一款高性能、通用的 RPC 框架，相比传统的RPC框架有着自己天然的优势：
 
 protobuf二进制消息，性能好/效率高（空间和时间效率都很不错）；
-proto...">
+proto..." />
 
 
-<meta name="robots" content="all">
-<meta name="google" content="all">
-<meta name="googlebot" content="all">
-<meta name="verify" content="all">
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
     <!--Title-->
 
 <title>
@@ -78,7 +78,7 @@ proto...">
 })();
 </script>
 
-</head></html>
+</head>
 <!--[if lte IE 8]>
 <style>
     html{ font-size: 1em }
@@ -233,7 +233,7 @@ proto...">
 <h2 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h2><p><em>gRPC SkyLB</em> 采用独立LB进程（External Load Balancing Service）负载均衡方式，支持轮询、一致性哈希两种负载均衡策略，并支持服务端权重。采用etcd作为注册中心。</p>
 <p>项目地址：</p>
 <p><a href="https://github.com/binchencoder/grpc-skylb" target="_blank" rel="noopener">https://github.com/binchencoder/grpc-skylb</a></p>
-<h2 id="Architecture-of-SkyLB"><a href="#Architecture-of-SkyLB" class="headerlink" title="Architecture of SkyLB"></a>Architecture of SkyLB</h2><p><img src="/2020/07/22/gRPC SkyLB/architecture.png" alt></p>
+<h2 id="Architecture-of-SkyLB"><a href="#Architecture-of-SkyLB" class="headerlink" title="Architecture of SkyLB"></a>Architecture of SkyLB</h2><p><img src="/2020/07/22/gRPC SkyLB/architecture.png" alt=""></p>
 <p>服务提供者起来后向注册中心(SkyLB) 注册自己的信息，ip、端口、权重等，并保持心跳。客户端监听注册中心，获取服务器列表，一旦服务器发生变化，客户端马上更新本地的服务器列表。客户端每个请求都通过负载均衡策略选择一个合适的服务器去访问。</p>
 <h2 id="Usage"><a href="#Usage" class="headerlink" title="Usage"></a>Usage</h2><ol>
 <li><p>Dependency</p>

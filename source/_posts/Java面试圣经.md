@@ -47,9 +47,9 @@ categories:
 ## 网络
 
 1. 讲讲TCP/IP
-   - https://www.liaoxuefeng.com/wiki/897692888725344/923056618783712
+   - [TCP/IP简介](https://www.liaoxuefeng.com/wiki/897692888725344/923056618783712)
 2. 讲讲TCP、UDP、IP
-   - https://segmentfault.com/a/1190000020121595
+   - [IP、UDP和TCP的关系](https://segmentfault.com/a/1190000020121595)
 3. [TCP三次握手、四次握手](https://binchencoder.github.io/2019/08/31/TCP%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E5%92%8C%E5%9B%9B%E6%AC%A1%E6%8F%A1%E6%89%8B/)
    - https://note.youdao.com/ynoteshare1/index.html?id=0e999579be9f295f0d895930c98a67b9&type=note
 
@@ -57,11 +57,11 @@ categories:
 
 1. Java中IO流的分类
 
-   - https://www.cnblogs.com/shuaiguoguo/p/8883862.html
+   - [Java 常用IO流操作详解](https://www.cnblogs.com/shuaiguoguo/p/8883862.html)
 
 2. NIO、BIO、AIO
 
-   **See：** https://www.cnblogs.com/zedosu/p/6666984.html
+   **See：**[关于BIO和NIO的理解](https://www.cnblogs.com/zedosu/p/6666984.html)
 
    - BIO：同步阻塞式IO，服务器实现模式为一个连接一个线程，即客户端有连接请求时服务器端就需要启动一个线程进行处理，如果这个连接不做任何事情会造成不必要的线程开销，当然可以通过线程池机制改善。 
    - NIO：同步非阻塞式IO，服务器实现模式为一个请求一个线程，即客户端发送的连接请求都会注册到**多路复用器上**，多路复用器轮询到连接有I/O请求时才启动一个线程进行处理。
@@ -75,7 +75,7 @@ categories:
 
    CountDownLatch是同步工具类之一，可以指定一个计数值，在并发环境下由线程进行减1操作，当计数值为0之后，被await方法阻塞的线程将会唤醒，实现线程间的同步。
 
-   > **See** https://www.jianshu.com/p/7c7a5df5bda6
+   > **See** [分析CountDownLatch的实现原理](https://www.jianshu.com/p/7c7a5df5bda6)
    >
    > **My Sample: **https://github.com/binchencoder/java-tutorials/blob/master/src/test/java/com/binchencoder/study/concurrent/CountDownLatchTest.java
 2. 说说 CyclicBarrier 原理
@@ -130,11 +130,11 @@ categories:
 
    **用于防止对可变的单实例变量或全局变量进行共享**
 
-   **See** https://www.cnblogs.com/micrari/p/6790229.html
+   **See** [ThreadLocal源码解读](https://www.cnblogs.com/micrari/p/6790229.html)
 
 7. 讲讲线程池的实现原理
 
-   **See** https://www.jianshu.com/p/87bff5cc8d8c
+   **See** [深入分析java线程池的实现原理](https://www.jianshu.com/p/87bff5cc8d8c)
 
    ![ThreadPool](./Java面试圣经/ThreadPool.png)
 
@@ -150,7 +150,7 @@ categories:
 
 AQS是AbstractQueuedSynchronizer的简称。AQS提供了一种实现阻塞锁和一系列依赖FIFO等待队列的同步器的框架。AQS为一系列同步器依赖于一个单独的原子变量（state）的同步器提供了一个非常有用的基础。子类们必须定义改变state变量的protected方法，这些方法定义了state是如何被获取或释放的。
 
-> **See** https://www.cnblogs.com/waterystone/p/4920797.html
+> **See** [Java并发之AQS详解](https://www.cnblogs.com/waterystone/p/4920797.html)
 
 2. 说说线程安全问题
 
@@ -166,7 +166,7 @@ AQS是AbstractQueuedSynchronizer的简称。AQS提供了一种实现阻塞锁和
   - 将当前处理器缓存行的数据写回到系统内存；
   - 这个写回内存的操作会使得在其它cpu里缓存了该内存地址的数据无效。
 
-  **See** https://www.cnblogs.com/nevermorewang/p/9864797.html
+  **See** [volatile与synchronized实现原理](https://www.cnblogs.com/nevermorewang/p/9864797.html)
 
 4. synchronized 实现原理
 
@@ -184,7 +184,7 @@ AQS是AbstractQueuedSynchronizer的简称。AQS提供了一种实现阻塞锁和
 
 ## 数据存储
 
-1. MySQL 索引使用的注意事项
+1. [MySQL 索引使用的注意事项](https://www.jianshu.com/p/aedf4c0972e8)
 
 2. 分库与分表带来的分布式困境与应对之策
 
@@ -212,7 +212,7 @@ AQS是AbstractQueuedSynchronizer的简称。AQS提供了一种实现阻塞锁和
 
 5. 数据库索引的原理
 
-   - https://www.jianshu.com/p/4c2a2b0ef3e0
+   - [数据库-索引的原理（面试高危之必备技能）](https://www.jianshu.com/p/4c2a2b0ef3e0)
 
 6. BTREE与HASH索引的区别, 为什么要用 BTREE索引
 
@@ -220,8 +220,9 @@ AQS是AbstractQueuedSynchronizer的简称。AQS提供了一种实现阻塞锁和
    >
    > **B-tree 索引**可以用于使用 =, >, >=, <, <= 或者 BETWEEN 运算符的列比较。如果 LIKE 的参数是一个没有以通配符起始的常量字符串的话也可以使用这种索引。
 
-   - https://www.cnblogs.com/alphago-1/articles/6724207.html
-   - https://mp.weixin.qq.com/s/dhGAUs-S3RbBaOL2yxh1Iw
+   - [B-tree索引和Hash索引的区别](https://www.cnblogs.com/alphago-1/articles/6724207.html)
+
+   - [MySQL索引（一）为什么要用B+树](https://mp.weixin.qq.com/s/dhGAUs-S3RbBaOL2yxh1Iw)
 
 7. 聚集索引与非聚集索引的区别
 
@@ -229,7 +230,7 @@ AQS是AbstractQueuedSynchronizer的简称。AQS提供了一种实现阻塞锁和
    >
    > **非聚集索引：**该索引中索引的逻辑顺序与磁盘上行的物理存储顺序不同，一个表中可以有多个非聚集索引。
 
-   **See** https://www.cnblogs.com/s-b-b/p/8334593.html
+   **See** [聚集索引与非聚集索引的总结](https://www.cnblogs.com/s-b-b/p/8334593.html)
 
 8. limit 20000 加载很慢怎么解决
 
@@ -259,7 +260,7 @@ AQS是AbstractQueuedSynchronizer的简称。AQS提供了一种实现阻塞锁和
 
     **每行数据**其实在数据库都是多个版本的，可能同一时间有很多事务在更新一条数据，事务在开始的时候会申请一个id，这个id是严格随着时间递增的，先开始的事务id总是小的，数据库的版本就是事务id的版本。
 
-    https://blog.csdn.net/A1028151949/article/details/88430895
+    [MySQL的事务隔离级别是怎么实现的？](https://blog.csdn.net/A1028151949/article/details/88430895)
 
 ### References
 
@@ -281,19 +282,19 @@ AQS是AbstractQueuedSynchronizer的简称。AQS提供了一种实现阻塞锁和
 
 2. Redis 内部结构
 
-3. [Redis 内存淘汰机制 ](http://blog.720ui.com/2016/redis_action_02_maxmemory_policy)
+3. [Redis 内存淘汰机制](http://blog.720ui.com/2016/redis_action_02_maxmemory_policy)
 
-  > volatile-lru：从已设置过期时间的数据集中挑选最近最少使用的数据淘汰
+  > **volatile-lru：**从已设置过期时间的数据集中挑选最近最少使用的数据淘汰
   >
-  > volatile-ttl：从已设置过期时间的数据集中挑选将要过期的数据淘汰
+  > **volatile-ttl：**从已设置过期时间的数据集中挑选将要过期的数据淘汰
   >
-  > volatile-random：从已设置过期时间的数据集中任意选择数据淘汰
+  > **volatile-random：**从已设置过期时间的数据集中任意选择数据淘汰
   >
-  > allkeys-lru：从数据集中挑选最近最少使用的数据淘汰
+  > **allkeys-lru：**从数据集中挑选最近最少使用的数据淘汰
   >
-  > allkeys-random：从数据集中任意选择数据淘汰
+  > **allkeys-random：**从数据集中任意选择数据淘汰
   >
-  > no-enviction：当内存达到限制的时候，不淘汰任何数据，不可写入任何数据集，所有引起申请内存的命令会报错
+  > **no-enviction：**当内存达到限制的时候，不淘汰任何数据，不可写入任何数据集，所有引起申请内存的命令会报错
 
 4. 聊聊 Redis 使用场景
 
@@ -309,7 +310,7 @@ AQS是AbstractQueuedSynchronizer的简称。AQS提供了一种实现阻塞锁和
 
 6. Redis 集群方案与实现
 
-   - http://blog.720ui.com/2016/redis_action_04_cluster
+   - [Redis实战（三） 持久化机制](http://blog.720ui.com/2016/redis_action_04_cluster)
 
 7. [Redis 为什么是单线程的](https://cloud.tencent.com/developer/article/1120615)
 

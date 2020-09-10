@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html lang="zh-CN">
 
-<head><meta name="generator" content="Hexo 3.9.0">
+<head>
     <!--Setting-->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -19,7 +19,7 @@
     <link rel="dns-prefetch" href="https://binchencoder.github.io">
     <!--SEO-->
 
-<meta name="keywords" content="Java,面试">
+<meta name="keywords" content="Java,面试" />
 
 
 <meta name="description" content="基础篇基本功
@@ -29,13 +29,13 @@ https://www.jianshu.com/p/c45b6d782e91
 
 
 重载和重写的区别
-说说反...">
+说说反..." />
 
 
-<meta name="robots" content="all">
-<meta name="google" content="all">
-<meta name="googlebot" content="all">
-<meta name="verify" content="all">
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
     <!--Title-->
 
 <title>
@@ -82,7 +82,7 @@ https://www.jianshu.com/p/c45b6d782e91
 })();
 </script>
 
-</head></html>
+</head>
 <!--[if lte IE 8]>
 <style>
     html{ font-size: 1em }
@@ -260,11 +260,11 @@ https://www.jianshu.com/p/c45b6d782e91
 </ol>
 <h1 id="进阶篇"><a href="#进阶篇" class="headerlink" title="进阶篇"></a>进阶篇</h1><h2 id="网络"><a href="#网络" class="headerlink" title="网络"></a>网络</h2><ol>
 <li>讲讲TCP/IP<ul>
-<li><a href="https://www.liaoxuefeng.com/wiki/897692888725344/923056618783712" target="_blank" rel="noopener">https://www.liaoxuefeng.com/wiki/897692888725344/923056618783712</a></li>
+<li><a href="https://www.liaoxuefeng.com/wiki/897692888725344/923056618783712" target="_blank" rel="noopener">TCP/IP简介</a></li>
 </ul>
 </li>
 <li>讲讲TCP、UDP、IP<ul>
-<li><a href="https://segmentfault.com/a/1190000020121595" target="_blank" rel="noopener">https://segmentfault.com/a/1190000020121595</a></li>
+<li><a href="https://segmentfault.com/a/1190000020121595" target="_blank" rel="noopener">IP、UDP和TCP的关系</a></li>
 </ul>
 </li>
 <li><a href="https://binchencoder.github.io/2019/08/31/TCP%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E5%92%8C%E5%9B%9B%E6%AC%A1%E6%8F%A1%E6%89%8B/">TCP三次握手、四次握手</a><ul>
@@ -275,11 +275,11 @@ https://www.jianshu.com/p/c45b6d782e91
 <h2 id="IO"><a href="#IO" class="headerlink" title="IO"></a>IO</h2><ol>
 <li><p>Java中IO流的分类</p>
 <ul>
-<li><a href="https://www.cnblogs.com/shuaiguoguo/p/8883862.html" target="_blank" rel="noopener">https://www.cnblogs.com/shuaiguoguo/p/8883862.html</a></li>
+<li><a href="https://www.cnblogs.com/shuaiguoguo/p/8883862.html" target="_blank" rel="noopener">Java 常用IO流操作详解</a></li>
 </ul>
 </li>
 <li><p>NIO、BIO、AIO</p>
-<p><strong>See：</strong> <a href="https://www.cnblogs.com/zedosu/p/6666984.html" target="_blank" rel="noopener">https://www.cnblogs.com/zedosu/p/6666984.html</a></p>
+<p><strong>See：</strong><a href="https://www.cnblogs.com/zedosu/p/6666984.html" target="_blank" rel="noopener">关于BIO和NIO的理解</a></p>
 <ul>
 <li>BIO：同步阻塞式IO，服务器实现模式为一个连接一个线程，即客户端有连接请求时服务器端就需要启动一个线程进行处理，如果这个连接不做任何事情会造成不必要的线程开销，当然可以通过线程池机制改善。 </li>
 <li>NIO：同步非阻塞式IO，服务器实现模式为一个请求一个线程，即客户端发送的连接请求都会注册到<strong>多路复用器上</strong>，多路复用器轮询到连接有I/O请求时才启动一个线程进行处理。</li>
@@ -294,7 +294,7 @@ https://www.jianshu.com/p/c45b6d782e91
 <li><p>说说 CountDownLatch 原理</p>
 <p>CountDownLatch是同步工具类之一，可以指定一个计数值，在并发环境下由线程进行减1操作，当计数值为0之后，被await方法阻塞的线程将会唤醒，实现线程间的同步。</p>
 <blockquote>
-<p><strong>See</strong> <a href="https://www.jianshu.com/p/7c7a5df5bda6" target="_blank" rel="noopener">https://www.jianshu.com/p/7c7a5df5bda6</a></p>
+<p><strong>See</strong> <a href="https://www.jianshu.com/p/7c7a5df5bda6" target="_blank" rel="noopener">分析CountDownLatch的实现原理</a></p>
 <p><strong>My Sample: </strong><a href="https://github.com/binchencoder/java-tutorials/blob/master/src/test/java/com/binchencoder/study/concurrent/CountDownLatchTest.java" target="_blank" rel="noopener">https://github.com/binchencoder/java-tutorials/blob/master/src/test/java/com/binchencoder/study/concurrent/CountDownLatchTest.java</a></p>
 </blockquote>
 </li>
@@ -366,10 +366,10 @@ https://www.jianshu.com/p/c45b6d782e91
 <ol start="6">
 <li><p>ThreadLocal 原理分析</p>
 <p><strong>用于防止对可变的单实例变量或全局变量进行共享</strong></p>
-<p><strong>See</strong> <a href="https://www.cnblogs.com/micrari/p/6790229.html" target="_blank" rel="noopener">https://www.cnblogs.com/micrari/p/6790229.html</a></p>
+<p><strong>See</strong> <a href="https://www.cnblogs.com/micrari/p/6790229.html" target="_blank" rel="noopener">ThreadLocal源码解读</a></p>
 </li>
 <li><p>讲讲线程池的实现原理</p>
-<p><strong>See</strong> <a href="https://www.jianshu.com/p/87bff5cc8d8c" target="_blank" rel="noopener">https://www.jianshu.com/p/87bff5cc8d8c</a></p>
+<p><strong>See</strong> <a href="https://www.jianshu.com/p/87bff5cc8d8c" target="_blank" rel="noopener">深入分析java线程池的实现原理</a></p>
 <p><img src="/2019/12/03/Java面试圣经/ThreadPool.png" alt="ThreadPool"></p>
 </li>
 <li><p>线程池的几种方式与使用场景</p>
@@ -383,7 +383,7 @@ https://www.jianshu.com/p/c45b6d782e91
 <p><img src="/2019/12/03/Java面试圣经/AQS.png" alt="AQS"></p>
 <p>AQS是AbstractQueuedSynchronizer的简称。AQS提供了一种实现阻塞锁和一系列依赖FIFO等待队列的同步器的框架。AQS为一系列同步器依赖于一个单独的原子变量（state）的同步器提供了一个非常有用的基础。子类们必须定义改变state变量的protected方法，这些方法定义了state是如何被获取或释放的。</p>
 <blockquote>
-<p><strong>See</strong> <a href="https://www.cnblogs.com/waterystone/p/4920797.html" target="_blank" rel="noopener">https://www.cnblogs.com/waterystone/p/4920797.html</a></p>
+<p><strong>See</strong> <a href="https://www.cnblogs.com/waterystone/p/4920797.html" target="_blank" rel="noopener">Java并发之AQS详解</a></p>
 </blockquote>
 <ol start="2">
 <li><p>说说线程安全问题</p>
@@ -399,7 +399,7 @@ https://www.jianshu.com/p/c45b6d782e91
 <li>将当前处理器缓存行的数据写回到系统内存；</li>
 <li>这个写回内存的操作会使得在其它cpu里缓存了该内存地址的数据无效。</li>
 </ul>
-<p><strong>See</strong> <a href="https://www.cnblogs.com/nevermorewang/p/9864797.html" target="_blank" rel="noopener">https://www.cnblogs.com/nevermorewang/p/9864797.html</a></p>
+<p><strong>See</strong> <a href="https://www.cnblogs.com/nevermorewang/p/9864797.html" target="_blank" rel="noopener">volatile与synchronized实现原理</a></p>
 </li>
 <li><p>synchronized 实现原理</p>
 <p>synchronized是用java的monitor机制来实现的，就是synchronized代码块或者方法进入及退出的时候会生成monitorenter跟monitorexit两条命令。线程执行到monitorenter时会尝试获取对象所对应的monitor所有权，即尝试获取的对象的锁；monitorexit即为释放锁。</p>
@@ -414,7 +414,7 @@ https://www.jianshu.com/p/c45b6d782e91
 </li>
 </ol>
 <h1 id="核心篇"><a href="#核心篇" class="headerlink" title="核心篇"></a>核心篇</h1><h2 id="数据存储"><a href="#数据存储" class="headerlink" title="数据存储"></a>数据存储</h2><ol>
-<li><p>MySQL 索引使用的注意事项</p>
+<li><p><a href="https://www.jianshu.com/p/aedf4c0972e8" target="_blank" rel="noopener">MySQL 索引使用的注意事项</a></p>
 </li>
 <li><p>分库与分表带来的分布式困境与应对之策</p>
 </li>
@@ -447,7 +447,7 @@ https://www.jianshu.com/p/c45b6d782e91
 </li>
 <li><p>数据库索引的原理</p>
 <ul>
-<li><a href="https://www.jianshu.com/p/4c2a2b0ef3e0" target="_blank" rel="noopener">https://www.jianshu.com/p/4c2a2b0ef3e0</a></li>
+<li><a href="https://www.jianshu.com/p/4c2a2b0ef3e0" target="_blank" rel="noopener">数据库-索引的原理（面试高危之必备技能）</a></li>
 </ul>
 </li>
 <li><p>BTREE与HASH索引的区别, 为什么要用 BTREE索引</p>
@@ -456,8 +456,10 @@ https://www.jianshu.com/p/c45b6d782e91
 <p><strong>B-tree 索引</strong>可以用于使用 =, &gt;, &gt;=, &lt;, &lt;= 或者 BETWEEN 运算符的列比较。如果 LIKE 的参数是一个没有以通配符起始的常量字符串的话也可以使用这种索引。</p>
 </blockquote>
 <ul>
-<li><a href="https://www.cnblogs.com/alphago-1/articles/6724207.html" target="_blank" rel="noopener">https://www.cnblogs.com/alphago-1/articles/6724207.html</a></li>
-<li><a href="https://mp.weixin.qq.com/s/dhGAUs-S3RbBaOL2yxh1Iw" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/dhGAUs-S3RbBaOL2yxh1Iw</a></li>
+<li><p><a href="https://www.cnblogs.com/alphago-1/articles/6724207.html" target="_blank" rel="noopener">B-tree索引和Hash索引的区别</a></p>
+</li>
+<li><p><a href="https://mp.weixin.qq.com/s/dhGAUs-S3RbBaOL2yxh1Iw" target="_blank" rel="noopener">MySQL索引（一）为什么要用B+树</a></p>
+</li>
 </ul>
 </li>
 <li><p>聚集索引与非聚集索引的区别</p>
@@ -465,7 +467,7 @@ https://www.jianshu.com/p/c45b6d782e91
 <p><strong>聚集索引：</strong>数据行的物理顺序与列值(一般是主键的那一列)的逻辑顺序相同，一个表中只能有一个聚集索引。Mysql中聚集索引就是主键索引，如果没有主键，系统会自动创建一个隐含列作为表的聚集索引。</p>
 <p><strong>非聚集索引：</strong>该索引中索引的逻辑顺序与磁盘上行的物理存储顺序不同，一个表中可以有多个非聚集索引。</p>
 </blockquote>
-<p><strong>See</strong> <a href="https://www.cnblogs.com/s-b-b/p/8334593.html" target="_blank" rel="noopener">https://www.cnblogs.com/s-b-b/p/8334593.html</a></p>
+<p><strong>See</strong> <a href="https://www.cnblogs.com/s-b-b/p/8334593.html" target="_blank" rel="noopener">聚集索引与非聚集索引的总结</a></p>
 </li>
 <li><p>limit 20000 加载很慢怎么解决</p>
 </li>
@@ -497,7 +499,7 @@ https://www.jianshu.com/p/c45b6d782e91
 <ol start="14">
 <li><p>MySQL的事务隔离级别是如何实现的</p>
 <p><strong>每行数据</strong>其实在数据库都是多个版本的，可能同一时间有很多事务在更新一条数据，事务在开始的时候会申请一个id，这个id是严格随着时间递增的，先开始的事务id总是小的，数据库的版本就是事务id的版本。</p>
-<p><a href="https://blog.csdn.net/A1028151949/article/details/88430895" target="_blank" rel="noopener">https://blog.csdn.net/A1028151949/article/details/88430895</a></p>
+<p><a href="https://blog.csdn.net/A1028151949/article/details/88430895" target="_blank" rel="noopener">MySQL的事务隔离级别是怎么实现的？</a></p>
 </li>
 </ol>
 <h3 id="References"><a href="#References" class="headerlink" title="References"></a>References</h3><ul>
@@ -555,14 +557,14 @@ https://www.jianshu.com/p/c45b6d782e91
 <ol start="2">
 <li><p>Redis 内部结构</p>
 </li>
-<li><p><a href="http://blog.720ui.com/2016/redis_action_02_maxmemory_policy" target="_blank" rel="noopener">Redis 内存淘汰机制 </a></p>
+<li><p><a href="http://blog.720ui.com/2016/redis_action_02_maxmemory_policy" target="_blank" rel="noopener">Redis 内存淘汰机制</a></p>
 <blockquote>
-<p>volatile-lru：从已设置过期时间的数据集中挑选最近最少使用的数据淘汰</p>
-<p>volatile-ttl：从已设置过期时间的数据集中挑选将要过期的数据淘汰</p>
-<p>volatile-random：从已设置过期时间的数据集中任意选择数据淘汰</p>
-<p>allkeys-lru：从数据集中挑选最近最少使用的数据淘汰</p>
-<p>allkeys-random：从数据集中任意选择数据淘汰</p>
-<p>no-enviction：当内存达到限制的时候，不淘汰任何数据，不可写入任何数据集，所有引起申请内存的命令会报错</p>
+<p><strong>volatile-lru：</strong>从已设置过期时间的数据集中挑选最近最少使用的数据淘汰</p>
+<p><strong>volatile-ttl：</strong>从已设置过期时间的数据集中挑选将要过期的数据淘汰</p>
+<p><strong>volatile-random：</strong>从已设置过期时间的数据集中任意选择数据淘汰</p>
+<p><strong>allkeys-lru：</strong>从数据集中挑选最近最少使用的数据淘汰</p>
+<p><strong>allkeys-random：</strong>从数据集中任意选择数据淘汰</p>
+<p><strong>no-enviction：</strong>当内存达到限制的时候，不淘汰任何数据，不可写入任何数据集，所有引起申请内存的命令会报错</p>
 </blockquote>
 </li>
 <li><p>聊聊 Redis 使用场景</p>
@@ -579,7 +581,7 @@ https://www.jianshu.com/p/c45b6d782e91
 </li>
 <li><p>Redis 集群方案与实现</p>
 <ul>
-<li><a href="http://blog.720ui.com/2016/redis_action_04_cluster" target="_blank" rel="noopener">http://blog.720ui.com/2016/redis_action_04_cluster</a></li>
+<li><a href="http://blog.720ui.com/2016/redis_action_04_cluster" target="_blank" rel="noopener">Redis实战（三） 持久化机制</a></li>
 </ul>
 </li>
 <li><p><a href="https://cloud.tencent.com/developer/article/1120615" target="_blank" rel="noopener">Redis 为什么是单线程的</a></p>
