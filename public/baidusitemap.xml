@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://binchencoder.github.io/2020/09/10/%E4%BA%92%E8%81%94%E7%BD%91%20Java%20%E5%B7%A5%E7%A8%8B%E5%B8%88%E8%BF%9B%E9%98%B6%E7%9F%A5%E8%AF%86%E5%AE%8C%E5%85%A8%E6%89%AB%E7%9B%B2/</loc>
+    <lastmod>2020-09-10</lastmod>
+  </url>  <url>
     <loc>https://binchencoder.github.io/2019/12/03/Java%E9%9D%A2%E8%AF%95%E5%9C%A3%E7%BB%8F/</loc>
     <lastmod>2020-08-21</lastmod>
   </url>  <url>
@@ -34,43 +37,43 @@
     <loc>https://binchencoder.github.io/2019/11/29/%E6%8E%92%E6%9F%A5CPU%E8%B4%9F%E8%BD%BD%E9%AB%98/</loc>
     <lastmod>2019-12-02</lastmod>
   </url>  <url>
-    <loc>https://binchencoder.github.io/2019/08/16/%E8%AE%A4%E8%AF%86Bazel/</loc>
-    <lastmod>2019-12-02</lastmod>
-  </url>  <url>
     <loc>https://binchencoder.github.io/2019/08/21/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3JVM%20-%20%E5%86%85%E5%AD%98%E7%BB%93%E6%9E%84/</loc>
-    <lastmod>2019-12-02</lastmod>
-  </url>  <url>
-    <loc>https://binchencoder.github.io/2019/11/04/%E9%9D%A2%E8%AF%95%E5%A6%82%E6%88%8F%E5%85%A8%E9%9D%A0%E6%BC%94%E6%8A%80/</loc>
-    <lastmod>2019-12-02</lastmod>
-  </url>  <url>
-    <loc>https://binchencoder.github.io/2019/09/26/%E6%8E%92%E6%9F%A5%E4%BA%A7%E7%BA%BF%E7%B3%BB%E7%BB%9F%E5%83%B5%E6%AD%BB/</loc>
-    <lastmod>2019-12-02</lastmod>
-  </url>  <url>
-    <loc>https://binchencoder.github.io/2019/08/24/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3JVM%20-%20%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E4%B9%8B%E4%B8%96%E4%BB%A3%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E8%BF%87%E7%A8%8B/</loc>
     <lastmod>2019-12-02</lastmod>
   </url>  <url>
     <loc>https://binchencoder.github.io/2018/09/04/%E6%9F%A5%E7%9C%8BMariaDB-binlog/</loc>
     <lastmod>2019-12-02</lastmod>
   </url>  <url>
-    <loc>https://binchencoder.github.io/2019/08/27/%E5%88%9D%E8%AF%86kafka/</loc>
+    <loc>https://binchencoder.github.io/2019/11/04/%E9%9D%A2%E8%AF%95%E5%A6%82%E6%88%8F%E5%85%A8%E9%9D%A0%E6%BC%94%E6%8A%80/</loc>
     <lastmod>2019-12-02</lastmod>
   </url>  <url>
-    <loc>https://binchencoder.github.io/2018/07/22/UsefulScripts-Java%E8%84%9A%E6%9C%AC/</loc>
+    <loc>https://binchencoder.github.io/2019/08/24/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3JVM%20-%20%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E4%B9%8B%E4%B8%96%E4%BB%A3%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E8%BF%87%E7%A8%8B/</loc>
+    <lastmod>2019-12-02</lastmod>
+  </url>  <url>
+    <loc>https://binchencoder.github.io/2019/08/16/%E8%AE%A4%E8%AF%86Bazel/</loc>
+    <lastmod>2019-12-02</lastmod>
+  </url>  <url>
+    <loc>https://binchencoder.github.io/2019/09/26/%E6%8E%92%E6%9F%A5%E4%BA%A7%E7%BA%BF%E7%B3%BB%E7%BB%9F%E5%83%B5%E6%AD%BB/</loc>
     <lastmod>2019-12-02</lastmod>
   </url>  <url>
     <loc>https://binchencoder.github.io/2018/07/21/hello-world/</loc>
     <lastmod>2019-12-02</lastmod>
   </url>  <url>
-    <loc>https://binchencoder.github.io/2019/09/05/synchronized%E5%92%8Clock/</loc>
+    <loc>https://binchencoder.github.io/2019/08/27/%E5%88%9D%E8%AF%86kafka/</loc>
     <lastmod>2019-12-02</lastmod>
   </url>  <url>
     <loc>https://binchencoder.github.io/2018/08/31/Thread-State/</loc>
     <lastmod>2019-12-02</lastmod>
   </url>  <url>
-    <loc>https://binchencoder.github.io/2019/11/09/%E5%A4%9A%E7%BA%BF%E7%A8%8B%20%E5%88%B0%E5%BA%95%E8%AF%A5%E8%AE%BE%E7%BD%AE%E5%A4%9A%E5%B0%91%E7%BA%BF%E7%A8%8B/</loc>
+    <loc>https://binchencoder.github.io/2018/07/22/UsefulScripts-Java%E8%84%9A%E6%9C%AC/</loc>
+    <lastmod>2019-12-02</lastmod>
+  </url>  <url>
+    <loc>https://binchencoder.github.io/2019/09/05/synchronized%E5%92%8Clock/</loc>
     <lastmod>2019-12-02</lastmod>
   </url>  <url>
     <loc>https://binchencoder.github.io/2019/09/06/%E4%B8%8B%E7%8F%AD%E5%90%8E%E7%9A%84%E7%94%9F%E6%B4%BB%E6%94%B9%E5%8F%98%E4%BA%BA%E7%9A%84%E4%B8%80%E7%94%9F/</loc>
+    <lastmod>2019-12-02</lastmod>
+  </url>  <url>
+    <loc>https://binchencoder.github.io/2019/11/09/%E5%A4%9A%E7%BA%BF%E7%A8%8B%20%E5%88%B0%E5%BA%95%E8%AF%A5%E8%AE%BE%E7%BD%AE%E5%A4%9A%E5%B0%91%E7%BA%BF%E7%A8%8B/</loc>
     <lastmod>2019-12-02</lastmod>
   </url>  <url>
     <loc>https://binchencoder.github.io/2018/09/01/%E4%BD%BF%E7%94%A8%E6%AD%A3%E5%88%99%E5%BC%95%E5%8F%91%E7%9A%84%E8%A1%80%E6%A1%88/</loc>
@@ -100,10 +103,10 @@
     <loc>https://binchencoder.github.io/2019/08/02/Linux%20%E6%96%87%E4%BB%B6%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</loc>
     <lastmod>2019-12-02</lastmod>
   </url>  <url>
-    <loc>https://binchencoder.github.io/2018/07/21/Hexo%E6%90%AD%E5%BB%BAgithub%E4%B8%BB%E9%A1%B5/</loc>
+    <loc>https://binchencoder.github.io/2019/08/11/JVM%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/</loc>
     <lastmod>2019-12-02</lastmod>
   </url>  <url>
-    <loc>https://binchencoder.github.io/2019/08/11/JVM%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/</loc>
+    <loc>https://binchencoder.github.io/2018/07/21/Hexo%E6%90%AD%E5%BB%BAgithub%E4%B8%BB%E9%A1%B5/</loc>
     <lastmod>2019-12-02</lastmod>
   </url>  <url>
     <loc>https://binchencoder.github.io/2018/07/22/GRPC-Status-HTTP-Status/</loc>

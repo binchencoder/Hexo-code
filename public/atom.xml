@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://binchencoder.github.io/"/>
-  <updated>2020-08-21T10:00:39.592Z</updated>
+  <updated>2020-09-10T03:25:39.197Z</updated>
   <id>https://binchencoder.github.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>互联网 Java 工程师进阶知识完全扫盲</title>
+    <link href="https://binchencoder.github.io/2020/09/10/%E4%BA%92%E8%81%94%E7%BD%91%20Java%20%E5%B7%A5%E7%A8%8B%E5%B8%88%E8%BF%9B%E9%98%B6%E7%9F%A5%E8%AF%86%E5%AE%8C%E5%85%A8%E6%89%AB%E7%9B%B2/"/>
+    <id>https://binchencoder.github.io/2020/09/10/互联网 Java 工程师进阶知识完全扫盲/</id>
+    <published>2020-09-10T04:00:01.000Z</published>
+    <updated>2020-09-10T03:25:39.197Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;互联网-Java-工程师进阶知识完全扫盲&quot;&gt;&lt;a href=&quot;#互联网-Java-工程师进阶知识完全扫盲&quot; class=&quot;headerlink&quot; title=&quot;互联网 Java 工程师进阶知识完全扫盲&quot;&gt;&lt;/a&gt;互联网 Java 工程师进阶知识完全扫盲&lt;/h1&gt;&lt;
+      
+    
+    </summary>
+    
+      <category term="面试" scheme="https://binchencoder.github.io/categories/%E9%9D%A2%E8%AF%95/"/>
+    
+    
+      <category term="后端" scheme="https://binchencoder.github.io/tags/%E5%90%8E%E7%AB%AF/"/>
+    
+      <category term="面试" scheme="https://binchencoder.github.io/tags/%E9%9D%A2%E8%AF%95/"/>
+    
+      <category term="架构师" scheme="https://binchencoder.github.io/tags/%E6%9E%B6%E6%9E%84%E5%B8%88/"/>
+    
+  </entry>
   
   <entry>
     <title>架构师技术图谱，助你早日成为架构师</title>
@@ -510,35 +537,6 @@
       
       
         &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;在 &lt;a href=&quot;https://binchencoder.github.io/2019/08/23/%E6%B7%B1%E5%85%A
-      
-    
-    </summary>
-    
-      <category term="面试" scheme="https://binchencoder.github.io/categories/%E9%9D%A2%E8%AF%95/"/>
-    
-    
-      <category term="Java" scheme="https://binchencoder.github.io/tags/Java/"/>
-    
-      <category term="后端" scheme="https://binchencoder.github.io/tags/%E5%90%8E%E7%AB%AF/"/>
-    
-      <category term="JVM" scheme="https://binchencoder.github.io/tags/JVM/"/>
-    
-      <category term="垃圾回收" scheme="https://binchencoder.github.io/tags/%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>深入理解JVM - 垃圾回收</title>
-    <link href="https://binchencoder.github.io/2019/08/23/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3JVM%20-%20%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6/"/>
-    <id>https://binchencoder.github.io/2019/08/23/深入理解JVM - 垃圾回收/</id>
-    <published>2019-08-23T15:00:18.000Z</published>
-    <updated>2020-08-06T07:56:21.920Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;在 &lt;a href=&quot;https://binchencoder.github.io/2019/08/21/%E6%B7%B1%E5%85%A
       
     
     </summary>
