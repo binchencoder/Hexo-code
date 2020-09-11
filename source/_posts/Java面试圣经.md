@@ -401,15 +401,15 @@ AQS是AbstractQueuedSynchronizer的简称。AQS提供了一种实现阻塞锁和
 
 12. 微服务如何进行数据库管理
 
-    - http://blog.720ui.com/2017/msa_design/
+    - http://blog.720ui.com/2017/msa_design/#论微服务的数据库管理
 
 13. 如何应对微服务的链式调用异常
 
-    - http://blog.720ui.com/2017/msa_design/
+    - http://blog.720ui.com/2017/msa_design/#应对微服务的链式调用异常
 
 14. 对于快速追踪与定位问题
 
-    - http://blog.720ui.com/2017/msa_design/
+    - http://blog.720ui.com/2017/msa_design/#如何快速追踪与定位问题
 
 ## 分布式
 
