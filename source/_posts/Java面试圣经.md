@@ -186,8 +186,6 @@ AQS是AbstractQueuedSynchronizer的简称。AQS提供了一种实现阻塞锁和
 
 1. [MySQL 索引使用的注意事项](https://www.jianshu.com/p/aedf4c0972e8)
 
-2. 分库与分表带来的分布式困境与应对之策
-
 3. 说说 SQL 优化之道
 
    > 1. 负向条件(where != 条件)不能使用索引，可以优化为`in` 查询；
@@ -320,7 +318,7 @@ AQS是AbstractQueuedSynchronizer的简称。AQS提供了一种实现阻塞锁和
 
 10. 使用缓存的合理性问题
 
-  - http://blog.720ui.com/2016/redis_action_01_use_core
+    - http://blog.720ui.com/2016/redis_action_01_use_core
 
 ## 消息队列
 
@@ -362,6 +360,7 @@ AQS是AbstractQueuedSynchronizer的简称。AQS提供了一种实现阻塞锁和
 4. 什么是TCP 粘包/拆包
 5. TCP粘包/拆包的解决办法
 6. Netty 线程模型
+   - [彻底搞懂 netty 线程模型](https://www.cnblogs.com/luoxn28/p/11875340.html)
 7. 说说 Netty 的零拷贝
 8. Netty 内部执行流程
 9. Netty 重连实现
