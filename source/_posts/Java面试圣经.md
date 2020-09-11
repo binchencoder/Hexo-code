@@ -40,7 +40,7 @@ categories:
 8. [ConcurrentHashMap 的工作原理及代码实现](https://www.cnblogs.com/heqiyoujing/p/10928423.html)
 9. [HashMap是如何扩容的](https://binchencoder.github.io/2019/08/29/Java面试之基础篇%20-%20HashMap/#JDK1-8中HashMap是如何扩容的？与JDK1-7有什么区别)
 10. [HashMap如何避免key碰撞](https://binchencoder.github.com/2019/08/29/Java面试之基础篇%20-%20HashMap/#HashMap是如何避免key碰撞)
-11. HashMap死循环问题
+11. [HashMap死循环问题](https://www.jianshu.com/p/1e9cf0ac07f4)
 
 # 进阶篇
 
