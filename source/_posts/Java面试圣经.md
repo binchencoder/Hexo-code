@@ -307,10 +307,10 @@ AQS是AbstractQueuedSynchronizer的简称。AQS提供了一种实现阻塞锁和
    > **AOF：** Redis会将每一个收到的写命令都通过Write函数追加到文件最后，类似于MySQL的binlog。当Redis重启是会通过重新执行文件中保存的写命令来在内存中重建整个数据库的内容。
 
    **See** http://blog.720ui.com/2016/redis_action_03_rdb_aof
-
+   
 6. Redis 集群方案与实现
 
-   - [Redis实战（三） 持久化机制](http://blog.720ui.com/2016/redis_action_04_cluster)
+   - [Redis实战（四） 集群机制](http://blog.720ui.com/2016/redis_action_04_cluster)
 
 7. [Redis 为什么是单线程的](https://cloud.tencent.com/developer/article/1120615)
 
