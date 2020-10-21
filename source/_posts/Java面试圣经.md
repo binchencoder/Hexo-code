@@ -134,7 +134,7 @@ categories:
 
 7. 讲讲线程池的实现原理
 
-   **See** [深入分析java线程池的实现原理](https://www.jianshu.com/p/87bff5cc8d8c)
+   **See** [深入分析java线程池的实现原理](https://www.jianshu.com/p/704a6c5d337c)
 
    ![ThreadPool](./Java面试圣经/ThreadPool.png)
 
@@ -394,6 +394,8 @@ AQS是AbstractQueuedSynchronizer的简称。AQS提供了一种实现阻塞锁和
 9. 说说 CAP 定理、 BASE 理论
 
    ![CAP](./Java面试圣经/CAP.png)
+   
+   - [分布式理论之BASE理论](https://segmentfault.com/a/1190000018019595)
 
 10. 怎么考虑数据一致性问题
 
