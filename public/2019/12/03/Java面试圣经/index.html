@@ -480,13 +480,21 @@ https://www.jianshu.com/p/c45b6d782e91
 </li>
 <li><p>事务隔离级别</p>
 <ul>
-<li><p>未提交读(Read uncommitted)</p>
+<li>未提交读(Read uncommitted)<ul>
+<li>读的都是最新版本的数据, 会出现脏读</li>
+</ul>
 </li>
-<li><p>已提交读(Read committed <strong>[RC]</strong>)：只能读取到已经提交的数据</p>
+<li>已提交读(Read committed <strong>[RC]</strong>)<ul>
+<li>只能读取到已经提交的数据, 会出现不可重复读</li>
+</ul>
 </li>
-<li><p>可重复读(Repeatable read <strong>[RR]</strong>)：<strong>在同一个事务内的查询都是事务开始时刻一致的，InnoDB默认级别</strong></p>
+<li>可重复读(Repeatable read <strong>[RR]</strong>)：<strong>在同一个事务内的查询都是事务开始时刻一致的，InnoDB默认级别</strong><ul>
+<li>解决了不可重复的问题, InnoDB解决了幻读问题</li>
+</ul>
 </li>
-<li><p>可串行化(Serializable)</p>
+<li>可串行化(Serializable)<ul>
+<li>用加锁的方式实现串行化</li>
+</ul>
 </li>
 </ul>
 </li>

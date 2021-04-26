@@ -242,15 +242,16 @@ AQS是AbstractQueuedSynchronizer的简称。AQS提供了一种实现阻塞锁和
 
     不是由记录来确定属性值，而是由属性值来确定记录的位置
 
-13. 事务隔离级别
+12. 事务隔离级别
 
     - 未提交读(Read uncommitted)
-
-    - 已提交读(Read committed **[RC]**)：只能读取到已经提交的数据
-
+      - 读的都是最新版本的数据, 会出现脏读
+    - 已提交读(Read committed **[RC]**)
+      - 只能读取到已经提交的数据, 会出现不可重复读
     - 可重复读(Repeatable read **[RR]**)：**在同一个事务内的查询都是事务开始时刻一致的，InnoDB默认级别**
-
+      - 解决了不可重复的问题, InnoDB解决了幻读问题
     - 可串行化(Serializable)
+      - 用加锁的方式实现串行化
 
 > 我们较常用的是RC和RR
 
