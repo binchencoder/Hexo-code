@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html lang="zh-CN">
 
-<head><meta name="generator" content="Hexo 3.9.0">
+<head>
     <!--Setting-->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -19,17 +19,17 @@
     <link rel="dns-prefetch" href="https://binchencoder.github.io">
     <!--SEO-->
 
-<meta name="keywords" content="MySQL">
+<meta name="keywords" content="MySQL" />
 
 
 <meta name="description" content="
-前言MySQL/InnoDB的加锁，一直是一个面试中常见的话题。例如，数据库如果有高并发请求，如果保证数据完整性？产生死锁问题如何排查并解决？我在工作过程中，也会经常用到，乐观锁，排它锁 等。...">
+前言MySQL/InnoDB的加锁，一直是一个面试中常见的话题。例如，数据库如果有高并发请求，如果保证数据完整性？产生死锁问题如何排查并解决？我在工作过程中，也会经常用到，乐观锁，排它锁 等。..." />
 
 
-<meta name="robots" content="all">
-<meta name="google" content="all">
-<meta name="googlebot" content="all">
-<meta name="verify" content="all">
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
     <!--Title-->
 
 <title>
@@ -46,9 +46,11 @@
 
     
 
-<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
-<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.7.0">
-<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7.css">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.7.0.css">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash.css">
+
     
 <div class="hide">
     <script type="text/javascript">
@@ -76,7 +78,7 @@
 })();
 </script>
 
-</head></html>
+<meta name="generator" content="Hexo 4.2.1"></head>
 <!--[if lte IE 8]>
 <style>
     html{ font-size: 1em }
@@ -158,7 +160,7 @@
                         </li>
                         
                         <li role="presentation" class="text-center">
-                            <a href="https://tech.meituan.com"><i class="fa "></i>
+                            <a href="https://tech.meituan.com" target="_blank" rel="noopener"><i class="fa "></i>
                                 美团技术团队</a>
                         </li>
                         
@@ -184,7 +186,7 @@
     
     <span class="categories-meta fa-wrap">
         <i class="fa fa-folder-open-o"></i>
-        <a class="category-link" href="/categories/存储/">存储</a>
+        <a class="category-link" href="/categories/%E5%AD%98%E5%82%A8/">存储</a>
     </span>
     
     
@@ -192,7 +194,7 @@
         <i class="fa fa-tags"></i>
         <span class="tags-meta">
             
-            <a class="tag-link" href="/tags/MySQL/">MySQL</a>
+            <a class="tag-link" href="/tags/MySQL/" rel="tag">MySQL</a>
             
         </span>
     </span>
@@ -217,30 +219,30 @@
     </div>
     
     <div class="post-body post-content">
-        <p><img src="/2019/01/20/MySQL锁的理解/MySQL.jpeg" alt="MySQL"></p>
+        <p><img src="/2019/01/20/MySQL%E9%94%81%E7%9A%84%E7%90%86%E8%A7%A3/MySQL.jpeg" alt="MySQL"></p>
 <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>MySQL/InnoDB的加锁，一直是一个面试中常见的话题。例如，数据库如果有高并发请求，如果保证数据完整性？产生死锁问题如何排查并解决？我在工作过程中，也会经常用到，乐观锁，排它锁 等。最近针对这几个概念进行学习，记录一下。</p>
 <blockquote>
 <p>注: MySQL是一个支持插件式存储引擎的数据库系统。本文下面的所有介绍，都是基于InnoDB存储引擎，其他引擎的表现，会有较大的区别。</p>
 </blockquote>
 <h2 id="查看存储引擎"><a href="#查看存储引擎" class="headerlink" title="查看存储引擎"></a>查看存储引擎</h2><p>MySQL给开发者提供了查询存储引擎的功能，我这里使用的是MySQL5.6.4，可以使用：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SHOW ENGINES</span><br></pre></td></tr></table></figure>
-<p><img src="/2019/01/20/MySQL锁的理解/Engines.jpeg" alt="engines"></p>
+<p><img src="/2019/01/20/MySQL%E9%94%81%E7%9A%84%E7%90%86%E8%A7%A3/Engines.jpeg" alt="engines"></p>
 <h2 id="乐观锁"><a href="#乐观锁" class="headerlink" title="乐观锁"></a>乐观锁</h2><p>用数据版本(Version)记录机制实现，这是乐观锁最常用的一种实现方式。何谓数据版本？即为数据增加一个版本标识，一般是通过为数据库增加一个数字类型的“version”字段来实现。当读数据时，将version字段的值一同读出，数据每更新一次，对此version值加1。当我们提交更新的时候，判断数据库表对应记录的当前版本信息与第一次读取出来的version值进行比对，如果数据库表当前版本号与第一次取出来的version值相等，则予以更新，否则认为是过期数据。</p>
 <h3 id="举例"><a href="#举例" class="headerlink" title="举例"></a>举例</h3><ol>
 <li>数据库表设计</li>
 </ol>
 <p>三个字段，分别是id、value、version</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select id,value,version from TABLE where id=#&#123;id&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select id,value,version from TABLE where id&#x3D;#&#123;id&#125;</span><br></pre></td></tr></table></figure>
 <ol start="2">
 <li>每次更新表中的value字段时，为了防止发生冲突，需要这样操作</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">update TABLE</span><br><span class="line">set value=2,version=version+1</span><br><span class="line">where id=#&#123;id&#125; and version=#&#123;version&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">update TABLE</span><br><span class="line">set value&#x3D;2,version&#x3D;version+1</span><br><span class="line">where id&#x3D;#&#123;id&#125; and version&#x3D;#&#123;version&#125;;</span><br></pre></td></tr></table></figure>
 <h2 id="悲观锁"><a href="#悲观锁" class="headerlink" title="悲观锁"></a>悲观锁</h2><p>与乐观锁相对应的就是悲观锁了。悲观锁就是在操作数据时，认为此操作会出现数据冲突，所以在进行每次操作时都要通过获取锁才能进行对相同数据的操作，这点跟java中synchronized很相似，所以悲观锁需要耗费较多的时间。另外与乐观锁相对应的，悲观锁是由数据库自己实现了的，要用的时候，我们直接调用数据库的相关语句就可以了。</p>
 <p>说到这里，由悲观锁涉及到的另外两个概念就出来了，他们就是共享锁与排它锁。<strong>共享锁和排它锁是悲观锁的不同实现</strong>，它俩都属于悲观锁的范畴。</p>
 <p>使用排它锁举例：</p>
 <p>要使用悲观锁，我们必须关闭mysql数据库的自动提交属性，因为MySQL默认使用autocommit模式，也就是说，当你执行一个更新操作时，MySQL会立刻将结果进行提交。</p>
 <p>我们可以使用命令设置MySQL为非autocommit模式：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">set autocommit=0;</span><br><span class="line"></span><br><span class="line"># 设置完autocommit后，我们就可以执行我们的正常业务了。具体如下：</span><br><span class="line"></span><br><span class="line"># 1. 开始事务</span><br><span class="line"></span><br><span class="line">begin;/begin work;/start transaction; (三者选一就可以)</span><br><span class="line"></span><br><span class="line"># 2. 查询表信息</span><br><span class="line"></span><br><span class="line">select status from TABLE where id=1 for update;</span><br><span class="line"></span><br><span class="line"># 3. 插入一条数据</span><br><span class="line"></span><br><span class="line">insert into TABLE (id,value) values (2,2);</span><br><span class="line"></span><br><span class="line"># 4. 修改数据为</span><br><span class="line"></span><br><span class="line">update TABLE set value=2 where id=1;</span><br><span class="line"></span><br><span class="line"># 5. 提交事务</span><br><span class="line"></span><br><span class="line">commit;/commit work;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">set autocommit&#x3D;0;</span><br><span class="line"></span><br><span class="line"># 设置完autocommit后，我们就可以执行我们的正常业务了。具体如下：</span><br><span class="line"></span><br><span class="line"># 1. 开始事务</span><br><span class="line"></span><br><span class="line">begin;&#x2F;begin work;&#x2F;start transaction; (三者选一就可以)</span><br><span class="line"></span><br><span class="line"># 2. 查询表信息</span><br><span class="line"></span><br><span class="line">select status from TABLE where id&#x3D;1 for update;</span><br><span class="line"></span><br><span class="line"># 3. 插入一条数据</span><br><span class="line"></span><br><span class="line">insert into TABLE (id,value) values (2,2);</span><br><span class="line"></span><br><span class="line"># 4. 修改数据为</span><br><span class="line"></span><br><span class="line">update TABLE set value&#x3D;2 where id&#x3D;1;</span><br><span class="line"></span><br><span class="line"># 5. 提交事务</span><br><span class="line"></span><br><span class="line">commit;&#x2F;commit work;</span><br></pre></td></tr></table></figure>
 <h2 id="共享锁"><a href="#共享锁" class="headerlink" title="共享锁"></a>共享锁</h2><p>共享锁又称<strong>读锁 read lock</strong>，是读取操作创建的锁。其他用户可以并发读取数据，但任何事务都不能对数据进行修改（获取数据上的排他锁），直到已释放所有共享锁。</p>
 <p>如果事务T对数据A加上共享锁后，则其他事务只能对数据A再加共享锁，不能加排他锁。获得共享锁的事务只能读数据，不能修改数据</p>
 <h2 id="排他锁"><a href="#排他锁" class="headerlink" title="排他锁"></a>排他锁</h2><p>排他锁 exclusive lock（也叫writer lock）又称<strong>写锁</strong>。</p>
@@ -285,14 +287,14 @@
 </article>
 <div class="article-nav prev-next-wrap clearfix">
     
-    <a href="/2019/07/21/RPC框架/" class="pre-post btn btn-default" title='RPC框架'>
+    <a href="/2019/07/21/RPC%E6%A1%86%E6%9E%B6/" class="pre-post btn btn-default" title='RPC框架'>
         <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
         <span class="hidden-xs">
             RPC框架</span>
     </a>
     
     
-    <a href="/2018/09/04/查看MariaDB-binlog/" class="next-post btn btn-default" title='如何查看MariaDB bin log'>
+    <a href="/2018/09/04/%E6%9F%A5%E7%9C%8BMariaDB-binlog/" class="next-post btn btn-default" title='如何查看MariaDB bin log'>
         <span class="hidden-lg">下一篇</span>
         <span class="hidden-xs">
             如何查看MariaDB bin log</span><i class="fa fa-angle-right fa-fw"></i>
@@ -304,8 +306,10 @@
     
 
 <div id="vcomments" class="valine"></div>
+
 <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
 <script src="/assets/valine.min.js"></script>
+
 <script>
 new Valine({
     av: AV,
@@ -389,6 +393,8 @@ new Valine({
 
 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
-<script src="/js/app.js?rev=@@hash"></script>
+
+<script src="/js/app.js?rev=@@hash.js"></script>
+
 </body>
 </html>

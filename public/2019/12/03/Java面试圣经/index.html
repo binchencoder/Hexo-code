@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html lang="zh-CN">
 
-<head><meta name="generator" content="Hexo 3.9.0">
+<head>
     <!--Setting-->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -19,7 +19,7 @@
     <link rel="dns-prefetch" href="https://binchencoder.github.io">
     <!--SEO-->
 
-<meta name="keywords" content="Java,面试">
+<meta name="keywords" content="Java,面试" />
 
 
 <meta name="description" content="基础篇基本功
@@ -29,13 +29,13 @@ https://www.jianshu.com/p/c45b6d782e91
 
 
 重载和重写的区别
-说说反...">
+说说反..." />
 
 
-<meta name="robots" content="all">
-<meta name="google" content="all">
-<meta name="googlebot" content="all">
-<meta name="verify" content="all">
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
     <!--Title-->
 
 <title>
@@ -52,9 +52,11 @@ https://www.jianshu.com/p/c45b6d782e91
 
     
 
-<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
-<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.7.0">
-<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7.css">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.7.0.css">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash.css">
+
     
 <div class="hide">
     <script type="text/javascript">
@@ -82,7 +84,7 @@ https://www.jianshu.com/p/c45b6d782e91
 })();
 </script>
 
-</head></html>
+<meta name="generator" content="Hexo 4.2.1"></head>
 <!--[if lte IE 8]>
 <style>
     html{ font-size: 1em }
@@ -164,7 +166,7 @@ https://www.jianshu.com/p/c45b6d782e91
                         </li>
                         
                         <li role="presentation" class="text-center">
-                            <a href="https://tech.meituan.com"><i class="fa "></i>
+                            <a href="https://tech.meituan.com" target="_blank" rel="noopener"><i class="fa "></i>
                                 美团技术团队</a>
                         </li>
                         
@@ -190,7 +192,7 @@ https://www.jianshu.com/p/c45b6d782e91
     
     <span class="categories-meta fa-wrap">
         <i class="fa fa-folder-open-o"></i>
-        <a class="category-link" href="/categories/面试/">面试</a>
+        <a class="category-link" href="/categories/%E9%9D%A2%E8%AF%95/">面试</a>
     </span>
     
     
@@ -198,7 +200,7 @@ https://www.jianshu.com/p/c45b6d782e91
         <i class="fa fa-tags"></i>
         <span class="tags-meta">
             
-            <a class="tag-link" href="/tags/Java/">Java</a> <a class="tag-link" href="/tags/面试/">面试</a>
+            <a class="tag-link" href="/tags/Java/" rel="tag">Java</a> <a class="tag-link" href="/tags/%E9%9D%A2%E8%AF%95/" rel="tag">面试</a>
             
         </span>
     </span>
@@ -299,7 +301,7 @@ https://www.jianshu.com/p/c45b6d782e91
 </blockquote>
 </li>
 <li><p>说说 CyclicBarrier 原理</p>
-<p><img src="/2019/12/03/Java面试圣经/CyclicBarrier.png" alt="CyclicBarrier"></p>
+<p><img src="/2019/12/03/Java%E9%9D%A2%E8%AF%95%E5%9C%A3%E7%BB%8F/CyclicBarrier.png" alt="CyclicBarrier"></p>
 <blockquote>
 <p>CyclicBarrier 字面意思是可循环（Cyclic）使用的屏障（Barrier）。它要做的事情是让一组线程到达一个屏障（同步点）时被阻塞，直到最后一个线程到达屏障时候，屏障才会开门。所有被屏障拦截的线程才会运行。</p>
 <p><strong>CyclicBarrier是由ReentrantLock可重入锁和Condition共同实现的。</strong></p>
@@ -370,7 +372,7 @@ https://www.jianshu.com/p/c45b6d782e91
 </li>
 <li><p>讲讲线程池的实现原理</p>
 <p><strong>See</strong> <a href="https://www.jianshu.com/p/704a6c5d337c" target="_blank" rel="noopener">深入分析java线程池的实现原理</a></p>
-<p><img src="/2019/12/03/Java面试圣经/ThreadPool.png" alt="ThreadPool"></p>
+<p><img src="/2019/12/03/Java%E9%9D%A2%E8%AF%95%E5%9C%A3%E7%BB%8F/ThreadPool.png" alt="ThreadPool"></p>
 </li>
 <li><p>线程池的几种方式与使用场景</p>
 </li>
@@ -380,7 +382,7 @@ https://www.jianshu.com/p/c45b6d782e91
 <h2 id="锁机制"><a href="#锁机制" class="headerlink" title="锁机制"></a>锁机制</h2><ol>
 <li>AQS详解</li>
 </ol>
-<p><img src="/2019/12/03/Java面试圣经/AQS.png" alt="AQS"></p>
+<p><img src="/2019/12/03/Java%E9%9D%A2%E8%AF%95%E5%9C%A3%E7%BB%8F/AQS.png" alt="AQS"></p>
 <p>AQS是AbstractQueuedSynchronizer的简称。AQS提供了一种实现阻塞锁和一系列依赖FIFO等待队列的同步器的框架。AQS为一系列同步器依赖于一个单独的原子变量（state）的同步器提供了一个非常有用的基础。子类们必须定义改变state变量的protected方法，这些方法定义了state是如何被获取或释放的。</p>
 <blockquote>
 <p><strong>See</strong> <a href="https://www.cnblogs.com/waterystone/p/4920797.html" target="_blank" rel="noopener">Java并发之AQS详解</a></p>
@@ -678,7 +680,18 @@ https://www.jianshu.com/p/c45b6d782e91
 <li><p>如何保证接口的幂等性</p>
 </li>
 <li><p>说说 CAP 定理、 BASE 理论</p>
-<p><img src="/2019/12/03/Java面试圣经/CAP.png" alt="CAP"></p>
+<blockquote>
+<p>CAP的结论非常简单：在分布式系统里，有3个属性非常重要，但只能同时满足其中的2个</p>
+<ol>
+<li>Consistency：all nodes在任何时刻看到的data都是一样的（或说client的read操作总是返回最新写入的那个value）</li>
+<li>Availability：系统时刻都允许操作，并且操作总会快速被Coordinator响应，最终client很快就得到返回的结果</li>
+<li>Partition-tolerance：尽管网路有时候会因为故障导致被分隔开，但是系统依然在正常工作（或者说在满足前述的条件下工作）</li>
+</ol>
+<p><strong>CAP权衡</strong></p>
+<p>如今的云计算环境里，因为网络随时都会被隔离开来，这是无法避免的，P是必须满足的，那么CAP暗示一个system要在C和A中做出抉择。</p>
+<p>比如，Cassandra就选择了AP，对于C只能保证 Eventual Consistency（弱一致性）；传统的RDBMS在一个partition里保证可用性。</p>
+</blockquote>
+<p><img src="/2019/12/03/Java%E9%9D%A2%E8%AF%95%E5%9C%A3%E7%BB%8F/CAP.png" alt="CAP"></p>
 <ul>
 <li><a href="https://segmentfault.com/a/1190000018019595" target="_blank" rel="noopener">分布式理论之BASE理论</a></li>
 </ul>
@@ -789,14 +802,14 @@ https://www.jianshu.com/p/c45b6d782e91
 </article>
 <div class="article-nav prev-next-wrap clearfix">
     
-    <a href="/2020/01/03/linux top命令VIRT,RES,SHR,DATA的含义/" class="pre-post btn btn-default" title='linux top命令VIRT,RES,SHR,DATA的含义'>
+    <a href="/2020/01/03/linux%20top%E5%91%BD%E4%BB%A4VIRT,RES,SHR,DATA%E7%9A%84%E5%90%AB%E4%B9%89/" class="pre-post btn btn-default" title='linux top命令VIRT,RES,SHR,DATA的含义'>
         <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
         <span class="hidden-xs">
             linux top命令VIRT,RES,SHR,DATA的含义</span>
     </a>
     
     
-    <a href="/2019/11/29/排查CPU负载高/" class="next-post btn btn-default" title='排查CPU负载高'>
+    <a href="/2019/11/29/%E6%8E%92%E6%9F%A5CPU%E8%B4%9F%E8%BD%BD%E9%AB%98/" class="next-post btn btn-default" title='排查CPU负载高'>
         <span class="hidden-lg">下一篇</span>
         <span class="hidden-xs">
             排查CPU负载高</span><i class="fa fa-angle-right fa-fw"></i>
@@ -808,8 +821,10 @@ https://www.jianshu.com/p/c45b6d782e91
     
 
 <div id="vcomments" class="valine"></div>
+
 <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
 <script src="/assets/valine.min.js"></script>
+
 <script>
 new Valine({
     av: AV,
@@ -893,6 +908,8 @@ new Valine({
 
 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
-<script src="/js/app.js?rev=@@hash"></script>
+
+<script src="/js/app.js?rev=@@hash.js"></script>
+
 </body>
 </html>

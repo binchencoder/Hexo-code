@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html lang="zh-CN">
 
-<head><meta name="generator" content="Hexo 3.9.0">
+<head>
     <!--Setting-->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -19,16 +19,16 @@
     <link rel="dns-prefetch" href="https://binchencoder.github.io">
     <!--SEO-->
 
-<meta name="keywords" content="Java,面试,集合">
+<meta name="keywords" content="Java,面试,集合" />
 
 
-<meta name="description" content="前言掌握Java基础技能不仅能在工作中得心应手，在面试中也会占尽优势。相信大家在过去的面试过程中一定被问到过关于HashMap的知识，最近笔者也在准备面试，打算重新学习一遍Java集合的知识。在...">
+<meta name="description" content="前言掌握Java基础技能不仅能在工作中得心应手，在面试中也会占尽优势。相信大家在过去的面试过程中一定被问到过关于HashMap的知识，最近笔者也在准备面试，打算重新学习一遍Java集合的知识。在..." />
 
 
-<meta name="robots" content="all">
-<meta name="google" content="all">
-<meta name="googlebot" content="all">
-<meta name="verify" content="all">
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
     <!--Title-->
 
 <title>
@@ -45,9 +45,11 @@
 
     
 
-<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
-<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.7.0">
-<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7.css">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.7.0.css">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash.css">
+
     
 <div class="hide">
     <script type="text/javascript">
@@ -75,7 +77,7 @@
 })();
 </script>
 
-</head></html>
+<meta name="generator" content="Hexo 4.2.1"></head>
 <!--[if lte IE 8]>
 <style>
     html{ font-size: 1em }
@@ -157,7 +159,7 @@
                         </li>
                         
                         <li role="presentation" class="text-center">
-                            <a href="https://tech.meituan.com"><i class="fa "></i>
+                            <a href="https://tech.meituan.com" target="_blank" rel="noopener"><i class="fa "></i>
                                 美团技术团队</a>
                         </li>
                         
@@ -183,7 +185,7 @@
     
     <span class="categories-meta fa-wrap">
         <i class="fa fa-folder-open-o"></i>
-        <a class="category-link" href="/categories/后端/">后端</a>
+        <a class="category-link" href="/categories/%E5%90%8E%E7%AB%AF/">后端</a>
     </span>
     
     
@@ -191,7 +193,7 @@
         <i class="fa fa-tags"></i>
         <span class="tags-meta">
             
-            <a class="tag-link" href="/tags/Java/">Java</a> <a class="tag-link" href="/tags/集合/">集合</a> <a class="tag-link" href="/tags/面试/">面试</a>
+            <a class="tag-link" href="/tags/Java/" rel="tag">Java</a> <a class="tag-link" href="/tags/%E9%9B%86%E5%90%88/" rel="tag">集合</a> <a class="tag-link" href="/tags/%E9%9D%A2%E8%AF%95/" rel="tag">面试</a>
             
         </span>
     </span>
@@ -220,7 +222,7 @@
 <blockquote>
 <p>HashMap是Java程序员使用频率最高的映射(键值对)处理的数据类型。随着JDK(Java Development Kit)版本的升级，JDK1.8对HashMap底层的实现进行了优化，例如引入红黑树的数据结构和扩容的优化等。</p>
 </blockquote>
-<h1 id="Map接口类继承图"><a href="#Map接口类继承图" class="headerlink" title="Map接口类继承图"></a>Map接口类继承图</h1><p><img src="/2019/08/29/Java面试之基础篇 - HashMap/Map类继承关系图.png" alt="Map类继承关系图"></p>
+<h1 id="Map接口类继承图"><a href="#Map接口类继承图" class="headerlink" title="Map接口类继承图"></a>Map接口类继承图</h1><p><img src="/2019/08/29/Java%E9%9D%A2%E8%AF%95%E4%B9%8B%E5%9F%BA%E7%A1%80%E7%AF%87%20-%20HashMap/Map类继承关系图.png" alt="Map类继承关系图"></p>
 <p><strong>说明：</strong></p>
 <ol>
 <li><strong>HashMap：</strong>它根据键的hashCode值存储数据，大多数情况下可以直接定位到它的值，因而具有很快的访问速度，但遍历顺序却是不确定的。 HashMap最多只允许一条记录的键为null，允许多条记录的值为null。HashMap非线程安全，即任一时刻可以有多个线程同时写HashMap，可能会导致数据的不一致。如果需要满足线程安全，可以用 Collections的synchronizedMap方法使HashMap具有线程安全的能力，或者使用ConcurrentHashMap。</li>
@@ -229,12 +231,12 @@
 <li><strong>TreeMap：</strong>TreeMap实现SortedMap接口，能够把它保存的记录根据键排序，默认是按键值的升序排序，也可以指定排序的比较器，当用Iterator遍历TreeMap时，得到的记录是排过序的。如果使用排序的映射，建议使用TreeMap。在使用TreeMap时，key必须实现Comparable接口或者在构造TreeMap传入自定义的Comparator，否则会在运行时抛出java.lang.ClassCastException类型的异常。</li>
 </ol>
 <h2 id="JDK1-8中HashMap是如何扩容的？与JDK1-7有什么区别"><a href="#JDK1-8中HashMap是如何扩容的？与JDK1-7有什么区别" class="headerlink" title="JDK1.8中HashMap是如何扩容的？与JDK1.7有什么区别"></a>JDK1.8中HashMap是如何扩容的？与JDK1.7有什么区别</h2><p>先来看图，以下是JDK1.7中HashMap的扩容机制：</p>
-<p><img src="/2019/08/29/Java面试之基础篇 - HashMap/JDK1.7HashMap扩容.png" alt="JDK1.7HashMap扩容"></p>
+<p><img src="/2019/08/29/Java%E9%9D%A2%E8%AF%95%E4%B9%8B%E5%9F%BA%E7%A1%80%E7%AF%87%20-%20HashMap/JDK1.7HashMap扩容.png" alt="JDK1.7HashMap扩容"></p>
 <blockquote>
 <p>1.7中的扩容过程会出现hash冲突</p>
 </blockquote>
 <p>在JDK1.8中HashMap的扩容有很大的改进，由于扩容数组的长度是2倍的关系，所以对于假设初始 tableSize = 4 要扩容到 8 来说就是 0100 到 1000 的变化（左移一位就是 2 倍），<strong>在扩容中只用判断原来的 hash 值与左移动的一位（newtable 的值）按位与操作是 0 或 1 就行，0 的话索引就不变，1 的话索引变成原索引加上扩容前数组</strong></p>
-<p><img src="/2019/08/29/Java面试之基础篇 - HashMap/JDK1.7扩容VSJDK1.8扩容.png" alt="JDK1.7扩容VSJDK1.8扩容"></p>
+<p><img src="/2019/08/29/Java%E9%9D%A2%E8%AF%95%E4%B9%8B%E5%9F%BA%E7%A1%80%E7%AF%87%20-%20HashMap/JDK1.7扩容VSJDK1.8扩容.png" alt="JDK1.7扩容VSJDK1.8扩容"></p>
 <p><strong>以下是JDK1.8源码核心实现：</strong></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">final</span> Node&lt;K, V&gt;[] resize() &#123;</span><br><span class="line">  Node&lt;K, V&gt;[] oldTab = table;</span><br><span class="line">  <span class="comment">//记住扩容前的数组长度和最大容量</span></span><br><span class="line">  <span class="keyword">int</span> oldCap = (oldTab == <span class="keyword">null</span>) ? <span class="number">0</span> : oldTab.length;</span><br><span class="line">  <span class="keyword">int</span> oldThr = threshold;</span><br><span class="line">  <span class="keyword">int</span> newCap, newThr = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">if</span> (oldCap &gt; <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="comment">//超过数组在java中最大容量就无能为力了，冲突就只能冲突</span></span><br><span class="line">    <span class="keyword">if</span> (oldCap &gt;= MAXIMUM_CAPACITY) &#123;</span><br><span class="line">      threshold = Integer.MAX_VALUE;</span><br><span class="line">      <span class="keyword">return</span> oldTab;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//长度和最大容量都扩容为原来的二倍 </span></span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> ((newCap = oldCap &lt;&lt; <span class="number">1</span>) &lt; MAXIMUM_CAPACITY &amp;&amp;</span><br><span class="line">             oldCap &gt;= DEFAULT_INITIAL_CAPACITY) &#123;</span><br><span class="line">      newThr = oldThr &lt;&lt; <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">double</span> threshold</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">//...... ......</span></span><br><span class="line">  <span class="comment">//更新新的最大容量为扩容计算后的最大容量</span></span><br><span class="line">  threshold = newThr;</span><br><span class="line">  <span class="comment">//更新扩容后的新数组长度</span></span><br><span class="line">  Node&lt;K, V&gt;[] newTab = (Node&lt;K, V&gt;[]) <span class="keyword">new</span> Node[newCap];</span><br><span class="line">  table = newTab;</span><br><span class="line">  <span class="keyword">if</span> (oldTab != <span class="keyword">null</span>) &#123;</span><br><span class="line">    <span class="comment">//遍历老数组下标索引</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; oldCap; ++j) &#123;</span><br><span class="line">      Node&lt;K, V&gt; e;</span><br><span class="line">      <span class="comment">//如果老数组对应索引上有元素则取出链表头元素放在e中</span></span><br><span class="line">      <span class="keyword">if</span> ((e = oldTab[j]) != <span class="keyword">null</span>) &#123;</span><br><span class="line">        oldTab[j] = <span class="keyword">null</span>;</span><br><span class="line">        <span class="comment">//如果老数组j下标处只有一个元素则直接计算新数组中位置放置</span></span><br><span class="line">        <span class="keyword">if</span> (e.next == <span class="keyword">null</span>) &#123;</span><br><span class="line">          newTab[e.hash &amp; (newCap - <span class="number">1</span>)] = e;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (e <span class="keyword">instanceof</span> TreeNode)</span><br><span class="line">          <span class="comment">//如果是树结构进行单独处理</span></span><br><span class="line">        &#123;</span><br><span class="line">          ((TreeNode&lt;K, V&gt;) e).split(<span class="keyword">this</span>, newTab, j, oldCap);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          preserve order</span><br><span class="line">            <span class="comment">//能进来说明数组索引j位置上存在哈希冲突的链表结构</span></span><br><span class="line">            Node&lt;K, V&gt; loHead = <span class="keyword">null</span>, loTail = <span class="keyword">null</span>;</span><br><span class="line">          Node&lt;K, V&gt; hiHead = <span class="keyword">null</span>, hiTail = <span class="keyword">null</span>;</span><br><span class="line">          Node&lt;K, V&gt; next;</span><br><span class="line">          <span class="comment">//循环处理数组索引j位置上哈希冲突的链表中每个元素</span></span><br><span class="line">          <span class="keyword">do</span> &#123;</span><br><span class="line">            next = e.next;</span><br><span class="line">            <span class="comment">//判断key的hash值与老数组长度与操作后结果决定元素是放在原索引处还是新索引</span></span><br><span class="line">            <span class="keyword">if</span> ((e.hash &amp; oldCap) == <span class="number">0</span>) &#123;</span><br><span class="line">              <span class="comment">//放在原索引处的建立新链表</span></span><br><span class="line">              <span class="keyword">if</span> (loTail == <span class="keyword">null</span>) &#123;</span><br><span class="line">                loHead = e;</span><br><span class="line">              &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                loTail.next = e;</span><br><span class="line">              &#125;</span><br><span class="line">              loTail = e;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">              <span class="comment">//放在新索引（原索引 + oldCap）处的建立新链表</span></span><br><span class="line">              <span class="keyword">if</span> (hiTail == <span class="keyword">null</span>) &#123;</span><br><span class="line">                hiHead = e;</span><br><span class="line">              &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                hiTail.next = e;</span><br><span class="line">              &#125;</span><br><span class="line">              hiTail = e;</span><br><span class="line">            &#125;</span><br><span class="line">          &#125; <span class="keyword">while</span> ((e = next) != <span class="keyword">null</span>);</span><br><span class="line">          <span class="keyword">if</span> (loTail != <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="comment">//放入原索引处 loTail.next = null;</span></span><br><span class="line">            newTab[j] = loHead;</span><br><span class="line">          &#125;</span><br><span class="line">          <span class="keyword">if</span> (hiTail != <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="comment">//放入新索引处</span></span><br><span class="line">            hiTail.next = <span class="keyword">null</span>;</span><br><span class="line">            newTab[j + oldCap] = hiHead;</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> newTab;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>在 JDK1.7 中扩容操作时，哈希冲突的数组索引处的旧链表元素扩容到新数组时，如果扩容后索引位置在新数组的索引位置与原数组中索引位置相同，则链表元素会发生倒置（即如上面图1，原来链表头扩容后变为尾巴）；而在 JDK1.8 中不会出现链表倒置现象。</p>
@@ -263,14 +265,14 @@
 </article>
 <div class="article-nav prev-next-wrap clearfix">
     
-    <a href="/2019/08/31/TCP三次握手和四次握手/" class="pre-post btn btn-default" title='TCP三次握手和四次握手'>
+    <a href="/2019/08/31/TCP%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E5%92%8C%E5%9B%9B%E6%AC%A1%E6%8F%A1%E6%89%8B/" class="pre-post btn btn-default" title='TCP三次握手和四次握手'>
         <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
         <span class="hidden-xs">
             TCP三次握手和四次握手</span>
     </a>
     
     
-    <a href="/2019/08/28/kafka是如何实现几十万的高并发写入/" class="next-post btn btn-default" title='Kafka是如何实现几十万的高并发写入'>
+    <a href="/2019/08/28/kafka%E6%98%AF%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E5%87%A0%E5%8D%81%E4%B8%87%E7%9A%84%E9%AB%98%E5%B9%B6%E5%8F%91%E5%86%99%E5%85%A5/" class="next-post btn btn-default" title='Kafka是如何实现几十万的高并发写入'>
         <span class="hidden-lg">下一篇</span>
         <span class="hidden-xs">
             Kafka是如何实现几十万的高并发写入</span><i class="fa fa-angle-right fa-fw"></i>
@@ -282,8 +284,10 @@
     
 
 <div id="vcomments" class="valine"></div>
+
 <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
 <script src="/assets/valine.min.js"></script>
+
 <script>
 new Valine({
     av: AV,
@@ -367,6 +371,8 @@ new Valine({
 
 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
-<script src="/js/app.js?rev=@@hash"></script>
+
+<script src="/js/app.js?rev=@@hash.js"></script>
+
 </body>
 </html>

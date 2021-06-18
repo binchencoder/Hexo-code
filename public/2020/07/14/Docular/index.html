@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html lang="zh-CN">
 
-<head><meta name="generator" content="Hexo 3.9.0">
+<head>
     <!--Setting-->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -19,17 +19,17 @@
     <link rel="dns-prefetch" href="https://binchencoder.github.io">
     <!--SEO-->
 
-<meta name="keywords" content="MarkDown,Document Preview,Document Service">
+<meta name="keywords" content="MarkDown,Document Preview,Document Service" />
 
 
 <meta name="description" content="DocularDocular是一个个人文档服务，它提供了一个本地HTTP服务器来服务给定文件夹中的文档。该文件夹包含以下支持的文件格式：HTML，MarkDown，MAFF
-InstallDoc...">
+InstallDoc..." />
 
 
-<meta name="robots" content="all">
-<meta name="google" content="all">
-<meta name="googlebot" content="all">
-<meta name="verify" content="all">
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
     <!--Title-->
 
 <title>
@@ -46,9 +46,11 @@ InstallDoc...">
 
     
 
-<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
-<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.7.0">
-<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7.css">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.7.0.css">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash.css">
+
     
 <div class="hide">
     <script type="text/javascript">
@@ -76,7 +78,7 @@ InstallDoc...">
 })();
 </script>
 
-</head></html>
+<meta name="generator" content="Hexo 4.2.1"></head>
 <!--[if lte IE 8]>
 <style>
     html{ font-size: 1em }
@@ -158,7 +160,7 @@ InstallDoc...">
                         </li>
                         
                         <li role="presentation" class="text-center">
-                            <a href="https://tech.meituan.com"><i class="fa "></i>
+                            <a href="https://tech.meituan.com" target="_blank" rel="noopener"><i class="fa "></i>
                                 美团技术团队</a>
                         </li>
                         
@@ -184,7 +186,7 @@ InstallDoc...">
     
     <span class="categories-meta fa-wrap">
         <i class="fa fa-folder-open-o"></i>
-        <a class="category-link" href="/categories/工具/">工具</a>
+        <a class="category-link" href="/categories/%E5%B7%A5%E5%85%B7/">工具</a>
     </span>
     
     
@@ -192,7 +194,7 @@ InstallDoc...">
         <i class="fa fa-tags"></i>
         <span class="tags-meta">
             
-            <a class="tag-link" href="/tags/Document-Preview/">Document Preview</a> <a class="tag-link" href="/tags/Document-Service/">Document Service</a> <a class="tag-link" href="/tags/MarkDown/">MarkDown</a>
+            <a class="tag-link" href="/tags/Document-Preview/" rel="tag">Document Preview</a> <a class="tag-link" href="/tags/Document-Service/" rel="tag">Document Service</a> <a class="tag-link" href="/tags/MarkDown/" rel="tag">MarkDown</a>
             
         </span>
     </span>
@@ -232,7 +234,7 @@ InstallDoc...">
 </blockquote>
 </li>
 </ul>
-<h2 id="Launch"><a href="#Launch" class="headerlink" title="Launch"></a>Launch</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">chenbin@chenbin-ThinkPad:~/$ docular -h</span><br><span class="line">Docular server.</span><br><span class="line"></span><br><span class="line">Usage:</span><br><span class="line">  docular-server [options]</span><br><span class="line"></span><br><span class="line">Options:</span><br><span class="line">  -allow-external</span><br><span class="line">    	Allow external access</span><br><span class="line">  -doc-dir string</span><br><span class="line">    	The doc directory path.</span><br><span class="line">  -port int</span><br><span class="line">    	The http port. (default 3455)</span><br><span class="line">  -webstatic string</span><br><span class="line">    	The web static directory. (default &quot;/usr/share/docular/webstatic&quot;)</span><br></pre></td></tr></table></figure>
+<h2 id="Launch"><a href="#Launch" class="headerlink" title="Launch"></a>Launch</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">chenbin@chenbin-ThinkPad:~&#x2F;$ docular -h</span><br><span class="line">Docular server.</span><br><span class="line"></span><br><span class="line">Usage:</span><br><span class="line">  docular-server [options]</span><br><span class="line"></span><br><span class="line">Options:</span><br><span class="line">  -allow-external</span><br><span class="line">    	Allow external access</span><br><span class="line">  -doc-dir string</span><br><span class="line">    	The doc directory path.</span><br><span class="line">  -port int</span><br><span class="line">    	The http port. (default 3455)</span><br><span class="line">  -webstatic string</span><br><span class="line">    	The web static directory. (default &quot;&#x2F;usr&#x2F;share&#x2F;docular&#x2F;webstatic&quot;)</span><br></pre></td></tr></table></figure>
 <ul>
 <li>运行docular需要指定doc-dir，也就是你想预览的文件夹</li>
 <li>可同时运行多个docular服务，需要制定port</li>
@@ -261,14 +263,14 @@ InstallDoc...">
 </article>
 <div class="article-nav prev-next-wrap clearfix">
     
-    <a href="/2020/07/20/gRPC服务发现&负载均衡/" class="pre-post btn btn-default" title='gRPC服务发现&负载均衡'>
+    <a href="/2020/07/20/gRPC%E6%9C%8D%E5%8A%A1%E5%8F%91%E7%8E%B0&%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/" class="pre-post btn btn-default" title='gRPC服务发现&负载均衡'>
         <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
         <span class="hidden-xs">
             gRPC服务发现&负载均衡</span>
     </a>
     
     
-    <a href="/2020/04/15/多线程 — 概述及底层实现机制浅析/" class="next-post btn btn-default" title='多线程 — 概述及底层实现机制浅析'>
+    <a href="/2020/04/15/%E5%A4%9A%E7%BA%BF%E7%A8%8B%20%E2%80%94%20%E6%A6%82%E8%BF%B0%E5%8F%8A%E5%BA%95%E5%B1%82%E5%AE%9E%E7%8E%B0%E6%9C%BA%E5%88%B6%E6%B5%85%E6%9E%90/" class="next-post btn btn-default" title='多线程 — 概述及底层实现机制浅析'>
         <span class="hidden-lg">下一篇</span>
         <span class="hidden-xs">
             多线程 — 概述及底层实现机制浅析</span><i class="fa fa-angle-right fa-fw"></i>
@@ -280,8 +282,10 @@ InstallDoc...">
     
 
 <div id="vcomments" class="valine"></div>
+
 <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
 <script src="/assets/valine.min.js"></script>
+
 <script>
 new Valine({
     av: AV,
@@ -365,6 +369,8 @@ new Valine({
 
 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
-<script src="/js/app.js?rev=@@hash"></script>
+
+<script src="/js/app.js?rev=@@hash.js"></script>
+
 </body>
 </html>

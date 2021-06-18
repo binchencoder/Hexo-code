@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html lang="zh-CN">
 
-<head><meta name="generator" content="Hexo 3.9.0">
+<head>
     <!--Setting-->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -19,16 +19,16 @@
     <link rel="dns-prefetch" href="https://binchencoder.github.io">
     <!--SEO-->
 
-<meta name="keywords" content="Bazel">
+<meta name="keywords" content="Bazel" />
 
 
-<meta name="description" content="Bazel入门最近一直在研究网关这玩意，想借鉴我们公司的网关架构自己实现一下。思路是引入grpc-gateway，只是在这套系统的基础上增加一些定制的功能，如：负载均衡，权限验证，API参数检查...">
+<meta name="description" content="Bazel入门最近一直在研究网关这玩意，想借鉴我们公司的网关架构自己实现一下。思路是引入grpc-gateway，只是在这套系统的基础上增加一些定制的功能，如：负载均衡，权限验证，API参数检查..." />
 
 
-<meta name="robots" content="all">
-<meta name="google" content="all">
-<meta name="googlebot" content="all">
-<meta name="verify" content="all">
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
     <!--Title-->
 
 <title>
@@ -45,9 +45,11 @@
 
     
 
-<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
-<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.7.0">
-<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7.css">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.7.0.css">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash.css">
+
     
 <div class="hide">
     <script type="text/javascript">
@@ -75,7 +77,7 @@
 })();
 </script>
 
-</head></html>
+<meta name="generator" content="Hexo 4.2.1"></head>
 <!--[if lte IE 8]>
 <style>
     html{ font-size: 1em }
@@ -157,7 +159,7 @@
                         </li>
                         
                         <li role="presentation" class="text-center">
-                            <a href="https://tech.meituan.com"><i class="fa "></i>
+                            <a href="https://tech.meituan.com" target="_blank" rel="noopener"><i class="fa "></i>
                                 美团技术团队</a>
                         </li>
                         
@@ -183,7 +185,7 @@
     
     <span class="categories-meta fa-wrap">
         <i class="fa fa-folder-open-o"></i>
-        <a class="category-link" href="/categories/工具/">工具</a>
+        <a class="category-link" href="/categories/%E5%B7%A5%E5%85%B7/">工具</a>
     </span>
     
     
@@ -191,7 +193,7 @@
         <i class="fa fa-tags"></i>
         <span class="tags-meta">
             
-            <a class="tag-link" href="/tags/Bazel/">Bazel</a>
+            <a class="tag-link" href="/tags/Bazel/" rel="tag">Bazel</a>
             
         </span>
     </span>
@@ -229,10 +231,10 @@
 <h2 id="核心概念"><a href="#核心概念" class="headerlink" title="核心概念"></a>核心概念</h2><p>Bazel根据在称为工作空间(WORKSPACE)的目录中组织的源代码构建软件。工作空间中的源文件以包的嵌套层次结构进行组织，其中每个包都是包含一组相关源文件和一个BUILD文件的目录。BUILD文件指定可以从源构建哪些软件输出。</p>
 <h3 id="工作空间"><a href="#工作空间" class="headerlink" title="工作空间"></a>工作空间</h3><p>工作空间是文件系统上的目录，每个工作空间目录都有一个名为WORKSPACE的文本文件，该文件可能为空(不建议这样做，至少定义一个name)，或者可能包含对构建输出所需的外部依赖项的引用。</p>
 <p>Sample:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">workspace(name = &quot;com_github_binchencoder_ease_gateway&quot;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">workspace(name &#x3D; &quot;com_github_binchencoder_ease_gateway&quot;)</span><br></pre></td></tr></table></figure>
 <h3 id="程序包"><a href="#程序包" class="headerlink" title="程序包"></a>程序包</h3><p>工作空间中代码组织的主要单元是包。包是相关文件的集合，以及它们之间的依赖关系的规范。每个程序包中包含一个BUILD文件，此文件中描述了此工具包的生成构建方式。</p>
 <h3 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h3><p>生成的目标，每个target又可以作为另外一个规则的输入。<br>绝大部分的target属于两种基本类型中的一种，file和rule。另外，还有一种其他的target类型，package group。但是他们很少见。</p>
-<p><img src="/2019/08/16/认识Bazel/target_tree.png" alt></p>
+<p><img src="/2019/08/16/%E8%AE%A4%E8%AF%86Bazel/target_tree.png" alt=""></p>
 <h2 id="进阶"><a href="#进阶" class="headerlink" title="进阶"></a>进阶</h2><p>上述就是bazel最简单的描述，如果要学习bazel的详细进阶，可以访问起<a href="https://bazel.build" target="_blank" rel="noopener">官网</a>，官网上的文档非常详细，不过是英文的。</p>
 <p>另外，我的github有几个更多的例子，可以进一步学习和理解bazel。</p>
 <h2 id="References"><a href="#References" class="headerlink" title="References:"></a>References:</h2><ul>
@@ -258,14 +260,14 @@
 </article>
 <div class="article-nav prev-next-wrap clearfix">
     
-    <a href="/2019/08/21/深入理解JVM - 内存结构/" class="pre-post btn btn-default" title='深入理解JVM - 内存结构'>
+    <a href="/2019/08/21/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3JVM%20-%20%E5%86%85%E5%AD%98%E7%BB%93%E6%9E%84/" class="pre-post btn btn-default" title='深入理解JVM - 内存结构'>
         <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
         <span class="hidden-xs">
             深入理解JVM - 内存结构</span>
     </a>
     
     
-    <a href="/2019/08/11/JVM内存管理/" class="next-post btn btn-default" title='JVM内存管理'>
+    <a href="/2019/08/11/JVM%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/" class="next-post btn btn-default" title='JVM内存管理'>
         <span class="hidden-lg">下一篇</span>
         <span class="hidden-xs">
             JVM内存管理</span><i class="fa fa-angle-right fa-fw"></i>
@@ -277,8 +279,10 @@
     
 
 <div id="vcomments" class="valine"></div>
+
 <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
 <script src="/assets/valine.min.js"></script>
+
 <script>
 new Valine({
     av: AV,
@@ -362,6 +366,8 @@ new Valine({
 
 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
-<script src="/js/app.js?rev=@@hash"></script>
+
+<script src="/js/app.js?rev=@@hash.js"></script>
+
 </body>
 </html>

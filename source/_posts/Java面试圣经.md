@@ -401,8 +401,20 @@ AQS是AbstractQueuedSynchronizer的简称。AQS提供了一种实现阻塞锁和
 
 9. 说说 CAP 定理、 BASE 理论
 
+   > CAP的结论非常简单：在分布式系统里，有3个属性非常重要，但只能同时满足其中的2个
+   >
+   > 1. Consistency：all nodes在任何时刻看到的data都是一样的（或说client的read操作总是返回最新写入的那个value）
+   > 2. Availability：系统时刻都允许操作，并且操作总会快速被Coordinator响应，最终client很快就得到返回的结果
+   > 3. Partition-tolerance：尽管网路有时候会因为故障导致被分隔开，但是系统依然在正常工作（或者说在满足前述的条件下工作）
+   >
+   > **CAP权衡**
+   >
+   > 如今的云计算环境里，因为网络随时都会被隔离开来，这是无法避免的，P是必须满足的，那么CAP暗示一个system要在C和A中做出抉择。
+   >
+   > 比如，Cassandra就选择了AP，对于C只能保证 Eventual Consistency（弱一致性）；传统的RDBMS在一个partition里保证可用性。
+
    ![CAP](./Java面试圣经/CAP.png)
-   
+
    - [分布式理论之BASE理论](https://segmentfault.com/a/1190000018019595)
 
 10. 怎么考虑数据一致性问题

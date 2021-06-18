@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html lang="zh-CN">
 
-<head><meta name="generator" content="Hexo 3.9.0">
+<head>
     <!--Setting-->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -19,17 +19,17 @@
     <link rel="dns-prefetch" href="https://binchencoder.github.io">
     <!--SEO-->
 
-<meta name="keywords" content="Java,JVM,后端,垃圾回收">
+<meta name="keywords" content="Java,后端,JVM,垃圾回收" />
 
 
 <meta name="description" content="前言在 JVM内存结构 中我们详细讲解了JVM中的内存是如何分布和组成的。
-我们已经知道JVM内存结构主要有三大块：堆内存、方法区和栈内存，而堆又是JVM中占用内存最大的一块，但是堆占用的空间也...">
+我们已经知道JVM内存结构主要有三大块：堆内存、方法区和栈内存，而堆又是JVM中占用内存最大的一块，但是堆占用的空间也..." />
 
 
-<meta name="robots" content="all">
-<meta name="google" content="all">
-<meta name="googlebot" content="all">
-<meta name="verify" content="all">
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
     <!--Title-->
 
 <title>
@@ -46,9 +46,11 @@
 
     
 
-<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
-<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.7.0">
-<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7.css">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.7.0.css">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash.css">
+
     
 <div class="hide">
     <script type="text/javascript">
@@ -76,7 +78,7 @@
 })();
 </script>
 
-</head></html>
+<meta name="generator" content="Hexo 4.2.1"></head>
 <!--[if lte IE 8]>
 <style>
     html{ font-size: 1em }
@@ -158,7 +160,7 @@
                         </li>
                         
                         <li role="presentation" class="text-center">
-                            <a href="https://tech.meituan.com"><i class="fa "></i>
+                            <a href="https://tech.meituan.com" target="_blank" rel="noopener"><i class="fa "></i>
                                 美团技术团队</a>
                         </li>
                         
@@ -184,7 +186,7 @@
     
     <span class="categories-meta fa-wrap">
         <i class="fa fa-folder-open-o"></i>
-        <a class="category-link" href="/categories/面试/">面试</a>
+        <a class="category-link" href="/categories/%E9%9D%A2%E8%AF%95/">面试</a>
     </span>
     
     
@@ -192,7 +194,7 @@
         <i class="fa fa-tags"></i>
         <span class="tags-meta">
             
-            <a class="tag-link" href="/tags/JVM/">JVM</a> <a class="tag-link" href="/tags/Java/">Java</a> <a class="tag-link" href="/tags/后端/">后端</a> <a class="tag-link" href="/tags/垃圾回收/">垃圾回收</a>
+            <a class="tag-link" href="/tags/JVM/" rel="tag">JVM</a> <a class="tag-link" href="/tags/Java/" rel="tag">Java</a> <a class="tag-link" href="/tags/%E5%90%8E%E7%AB%AF/" rel="tag">后端</a> <a class="tag-link" href="/tags/%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6/" rel="tag">垃圾回收</a>
             
         </span>
     </span>
@@ -219,7 +221,7 @@
     <div class="post-body post-content">
         <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>在 <a href="https://binchencoder.github.io/2019/08/21/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3JVM%20-%20%E5%86%85%E5%AD%98%E7%BB%93%E6%9E%84/">JVM内存结构</a> 中我们详细讲解了JVM中的内存是如何分布和组成的。</p>
 <p>我们已经知道JVM内存结构主要有三大块：<code>堆内存</code>、<code>方法区</code>和<code>栈内存</code>，而堆又是JVM中占用内存最大的一块，但是堆占用的空间也不是无限的(在JVM中会有参数来进行控制)，在程序运行的过程中，会不断的产生对象，导致堆的内存空间减少，这时我们会想到一定有一种机制来进行回收。接下来我们就一起来看看JVM是如何回收不再使用的对象空间的。</p>
-<h2 id="垃圾回收机制"><a href="#垃圾回收机制" class="headerlink" title="垃圾回收机制"></a>垃圾回收机制</h2><h4 id="Java垃圾回收主要关注堆"><a href="#Java垃圾回收主要关注堆" class="headerlink" title="Java垃圾回收主要关注堆"></a>Java垃圾回收主要关注堆</h4><p><img src="/2019/08/23/深入理解JVM - 垃圾回收/垃圾回收机制.png" alt="image"></p>
+<h2 id="垃圾回收机制"><a href="#垃圾回收机制" class="headerlink" title="垃圾回收机制"></a>垃圾回收机制</h2><h4 id="Java垃圾回收主要关注堆"><a href="#Java垃圾回收主要关注堆" class="headerlink" title="Java垃圾回收主要关注堆"></a>Java垃圾回收主要关注堆</h4><p><img src="/2019/08/23/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3JVM%20-%20%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6/垃圾回收机制.png" alt="image"></p>
 <blockquote>
 <p>Java内存运行时区域中的程序计数器、虚拟机栈、本地方法栈 都是线程私有的，因此它们的生命周期与线程的生命周期是一样的；栈中的栈帧随着方法的进入和退出有条无紊地执行着出栈和入栈操作。每一个栈帧中分配多少内存基本上是在类结构确定下来时就已知的（尽管在运行期会由JIT编译器进行一些优化）。因此这几个区域的内存分配和回收都具备确定性，不需要过多考虑回收的问题，因此方法结束或者线程结束时，内存自然就随着回收了。</p>
 </blockquote>
@@ -232,7 +234,7 @@
 <blockquote>
 <p>解决了<code>引用计数法</code> 循环引用的问题</p>
 </blockquote>
-<p><img src="/2019/08/23/深入理解JVM - 垃圾回收/可达性分析法.png" alt="image"></p>
+<p><img src="/2019/08/23/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3JVM%20-%20%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6/可达性分析法.png" alt="image"></p>
 <p>不可达的对象将暂时处于“缓刑”阶段，要真正宣告一个对象死亡，至少要经历两次标记过程</p>
 <h2 id="垃圾收集算法"><a href="#垃圾收集算法" class="headerlink" title="垃圾收集算法"></a>垃圾收集算法</h2><p><strong>一共有四种：</strong> <code>标记-清除算法</code>、<code>复制算法</code>、<code>标记-整理算法</code>、<code>分代收集算法</code></p>
 <h3 id="标记-清除算法-Mark-Sweep"><a href="#标记-清除算法-Mark-Sweep" class="headerlink" title="标记-清除算法(Mark-Sweep)"></a><strong>标记-清除算法(Mark-Sweep)</strong></h3><p>这是最基础的算法，分为“标记” 和 “清除” 两个阶段。首先<strong>标记</strong>出所有需要回收的对象，在标记完成后统一回收所有被标记的对象</p>
@@ -241,16 +243,16 @@
 <li>效率问题</li>
 <li>空间问题，标记清除之后会产生大量不连续的内存碎片，空间碎片太多会导致以后需要分配较大的对象空间时，无法找到足够的连续内存而不得不提前触发另一次垃圾收集动作</li>
 </ul>
-<p><img src="/2019/08/23/深入理解JVM - 垃圾回收/标记-清除.png" alt="image"></p>
+<p><img src="/2019/08/23/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3JVM%20-%20%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6/标记-清除.png" alt="image"></p>
 <h3 id="复制算法-Copying"><a href="#复制算法-Copying" class="headerlink" title="复制算法(Copying)"></a><strong>复制算法(Copying)</strong></h3><blockquote>
 <p>现在的商业虚拟机都采用这种算法来回收新生代</p>
 </blockquote>
 <p>复制算法是为了为了解决效率的问题，它将可用内存分为大小相等的两块。每次只使用其中的一块。当这一块的内存用完了，就将还活着的对象复制到另外一块上，然后把已使用的内存空间一次性清理掉。</p>
 <p>这个算法的缺点是可用内存缩小为原来的一半</p>
-<p><img src="/2019/08/23/深入理解JVM - 垃圾回收/复制.png" alt="image"></p>
+<p><img src="/2019/08/23/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3JVM%20-%20%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6/复制.png" alt="image"></p>
 <h3 id="标记-整理算法-Mark-Compact"><a href="#标记-整理算法-Mark-Compact" class="headerlink" title="标记-整理算法(Mark-Compact)"></a><strong>标记-整理算法(Mark-Compact)</strong></h3><p>复制算法在对象存活率较高的情况下要进行较多的复制操作，效率会降低。</p>
 <p>复制算法并不适用于老年代，所以才有了<code>“标记-整理”</code> 算法，标记的过程与<code>“标记-清除”</code> 是一样的，第二步不是直接对可回收对象进行清理，而是让所有存活的对象都向一端移动，然后直接清理掉端便捷以外的内存</p>
-<p><img src="/2019/08/23/深入理解JVM - 垃圾回收/标记-整理.png" alt="image"></p>
+<p><img src="/2019/08/23/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3JVM%20-%20%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6/标记-整理.png" alt="image"></p>
 <h3 id="分代收集算法-Generational-Collection"><a href="#分代收集算法-Generational-Collection" class="headerlink" title="分代收集算法 (Generational Collection)"></a><strong>分代收集算法 (Generational Collection)</strong></h3><p>现代商业虚拟机的垃圾收集都采用这一算法，它是根据对象存活周期的不同将内存划分为几块并采用不同的垃圾收集算法。</p>
 <p>一般将Java堆分为<strong>新生代</strong>和<strong>老年代</strong>，这样就可以根据各个年代的特点采用最适当的收集算法。</p>
 <ul>
@@ -258,14 +260,14 @@
 <li>老年代：因为对象存活率高，没有额外空间对它进行分配担保，那就必须使用<strong>标记-清理</strong> 或者 <strong>标记-整理</strong> 算法来进行回收</li>
 </ul>
 <h2 id="垃圾回收器分类"><a href="#垃圾回收器分类" class="headerlink" title="垃圾回收器分类"></a>垃圾回收器分类</h2><p>如果垃圾收集算法是内存回收的方法论，那么垃圾收集器就是内存回收的具体实现</p>
-<p><img src="/2019/08/23/深入理解JVM - 垃圾回收/垃圾收集器分类.png" alt="image"></p>
-<h3 id="Serial收集器-串行收集器"><a href="#Serial收集器-串行收集器" class="headerlink" title="Serial收集器(串行收集器)"></a>Serial收集器(串行收集器)</h3><p><img src="/2019/08/23/深入理解JVM - 垃圾回收/serial.png" alt="image"></p>
+<p><img src="/2019/08/23/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3JVM%20-%20%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6/垃圾收集器分类.png" alt="image"></p>
+<h3 id="Serial收集器-串行收集器"><a href="#Serial收集器-串行收集器" class="headerlink" title="Serial收集器(串行收集器)"></a>Serial收集器(串行收集器)</h3><p><img src="/2019/08/23/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3JVM%20-%20%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6/serial.png" alt="image"></p>
 <blockquote>
 <p>这是一个单线程的收集器，它在进行垃圾收集时，必须暂停掉其他所有的工作线程，直到它收集结束（Stop The World）</p>
 </blockquote>
-<h3 id="Serial-Old收集器"><a href="#Serial-Old收集器" class="headerlink" title="Serial Old收集器"></a>Serial Old收集器</h3><p><img src="/2019/08/23/深入理解JVM - 垃圾回收/serial-old.png" alt="image"></p>
+<h3 id="Serial-Old收集器"><a href="#Serial-Old收集器" class="headerlink" title="Serial Old收集器"></a>Serial Old收集器</h3><p><img src="/2019/08/23/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3JVM%20-%20%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6/serial-old.png" alt="image"></p>
 <p>这是Serial收集器是老年代版本，也是一个单线程，使用 <strong>标记-整理</strong> 算法。</p>
-<h3 id="ParNew收集器-串行收集器"><a href="#ParNew收集器-串行收集器" class="headerlink" title="ParNew收集器(串行收集器)"></a>ParNew收集器(串行收集器)</h3><p><img src="/2019/08/23/深入理解JVM - 垃圾回收/parnew.png" alt="image"></p>
+<h3 id="ParNew收集器-串行收集器"><a href="#ParNew收集器-串行收集器" class="headerlink" title="ParNew收集器(串行收集器)"></a>ParNew收集器(串行收集器)</h3><p><img src="/2019/08/23/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3JVM%20-%20%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6/parnew.png" alt="image"></p>
 <blockquote>
 <p>ParNew收集器是Serial收集器的多线程版本</p>
 </blockquote>
@@ -274,11 +276,11 @@
 <blockquote>
 <p>吞吐量 = 运行用户代码时间 /（运行用户代码时间+垃圾收集时间），虚拟机总共运行了 100 分钟，其中垃圾收集花掉1分钟，那吞吐量就是99%</p>
 </blockquote>
-<h3 id="Parallel-Old收集器-并行收集器"><a href="#Parallel-Old收集器-并行收集器" class="headerlink" title="Parallel Old收集器(并行收集器)"></a>Parallel Old收集器(并行收集器)</h3><p><img src="/2019/08/23/深入理解JVM - 垃圾回收/parallel-old.png" alt="image"></p>
+<h3 id="Parallel-Old收集器-并行收集器"><a href="#Parallel-Old收集器-并行收集器" class="headerlink" title="Parallel Old收集器(并行收集器)"></a>Parallel Old收集器(并行收集器)</h3><p><img src="/2019/08/23/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3JVM%20-%20%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6/parallel-old.png" alt="image"></p>
 <p>这是Parallel Scavenge收集器的老年代版本，使用多线程和<strong>标记-整理算法</strong></p>
 <p><strong>Sample:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">java -Xmx3800m -Xms3800m -Xmn2g -Xss128k -XX:+UseParallelGC -XX:ParallelGCThreads=20 </span><br><span class="line">-XX:+UseParallelOldGC MaxGCPauseMillis=100 -XX:MaxGCPauseMillis=100</span><br></pre></td></tr></table></figure>
-<h3 id="CMS收集器-Concurrent-Mark-Sweep-并发标记扫描"><a href="#CMS收集器-Concurrent-Mark-Sweep-并发标记扫描" class="headerlink" title="CMS收集器(Concurrent Mark Sweep 并发标记扫描)"></a>CMS收集器(Concurrent Mark Sweep 并发标记扫描)</h3><p><img src="/2019/08/23/深入理解JVM - 垃圾回收/cms.png" alt="image"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">java -Xmx3800m -Xms3800m -Xmn2g -Xss128k -XX:+UseParallelGC -XX:ParallelGCThreads&#x3D;20 </span><br><span class="line">-XX:+UseParallelOldGC MaxGCPauseMillis&#x3D;100 -XX:MaxGCPauseMillis&#x3D;100</span><br></pre></td></tr></table></figure>
+<h3 id="CMS收集器-Concurrent-Mark-Sweep-并发标记扫描"><a href="#CMS收集器-Concurrent-Mark-Sweep-并发标记扫描" class="headerlink" title="CMS收集器(Concurrent Mark Sweep 并发标记扫描)"></a>CMS收集器(Concurrent Mark Sweep 并发标记扫描)</h3><p><img src="/2019/08/23/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3JVM%20-%20%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6/cms.png" alt="image"></p>
 <p>这是一种以获取最短回收停顿时间为目标的收集器</p>
 <p><strong>步骤：</strong></p>
 <ol>
@@ -298,8 +300,8 @@
 <li>产生空间碎片：空间碎片过多时，将会给大对象分配带来很大麻烦，往往会出现老年代还有很大空间剩余，但是无法找到足够大的连续空间来分配当前对象，不得不提前触发一次 Full GC </li>
 </ol>
 <p><strong>Sample:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">java -Xmx3550m -Xms3550m -Xmn2g -Xss128k-XX:ParallelGCThreads=20  -XX:+UseConcMarkSweepGC </span><br><span class="line">-XX:+UseParNewGC  -XX:CMSFullGCsBeforeCompaction=5 -XX:+UseCMSCompactAtFullCollection</span><br></pre></td></tr></table></figure>
-<h3 id="G1收集器（Garbage-First）【重点】"><a href="#G1收集器（Garbage-First）【重点】" class="headerlink" title="G1收集器（Garbage-First）【重点】"></a>G1收集器（Garbage-First）【重点】</h3><p><img src="/2019/08/23/深入理解JVM - 垃圾回收/g1.png" alt="image"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">java -Xmx3550m -Xms3550m -Xmn2g -Xss128k-XX:ParallelGCThreads&#x3D;20  -XX:+UseConcMarkSweepGC </span><br><span class="line">-XX:+UseParNewGC  -XX:CMSFullGCsBeforeCompaction&#x3D;5 -XX:+UseCMSCompactAtFullCollection</span><br></pre></td></tr></table></figure>
+<h3 id="G1收集器（Garbage-First）【重点】"><a href="#G1收集器（Garbage-First）【重点】" class="headerlink" title="G1收集器（Garbage-First）【重点】"></a>G1收集器（Garbage-First）【重点】</h3><p><img src="/2019/08/23/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3JVM%20-%20%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6/g1.png" alt="image"></p>
 <p>G1 是一款面向服务端应用的垃圾收集器</p>
 <p><strong>步骤：</strong></p>
 <ol>
@@ -370,8 +372,8 @@
 </tr>
 </tbody>
 </table>
-<h3 id="垃圾收集器参数总结"><a href="#垃圾收集器参数总结" class="headerlink" title="垃圾收集器参数总结"></a>垃圾收集器参数总结</h3><p><img src="/2019/08/23/深入理解JVM - 垃圾回收/垃圾收集器参数1.png" alt><br><img src="/2019/08/23/深入理解JVM - 垃圾回收/垃圾收集器参数2.png" alt></p>
-<h2 id="查看垃圾回收器"><a href="#查看垃圾回收器" class="headerlink" title="查看垃圾回收器"></a>查看垃圾回收器</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">chenbindeMacBook-Pro:BazelWorkspace chenbin$ java -XX:+PrintCommandLineFlags -version</span><br><span class="line">-XX:InitialHeapSize=268435456 -XX:MaxHeapSize=4294967296 -XX:+PrintCommandLineFlags -XX:+UseCompressedClassPointers -XX:+UseCompressedOops -XX:+UseParallelGC</span><br><span class="line">java version &quot;1.8.0_112&quot;</span><br><span class="line">Java(TM) SE Runtime Environment (build 1.8.0_112-b16)</span><br><span class="line">Java HotSpot(TM) 64-Bit Server VM (build 25.112-b16, mixed mode)</span><br></pre></td></tr></table></figure>
+<h3 id="垃圾收集器参数总结"><a href="#垃圾收集器参数总结" class="headerlink" title="垃圾收集器参数总结"></a>垃圾收集器参数总结</h3><p><img src="/2019/08/23/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3JVM%20-%20%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6/垃圾收集器参数1.png" alt=""><br><img src="/2019/08/23/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3JVM%20-%20%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6/垃圾收集器参数2.png" alt=""></p>
+<h2 id="查看垃圾回收器"><a href="#查看垃圾回收器" class="headerlink" title="查看垃圾回收器"></a>查看垃圾回收器</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">chenbindeMacBook-Pro:BazelWorkspace chenbin$ java -XX:+PrintCommandLineFlags -version</span><br><span class="line">-XX:InitialHeapSize&#x3D;268435456 -XX:MaxHeapSize&#x3D;4294967296 -XX:+PrintCommandLineFlags -XX:+UseCompressedClassPointers -XX:+UseCompressedOops -XX:+UseParallelGC</span><br><span class="line">java version &quot;1.8.0_112&quot;</span><br><span class="line">Java(TM) SE Runtime Environment (build 1.8.0_112-b16)</span><br><span class="line">Java HotSpot(TM) 64-Bit Server VM (build 25.112-b16, mixed mode)</span><br></pre></td></tr></table></figure>
 <h2 id="名词术语"><a href="#名词术语" class="headerlink" title="名词术语"></a>名词术语</h2><ol>
 <li><strong>Full GC：</strong>新生代和老年代同时回收</li>
 </ol>
@@ -399,14 +401,14 @@
 </article>
 <div class="article-nav prev-next-wrap clearfix">
     
-    <a href="/2019/08/24/深入理解JVM - 垃圾回收之世代垃圾收集过程/" class="pre-post btn btn-default" title='深入理解JVM - 垃圾回收之世代垃圾收集过程'>
+    <a href="/2019/08/24/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3JVM%20-%20%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E4%B9%8B%E4%B8%96%E4%BB%A3%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E8%BF%87%E7%A8%8B/" class="pre-post btn btn-default" title='深入理解JVM - 垃圾回收之世代垃圾收集过程'>
         <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
         <span class="hidden-xs">
             深入理解JVM - 垃圾回收之世代垃圾收集过程</span>
     </a>
     
     
-    <a href="/2019/08/21/深入理解JVM - 内存结构/" class="next-post btn btn-default" title='深入理解JVM - 内存结构'>
+    <a href="/2019/08/21/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3JVM%20-%20%E5%86%85%E5%AD%98%E7%BB%93%E6%9E%84/" class="next-post btn btn-default" title='深入理解JVM - 内存结构'>
         <span class="hidden-lg">下一篇</span>
         <span class="hidden-xs">
             深入理解JVM - 内存结构</span><i class="fa fa-angle-right fa-fw"></i>
@@ -418,8 +420,10 @@
     
 
 <div id="vcomments" class="valine"></div>
+
 <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
 <script src="/assets/valine.min.js"></script>
+
 <script>
 new Valine({
     av: AV,
@@ -503,6 +507,8 @@ new Valine({
 
 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
-<script src="/js/app.js?rev=@@hash"></script>
+
+<script src="/js/app.js?rev=@@hash.js"></script>
+
 </body>
 </html>

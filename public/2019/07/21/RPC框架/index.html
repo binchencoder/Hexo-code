@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html lang="zh-CN">
 
-<head><meta name="generator" content="Hexo 3.9.0">
+<head>
     <!--Setting-->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -19,16 +19,16 @@
     <link rel="dns-prefetch" href="https://binchencoder.github.io">
     <!--SEO-->
 
-<meta name="keywords" content="RPC">
+<meta name="keywords" content="RPC" />
 
 
-<meta name="description" content="前言大概是三年前我开始接触RPC，那时作为一个刚入职场三年的新兵，在公司技术架构决策层上还没有什么发言权。一直沿用前辈搭建的技术架构来开发应用系统，当时还没有前后端分离，采用的框架是Spring...">
+<meta name="description" content="前言大概是三年前我开始接触RPC，那时作为一个刚入职场三年的新兵，在公司技术架构决策层上还没有什么发言权。一直沿用前辈搭建的技术架构来开发应用系统，当时还没有前后端分离，采用的框架是Spring..." />
 
 
-<meta name="robots" content="all">
-<meta name="google" content="all">
-<meta name="googlebot" content="all">
-<meta name="verify" content="all">
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
     <!--Title-->
 
 <title>
@@ -45,9 +45,11 @@
 
     
 
-<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
-<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.7.0">
-<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7.css">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.7.0.css">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash.css">
+
     
 <div class="hide">
     <script type="text/javascript">
@@ -75,7 +77,7 @@
 })();
 </script>
 
-</head></html>
+<meta name="generator" content="Hexo 4.2.1"></head>
 <!--[if lte IE 8]>
 <style>
     html{ font-size: 1em }
@@ -157,7 +159,7 @@
                         </li>
                         
                         <li role="presentation" class="text-center">
-                            <a href="https://tech.meituan.com"><i class="fa "></i>
+                            <a href="https://tech.meituan.com" target="_blank" rel="noopener"><i class="fa "></i>
                                 美团技术团队</a>
                         </li>
                         
@@ -183,7 +185,7 @@
     
     <span class="categories-meta fa-wrap">
         <i class="fa fa-folder-open-o"></i>
-        <a class="category-link" href="/categories/后端/">后端</a>
+        <a class="category-link" href="/categories/%E5%90%8E%E7%AB%AF/">后端</a>
     </span>
     
     
@@ -191,7 +193,7 @@
         <i class="fa fa-tags"></i>
         <span class="tags-meta">
             
-            <a class="tag-link" href="/tags/RPC/">RPC</a>
+            <a class="tag-link" href="/tags/RPC/" rel="tag">RPC</a>
             
         </span>
     </span>
@@ -219,8 +221,8 @@
         <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>大概是三年前我开始接触RPC，那时作为一个刚入职场三年的新兵，在公司技术架构决策层上还没有什么发言权。一直沿用前辈搭建的技术架构来开发应用系统，当时还没有前后端分离，采用的框架是<code>Spring MVC + JSP</code>，每个应用服务都是一个war，服务间的调用是通过共享访问数据库的代码包(jar)来实现，现在想想那时的技术是真的Low，导致现在欠了很多的技术债，直到现在我们也还在努力的还债。</p>
 <p>后来随着服务不断增加，而且服务之前还需要互相调用，这种方式导致维护的成本越来越高。这时领导才下定决心要重构技术架构，要引入微服务并进行前后端分离，这才拉开了服务化的进程，从那时起我们开始引入RPC框架。</p>
 <p>本片文章我会带领大家来了解这几个方面的内容：什么是RPC，为什么要使用RPC以及常见的RPC框架。</p>
-<h1 id="RPC简介"><a href="#RPC简介" class="headerlink" title="RPC简介"></a>RPC简介</h1><p>RPC 是远程过程调用（Remote Procedure Call）的缩写形式，Birrell 和 Nelson 在 1984 发表于 ACM Transactions on Computer Systems 的论文<strong>《Implementing remote procedure calls》</strong>对 RPC 做了经典的诠释。RPC 是指计算机 A 上的进程，调用另外一台计算机 B 上的进程，其中 A 上的调用进程被挂起，而 B 上的被调用进程开始执行，当值返回给 A 时，A 进程继续执行。调用方可以通过使用参数将信息传送给被调用方，而后可以通过传回的结果得到信息。而这一过程，对于开发人员来说是透明的。<br><img src="/2019/07/21/RPC框架/what-rpc.png" alt="RPC框架"><br>上图描述了数据报在一个简单的RPC传递的过程</p>
-<p>当两个物理分离的子系统需要建立逻辑上的关联时，RPC 是牵线搭桥的常见技术手段之一。除 RPC 之外，常见的多系统数据交互方案还有分布式消息队列、HTTP 请求调用、数据库和分布式缓存等。<br><img src="/2019/07/21/RPC框架/what-rpc1.png" alt="image"></p>
+<h1 id="RPC简介"><a href="#RPC简介" class="headerlink" title="RPC简介"></a>RPC简介</h1><p>RPC 是远程过程调用（Remote Procedure Call）的缩写形式，Birrell 和 Nelson 在 1984 发表于 ACM Transactions on Computer Systems 的论文<strong>《Implementing remote procedure calls》</strong>对 RPC 做了经典的诠释。RPC 是指计算机 A 上的进程，调用另外一台计算机 B 上的进程，其中 A 上的调用进程被挂起，而 B 上的被调用进程开始执行，当值返回给 A 时，A 进程继续执行。调用方可以通过使用参数将信息传送给被调用方，而后可以通过传回的结果得到信息。而这一过程，对于开发人员来说是透明的。<br><img src="/2019/07/21/RPC%E6%A1%86%E6%9E%B6/what-rpc.png" alt="RPC框架"><br>上图描述了数据报在一个简单的RPC传递的过程</p>
+<p>当两个物理分离的子系统需要建立逻辑上的关联时，RPC 是牵线搭桥的常见技术手段之一。除 RPC 之外，常见的多系统数据交互方案还有分布式消息队列、HTTP 请求调用、数据库和分布式缓存等。<br><img src="/2019/07/21/RPC%E6%A1%86%E6%9E%B6/what-rpc1.png" alt="image"></p>
 <p>其中 RPC 和 HTTP 调用是没有经过中间件的，它们是端到端系统的直接数据交互。HTTP 调用其实也可以看成是一种特殊的 RPC，只不过传统意义上的 RPC 是指长连接数据交互，而 HTTP 一般是指即用即走的短链接。</p>
 <p>RPC 在我们熟知的各种中间件中都有它的身影。Nginx/Redis/MySQL/Dubbo/Hadoop/Spark/Tensorflow 等重量级开源产品都是在 RPC 技术的基础上构建出来的，我们这里说的 RPC 指的是广义的 RPC，也就是分布式系统的通信技术。RPC 在技术中的地位好比我们身边的空气，它无处不在，但是又有很多人根本不知道它的存在。</p>
 <h1 id="为什么要使用RPC"><a href="#为什么要使用RPC" class="headerlink" title="为什么要使用RPC"></a>为什么要使用RPC</h1><ol>
@@ -269,14 +271,14 @@
 </article>
 <div class="article-nav prev-next-wrap clearfix">
     
-    <a href="/2019/07/29/Linux查看系统硬件信息/" class="pre-post btn btn-default" title='Linux查看系统硬件信息'>
+    <a href="/2019/07/29/Linux%E6%9F%A5%E7%9C%8B%E7%B3%BB%E7%BB%9F%E7%A1%AC%E4%BB%B6%E4%BF%A1%E6%81%AF/" class="pre-post btn btn-default" title='Linux查看系统硬件信息'>
         <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
         <span class="hidden-xs">
             Linux查看系统硬件信息</span>
     </a>
     
     
-    <a href="/2019/01/20/MySQL锁的理解/" class="next-post btn btn-default" title='MySQL中 乐观锁、悲观锁、共享锁、排它锁、行锁、表锁的理解'>
+    <a href="/2019/01/20/MySQL%E9%94%81%E7%9A%84%E7%90%86%E8%A7%A3/" class="next-post btn btn-default" title='MySQL中 乐观锁、悲观锁、共享锁、排它锁、行锁、表锁的理解'>
         <span class="hidden-lg">下一篇</span>
         <span class="hidden-xs">
             MySQL中 乐观锁、悲观锁、共享锁、排它锁、行锁、表锁的理解</span><i class="fa fa-angle-right fa-fw"></i>
@@ -288,8 +290,10 @@
     
 
 <div id="vcomments" class="valine"></div>
+
 <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
 <script src="/assets/valine.min.js"></script>
+
 <script>
 new Valine({
     av: AV,
@@ -373,6 +377,8 @@ new Valine({
 
 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
-<script src="/js/app.js?rev=@@hash"></script>
+
+<script src="/js/app.js?rev=@@hash.js"></script>
+
 </body>
 </html>

@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html lang="zh-CN">
 
-<head><meta name="generator" content="Hexo 3.9.0">
+<head>
     <!--Setting-->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -19,16 +19,16 @@
     <link rel="dns-prefetch" href="https://binchencoder.github.io">
     <!--SEO-->
 
-<meta name="keywords" content="MySQL,存储">
+<meta name="keywords" content="MySQL,存储" />
 
 
-<meta name="description" content="前言说起MySQL的查询优化，相信大家收藏了一堆奇技淫巧：不能使用SELECT *、不使用NULL字段、合理创建索引、为字段选择合适的数据类型….. 你是否真的理解这些优化技巧？是否理解其背后的...">
+<meta name="description" content="前言说起MySQL的查询优化，相信大家收藏了一堆奇技淫巧：不能使用SELECT *、不使用NULL字段、合理创建索引、为字段选择合适的数据类型….. 你是否真的理解这些优化技巧？是否理解其背后的..." />
 
 
-<meta name="robots" content="all">
-<meta name="google" content="all">
-<meta name="googlebot" content="all">
-<meta name="verify" content="all">
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
     <!--Title-->
 
 <title>
@@ -45,9 +45,11 @@
 
     
 
-<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
-<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.7.0">
-<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7.css">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.7.0.css">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash.css">
+
     
 <div class="hide">
     <script type="text/javascript">
@@ -75,7 +77,7 @@
 })();
 </script>
 
-</head></html>
+<meta name="generator" content="Hexo 4.2.1"></head>
 <!--[if lte IE 8]>
 <style>
     html{ font-size: 1em }
@@ -157,7 +159,7 @@
                         </li>
                         
                         <li role="presentation" class="text-center">
-                            <a href="https://tech.meituan.com"><i class="fa "></i>
+                            <a href="https://tech.meituan.com" target="_blank" rel="noopener"><i class="fa "></i>
                                 美团技术团队</a>
                         </li>
                         
@@ -183,7 +185,7 @@
     
     <span class="categories-meta fa-wrap">
         <i class="fa fa-folder-open-o"></i>
-        <a class="category-link" href="/categories/存储/">存储</a>
+        <a class="category-link" href="/categories/%E5%AD%98%E5%82%A8/">存储</a>
     </span>
     
     
@@ -191,7 +193,7 @@
         <i class="fa fa-tags"></i>
         <span class="tags-meta">
             
-            <a class="tag-link" href="/tags/MySQL/">MySQL</a> <a class="tag-link" href="/tags/存储/">存储</a>
+            <a class="tag-link" href="/tags/MySQL/" rel="tag">MySQL</a> <a class="tag-link" href="/tags/%E5%AD%98%E5%82%A8/" rel="tag">存储</a>
             
         </span>
     </span>
@@ -218,13 +220,13 @@
     <div class="post-body post-content">
         <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>说起MySQL的查询优化，相信大家收藏了一堆奇技淫巧：不能使用SELECT *、不使用NULL字段、合理创建索引、为字段选择合适的数据类型….. 你是否真的理解这些优化技巧？是否理解其背后的工作原理？在实际场景下性能真有提升吗？我想未必。因而理解这些优化建议背后的原理就尤为重要，希望本文能让你重新审视这些优化建议，并在实际业务场景下合理的运用。</p>
 <h2 id="MySQL逻辑架构"><a href="#MySQL逻辑架构" class="headerlink" title="MySQL逻辑架构"></a>MySQL逻辑架构</h2><p>如果能在头脑中构建一幅MySQL各组件之间如何协同工作的架构图，有助于深入理解MySQL服务器。下图展示了MySQL的逻辑架构图。</p>
-<p><img src="/2019/07/29/MySQL优化原理/MySQL.png" alt="MySQL逻辑架构"></p>
+<p><img src="/2019/07/29/MySQL%E4%BC%98%E5%8C%96%E5%8E%9F%E7%90%86/MySQL.png" alt="MySQL逻辑架构"></p>
 <p>MySQL逻辑架构整体分为三层，最上层为客户端层，并非MySQL所独有，诸如：连接处理、授权认证、安全等功能均在这一层处理。</p>
 <p>MySQL大多数核心服务均在中间这一层，包括查询解析、分析、优化、缓存、内置函数(比如：时间、数学、加密等函数)。所有的跨存储引擎的功能也在这一层实现：存储过程、触发器、视图等。</p>
 <p>最下层为存储引擎，其负责MySQL中的数据存储和提取。和Linux下的文件系统类似，每种存储引擎都有其优势和劣势。中间的服务层通过API与存储引擎通信，这些API接口屏蔽了不同存储引擎间的差异。</p>
 <h2 id="MySQL查询过程"><a href="#MySQL查询过程" class="headerlink" title="MySQL查询过程"></a>MySQL查询过程</h2><p>我们总是希望MySQL能够获得更高的查询性能，最好的办法是弄清楚MySQL是如何优化和执行查询的。一旦理解了这一点，就会发现：<strong>很多的查询优化工作实际上就是遵循一些原则让MySQL的优化器能够按照预想的合理方式运行而已。</strong></p>
 <p>当向MySQL发送一个请求的时候，MySQL到底做了些什么呢？</p>
-<p><img src="/2019/07/29/MySQL优化原理/MySQL-Process.png" alt="MySQL查询过程"></p>
+<p><img src="/2019/07/29/MySQL%E4%BC%98%E5%8C%96%E5%8E%9F%E7%90%86/MySQL-Process.png" alt="MySQL查询过程"></p>
 <h3 id="客户端-服务端通信协议"><a href="#客户端-服务端通信协议" class="headerlink" title="客户端/服务端通信协议"></a>客户端/服务端通信协议</h3><p>MySQL客户端/服务端通信协议是“半双工”的：在任一时刻，要么是服务器向客户端发送数据，要么是客户端向服务器发送数据，这两个动作不能同时发生。一旦一端开始发送消息，另一端要接收完整个消息才能响应它，所以我们无法也无须将一个消息切成小块独立发送，也没有办法进行流量控制。</p>
 <p>客户端用一个单独的数据包将查询请求发送给服务器，所以当查询语句很长的时候，需要设置<code>max_allowed_packet</code>参数。但是需要注意的是，如果查询实在是太大，服务端会拒绝接收更多数据并抛出异常。</p>
 <p>与之相反的是，服务器响应给用户的数据通常会很多，由多个数据包组成。但是当服务器响应客户端请求时，客户端必须完整的接收整个返回结果，而不能简单的只取前面几条结果，然后让服务器停止发送。因而在实际开发中，尽量保持查询简单且只返回必需的数据，减小通信间数据包的大小和数量是一个非常好的习惯，这也是查询中尽量避免使用<code>SELECT *</code>以及加上<code>LIMIT</code>限制的原因之一。</p>
@@ -262,14 +264,14 @@
 </article>
 <div class="article-nav prev-next-wrap clearfix">
     
-    <a href="/2019/08/01/Spring Boot中application.properties与bootstrap.properties的区别/" class="pre-post btn btn-default" title='Spring Boot中application.properties与bootstrap.properties的区别'>
+    <a href="/2019/08/01/Spring%20Boot%E4%B8%ADapplication.properties%E4%B8%8Ebootstrap.properties%E7%9A%84%E5%8C%BA%E5%88%AB/" class="pre-post btn btn-default" title='Spring Boot中application.properties与bootstrap.properties的区别'>
         <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
         <span class="hidden-xs">
             Spring Boot中application.properties与bootstrap.properties的区别</span>
     </a>
     
     
-    <a href="/2019/07/29/Linux查看系统硬件信息/" class="next-post btn btn-default" title='Linux查看系统硬件信息'>
+    <a href="/2019/07/29/Linux%E6%9F%A5%E7%9C%8B%E7%B3%BB%E7%BB%9F%E7%A1%AC%E4%BB%B6%E4%BF%A1%E6%81%AF/" class="next-post btn btn-default" title='Linux查看系统硬件信息'>
         <span class="hidden-lg">下一篇</span>
         <span class="hidden-xs">
             Linux查看系统硬件信息</span><i class="fa fa-angle-right fa-fw"></i>
@@ -281,8 +283,10 @@
     
 
 <div id="vcomments" class="valine"></div>
+
 <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
 <script src="/assets/valine.min.js"></script>
+
 <script>
 new Valine({
     av: AV,
@@ -311,7 +315,7 @@ new Valine({
             文章目录
         </h3>
         
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MySQL逻辑架构"><span class="toc-text">MySQL逻辑架构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MySQL查询过程"><span class="toc-text">MySQL查询过程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#客户端-服务端通信协议"><span class="toc-text">客户端/服务端通信协议</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查询缓存"><span class="toc-text">查询缓存</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MySQL逻辑架构"><span class="toc-text">MySQL逻辑架构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MySQL查询过程"><span class="toc-text">MySQL查询过程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#客户端-服务端通信协议"><span class="toc-text">客户端&#x2F;服务端通信协议</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查询缓存"><span class="toc-text">查询缓存</span></a></li></ol></li></ol>
         
     </div>
 </aside>
@@ -366,6 +370,8 @@ new Valine({
 
 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
-<script src="/js/app.js?rev=@@hash"></script>
+
+<script src="/js/app.js?rev=@@hash.js"></script>
+
 </body>
 </html>
