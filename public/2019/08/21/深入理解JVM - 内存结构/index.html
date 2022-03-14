@@ -14,7 +14,7 @@
     <meta name="format-detection" content="telephone=no,email=no,adress=no">
     <meta name="browsermode" content="application">
     <meta name="screen-orientation" content="portrait">
-    <meta name="theme-version" content="1.2.3">
+    <meta name="theme-version" content="1.3.0">
     <meta name="root" content="/">
     <link rel="dns-prefetch" href="https://binchencoder.github.io">
     <!--SEO-->
@@ -221,7 +221,7 @@
         <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>每个使用Java的开发者都知道Java字节码是在<code>JRE</code>中运行，JRE由Java API和JVM组成，JVM通过类加载器(Class Loader)加载Java应用，并通过Java API进行执行。</p>
 <p><code>JVM</code>则是JRE中的核心组成部分，承担分析和执行Java字节码的工作，而Java开发人员通常并不需要深入了解JVM运行情况就可以开发出大型应用和类库。尽管如此，相信所有的Java开发人员在工作中都会遇到这样的困惑：该为堆内存设置多大的空间？OutOfMemoryError的异常到底涉及到运行时数据的哪块区域，遇到了该如何解决？</p>
 <p>在Java成长的道路上，对JVM调优是一项最基本的技能。如果你是一名资深的Java开发人员，一定会接到解决服务器性能的任务，而深入理解JVM则是解决这一问题的根本。</p>
-<h2 id="JVM内存结构"><a href="#JVM内存结构" class="headerlink" title="JVM内存结构"></a>JVM内存结构</h2><p><img src="/2019/08/21/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3JVM%20-%20%E5%86%85%E5%AD%98%E7%BB%93%E6%9E%84/JVM内存结构.png" alt="JVM的内存结构"></p>
+<h2 id="JVM内存结构"><a href="#JVM内存结构" class="headerlink" title="JVM内存结构"></a>JVM内存结构</h2><p><img src="/2019/08/21/深入理解JVM - 内存结构/JVM内存结构.png" alt="JVM的内存结构"></p>
 <blockquote>
 <ul>
 <li><p>JVM内存结构主要有三大块：<code>堆内存</code>、<code>方法区</code>和<code>栈</code>。堆内存是JVM中最大的一块由<strong>年轻代</strong>和<strong>老年代</strong> 组成。而年轻代内存又被分成三部分，<strong>Eden空间</strong>、<strong>From Survivor空间</strong>、<strong>To Survivor空间</strong>,默认情况下年轻代按照8:1:1的比例来分配的;</p>
@@ -232,7 +232,7 @@
 </li>
 </ul>
 </blockquote>
-<p><img src="/2019/08/21/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3JVM%20-%20%E5%86%85%E5%AD%98%E7%BB%93%E6%9E%84/内存及调优参数.png" alt="内存及调优参数"></p>
+<p><img src="/2019/08/21/深入理解JVM - 内存结构/内存及调优参数.png" alt="内存及调优参数"></p>
 <blockquote>
 <p>上图详细标注了如何通过参数来控制各区域的内存大小</p>
 </blockquote>
@@ -251,7 +251,7 @@
 <p>老年代空间大小 = 堆空间大小 - 年轻代大空间大小</p>
 </blockquote>
 <h2 id="Java运行时数据区"><a href="#Java运行时数据区" class="headerlink" title="Java运行时数据区"></a>Java运行时数据区</h2><p>Java虚拟机在执行Java程序的过程中会将其管理的内存划分为若干个不同的数据区域，这些区域有各自的用途、创建和销毁的时间，有些区域随虚拟机进程的启动而存在，有些区域则是依赖用户线程的启动和结束来建立和销毁。Java虚拟机所管理的内存包括以下几个运行时数据区域，如图：</p>
-<p><img src="/2019/08/21/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3JVM%20-%20%E5%86%85%E5%AD%98%E7%BB%93%E6%9E%84/runtime data area.png" alt=""></p>
+<p><img src="/2019/08/21/深入理解JVM - 内存结构/runtime data area.png" alt></p>
 <h3 id="Java堆-Heap"><a href="#Java堆-Heap" class="headerlink" title="Java堆(Heap)"></a>Java堆(Heap)</h3><p>对于大多数应用来说，Java堆（Java Heap）是Java虚拟机所管理的内存中<strong>最大</strong>的一块。Java堆是被所有线程共享的一块内存区域，在虚拟机启动时创建。此内存区域的唯一目的就是存放对象实例，<strong>几乎所有的对象实例都在这里分配内存。</strong></p>
 <p>Java堆是垃圾收集器管理的主要区域，因此很多时候也被称做<strong>“GC堆”</strong>。如果从内存回收的角度看，由于现在收集器基本都是采用的分代收集算法，所以Java堆中还可以细分为：<strong>新生代</strong>和<strong>老年代</strong>；再细致一点的有<strong>Eden空间</strong>、<strong>From Survivor空间</strong>、<strong>To Survivor空间</strong>等。</p>
 <p>根据Java虚拟机规范的规定，Java堆可以处于物理上不连续的内存空间中，只要逻辑上是连续的即可，就像我们的磁盘空间一样。在实现时，既可以实现成固定大小的，也可以是可扩展的，不过当前主流的虚拟机都是按照可扩展来实现的（通过-Xmx和-Xms控制）。</p>
@@ -316,28 +316,28 @@
 
 <div id="comments">
     
-
+    
 <div id="vcomments" class="valine"></div>
 
 <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
 <script src="/assets/valine.min.js"></script>
 
 <script>
-new Valine({
-    av: AV,
-    el: '#vcomments',
-    appId: 'xHUsTpzIlelbKBsefohA5b4m-gzGzoHsz',
-    appKey: 'RzKuChrzRGTQEgtRSKHy8s7L',
-    placeholder: '说点什么吧',
-    notify: false,
-    verify: false,
-    avatar: 'mm',
-    meta: 'nick,mail'.split(','),
-    pageSize: '10',
-    path: window.location.pathname,
-    lang: 'zh-CN'.toLowerCase()
-})
-</script>
+    new Valine({
+        av: AV,
+        el: '#vcomments',
+        appId: 'xHUsTpzIlelbKBsefohA5b4m-gzGzoHsz',
+        appKey: 'RzKuChrzRGTQEgtRSKHy8s7L',
+        placeholder: '说点什么吧',
+        notify: false,
+        verify: false,
+        avatar: 'mm',
+        meta: 'nick,mail'.split(','),
+        pageSize: '10',
+        path: window.location.pathname,
+        lang: 'zh-CN'.toLowerCase()
+    })
+    </script>
 
 
 </div>

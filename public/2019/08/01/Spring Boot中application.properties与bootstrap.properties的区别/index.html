@@ -14,7 +14,7 @@
     <meta name="format-detection" content="telephone=no,email=no,adress=no">
     <meta name="browsermode" content="application">
     <meta name="screen-orientation" content="portrait">
-    <meta name="theme-version" content="1.2.3">
+    <meta name="theme-version" content="1.3.0">
     <meta name="root" content="/">
     <link rel="dns-prefetch" href="https://binchencoder.github.io">
     <!--SEO-->
@@ -220,7 +220,7 @@
     <div class="post-body post-content">
         <h1 id="application-propertes-application-yml"><a href="#application-propertes-application-yml" class="headerlink" title="application.propertes (application.yml)"></a>application.propertes (application.yml)</h1><p>现在使用SpringBoot是Java世界里的主流选择，它大大简化了应用初始搭建以及开发过程，该框架使用了特定的方式来进行配置，从而是开发人员不在需要定义样板化的配置。今天就带大家来了解下application.properties</p>
 <p>使用application.properties，一般情况下主要用来配置服务中一些最基本的属性，如 数据库连接、日志相关配置。其他的用法还有 一般属性使用、自定义属性使用、属性间的引用(占位符)、随机数的使用、数据类型自动转换、嵌套属性注入</p>
-<p>如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">spring.profiles.active&#x3D;dev,vexillary-service,skylb,file_server,kafka_monitor_0.8,metrics</span><br><span class="line"></span><br><span class="line">#gRPC</span><br><span class="line">grpc.port&#x3D;6567</span><br><span class="line"></span><br><span class="line">#metrics</span><br><span class="line">metrics.scrapePort&#x3D;10000</span><br><span class="line"></span><br><span class="line"># logging level</span><br><span class="line">logging.level.root&#x3D;error</span><br><span class="line">logging.level.com.jingoal.grpc&#x3D;debug</span><br><span class="line">logging.level.com.jingoal.approval&#x3D;debug</span><br></pre></td></tr></table></figure></p>
+<p>如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">spring.profiles.active=dev,vexillary-service,skylb,file_server,kafka_monitor_0.8,metrics</span><br><span class="line"></span><br><span class="line">#gRPC</span><br><span class="line">grpc.port=6567</span><br><span class="line"></span><br><span class="line">#metrics</span><br><span class="line">metrics.scrapePort=10000</span><br><span class="line"></span><br><span class="line"># logging level</span><br><span class="line">logging.level.root=error</span><br><span class="line">logging.level.com.jingoal.grpc=debug</span><br><span class="line">logging.level.com.jingoal.approval=debug</span><br></pre></td></tr></table></figure></p>
 <h2 id="application-properties与bootstrap-properties的区别"><a href="#application-properties与bootstrap-properties的区别" class="headerlink" title="application.properties与bootstrap.properties的区别"></a>application.properties与bootstrap.properties的区别</h2><p>两者主要区别是加载顺序不同，bootstrap.properties在application.properties 之前加载，bootstrap.properties用于应用程序上下文的引导阶段</p>
 <h3 id="典型场景"><a href="#典型场景" class="headerlink" title="典型场景"></a>典型场景</h3><ol>
 <li>当时用Spring Cloud Config Server的时候，你应该在bootstraop.properties里面指定spring.application.name 和 spring.cloud.config.server.git.uri</li>
@@ -265,28 +265,28 @@
 
 <div id="comments">
     
-
+    
 <div id="vcomments" class="valine"></div>
 
 <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
 <script src="/assets/valine.min.js"></script>
 
 <script>
-new Valine({
-    av: AV,
-    el: '#vcomments',
-    appId: 'xHUsTpzIlelbKBsefohA5b4m-gzGzoHsz',
-    appKey: 'RzKuChrzRGTQEgtRSKHy8s7L',
-    placeholder: '说点什么吧',
-    notify: false,
-    verify: false,
-    avatar: 'mm',
-    meta: 'nick,mail'.split(','),
-    pageSize: '10',
-    path: window.location.pathname,
-    lang: 'zh-CN'.toLowerCase()
-})
-</script>
+    new Valine({
+        av: AV,
+        el: '#vcomments',
+        appId: 'xHUsTpzIlelbKBsefohA5b4m-gzGzoHsz',
+        appKey: 'RzKuChrzRGTQEgtRSKHy8s7L',
+        placeholder: '说点什么吧',
+        notify: false,
+        verify: false,
+        avatar: 'mm',
+        meta: 'nick,mail'.split(','),
+        pageSize: '10',
+        path: window.location.pathname,
+        lang: 'zh-CN'.toLowerCase()
+    })
+    </script>
 
 
 </div>

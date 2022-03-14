@@ -14,7 +14,7 @@
     <meta name="format-detection" content="telephone=no,email=no,adress=no">
     <meta name="browsermode" content="application">
     <meta name="screen-orientation" content="portrait">
-    <meta name="theme-version" content="1.2.3">
+    <meta name="theme-version" content="1.3.0">
     <meta name="root" content="/">
     <link rel="dns-prefetch" href="https://binchencoder.github.io">
     <!--SEO-->
@@ -217,7 +217,7 @@
         
         <p class="fa fa-exclamation-triangle warning">
             本文于<strong>
-                1062</strong>
+                1332</strong>
             天之前发表，文中内容可能已经过时。
         </p>
         
@@ -230,7 +230,8 @@
 <li>Git环境</li>
 </ul>
 <a id="more"></a>
-<p>检查环境安装是否正确<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">chenbin@chenbin-ThinkPad:~$ node -v</span><br><span class="line">v8.9.4</span><br><span class="line"></span><br><span class="line">chenbin@chenbin-ThinkPad:~$ npm -v</span><br><span class="line">5.6.0</span><br><span class="line"></span><br><span class="line">chenbin@chenbin-ThinkPad:~$ git --version</span><br><span class="line">git version 2.17.1</span><br></pre></td></tr></table></figure><br>如果结果如上, 则说明安装正确， 可以进行下一步了。 如果不正确， 则需要回头检查自己的安装过程</p>
+<p>检查环境安装是否正确<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">chenbin@chenbin-ThinkPad:~$ node -v</span><br><span class="line">v8.9.4</span><br><span class="line"></span><br><span class="line">chenbin@chenbin-ThinkPad:~$ npm -v</span><br><span class="line">5.6.0</span><br><span class="line"></span><br><span class="line">chenbin@chenbin-ThinkPad:~$ git --version</span><br><span class="line">git version 2.17.1</span><br></pre></td></tr></table></figure></p>
+<p>如果结果如上, 则说明安装正确， 可以进行下一步了。 如果不正确， 则需要回头检查自己的安装过程</p>
 <h2 id="Install-Hexo"><a href="#Install-Hexo" class="headerlink" title="Install Hexo"></a>Install Hexo</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
 <p>Link:<br><a href="https://hexo.io/zh-cn/docs/index.html" target="_blank" rel="noopener">https://hexo.io/zh-cn/docs/index.html</a></p>
 <h2 id="建站"><a href="#建站" class="headerlink" title="建站"></a>建站</h2><p>安装 Hexo 完成后，请执行下列命令，Hexo 将会在指定文件夹中新建所需要的文件。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ hexo init &lt;folder&gt;</span><br><span class="line">$ cd &lt;folder&gt;</span><br><span class="line">$ npm install</span><br></pre></td></tr></table></figure></p>
@@ -240,8 +241,8 @@
 </blockquote>
 <p>新建完成后，指定文件夹的目录如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">.</span><br><span class="line">├── _config.yml</span><br><span class="line">├── package.json</span><br><span class="line">├── scaffolds</span><br><span class="line">├── source</span><br><span class="line">|   ├── _drafts</span><br><span class="line">|   └── _posts</span><br><span class="line">└── themes</span><br></pre></td></tr></table></figure></p>
 <h2 id="查看建站效果"><a href="#查看建站效果" class="headerlink" title="查看建站效果"></a>查看建站效果</h2><p>自动根据当前目录下文件,生成静态网页<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo g</span><br></pre></td></tr></table></figure></p>
-<p>运行本地服务, 出现以下结果说明本地服务运行成功. 这时就可以在浏览器输入<a href="http://localhost:4000/" target="_blank" rel="noopener">http://localhost:4000/</a> 就可以看到效果了.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">hexo s</span><br><span class="line"></span><br><span class="line">chenbin@chenbin-ThinkPad:~&#x2F;...&#x2F;github-workspace&#x2F;Hexo-code$ hexo s</span><br><span class="line">INFO  Start processing</span><br><span class="line">INFO  Hexo is running at http:&#x2F;&#x2F;localhost:4000&#x2F;. Press Ctrl+C to stop.</span><br></pre></td></tr></table></figure></p>
-<p>效果图:<br><img src="/2018/07/21/Hexo%E6%90%AD%E5%BB%BAgithub%E4%B8%BB%E9%A1%B5/bloghexo5.png" alt="hello-world"></p>
+<p>运行本地服务, 出现以下结果说明本地服务运行成功. 这时就可以在浏览器输入<a href="http://localhost:4000/" target="_blank" rel="noopener">http://localhost:4000/</a> 就可以看到效果了.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">hexo s</span><br><span class="line"></span><br><span class="line">chenbin@chenbin-ThinkPad:~/.../github-workspace/Hexo-code$ hexo s</span><br><span class="line">INFO  Start processing</span><br><span class="line">INFO  Hexo is running at http://localhost:4000/. Press Ctrl+C to stop.</span><br></pre></td></tr></table></figure></p>
+<p>效果图:<br><img src="/2018/07/21/Hexo搭建github主页/bloghexo5.png" alt="hello-world"></p>
 <h2 id="Deploy"><a href="#Deploy" class="headerlink" title="Deploy"></a>Deploy</h2><p>Hexo提供了快速方便的一键部署功能，让您只需一条命令就能将网站部署到服务器上。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
 <p>在开始之前，您必须先在 _config.yml 中修改参数，一个正确的部署配置中至少要有 type 参数，例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br></pre></td></tr></table></figure></p>
@@ -251,9 +252,9 @@
 <p>YAML依靠缩进来确定元素间的从属关系。因此，请确保每个deployer的缩进长度相同，并且使用空格缩进。</p>
 </blockquote>
 <p>详细说明请查看:<br><a href="https://hexo.io/zh-cn/docs/configuration.html" target="_blank" rel="noopener">https://hexo.io/zh-cn/docs/configuration.html</a></p>
-<h3 id="Git-Deploy"><a href="#Git-Deploy" class="headerlink" title="Git Deploy"></a>Git Deploy</h3><p>以下是我在本地使用Git Deploy配置的例子:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># Deployment</span><br><span class="line">## Docs: https:&#x2F;&#x2F;hexo.io&#x2F;docs&#x2F;deployment.html</span><br><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repository: https:&#x2F;&#x2F;github.com&#x2F;binchencoder&#x2F;binchencoder.github.io.git</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure></p>
+<h3 id="Git-Deploy"><a href="#Git-Deploy" class="headerlink" title="Git Deploy"></a>Git Deploy</h3><p>以下是我在本地使用Git Deploy配置的例子:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># Deployment</span><br><span class="line">## Docs: https://hexo.io/docs/deployment.html</span><br><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repository: https://github.com/binchencoder/binchencoder.github.io.git</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure></p>
 <h4 id="Install-Git-Deployer"><a href="#Install-Git-Deployer" class="headerlink" title="Install Git Deployer"></a>Install Git Deployer</h4><p>安装 hexo-deployer-git<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure></p>
-<p>安装成功之后就可以使用Git将网站部署到指定的服务器上<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">chenbin@chenbin-ThinkPad:~&#x2F;...&#x2F;github-workspace&#x2F;Hexo-code$ hexo deploy</span><br><span class="line">INFO  Deploying: git</span><br><span class="line">INFO  Clearing .deploy_git folder...</span><br><span class="line">INFO  Copying files from public folder...</span><br><span class="line">INFO  Copying files from extend dirs...</span><br><span class="line">位于分支 master</span><br><span class="line">无文件要提交，干净的工作区</span><br><span class="line">To https:&#x2F;&#x2F;github.com&#x2F;binchencoder&#x2F;binchencoder.github.io.git</span><br><span class="line">   8a8903c..dac6bed  HEAD -&gt; master</span><br><span class="line">分支 &#39;master&#39; 设置为跟踪来自 &#39;https:&#x2F;&#x2F;github.com&#x2F;binchencoder&#x2F;binchencoder.github.io.git&#39; 的远程分支 &#39;master&#39;。</span><br><span class="line">INFO  Deploy done: git</span><br></pre></td></tr></table></figure></p>
+<p>安装成功之后就可以使用Git将网站部署到指定的服务器上<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">chenbin@chenbin-ThinkPad:~/.../github-workspace/Hexo-code$ hexo deploy</span><br><span class="line">INFO  Deploying: git</span><br><span class="line">INFO  Clearing .deploy_git folder...</span><br><span class="line">INFO  Copying files from public folder...</span><br><span class="line">INFO  Copying files from extend dirs...</span><br><span class="line">位于分支 master</span><br><span class="line">无文件要提交，干净的工作区</span><br><span class="line">To https://github.com/binchencoder/binchencoder.github.io.git</span><br><span class="line">   8a8903c..dac6bed  HEAD -&gt; master</span><br><span class="line">分支 &apos;master&apos; 设置为跟踪来自 &apos;https://github.com/binchencoder/binchencoder.github.io.git&apos; 的远程分支 &apos;master&apos;。</span><br><span class="line">INFO  Deploy done: git</span><br></pre></td></tr></table></figure></p>
 <blockquote>
 <p>出现如上结果，就大功告成了。</p>
 <p>Hexo Hello-World网站已经部署到Git服务上。就可以通过<a href="https://binchencode.github.io" target="_blank" rel="noopener">https://binchencode.github.io</a> 地址访问部署的网站了</p>
@@ -293,28 +294,28 @@
 
 <div id="comments">
     
-
+    
 <div id="vcomments" class="valine"></div>
 
 <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
 <script src="/assets/valine.min.js"></script>
 
 <script>
-new Valine({
-    av: AV,
-    el: '#vcomments',
-    appId: 'xHUsTpzIlelbKBsefohA5b4m-gzGzoHsz',
-    appKey: 'RzKuChrzRGTQEgtRSKHy8s7L',
-    placeholder: '说点什么吧',
-    notify: false,
-    verify: false,
-    avatar: 'mm',
-    meta: 'nick,mail'.split(','),
-    pageSize: '10',
-    path: window.location.pathname,
-    lang: 'zh-CN'.toLowerCase()
-})
-</script>
+    new Valine({
+        av: AV,
+        el: '#vcomments',
+        appId: 'xHUsTpzIlelbKBsefohA5b4m-gzGzoHsz',
+        appKey: 'RzKuChrzRGTQEgtRSKHy8s7L',
+        placeholder: '说点什么吧',
+        notify: false,
+        verify: false,
+        avatar: 'mm',
+        meta: 'nick,mail'.split(','),
+        pageSize: '10',
+        path: window.location.pathname,
+        lang: 'zh-CN'.toLowerCase()
+    })
+    </script>
 
 
 </div>

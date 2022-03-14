@@ -93,13 +93,6 @@
   </url>
   
   <url>
-    <loc>https://binchencoder.github.io/2019/08/21/%25E6%25B7%25B1%25E5%2585%25A5%25E7%2590%2586%25E8%25A7%25A3JVM%2520-%2520%25E5%2586%2585%25E5%25AD%2598%25E7%25BB%2593%25E6%259E%2584/</loc>
-    
-    <lastmod>2019-12-02T02:08:24.481Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://binchencoder.github.io/2018/09/04/%25E6%259F%25A5%25E7%259C%258BMariaDB-binlog/</loc>
     
     <lastmod>2019-12-02T02:08:24.481Z</lastmod>
@@ -107,7 +100,7 @@
   </url>
   
   <url>
-    <loc>https://binchencoder.github.io/2019/08/24/%25E6%25B7%25B1%25E5%2585%25A5%25E7%2590%2586%25E8%25A7%25A3JVM%2520-%2520%25E5%259E%2583%25E5%259C%25BE%25E5%259B%259E%25E6%2594%25B6%25E4%25B9%258B%25E4%25B8%2596%25E4%25BB%25A3%25E5%259E%2583%25E5%259C%25BE%25E6%2594%25B6%25E9%259B%2586%25E8%25BF%2587%25E7%25A8%258B/</loc>
+    <loc>https://binchencoder.github.io/2019/08/21/%25E6%25B7%25B1%25E5%2585%25A5%25E7%2590%2586%25E8%25A7%25A3JVM%2520-%2520%25E5%2586%2585%25E5%25AD%2598%25E7%25BB%2593%25E6%259E%2584/</loc>
     
     <lastmod>2019-12-02T02:08:24.481Z</lastmod>
     
@@ -115,6 +108,13 @@
   
   <url>
     <loc>https://binchencoder.github.io/2019/08/16/%25E8%25AE%25A4%25E8%25AF%2586Bazel/</loc>
+    
+    <lastmod>2019-12-02T02:08:24.481Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://binchencoder.github.io/2019/08/24/%25E6%25B7%25B1%25E5%2585%25A5%25E7%2590%2586%25E8%25A7%25A3JVM%2520-%2520%25E5%259E%2583%25E5%259C%25BE%25E5%259B%259E%25E6%2594%25B6%25E4%25B9%258B%25E4%25B8%2596%25E4%25BB%25A3%25E5%259E%2583%25E5%259C%25BE%25E6%2594%25B6%25E9%259B%2586%25E8%25BF%2587%25E7%25A8%258B/</loc>
     
     <lastmod>2019-12-02T02:08:24.481Z</lastmod>
     
@@ -163,14 +163,14 @@
   </url>
   
   <url>
-    <loc>https://binchencoder.github.io/2019/08/27/%25E5%2588%259D%25E8%25AF%2586kafka/</loc>
+    <loc>https://binchencoder.github.io/2018/09/01/%25E4%25BD%25BF%25E7%2594%25A8%25E6%25AD%25A3%25E5%2588%2599%25E5%25BC%2595%25E5%258F%2591%25E7%259A%2584%25E8%25A1%2580%25E6%25A1%2588/</loc>
     
     <lastmod>2019-12-02T02:08:24.477Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://binchencoder.github.io/2018/09/01/%25E4%25BD%25BF%25E7%2594%25A8%25E6%25AD%25A3%25E5%2588%2599%25E5%25BC%2595%25E5%258F%2591%25E7%259A%2584%25E8%25A1%2580%25E6%25A1%2588/</loc>
+    <loc>https://binchencoder.github.io/2019/08/27/%25E5%2588%259D%25E8%25AF%2586kafka/</loc>
     
     <lastmod>2019-12-02T02:08:24.477Z</lastmod>
     

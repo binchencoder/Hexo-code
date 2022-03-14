@@ -14,7 +14,7 @@
     <meta name="format-detection" content="telephone=no,email=no,adress=no">
     <meta name="browsermode" content="application">
     <meta name="screen-orientation" content="portrait">
-    <meta name="theme-version" content="1.2.3">
+    <meta name="theme-version" content="1.3.0">
     <meta name="root" content="/">
     <link rel="dns-prefetch" href="https://binchencoder.github.io">
     <!--SEO-->
@@ -232,7 +232,7 @@
 <h4 id="对象访问"><a href="#对象访问" class="headerlink" title="对象访问"></a>对象访问</h4><p>初始化一个对象，其引用存放于栈帧，对象存放于堆内存，对象包含属性信息和该对象父类、接口等类型数据（该类型数据存储在方法区空间，对象拥有类型数据的地址）</p>
 <h3 id="内存模型"><a href="#内存模型" class="headerlink" title="内存模型"></a>内存模型</h3><h4 id="堆内存"><a href="#堆内存" class="headerlink" title="堆内存"></a>堆内存</h4><p>堆内存是运行时的数据区，从中分配所有的Java类实例和数组的内存，可以理解为目标应用依赖的对象。堆在JVM启动时创建，并在应用程序运行时可能会增大或减小。可以使用<code>-Xms`</code>选项指定堆的大小。堆可以是固定大小或可变大小，具体取决于垃圾收集策略。可以使用<code>-Xmx</code>选项设置最大堆大小。默认情况下，最大堆大小设置为64M。</p>
 <p>JVM堆内存在物理上分为两部分：<code>新生代</code>和<code>老年代</code>。新生代是为分配新对象而保留堆空间。当新生代占用完时，Minor GC垃圾收集器会对新生代区域执行垃圾回收动作。其中在新生代中生活了足够长的所有对象被迁移到老生代，从而释放新生代空间以进行更多的对象分配。此垃圾收集称为<code>Minor GC</code>。新生代分分为三个子区域：<code>伊甸园Eden区</code>和两个<code>幸存区S0`</code>和<code>`S1</code>。</p>
-<p><img src="/2019/08/11/JVM%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/JVM内存管理.png" alt=""></p>
+<p><img src="/2019/08/11/JVM内存管理/JVM内存管理.png" alt></p>
 <blockquote>
 <p><strong>关于新生代空间：</strong></p>
 </blockquote>
@@ -355,28 +355,28 @@
 
 <div id="comments">
     
-
+    
 <div id="vcomments" class="valine"></div>
 
 <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
 <script src="/assets/valine.min.js"></script>
 
 <script>
-new Valine({
-    av: AV,
-    el: '#vcomments',
-    appId: 'xHUsTpzIlelbKBsefohA5b4m-gzGzoHsz',
-    appKey: 'RzKuChrzRGTQEgtRSKHy8s7L',
-    placeholder: '说点什么吧',
-    notify: false,
-    verify: false,
-    avatar: 'mm',
-    meta: 'nick,mail'.split(','),
-    pageSize: '10',
-    path: window.location.pathname,
-    lang: 'zh-CN'.toLowerCase()
-})
-</script>
+    new Valine({
+        av: AV,
+        el: '#vcomments',
+        appId: 'xHUsTpzIlelbKBsefohA5b4m-gzGzoHsz',
+        appKey: 'RzKuChrzRGTQEgtRSKHy8s7L',
+        placeholder: '说点什么吧',
+        notify: false,
+        verify: false,
+        avatar: 'mm',
+        meta: 'nick,mail'.split(','),
+        pageSize: '10',
+        path: window.location.pathname,
+        lang: 'zh-CN'.toLowerCase()
+    })
+    </script>
 
 
 </div>

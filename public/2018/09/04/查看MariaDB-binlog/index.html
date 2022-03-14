@@ -14,7 +14,7 @@
     <meta name="format-detection" content="telephone=no,email=no,adress=no">
     <meta name="browsermode" content="application">
     <meta name="screen-orientation" content="portrait">
-    <meta name="theme-version" content="1.2.3">
+    <meta name="theme-version" content="1.3.0">
     <meta name="root" content="/">
     <link rel="dns-prefetch" href="https://binchencoder.github.io">
     <!--SEO-->
@@ -219,7 +219,7 @@ MySQL的..." />
         
         <p class="fa fa-exclamation-triangle warning">
             本文于<strong>
-                1017</strong>
+                1286</strong>
             天之前发表，文中内容可能已经过时。
         </p>
         
@@ -227,15 +227,15 @@ MySQL的..." />
     
     <div class="post-body post-content">
         <h2 id="MariaDB-bin-log"><a href="#MariaDB-bin-log" class="headerlink" title="MariaDB bin log"></a>MariaDB bin log</h2><p>今天在学习MariaDB在产线的部署架构时，重新了解了主从复制的原理，同时产生想查看bin log的好奇心，折腾了一番最终搞定</p>
-<h2 id="MariaDB主从复制"><a href="#MariaDB主从复制" class="headerlink" title="MariaDB主从复制"></a>MariaDB主从复制</h2><p><img src="/2018/09/04/%E6%9F%A5%E7%9C%8BMariaDB-binlog/mariadb-binlog.png" alt="image"></p>
+<h2 id="MariaDB主从复制"><a href="#MariaDB主从复制" class="headerlink" title="MariaDB主从复制"></a>MariaDB主从复制</h2><p><img src="/2018/09/04/查看MariaDB-binlog/mariadb-binlog.png" alt="image"></p>
 <p><strong>MySQL的复制就是基于二进制日志而完成的，其工作原理如下：</strong></p>
 <blockquote>
 <p>当MySQL的Master节点的数据有更改的时候，Master会主动通知Slave，让Slave主动来Master获取二进制日志，于是Slave开启一个I/O thread，向Master请求二进制日志中记录的语句；Master将二进制日志中记录的语句发给Slave，Slave则将这些语句存到中继日志中，进而从中继日志中读取一句，执行一句，直到所有的语句被执行完。而经SQL语句从中继日志中读取出来，再一一执行的进程叫做SQL thread；将这些语句执行完之后，从节点的数据就和主节点的数据相同了，这就是所谓的MySQL主从复制。</p>
 </blockquote>
 <h2 id="查看bin-log"><a href="#查看bin-log" class="headerlink" title="查看bin log"></a>查看bin log</h2><p><strong>在我们的一个测试环境上，通过如下命令查看</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">MariaDB [(none)]&gt; show binary logs;</span><br><span class="line">1381 - You are not using binary logging</span><br><span class="line"></span><br><span class="line">MariaDB [(none)]&gt; show variables like &#39;log_bin&#39;;</span><br><span class="line">+---------------+-------+</span><br><span class="line">| Variable_name | Value |</span><br><span class="line">+---------------+-------+</span><br><span class="line">| log_bin | OFF |</span><br><span class="line">+---------------+-------+</span><br><span class="line"></span><br><span class="line">错误原因：测试环境中部署的实例没有开启bin log</span><br><span class="line"></span><br><span class="line">MariaDB [(none)]&gt; set global log_bin_trust_function_creators&#x3D;1;</span><br><span class="line"></span><br><span class="line">MariaDB [(none)]&gt; show variables like &#39;log_bin_trust_function_creators&#39;;</span><br><span class="line"></span><br><span class="line">+---------------------------------+-------+</span><br><span class="line">| Variable_name | Value |</span><br><span class="line">+---------------------------------+-------+</span><br><span class="line">| log_bin_trust_function_creators | ON |</span><br><span class="line">+---------------------------------+-------+</span><br><span class="line"></span><br><span class="line">这样添加了参数以后，如果mysqld重启，那个参数又会消失，因此记得在my.cnf配置文件中添加：</span><br><span class="line"></span><br><span class="line">log_bin_trust_function_creators&#x3D;1</span><br><span class="line"></span><br><span class="line">log_bin&#x3D;mysql_bin</span><br><span class="line"></span><br><span class="line">添加参数之后重启mysql</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">MariaDB [(none)]&gt; show binary logs;</span><br><span class="line">1381 - You are not using binary logging</span><br><span class="line"></span><br><span class="line">MariaDB [(none)]&gt; show variables like &apos;log_bin&apos;;</span><br><span class="line">+---------------+-------+</span><br><span class="line">| Variable_name | Value |</span><br><span class="line">+---------------+-------+</span><br><span class="line">| log_bin | OFF |</span><br><span class="line">+---------------+-------+</span><br><span class="line"></span><br><span class="line">错误原因：测试环境中部署的实例没有开启bin log</span><br><span class="line"></span><br><span class="line">MariaDB [(none)]&gt; set global log_bin_trust_function_creators=1;</span><br><span class="line"></span><br><span class="line">MariaDB [(none)]&gt; show variables like &apos;log_bin_trust_function_creators&apos;;</span><br><span class="line"></span><br><span class="line">+---------------------------------+-------+</span><br><span class="line">| Variable_name | Value |</span><br><span class="line">+---------------------------------+-------+</span><br><span class="line">| log_bin_trust_function_creators | ON |</span><br><span class="line">+---------------------------------+-------+</span><br><span class="line"></span><br><span class="line">这样添加了参数以后，如果mysqld重启，那个参数又会消失，因此记得在my.cnf配置文件中添加：</span><br><span class="line"></span><br><span class="line">log_bin_trust_function_creators=1</span><br><span class="line"></span><br><span class="line">log_bin=mysql_bin</span><br><span class="line"></span><br><span class="line">添加参数之后重启mysql</span><br></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">MariaDB [(none)]&gt; show binary logs;</span><br><span class="line">+------------------+-----------+</span><br><span class="line">| Log_name | File_size |</span><br><span class="line">+------------------+-----------+</span><br><span class="line">| mysql_bin.000001 | 217795 |</span><br><span class="line">+------------------+-----------+</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">[root@mariadb bin]# mysqlbinlog –no-defaults mysql-bin.00001;</span><br><span class="line">&#x2F;*!50530 SET @@SESSION.PSEUDO_SLAVE_MODE&#x3D;1*&#x2F;;</span><br><span class="line">&#x2F;*!40019 SET @@session.max_insert_delayed_threads&#x3D;0*&#x2F;;</span><br><span class="line">&#x2F;*!50003 SET @OLD_COMPLETION_TYPE&#x3D;@@COMPLETION_TYPE,COMPLETION_TYPE&#x3D;0*&#x2F;;</span><br><span class="line"></span><br><span class="line">DELIMITER &#x2F;*!*&#x2F;;</span><br><span class="line">mysqlbinlog: File &#39;&#39; not found (Errcode: 2)</span><br><span class="line"></span><br><span class="line">DELIMITER ;</span><br><span class="line"></span><br><span class="line"># End of log file</span><br><span class="line">ROLLBACK &#x2F;* added by mysqlbinlog *&#x2F;;</span><br><span class="line"></span><br><span class="line">&#x2F;*!50003 SET COMPLETION_TYPE&#x3D;@OLD_COMPLETION_TYPE*&#x2F;;</span><br><span class="line">&#x2F;*!50530 SET @@SESSION.PSEUDO_SLAVE_MODE&#x3D;0*&#x2F;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">[root@mariadb bin]# mysqlbinlog –no-defaults mysql-bin.00001;</span><br><span class="line">/*!50530 SET @@SESSION.PSEUDO_SLAVE_MODE=1*/;</span><br><span class="line">/*!40019 SET @@session.max_insert_delayed_threads=0*/;</span><br><span class="line">/*!50003 SET @OLD_COMPLETION_TYPE=@@COMPLETION_TYPE,COMPLETION_TYPE=0*/;</span><br><span class="line"></span><br><span class="line">DELIMITER /*!*/;</span><br><span class="line">mysqlbinlog: File &apos;&apos; not found (Errcode: 2)</span><br><span class="line"></span><br><span class="line">DELIMITER ;</span><br><span class="line"></span><br><span class="line"># End of log file</span><br><span class="line">ROLLBACK /* added by mysqlbinlog */;</span><br><span class="line"></span><br><span class="line">/*!50003 SET COMPLETION_TYPE=@OLD_COMPLETION_TYPE*/;</span><br><span class="line">/*!50530 SET @@SESSION.PSEUDO_SLAVE_MODE=0*/;</span><br></pre></td></tr></table></figure>
 <h2 id="遗留问题"><a href="#遗留问题" class="headerlink" title="遗留问题"></a>遗留问题</h2><p>从上面Mariadb复制原理中我认为bin log记录的master上执行的sql语句，但是为什么bin log看不到呢？</p>
 
     </div>
@@ -272,28 +272,28 @@ MySQL的..." />
 
 <div id="comments">
     
-
+    
 <div id="vcomments" class="valine"></div>
 
 <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
 <script src="/assets/valine.min.js"></script>
 
 <script>
-new Valine({
-    av: AV,
-    el: '#vcomments',
-    appId: 'xHUsTpzIlelbKBsefohA5b4m-gzGzoHsz',
-    appKey: 'RzKuChrzRGTQEgtRSKHy8s7L',
-    placeholder: '说点什么吧',
-    notify: false,
-    verify: false,
-    avatar: 'mm',
-    meta: 'nick,mail'.split(','),
-    pageSize: '10',
-    path: window.location.pathname,
-    lang: 'zh-CN'.toLowerCase()
-})
-</script>
+    new Valine({
+        av: AV,
+        el: '#vcomments',
+        appId: 'xHUsTpzIlelbKBsefohA5b4m-gzGzoHsz',
+        appKey: 'RzKuChrzRGTQEgtRSKHy8s7L',
+        placeholder: '说点什么吧',
+        notify: false,
+        verify: false,
+        avatar: 'mm',
+        meta: 'nick,mail'.split(','),
+        pageSize: '10',
+        path: window.location.pathname,
+        lang: 'zh-CN'.toLowerCase()
+    })
+    </script>
 
 
 </div>

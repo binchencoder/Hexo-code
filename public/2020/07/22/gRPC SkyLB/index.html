@@ -14,7 +14,7 @@
     <meta name="format-detection" content="telephone=no,email=no,adress=no">
     <meta name="browsermode" content="application">
     <meta name="screen-orientation" content="portrait">
-    <meta name="theme-version" content="1.2.3">
+    <meta name="theme-version" content="1.3.0">
     <meta name="root" content="/">
     <link rel="dns-prefetch" href="https://binchencoder.github.io">
     <!--SEO-->
@@ -235,7 +235,7 @@ proto..." />
 <h2 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h2><p><em>gRPC SkyLB</em> 采用独立LB进程（External Load Balancing Service）负载均衡方式，支持轮询、一致性哈希两种负载均衡策略，并支持服务端权重。采用etcd作为注册中心。</p>
 <p>项目地址：</p>
 <p><a href="https://github.com/binchencoder/grpc-skylb" target="_blank" rel="noopener">https://github.com/binchencoder/grpc-skylb</a></p>
-<h2 id="Architecture-of-SkyLB"><a href="#Architecture-of-SkyLB" class="headerlink" title="Architecture of SkyLB"></a>Architecture of SkyLB</h2><p><img src="/2020/07/22/gRPC%20SkyLB/architecture.png" alt=""></p>
+<h2 id="Architecture-of-SkyLB"><a href="#Architecture-of-SkyLB" class="headerlink" title="Architecture of SkyLB"></a>Architecture of SkyLB</h2><p><img src="/2020/07/22/gRPC SkyLB/architecture.png" alt></p>
 <p>服务提供者起来后向注册中心(SkyLB) 注册自己的信息，ip、端口、权重等，并保持心跳。客户端监听注册中心，获取服务器列表，一旦服务器发生变化，客户端马上更新本地的服务器列表。客户端每个请求都通过负载均衡策略选择一个合适的服务器去访问。</p>
 <h2 id="Usage"><a href="#Usage" class="headerlink" title="Usage"></a>Usage</h2><ol>
 <li><p>Dependency</p>
@@ -244,7 +244,7 @@ proto..." />
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">	&lt;groupId&gt;com.binchencoder.skylb&lt;/groupId&gt;</span><br><span class="line">	&lt;artifactId&gt;skylb-client&lt;/artifactId&gt;</span><br><span class="line">	&lt;version&gt;1.0-SNAPSHOT&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>Implements gRPC API</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DemoGrpcImpl</span> <span class="keyword">extends</span> <span class="title">DemoGrpc</span>.<span class="title">DemoImplBase</span> </span>&#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">final</span> Logger LOGGER = LoggerFactory.getLogger(DemoGrpcImpl<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">private</span> Random rand = <span class="keyword">new</span> Random(System.currentTimeMillis());</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">int</span> port;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">DemoGrpcImpl</span><span class="params">(<span class="keyword">int</span> port_)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.port = port_;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">greeting</span><span class="params">(GreetingProtos.GreetingRequest request,</span></span></span><br><span class="line"><span class="function"><span class="params">      StreamObserver&lt;GreetingProtos.GreetingResponse&gt; responseObserver)</span> </span>&#123;</span><br><span class="line">    LOGGER.info(<span class="string">"Got req: &#123;&#125;"</span>, request);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 随机耗时350~550毫秒.</span></span><br><span class="line">    <span class="keyword">int</span> elapse = <span class="number">350</span> + rand.nextInt(<span class="number">200</span>);</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">      TimeUnit.MILLISECONDS.sleep(elapse);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (InterruptedException ie) &#123;</span><br><span class="line">      LOGGER.warn(<span class="string">"sleep interrupted"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    GreetingResponse reply = GreetingResponse.newBuilder().setGreeting(</span><br><span class="line">        <span class="string">"Hello "</span> + request.getName() + <span class="string">", from :"</span> + port + <span class="string">", elapse "</span> + elapse + <span class="string">"ms"</span>).build();</span><br><span class="line">    responseObserver.onNext(reply);</span><br><span class="line">    responseObserver.onCompleted();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">greetingForEver</span><span class="params">(GreetingProtos.GreetingRequest request,</span></span></span><br><span class="line"><span class="function"><span class="params">      StreamObserver&lt;GreetingProtos.GreetingResponse&gt; responseObserver)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">super</span>.greetingForEver(request, responseObserver);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DemoGrpcImpl</span> <span class="keyword">extends</span> <span class="title">DemoGrpc</span>.<span class="title">DemoImplBase</span> </span>&#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">final</span> Logger LOGGER = LoggerFactory.getLogger(DemoGrpcImpl.class);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">private</span> Random rand = <span class="keyword">new</span> Random(System.currentTimeMillis());</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">int</span> port;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">DemoGrpcImpl</span><span class="params">(<span class="keyword">int</span> port_)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.port = port_;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">greeting</span><span class="params">(GreetingProtos.GreetingRequest request,</span></span></span><br><span class="line"><span class="function"><span class="params">      StreamObserver&lt;GreetingProtos.GreetingResponse&gt; responseObserver)</span> </span>&#123;</span><br><span class="line">    LOGGER.info(<span class="string">"Got req: &#123;&#125;"</span>, request);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 随机耗时350~550毫秒.</span></span><br><span class="line">    <span class="keyword">int</span> elapse = <span class="number">350</span> + rand.nextInt(<span class="number">200</span>);</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">      TimeUnit.MILLISECONDS.sleep(elapse);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (InterruptedException ie) &#123;</span><br><span class="line">      LOGGER.warn(<span class="string">"sleep interrupted"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    GreetingResponse reply = GreetingResponse.newBuilder().setGreeting(</span><br><span class="line">        <span class="string">"Hello "</span> + request.getName() + <span class="string">", from :"</span> + port + <span class="string">", elapse "</span> + elapse + <span class="string">"ms"</span>).build();</span><br><span class="line">    responseObserver.onNext(reply);</span><br><span class="line">    responseObserver.onCompleted();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">greetingForEver</span><span class="params">(GreetingProtos.GreetingRequest request,</span></span></span><br><span class="line"><span class="function"><span class="params">      StreamObserver&lt;GreetingProtos.GreetingResponse&gt; responseObserver)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">super</span>.greetingForEver(request, responseObserver);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>Register gRPC Server to SkyLB Server</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Server server = ServerTemplate.create(</span><br><span class="line">			&#123;port&#125; <span class="number">9090</span>, </span><br><span class="line">			&#123;bindableService&#125; <span class="keyword">new</span> DemoGrpcImpl(), </span><br><span class="line">			&#123;serviceName&#125; <span class="string">"shared-test-client-service"</span>)</span><br><span class="line">  .build()</span><br><span class="line">  .start();</span><br><span class="line"></span><br><span class="line">SkyLBServiceReporter reporter = ServerTemplate.reportLoad(</span><br><span class="line">			&#123;skylbUri&#125; <span class="string">"skylb://127.0.0.1:1900/"</span>,</span><br><span class="line">			&#123;serviceName&#125; ServiceNameUtil.toString(ServiceId.CUSTOM_EASE_GATEWAY_TEST),</span><br><span class="line">			&#123;portName&#125; <span class="string">"grpc"</span>,</span><br><span class="line">			&#123;port&#125; <span class="number">9090</span>);</span><br></pre></td></tr></table></figure>
@@ -293,7 +293,7 @@ proto..." />
 <li><p>在 spring-boot-grpc-common.jar 中默认配置两个Global Interceptor(ExceptionInterceptor, AuthenticationInterceptor)</p>
 </li>
 <li><p>使用者可通过注解不使用Global Interceptor，实现自己的Interceptor</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@GrpcService</span>(applyGlobalInterceptors = <span class="keyword">false</span>, interceptors = ExceptionInterceptor<span class="class">.<span class="keyword">class</span>)</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@GrpcService</span>(applyGlobalInterceptors = <span class="keyword">false</span>, interceptors = ExceptionInterceptor.class)</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
 <h2 id="Features"><a href="#Features" class="headerlink" title="Features"></a>Features</h2><ul>
@@ -342,28 +342,28 @@ proto..." />
 
 <div id="comments">
     
-
+    
 <div id="vcomments" class="valine"></div>
 
 <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
 <script src="/assets/valine.min.js"></script>
 
 <script>
-new Valine({
-    av: AV,
-    el: '#vcomments',
-    appId: 'xHUsTpzIlelbKBsefohA5b4m-gzGzoHsz',
-    appKey: 'RzKuChrzRGTQEgtRSKHy8s7L',
-    placeholder: '说点什么吧',
-    notify: false,
-    verify: false,
-    avatar: 'mm',
-    meta: 'nick,mail'.split(','),
-    pageSize: '10',
-    path: window.location.pathname,
-    lang: 'zh-CN'.toLowerCase()
-})
-</script>
+    new Valine({
+        av: AV,
+        el: '#vcomments',
+        appId: 'xHUsTpzIlelbKBsefohA5b4m-gzGzoHsz',
+        appKey: 'RzKuChrzRGTQEgtRSKHy8s7L',
+        placeholder: '说点什么吧',
+        notify: false,
+        verify: false,
+        avatar: 'mm',
+        meta: 'nick,mail'.split(','),
+        pageSize: '10',
+        path: window.location.pathname,
+        lang: 'zh-CN'.toLowerCase()
+    })
+    </script>
 
 
 </div>
